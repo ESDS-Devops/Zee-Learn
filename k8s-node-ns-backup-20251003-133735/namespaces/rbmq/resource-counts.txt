@@ -1,0 +1,12 @@
+Namespace: rbmq
+==========================
+pods: 5
+deployments: 2
+services: 3
+configmaps: 3
+secrets: 6
+horizontalpodautoscalers: 0
+ingresses: 1
+statefulsets: 1
+daemonsets: 0
+replicasets: 4

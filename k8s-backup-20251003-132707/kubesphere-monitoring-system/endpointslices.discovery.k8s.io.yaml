@@ -1,0 +1,709 @@
+apiVersion: v1
+items:
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.218
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: alertmanager-main-1
+      namespace: kubesphere-monitoring-system
+      uid: ffb39224-d2f8-4be0-b2bd-859563f83d86
+  - addresses:
+    - 192.168.3.226
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: alertmanager-main-0
+      namespace: kubesphere-monitoring-system
+      uid: 69a9dff7-7b0c-4a0d-be2e-61c51f4ffeb4
+  - addresses:
+    - 192.168.5.204
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: alertmanager-main-2
+      namespace: kubesphere-monitoring-system
+      uid: feb7679e-c0b5-4589-a2e0-655776177f04
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:21Z"
+    creationTimestamp: "2025-02-10T07:02:23Z"
+    generateName: alertmanager-main-
+    generation: 55
+    labels:
+      app.kubernetes.io/component: alert-router
+      app.kubernetes.io/instance: main
+      app.kubernetes.io/name: alertmanager
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 0.23.0
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: alertmanager-main
+    name: alertmanager-main-phbqb
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: alertmanager-main
+      uid: 43426217-3fa6-4f98-a788-786df9b9c4c1
+    resourceVersion: "72238390"
+    uid: 3ebee1cd-f08b-4d16-8680-bd0b1166a32e
+  ports:
+  - name: reloader-web
+    port: 8080
+    protocol: TCP
+  - name: web
+    port: 9093
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.218
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    hostname: alertmanager-main-1
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: alertmanager-main-1
+      namespace: kubesphere-monitoring-system
+      uid: ffb39224-d2f8-4be0-b2bd-859563f83d86
+  - addresses:
+    - 192.168.3.226
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    hostname: alertmanager-main-0
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: alertmanager-main-0
+      namespace: kubesphere-monitoring-system
+      uid: 69a9dff7-7b0c-4a0d-be2e-61c51f4ffeb4
+  - addresses:
+    - 192.168.5.204
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    hostname: alertmanager-main-2
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: alertmanager-main-2
+      namespace: kubesphere-monitoring-system
+      uid: feb7679e-c0b5-4589-a2e0-655776177f04
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:21Z"
+    creationTimestamp: "2025-02-10T07:02:23Z"
+    generateName: alertmanager-operated-
+    generation: 55
+    labels:
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: alertmanager-operated
+      operated-alertmanager: "true"
+      service.kubernetes.io/headless: ""
+    name: alertmanager-operated-tspfh
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: alertmanager-operated
+      uid: 993b1614-5c24-4b14-a208-df197fe33059
+    resourceVersion: "72238389"
+    uid: 3c8708f2-a4d1-4d7e-aaf2-18efe142f543
+  ports:
+  - name: udp-mesh
+    port: 9094
+    protocol: UDP
+  - name: web
+    port: 9093
+    protocol: TCP
+  - name: tcp-mesh
+    port: 9094
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.217
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: kube-state-metrics-99bf7fbb6-ntzsh
+      namespace: kubesphere-monitoring-system
+      uid: f3f763f4-39d4-4cb9-8a8b-533fd2a0c306
+  kind: EndpointSlice
+  metadata:
+    creationTimestamp: "2025-02-10T07:02:13Z"
+    generateName: kube-state-metrics-
+    generation: 15
+    labels:
+      app.kubernetes.io/component: exporter
+      app.kubernetes.io/name: kube-state-metrics
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 2.6.0
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: kube-state-metrics
+      service.kubernetes.io/headless: ""
+    name: kube-state-metrics-wzfnl
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: kube-state-metrics
+      uid: 4a8029f6-2a86-4a8c-96f9-8c0c0db69a4e
+    resourceVersion: "70961412"
+    uid: 1e88ab11-3964-4966-a5ec-02b486029e87
+  ports:
+  - name: https-main
+    port: 8443
+    protocol: TCP
+  - name: https-self
+    port: 9443
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 10.48.219.139
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: node-exporter-8c59f
+      namespace: kubesphere-monitoring-system
+      uid: 4bb0547b-4ec5-4925-addd-56866feacd41
+  - addresses:
+    - 10.48.219.136
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608masterapi02
+    targetRef:
+      kind: Pod
+      name: node-exporter-b9qql
+      namespace: kubesphere-monitoring-system
+      uid: 4828d02c-182a-4078-b915-32e1f6168091
+  - addresses:
+    - 10.48.219.138
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: node-exporter-vks64
+      namespace: kubesphere-monitoring-system
+      uid: b03f74b7-8c0b-4f3e-b83e-549d5194817b
+  - addresses:
+    - 10.48.219.140
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi03
+    targetRef:
+      kind: Pod
+      name: node-exporter-2n9vd
+      namespace: kubesphere-monitoring-system
+      uid: f762f5dd-4952-477d-b56f-fd0a7a296e43
+  - addresses:
+    - 10.48.219.135
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608masterapi01
+    targetRef:
+      kind: Pod
+      name: node-exporter-9gthb
+      namespace: kubesphere-monitoring-system
+      uid: 51552759-cc7f-4e69-add3-70ae5c359f1d
+  - addresses:
+    - 10.48.219.137
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608masterapi03
+    targetRef:
+      kind: Pod
+      name: node-exporter-x78rx
+      namespace: kubesphere-monitoring-system
+      uid: f805c1a6-bfeb-4546-9c5d-b8f9c0772579
+  kind: EndpointSlice
+  metadata:
+    creationTimestamp: "2025-02-10T07:02:11Z"
+    generateName: node-exporter-
+    generation: 64
+    labels:
+      app.kubernetes.io/component: exporter
+      app.kubernetes.io/name: node-exporter
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 1.3.1
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: node-exporter
+      service.kubernetes.io/headless: ""
+    name: node-exporter-7fvs9
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: node-exporter
+      uid: ffee2cb2-61c2-4930-8e3a-a7625c4dd4da
+    resourceVersion: "70961730"
+    uid: 7ad4c937-84f5-454d-ac1f-ab21941706b7
+  ports:
+  - name: https
+    port: 9100
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.219
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: notification-manager-operator-9949f4878-x9vqw
+      namespace: kubesphere-monitoring-system
+      uid: 5686fda7-525b-4379-86f0-e0cd41e0125d
+  kind: EndpointSlice
+  metadata:
+    creationTimestamp: "2025-02-10T07:03:08Z"
+    generateName: notification-manager-controller-metrics-
+    generation: 27
+    labels:
+      app.kubernetes.io/managed-by: Helm
+      control-plane: controller-manager
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: notification-manager-controller-metrics
+    name: notification-manager-controller-metrics-49zxg
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: notification-manager-controller-metrics
+      uid: 628e79a5-b415-4200-af71-ed8e9603b9c3
+    resourceVersion: "70961451"
+    uid: 0a7696b3-79f3-427d-b6bd-3f970f896197
+  ports:
+  - name: https
+    port: 8443
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.224
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: notification-manager-deployment-c9d789f99-785kq
+      namespace: kubesphere-monitoring-system
+      uid: dff6d041-b68f-49d1-b17b-4c5324ca28a5
+  - addresses:
+    - 192.168.5.201
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: notification-manager-deployment-c9d789f99-4pw4l
+      namespace: kubesphere-monitoring-system
+      uid: 58ddbff9-54ec-4186-a067-a4812ae5f62e
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:33:53Z"
+    creationTimestamp: "2025-02-10T07:03:20Z"
+    generateName: notification-manager-svc-
+    generation: 45
+    labels:
+      app: notification-manager
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: notification-manager-svc
+      notification-manager: notification-manager
+    name: notification-manager-svc-52nz6
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: notification-manager-svc
+      uid: d0c76878-4b7d-49d6-97a8-477385634015
+    resourceVersion: "72238181"
+    uid: e47d81a0-65e3-461c-85cf-f426bdabbcea
+  ports:
+  - name: webhook
+    port: 19093
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.219
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: notification-manager-operator-9949f4878-x9vqw
+      namespace: kubesphere-monitoring-system
+      uid: 5686fda7-525b-4379-86f0-e0cd41e0125d
+  kind: EndpointSlice
+  metadata:
+    creationTimestamp: "2025-02-10T07:03:08Z"
+    generateName: notification-manager-webhook-
+    generation: 27
+    labels:
+      app.kubernetes.io/managed-by: Helm
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: notification-manager-webhook
+    name: notification-manager-webhook-4rhgh
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: notification-manager-webhook
+      uid: 94d68206-6f90-4aa5-bfcc-5d96872e9cfd
+    resourceVersion: "70961449"
+    uid: 2d167b46-d510-4257-a7c7-f4400eab0ce4
+  ports:
+  - name: ""
+    port: 9443
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.242
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: prometheus-k8s-1
+      namespace: kubesphere-monitoring-system
+      uid: b96580f1-5e2d-4d9b-b984-ee7ed9d830c6
+  - addresses:
+    - 192.168.5.228
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: prometheus-k8s-0
+      namespace: kubesphere-monitoring-system
+      uid: 601d7697-6e24-4ba3-a10d-79083ee01871
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:39:44Z"
+    creationTimestamp: "2025-02-10T07:02:15Z"
+    generateName: prometheus-k8s-
+    generation: 38
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 2.39.1
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: prometheus-k8s
+    name: prometheus-k8s-fv4bt
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: prometheus-k8s
+      uid: b8037474-9ddc-4cb6-8645-122f3b2c3806
+    resourceVersion: "72241137"
+    uid: 7d2add92-f60a-4feb-bbc1-4b2d9622a498
+  ports:
+  - name: reloader-web
+    port: 8080
+    protocol: TCP
+  - name: web
+    port: 9090
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.242
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    hostname: prometheus-k8s-1
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: prometheus-k8s-1
+      namespace: kubesphere-monitoring-system
+      uid: b96580f1-5e2d-4d9b-b984-ee7ed9d830c6
+  - addresses:
+    - 192.168.5.228
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    hostname: prometheus-k8s-0
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: prometheus-k8s-0
+      namespace: kubesphere-monitoring-system
+      uid: 601d7697-6e24-4ba3-a10d-79083ee01871
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:39:44Z"
+    creationTimestamp: "2025-02-10T07:02:15Z"
+    generateName: prometheus-operated-
+    generation: 38
+    labels:
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: prometheus-operated
+      operated-prometheus: "true"
+      service.kubernetes.io/headless: ""
+    name: prometheus-operated-5p2b4
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: prometheus-operated
+      uid: bb4b9498-f3fc-4d2e-b738-d16f1e61a0be
+    resourceVersion: "72241141"
+    uid: b3c3cc31-b525-483a-af1d-bf2410fc4da8
+  ports:
+  - name: web
+    port: 9090
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.5.210
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: prometheus-operator-7888d46fbd-bxbr2
+      namespace: kubesphere-monitoring-system
+      uid: 164c6c58-96cf-4308-8012-c5ef3456d63f
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:31Z"
+    creationTimestamp: "2025-02-10T07:01:55Z"
+    generateName: prometheus-operator-
+    generation: 12
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/name: prometheus-operator
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 0.55.1
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: prometheus-operator
+      service.kubernetes.io/headless: ""
+    name: prometheus-operator-5tgjb
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: prometheus-operator
+      uid: 70a8a7a3-c1d3-40e6-a74c-ec15174c0434
+    resourceVersion: "72238473"
+    uid: 2022aa73-2e12-4291-b6d0-c584492a25ed
+  ports:
+  - name: https
+    port: 8443
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.227
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: thanos-ruler-kubesphere-0
+      namespace: kubesphere-monitoring-system
+      uid: ff212f55-b536-4c2e-9b19-0e6d66e396d7
+  - addresses:
+    - 192.168.5.196
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: thanos-ruler-kubesphere-1
+      namespace: kubesphere-monitoring-system
+      uid: 387dd8a9-c3a4-440f-bbc3-6ec7170ea500
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:33:50Z"
+    creationTimestamp: "2025-03-04T08:46:03Z"
+    generateName: thanos-ruler-kubesphere-
+    generation: 53
+    labels:
+      app.kubernetes.io/component: thanos-ruler
+      app.kubernetes.io/instance: kubesphere
+      app.kubernetes.io/name: thanos-ruler
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 0.31.0
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: thanos-ruler-kubesphere
+    name: thanos-ruler-kubesphere-gvsm7
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: thanos-ruler-kubesphere
+      uid: 68fb1e66-1e37-4905-992b-ddc46a9d93a8
+    resourceVersion: "72238138"
+    uid: a90d6ccb-d106-47c5-8bc6-4059328c56d9
+  ports:
+  - name: web
+    port: 10902
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.227
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: thanos-ruler-kubesphere-0
+      namespace: kubesphere-monitoring-system
+      uid: ff212f55-b536-4c2e-9b19-0e6d66e396d7
+  - addresses:
+    - 192.168.5.196
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: thanos-ruler-kubesphere-1
+      namespace: kubesphere-monitoring-system
+      uid: 387dd8a9-c3a4-440f-bbc3-6ec7170ea500
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:33:50Z"
+    creationTimestamp: "2025-03-04T08:46:03Z"
+    generateName: thanos-ruler-operated-
+    generation: 53
+    labels:
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: thanos-ruler-operated
+      operated-thanos-ruler: "true"
+      service.kubernetes.io/headless: ""
+    name: thanos-ruler-operated-p54pk
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: thanos-ruler-operated
+      uid: 43c8a8aa-f039-42d0-a1cc-69b4b192c3af
+    resourceVersion: "72238140"
+    uid: a2b4dc3e-471f-47f6-85ad-74ac78df147c
+  ports:
+  - name: web
+    port: 10902
+    protocol: TCP
+  - name: grpc
+    port: 10901
+    protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""

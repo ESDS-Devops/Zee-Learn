@@ -1,0 +1,57 @@
+NAMESPACE                      NAME                                                READY   STATUS    RESTARTS       AGE    IP              NODE                 NOMINATED NODE   READINESS GATES
+cert-manager                   cert-manager-cainjector-67ff4bc9cd-zlxr5            1/1     Running   0              169d   192.168.5.208   zee8608workerapi01   <none>           <none>
+cert-manager                   cert-manager-webhook-db89558c5-lsvdj                1/1     Running   0              169d   192.168.5.212   zee8608workerapi01   <none>           <none>
+default                        mongodb-kubernetes-operator-7b7b59cc5c-7mmfb        1/1     Running   0              125d   192.168.5.216   zee8608workerapi01   <none>           <none>
+default                        productmaster-mongodb-0                             2/2     Running   0              101d   192.168.5.230   zee8608workerapi01   <none>           <none>
+kube-flannel                   kube-flannel-ds-cr6sd                               1/1     Running   0              104d   10.48.219.138   zee8608workerapi01   <none>           <none>
+kube-system                    kube-proxy-b9ddc                                    1/1     Running   2              237d   10.48.219.138   zee8608workerapi01   <none>           <none>
+kubesphere-controls-system     default-http-backend-5bf7597cb7-45crg               1/1     Running   0              169d   192.168.5.205   zee8608workerapi01   <none>           <none>
+kubesphere-logging-system      fluent-bit-x6fdb                                    1/1     Running   0              101d   192.168.5.236   zee8608workerapi01   <none>           <none>
+kubesphere-logging-system      fluentbit-operator-c9568f955-fx5k4                  1/1     Running   0              101d   192.168.5.233   zee8608workerapi01   <none>           <none>
+kubesphere-logging-system      kube-auditing-operator-67bf65bdcf-f2nhs             1/1     Running   0              101d   192.168.5.234   zee8608workerapi01   <none>           <none>
+kubesphere-logging-system      kube-auditing-webhook-deploy-5dc6f88977-6mf7d       1/1     Running   0              101d   192.168.5.235   zee8608workerapi01   <none>           <none>
+kubesphere-logging-system      opensearch-cluster-data-0                           1/1     Running   5 (101d ago)   101d   192.168.5.237   zee8608workerapi01   <none>           <none>
+kubesphere-logging-system      opensearch-cluster-master-0                         1/1     Running   5 (101d ago)   101d   192.168.5.238   zee8608workerapi01   <none>           <none>
+kubesphere-monitoring-system   alertmanager-main-2                                 2/2     Running   0              169d   192.168.5.204   zee8608workerapi01   <none>           <none>
+kubesphere-monitoring-system   node-exporter-vks64                                 2/2     Running   4              235d   10.48.219.138   zee8608workerapi01   <none>           <none>
+kubesphere-monitoring-system   notification-manager-deployment-c9d789f99-4pw4l     2/2     Running   0              169d   192.168.5.201   zee8608workerapi01   <none>           <none>
+kubesphere-monitoring-system   prometheus-k8s-0                                    2/2     Running   0              101d   192.168.5.228   zee8608workerapi01   <none>           <none>
+kubesphere-monitoring-system   prometheus-operator-7888d46fbd-bxbr2                2/2     Running   0              169d   192.168.5.210   zee8608workerapi01   <none>           <none>
+kubesphere-monitoring-system   thanos-ruler-kubesphere-1                           2/2     Running   0              169d   192.168.5.196   zee8608workerapi01   <none>           <none>
+longhorn-system                csi-attacher-6fcbcb955-4zq8k                        1/1     Running   0              169d   192.168.5.219   zee8608workerapi01   <none>           <none>
+longhorn-system                csi-attacher-6fcbcb955-l9gxh                        1/1     Running   0              169d   192.168.5.223   zee8608workerapi01   <none>           <none>
+longhorn-system                csi-attacher-6fcbcb955-rlz68                        1/1     Running   2 (64d ago)    169d   192.168.5.209   zee8608workerapi01   <none>           <none>
+longhorn-system                csi-provisioner-598bb7c5fb-26p4d                    1/1     Running   1 (77d ago)    169d   192.168.5.217   zee8608workerapi01   <none>           <none>
+longhorn-system                csi-provisioner-598bb7c5fb-gdt7h                    1/1     Running   0              169d   192.168.5.207   zee8608workerapi01   <none>           <none>
+longhorn-system                csi-provisioner-598bb7c5fb-smgn8                    1/1     Running   1 (101d ago)   169d   192.168.5.197   zee8608workerapi01   <none>           <none>
+longhorn-system                csi-resizer-68d958d4b6-k9mcj                        1/1     Running   1 (101d ago)   169d   192.168.5.194   zee8608workerapi01   <none>           <none>
+longhorn-system                csi-resizer-68d958d4b6-ncw8g                        1/1     Running   1 (101d ago)   169d   192.168.5.199   zee8608workerapi01   <none>           <none>
+longhorn-system                csi-resizer-68d958d4b6-vn9vp                        1/1     Running   1 (101d ago)   169d   192.168.5.195   zee8608workerapi01   <none>           <none>
+longhorn-system                csi-snapshotter-6b4f685f7d-jsdpb                    1/1     Running   0              169d   192.168.5.213   zee8608workerapi01   <none>           <none>
+longhorn-system                csi-snapshotter-6b4f685f7d-msg9d                    1/1     Running   2 (25d ago)    169d   192.168.5.211   zee8608workerapi01   <none>           <none>
+longhorn-system                csi-snapshotter-6b4f685f7d-qp5n8                    1/1     Running   0              169d   192.168.5.206   zee8608workerapi01   <none>           <none>
+longhorn-system                engine-image-ei-c2d50bcc-2w74z                      1/1     Running   0              237d   192.168.5.214   zee8608workerapi01   <none>           <none>
+longhorn-system                instance-manager-0d91d974e534c34183045b1d57ce4ece   1/1     Running   0              101d   192.168.5.224   zee8608workerapi01   <none>           <none>
+longhorn-system                longhorn-csi-plugin-tswqt                           3/3     Running   2 (101d ago)   236d   192.168.5.200   zee8608workerapi01   <none>           <none>
+longhorn-system                longhorn-driver-deployer-86695f796b-gfpf5           1/1     Running   0              169d   192.168.5.198   zee8608workerapi01   <none>           <none>
+longhorn-system                longhorn-manager-pr755                              2/2     Running   0              237d   192.168.5.221   zee8608workerapi01   <none>           <none>
+longhorn-system                longhorn-ui-5fbbcc8fb-pmls9                         1/1     Running   0              169d   192.168.5.220   zee8608workerapi01   <none>           <none>
+longhorn-system                longhorn-ui-5fbbcc8fb-vm9kl                         1/1     Running   0              169d   192.168.5.215   zee8608workerapi01   <none>           <none>
+metallb-system                 controller-7dcb87658-x2wzx                          1/1     Running   0              169d   192.168.5.222   zee8608workerapi01   <none>           <none>
+metallb-system                 speaker-gwqgm                                       1/1     Running   5              237d   10.48.219.138   zee8608workerapi01   <none>           <none>
+poc                            pentemind-25-deploy-dfd88f99c-4fbct                 1/1     Running   0              43d    192.168.5.115   zee8608workerapi01   <none>           <none>
+prod                           cmsapi-deploy-f545f8c6d-zdzqk                       1/1     Running   62 (44h ago)   13d    192.168.5.168   zee8608workerapi01   <none>           <none>
+prod                           juapi-deploy-559fc8cf7c-t8d2g                       1/1     Running   0              9d     192.168.5.181   zee8608workerapi01   <none>           <none>
+prod                           k12-deploy-84bb6c589d-dkh2n                         1/1     Running   0              9d     192.168.5.178   zee8608workerapi01   <none>           <none>
+prod                           literanovajr-deploy-99f4955f9-2znwk                 1/1     Running   0              13d    192.168.5.165   zee8608workerapi01   <none>           <none>
+prod                           literaoctave-deploy-c5f77fcf5-mjf5h                 1/1     Running   0              13d    192.168.5.161   zee8608workerapi01   <none>           <none>
+prod                           literaoctave-deploy-c5f77fcf5-ns8zb                 1/1     Running   0              13d    192.168.5.167   zee8608workerapi01   <none>           <none>
+prod                           literaoctavecms-deploy-85c87cbb88-7cmcl             1/1     Running   0              13d    192.168.5.162   zee8608workerapi01   <none>           <none>
+prod                           lmsapi-deploy-7bdbb68dd9-45krh                      1/1     Running   0              9d     192.168.5.180   zee8608workerapi01   <none>           <none>
+prod                           novachat-deploy-6c57d7bf4b-6gtb9                    1/1     Running   0              13d    192.168.5.171   zee8608workerapi01   <none>           <none>
+prod                           pentemind-23-deploy-945d9bfbf-c75bc                 1/1     Running   0              13d    192.168.5.166   zee8608workerapi01   <none>           <none>
+prod                           pentemind-23-deploy-945d9bfbf-ng992                 1/1     Running   0              13d    192.168.5.164   zee8608workerapi01   <none>           <none>
+prod                           pentemind-25-deploy-66ffd97754-4qkqm                1/1     Running   0              13d    192.168.5.172   zee8608workerapi01   <none>           <none>
+prod                           pentemind-25-deploy-66ffd97754-hh7hj                1/1     Running   0              13d    192.168.5.174   zee8608workerapi01   <none>           <none>
+prod                           zllsaathiapi-deploy-7fb44565c9-k2tcc                1/1     Running   0              8d     192.168.5.182   zee8608workerapi01   <none>           <none>
+redis                          redis-594bb96598-d5htw                              1/1     Running   0              169d   192.168.5.203   zee8608workerapi01   <none>           <none>

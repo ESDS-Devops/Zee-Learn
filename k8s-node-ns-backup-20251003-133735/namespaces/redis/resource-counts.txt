@@ -1,0 +1,12 @@
+Namespace: redis
+==========================
+pods: 2
+deployments: 1
+services: 1
+configmaps: 1
+secrets: 2
+horizontalpodautoscalers: 0
+ingresses: 1
+statefulsets: 0
+daemonsets: 0
+replicasets: 2

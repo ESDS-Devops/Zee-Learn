@@ -1,0 +1,12 @@
+Namespace: cert-manager
+==========================
+pods: 3
+deployments: 3
+services: 3
+configmaps: 1
+secrets: 1
+horizontalpodautoscalers: 0
+ingresses: 0
+statefulsets: 0
+daemonsets: 0
+replicasets: 3

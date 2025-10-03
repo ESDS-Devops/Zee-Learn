@@ -1,0 +1,46 @@
+apiVersion: v1
+items:
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: community-operator
+      meta.helm.sh/release-namespace: default
+    creationTimestamp: "2025-02-10T09:01:30Z"
+    labels:
+      app.kubernetes.io/managed-by: Helm
+    name: mongodb-database
+    namespace: default
+    resourceVersion: "1064465"
+    uid: fc3367ca-5be4-41ee-a2d4-59e9b1c883b2
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: mongodb-database
+  subjects:
+  - kind: ServiceAccount
+    name: mongodb-database
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: community-operator
+      meta.helm.sh/release-namespace: default
+    creationTimestamp: "2025-02-10T09:01:30Z"
+    labels:
+      app.kubernetes.io/managed-by: Helm
+    name: mongodb-kubernetes-operator
+    namespace: default
+    resourceVersion: "1064464"
+    uid: 8af70de7-ed6a-4734-9dc5-391b900dee39
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: mongodb-kubernetes-operator
+  subjects:
+  - kind: ServiceAccount
+    name: mongodb-kubernetes-operator
+    namespace: default
+kind: List
+metadata:
+  resourceVersion: ""

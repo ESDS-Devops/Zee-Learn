@@ -1,0 +1,1 @@
+cert-manager default ingress-nginx kube-flannel kube-node-lease kube-public kube-system kubesphere-controls-system kubesphere-logging-system kubesphere-monitoring-federated kubesphere-monitoring-system kubesphere-system longhorn-system metallb-system poc prod rbmq redis

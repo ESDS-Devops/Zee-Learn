@@ -1,0 +1,27 @@
+apiVersion: v1
+items:
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: controller
+    usage:
+      cpu: 19487784n
+      memory: 305008Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:57:45Z"
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.12.0
+      helm.sh/chart: ingress-nginx-4.12.0
+      pod-template-hash: 57fb89d679
+    name: ingress-nginx-controller-57fb89d679-t8hfl
+    namespace: ingress-nginx
+  timestamp: "2025-10-03T07:57:29Z"
+  window: 14.08s
+kind: List
+metadata:
+  resourceVersion: ""

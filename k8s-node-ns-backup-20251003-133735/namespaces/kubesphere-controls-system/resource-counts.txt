@@ -1,0 +1,12 @@
+Namespace: kubesphere-controls-system
+==========================
+pods: 2
+deployments: 2
+services: 1
+configmaps: 5
+secrets: 0
+horizontalpodautoscalers: 0
+ingresses: 0
+statefulsets: 0
+daemonsets: 0
+replicasets: 2

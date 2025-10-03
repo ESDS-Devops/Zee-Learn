@@ -1,0 +1,49 @@
+apiVersion: v1
+items:
+- apiVersion: longhorn.io/v1beta2
+  kind: EngineImage
+  metadata:
+    creationTimestamp: "2025-02-07T11:54:07Z"
+    finalizers:
+    - longhorn.io
+    generation: 1
+    labels:
+      longhorn.io/component: engine-image
+      longhorn.io/engine-image: ei-c2d50bcc
+      longhorn.io/managed-by: longhorn-manager
+    name: ei-c2d50bcc
+    namespace: longhorn-system
+    resourceVersion: "72246862"
+    uid: f20b0958-8d97-4c49-8762-af2a07bd61d2
+  spec:
+    image: longhornio/longhorn-engine:v1.8.0
+  status:
+    buildDate: "2025-01-22T03:37:10+00:00"
+    cliAPIMinVersion: 8
+    cliAPIVersion: 10
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:23:41Z"
+      message: Engine image ei-c2d50bcc (longhornio/longhorn-engine:v1.8.0) is fully
+        deployed on all ready nodes
+      reason: ""
+      status: "True"
+      type: ready
+    controllerAPIMinVersion: 4
+    controllerAPIVersion: 5
+    dataFormatMinVersion: 1
+    dataFormatVersion: 1
+    gitCommit: 50e0f6560af996dd3e7428817aa89044f6d635bf
+    incompatible: false
+    noRefSince: ""
+    nodeDeploymentMap:
+      zee8608workerapi01: true
+      zee8608workerapi02: true
+      zee8608workerapi03: true
+    ownerID: zee8608workerapi02
+    refCount: 64
+    state: deployed
+    version: v1.8.0
+kind: List
+metadata:
+  resourceVersion: ""

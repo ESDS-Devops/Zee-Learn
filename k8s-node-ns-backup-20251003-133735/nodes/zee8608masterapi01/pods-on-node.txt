@@ -1,0 +1,10 @@
+NAMESPACE                      NAME                                         READY   STATUS    RESTARTS        AGE    IP              NODE                 NOMINATED NODE   READINESS GATES
+kube-flannel                   kube-flannel-ds-6nbks                        1/1     Running   1 (104d ago)    237d   10.48.219.135   zee8608masterapi01   <none>           <none>
+kube-system                    etcd-zee8608masterapi01                      1/1     Running   22 (104d ago)   238d   10.48.219.135   zee8608masterapi01   <none>           <none>
+kube-system                    kube-apiserver-zee8608masterapi01            1/1     Running   21 (104d ago)   238d   10.48.219.135   zee8608masterapi01   <none>           <none>
+kube-system                    kube-controller-manager-zee8608masterapi01   1/1     Running   29 (104d ago)   238d   10.48.219.135   zee8608masterapi01   <none>           <none>
+kube-system                    kube-proxy-25p9p                             1/1     Running   2 (104d ago)    238d   10.48.219.135   zee8608masterapi01   <none>           <none>
+kube-system                    kube-scheduler-zee8608masterapi01            1/1     Running   31 (104d ago)   238d   10.48.219.135   zee8608masterapi01   <none>           <none>
+kubesphere-logging-system      fluent-bit-kltmj                             1/1     Running   0               101d   192.168.0.6     zee8608masterapi01   <none>           <none>
+kubesphere-monitoring-system   node-exporter-9gthb                          2/2     Running   4 (104d ago)    235d   10.48.219.135   zee8608masterapi01   <none>           <none>
+metallb-system                 speaker-l7zg5                                1/1     Running   3 (104d ago)    237d   10.48.219.135   zee8608masterapi01   <none>           <none>

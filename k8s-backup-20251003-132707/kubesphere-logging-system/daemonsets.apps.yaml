@@ -1,0 +1,124 @@
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  kind: DaemonSet
+  metadata:
+    annotations:
+      deprecated.daemonset.template.generation: "1"
+    creationTimestamp: "2025-03-04T08:41:44Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/name: fluent-bit
+    name: fluent-bit
+    namespace: kubesphere-logging-system
+    ownerReferences:
+    - apiVersion: logging.kubesphere.io/v1alpha2
+      blockOwnerDeletion: true
+      controller: true
+      kind: FluentBit
+      name: fluent-bit
+      uid: cb909d46-512e-480d-b157-4fbd14303911
+    resourceVersion: "72244769"
+    uid: 2576eaf5-f050-486e-aa27-04a9d8690e49
+  spec:
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app.kubernetes.io/name: fluent-bit
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app.kubernetes.io/name: fluent-bit
+        name: fluent-bit
+        namespace: kubesphere-logging-system
+      spec:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: node-role.kubernetes.io/edge
+                  operator: DoesNotExist
+        containers:
+        - env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
+          image: kubesphere/fluent-bit:v1.9.4
+          imagePullPolicy: IfNotPresent
+          name: fluent-bit
+          ports:
+          - containerPort: 2020
+            name: metrics
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 200Mi
+            requests:
+              cpu: 10m
+              memory: 25Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /var/log/containers
+            name: varlibcontainers
+            readOnly: true
+          - mountPath: /fluent-bit/config
+            name: config
+            readOnly: true
+          - mountPath: /var/log/
+            name: varlogs
+            readOnly: true
+          - mountPath: /var/log/journal
+            name: systemd
+            readOnly: true
+          - mountPath: /fluent-bit/tail
+            name: positions
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: fluent-bit
+        serviceAccountName: fluent-bit
+        terminationGracePeriodSeconds: 30
+        tolerations:
+        - operator: Exists
+        volumes:
+        - hostPath:
+            path: /var/log/containers
+            type: ""
+          name: varlibcontainers
+        - name: config
+          secret:
+            defaultMode: 420
+            secretName: fluent-bit-config
+        - hostPath:
+            path: /var/log
+            type: ""
+          name: varlogs
+        - hostPath:
+            path: /var/log/journal
+            type: ""
+          name: systemd
+        - emptyDir: {}
+          name: positions
+    updateStrategy:
+      rollingUpdate:
+        maxSurge: 0
+        maxUnavailable: 1
+      type: RollingUpdate
+  status:
+    currentNumberScheduled: 6
+    desiredNumberScheduled: 6
+    numberAvailable: 6
+    numberMisscheduled: 0
+    numberReady: 6
+    observedGeneration: 1
+    updatedNumberScheduled: 6
+kind: List
+metadata:
+  resourceVersion: ""

@@ -1,0 +1,78 @@
+#!/bin/bash
+
+BACKUP_DIR="k8s-node-ns-backup-$(date +%Y%m%d-%H%M%S)"
+mkdir -p $BACKUP_DIR
+
+echo "=== Backup started: $(date) ==="
+
+# Backup node information and resources
+echo "1. Backing up node information..."
+mkdir -p $BACKUP_DIR/nodes
+
+# Get all nodes
+kubectl get nodes -o wide > $BACKUP_DIR/nodes/nodes-list.txt
+
+# Backup each node's details and pods
+for node in $(kubectl get nodes -o jsonpath='{.items[*].metadata.name}'); do
+    echo "  Backing up node: $node"
+    mkdir -p $BACKUP_DIR/nodes/$node
+    
+    # Node details
+    kubectl get node $node -o yaml > $BACKUP_DIR/nodes/$node/node-details.yaml
+    
+    # Pods running on this node
+    kubectl get pods --all-namespaces --field-selector spec.nodeName=$node -o wide > $BACKUP_DIR/nodes/$node/pods-on-node.txt
+    kubectl get pods --all-namespaces --field-selector spec.nodeName=$node -o yaml > $BACKUP_DIR/nodes/$node/pods-on-node.yaml
+done
+
+# Backup namespace resources
+echo "2. Backing up namespace resources..."
+for ns in $(kubectl get namespaces -o jsonpath='{.items[*].metadata.name}'); do
+    echo "  Backing up namespace: $ns"
+    mkdir -p $BACKUP_DIR/namespaces/$ns
+    
+    # Count resources in namespace
+    echo "Namespace: $ns" > $BACKUP_DIR/namespaces/$ns/resource-counts.txt
+    echo "==========================" >> $BACKUP_DIR/namespaces/$ns/resource-counts.txt
+    
+    # Specific resources to backup
+    resources=("pods" "deployments" "services" "configmaps" "secrets" "horizontalpodautoscalers" "ingresses" "statefulsets" "daemonsets" "replicasets")
+    
+    for resource in "${resources[@]}"; do
+        count=$(kubectl get $resource -n $ns --no-headers 2>/dev/null | wc -l)
+        echo "$resource: $count" >> $BACKUP_DIR/namespaces/$ns/resource-counts.txt
+        
+        # Backup YAML for each resource type
+        if [ $count -gt 0 ]; then
+            kubectl get $resource -n $ns -o yaml > $BACKUP_DIR/namespaces/$ns/$resource.yaml 2>/dev/null
+        fi
+    done
+    
+    # Additional specific resources with their API names
+    kubectl get hpa -n $ns -o yaml > $BACKUP_DIR/namespaces/$ns/horizontalpodautoscalers.yaml 2>/dev/null
+    kubectl get ingress -n $ns -o yaml > $BACKUP_DIR/namespaces/$ns/ingresses.yaml 2>/dev/null
+done
+
+echo "=== Backup completed: $(date) ==="
+echo "Backup location: $BACKUP_DIR"
+
+# Generate summary report
+echo "3. Generating summary report..."
+cat > $BACKUP_DIR/backup-summary.txt << EOF
+Kubernetes Backup Summary
+Generated: $(date)
+
+Cluster Information:
+- Total Nodes: $(kubectl get nodes --no-headers | wc -l)
+- Total Namespaces: $(kubectl get namespaces --no-headers | wc -l)
+
+Node Summary:
+EOF
+
+kubectl get nodes -o wide >> $BACKUP_DIR/backup-summary.txt
+
+echo -e "\nNamespace Resource Summary:" >> $BACKUP_DIR/backup-summary.txt
+for ns in $(kubectl get namespaces -o jsonpath='{.items[*].metadata.name}'); do
+    pod_count=$(kubectl get pods -n $ns --no-headers 2>/dev/null | wc -l)
+    echo "- $ns: $pod_count pods" >> $BACKUP_DIR/backup-summary.txt
+done

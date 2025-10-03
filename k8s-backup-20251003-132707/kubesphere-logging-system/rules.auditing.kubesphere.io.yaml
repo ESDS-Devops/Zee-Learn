@@ -1,0 +1,122 @@
+apiVersion: v1
+items:
+- apiVersion: auditing.kubesphere.io/v1alpha1
+  kind: Rule
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: kube-auditing
+      meta.helm.sh/release-namespace: kubesphere-logging-system
+    creationTimestamp: "2025-03-04T08:44:16Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: Helm
+      type: alerting
+      workspace: system-workspace
+    name: alerting-rule
+    namespace: kubesphere-logging-system
+    resourceVersion: "11876469"
+    uid: 07beecae-9ae6-4f7d-90e0-557788a2178e
+  spec:
+    rules:
+    - desc: all operator need to be audit
+      list:
+      - create
+      - delete
+      - update
+      - patch
+      name: action
+      type: list
+    - desc: pod
+      macro: ObjectRef.Resource="pods"
+      name: pod
+      type: macro
+    - desc: service
+      macro: ObjectRef.Resource="services"
+      name: service
+      type: macro
+    - alias: User.username
+      desc: the alias of the user related to audit event
+      name: user
+      type: alias
+    - alias: ObjectRef.Name
+      desc: the alias of the resource name
+      name: name
+      type: alias
+    - alias: ObjectRef.Namespace
+      desc: the alias of the resource namespace
+      name: namespace
+      type: alias
+    - desc: create operator
+      macro: Verb = "create"
+      name: create
+      type: macro
+    - condition: Verb in ${action}
+      desc: audit the change of resource
+      enable: true
+      name: ResourceChange
+      priority: INFO
+      type: rule
+    - condition: ${pod} and ${create} and RequestObject.spec.hostNetwork = true
+      desc: Detect an attempt to start a pod using the host network
+      enable: true
+      name: CreateHostnetworkPod
+      output: ${user} ${Verb} HostNetwork Pod ${name} in Namespace ${namespace}.
+      priority: WARNING
+      type: rule
+    - condition: ${pod} and ${create} and (RequestObject.spec.containers[*].ports[*].hostPort
+        > 0 or RequestObject.spec.initContainers[*].ports[*].hostPort > 0)
+      desc: Detect an attempt to start a pod mount to a host port
+      enable: true
+      name: CreateHostportPod
+      output: ${user} ${Verb} HostNetPort Pod ${name} in Namespace ${namespace}.
+      priority: WARNING
+      type: rule
+    - condition: ${service} and ${create} and RequestObject.spec.ports[*].nodePort
+        > 0
+      desc: Detect an attempt to start a service with a NodePort service type
+      enable: true
+      name: CreateNodeportService
+      output: ${user} ${Verb} NodePort Service ${name} in Namespace ${namespace}.
+      priority: WARNING
+      type: rule
+    - condition: ${pod} and ${create} and ObjectRef.Subresource in ("exec", "attach")
+      desc: Detect any attempt to attach/exec to a pod
+      enable: true
+      name: AttachOrExecPod
+      output: ${user} ${ObjectRef.Subresource} Pod ${name} in Namespace ${namespace}.
+      priority: WARNING
+      type: rule
+- apiVersion: auditing.kubesphere.io/v1alpha1
+  kind: Rule
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: kube-auditing
+      meta.helm.sh/release-namespace: kubesphere-logging-system
+    creationTimestamp: "2025-03-04T08:44:16Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: Helm
+      type: archiving
+      workspace: system-workspace
+    name: archiving-rule
+    namespace: kubesphere-logging-system
+    resourceVersion: "11876470"
+    uid: 2a1b1c7a-f5ca-4470-a6f6-4bc58ea3c282
+  spec:
+    rules:
+    - desc: all action not need to be audit
+      list:
+      - get
+      - list
+      - watch
+      name: ignore-action
+      type: list
+    - condition: Verb not in ${ignore-action}
+      desc: All audit event except get, list, watch event
+      enable: true
+      name: archiving
+      priority: DEBUG
+      type: rule
+kind: List
+metadata:
+  resourceVersion: ""

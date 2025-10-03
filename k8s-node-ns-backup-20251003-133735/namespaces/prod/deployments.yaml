@@ -1,0 +1,1250 @@
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "44"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"cmsapi-app","environment":"prod","project":"zee-project"},"name":"cmsapi-deploy","namespace":"prod"},"spec":{"replicas":5,"selector":{"matchLabels":{"app":"cmsapi-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"cmsapi-app","environment":"prod","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"cmsapi-config"}},{"secretRef":{"name":"cmsapi-secrets"}}],"image":"docker.io/devzeelearn/cmsapi:latest","imagePullPolicy":"Always","name":"cmsapi","ports":[{"containerPort":5015}],"resources":{"limits":{"cpu":"500m","memory":"256Mi"},"requests":{"cpu":"250m","memory":"128Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/cmsapi-deploy cmsapi=devzeelearn/cmsapi-prod:186
+        --namespace=prod --record=true
+    creationTimestamp: "2025-05-07T12:41:44Z"
+    generation: 49
+    labels:
+      app: cmsapi-app
+      environment: prod
+      project: zee-project
+    name: cmsapi-deploy
+    namespace: prod
+    resourceVersion: "122573908"
+    uid: 8d3b8848-e03b-4306-8dd5-a3033b10dae2
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: cmsapi-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+        creationTimestamp: null
+        labels:
+          app: cmsapi-app
+          environment: prod
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: cmsapi-config
+          - secretRef:
+              name: cmsapi-secrets
+          image: devzeelearn/cmsapi-prod:186
+          imagePullPolicy: Always
+          name: cmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 500Mi
+            requests:
+              cpu: 500m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2025-09-19T11:49:30Z"
+      lastUpdateTime: "2025-09-20T07:56:17Z"
+      message: ReplicaSet "cmsapi-deploy-f545f8c6d" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2025-10-02T11:46:34Z"
+      lastUpdateTime: "2025-10-02T11:46:34Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 49
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "23"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"graphql-app","environment":"prod","project":"zee-project"},"name":"graphql-deploy","namespace":"prod"},"spec":{"replicas":5,"selector":{"matchLabels":{"app":"graphql-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"graphql-app","environment":"prod","project":"zee-project"},"namespace":"prod"},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"graphql-config"}},{"secretRef":{"name":"graphql-secrets"}}],"image":"docker.io/devzeelearn/graphql-prod:latest","imagePullPolicy":"Always","name":"graphql-prod","ports":[{"containerPort":5015}],"resources":{"limits":{"cpu":"500m","memory":"256Mi"},"requests":{"cpu":"250m","memory":"128Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/graphql-deploy graphql-prod=devzeelearn/graphql-prod:17
+        --namespace=prod --record=true
+    creationTimestamp: "2025-04-16T07:24:56Z"
+    generation: 30
+    labels:
+      app: graphql-app
+      environment: prod
+      project: zee-project
+    name: graphql-deploy
+    namespace: prod
+    resourceVersion: "121979731"
+    uid: c9a8c90e-79e8-4069-aa90-1892e0341454
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: graphql-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+        creationTimestamp: null
+        labels:
+          app: graphql-app
+          environment: prod
+          project: zee-project
+        namespace: prod
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: graphql-config
+          - secretRef:
+              name: graphql-secrets
+          image: devzeelearn/graphql-prod:17
+          imagePullPolicy: Always
+          name: graphql-prod
+          ports:
+          - containerPort: 5015
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2025-04-16T08:38:50Z"
+      lastUpdateTime: "2025-09-20T07:54:36Z"
+      message: ReplicaSet "graphql-deploy-98cc44b8b" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2025-10-01T06:08:09Z"
+      lastUpdateTime: "2025-10-01T06:08:09Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 30
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "21"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"juapi-app","environment":"prod","project":"zee-project"},"name":"juapi-deploy","namespace":"prod"},"spec":{"selector":{"matchLabels":{"app":"juapi-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"juapi-app","environment":"prod","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"juapi-config"}},{"secretRef":{"name":"juapi-secrets"}}],"image":"docker.io/devzeelearn/juapi:latest","imagePullPolicy":"Always","name":"juapi","ports":[{"containerPort":5011}],"resources":{"limits":{"cpu":"500m","memory":"256Mi"},"requests":{"cpu":"250m","memory":"128Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/juapi-deploy juapi=devzeelearn/juapi-prod:165
+        --namespace=prod --record=true
+    creationTimestamp: "2025-05-15T15:12:50Z"
+    generation: 24
+    labels:
+      app: juapi-app
+      environment: prod
+      project: zee-project
+    name: juapi-deploy
+    namespace: prod
+    resourceVersion: "121590624"
+    uid: 7bef3aaa-3ece-4e89-b491-2a441521a4ba
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: juapi-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+        creationTimestamp: null
+        labels:
+          app: juapi-app
+          environment: prod
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: juapi-config
+          - secretRef:
+              name: juapi-secrets
+          image: devzeelearn/juapi-prod:165
+          imagePullPolicy: Always
+          name: juapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2025-07-23T10:35:57Z"
+      lastUpdateTime: "2025-09-23T10:39:37Z"
+      message: ReplicaSet "juapi-deploy-559fc8cf7c" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2025-09-30T10:39:46Z"
+      lastUpdateTime: "2025-09-30T10:39:46Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 24
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "18"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"k12-app","environment":"prod","project":"zee-project"},"name":"k12-deploy","namespace":"prod"},"spec":{"selector":{"matchLabels":{"app":"k12-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"k12-app","environment":"prod","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"k12-config"}},{"secretRef":{"name":"k12-secrets"}}],"image":"docker.io/devzeelearn/literanovacms:latest","imagePullPolicy":"Always","name":"k12","ports":[{"containerPort":5011}],"resources":{"limits":{"cpu":"1","memory":"10Gi"},"requests":{"cpu":"500m","memory":"9Gi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/k12-deploy k12=devzeelearn/k12-prod:169
+        --namespace=prod --record=true
+    creationTimestamp: "2025-09-04T11:49:54Z"
+    generation: 19
+    labels:
+      app: k12-app
+      environment: prod
+      project: zee-project
+    name: k12-deploy
+    namespace: prod
+    resourceVersion: "118195646"
+    uid: be5b9924-4a39-4a60-b34b-f00c15793922
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: k12-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+        creationTimestamp: null
+        labels:
+          app: k12-app
+          environment: prod
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: k12-config
+          - secretRef:
+              name: k12-secrets
+          image: devzeelearn/k12-prod:169
+          imagePullPolicy: Always
+          name: k12
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 500Mi
+            requests:
+              cpu: 500m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2025-09-22T07:04:51Z"
+      lastUpdateTime: "2025-09-22T07:04:51Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-09-19T12:33:32Z"
+      lastUpdateTime: "2025-09-23T10:30:50Z"
+      message: ReplicaSet "k12-deploy-84bb6c589d" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 19
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "15"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"literanovacms-app","environment":"prod","project":"zee-project"},"name":"literanovacms-deploy","namespace":"prod"},"spec":{"selector":{"matchLabels":{"app":"literanovacms-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"literanovacms-app","environment":"prod","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"literanovacms-config"}},{"secretRef":{"name":"literanovacms-secrets"}}],"image":"docker.io/devzeelearn/literanovacms:latest","imagePullPolicy":"Always","name":"literanovacms","ports":[{"containerPort":5011}],"resources":{"limits":{"cpu":"1","memory":"10Gi"},"requests":{"cpu":"500m","memory":"9Gi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/literanovacms-deploy
+        literanovacms=devzeelearn/literanovacms-prod:8 --namespace=prod --record=true
+    creationTimestamp: "2025-07-11T12:01:46Z"
+    generation: 25
+    labels:
+      app: literanovacms-app
+      environment: prod
+      project: zee-project
+    name: literanovacms-deploy
+    namespace: prod
+    resourceVersion: "116660843"
+    uid: f8e49d17-dc70-4ce0-bc16-3d4f6fb5fb70
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: literanovacms-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+        creationTimestamp: null
+        labels:
+          app: literanovacms-app
+          environment: prod
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: literanovacms-config
+          - secretRef:
+              name: literanovacms-secrets
+          image: devzeelearn/literanovacms-prod:8
+          imagePullPolicy: Always
+          name: literanovacms
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 256Mi
+            requests:
+              cpu: 500m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2025-07-15T07:15:06Z"
+      lastUpdateTime: "2025-07-15T07:15:06Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-07-16T07:50:45Z"
+      lastUpdateTime: "2025-09-20T08:04:38Z"
+      message: ReplicaSet "literanovacms-deploy-7cb9c56bc9" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 25
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "14"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"literanovajr","environment":"prod","project":"zee-project"},"name":"literanovajr-deploy","namespace":"prod"},"spec":{"replicas":3,"selector":{"matchLabels":{"app":"literanovajr","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"literanovajr","environment":"prod","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"literanovajr-config"}},{"secretRef":{"name":"literanovajr-secrets"}}],"image":"docker.io/devzeelearn/literanovajr-prod:latest","imagePullPolicy":"Always","name":"literanovajr","ports":[{"containerPort":5005}],"resources":{"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"200m","memory":"256Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+    creationTimestamp: "2025-05-22T08:50:37Z"
+    generation: 18
+    labels:
+      app: literanovajr
+      environment: prod
+      project: zee-project
+    name: literanovajr-deploy
+    namespace: prod
+    resourceVersion: "116655212"
+    uid: 839851aa-1355-429a-98e3-9bfa5a2c9085
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: literanovajr
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+        creationTimestamp: null
+        labels:
+          app: literanovajr
+          environment: prod
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: literanovajr-config
+          - secretRef:
+              name: literanovajr-secrets
+          image: devzeelearn/literanovajr-prod:7
+          imagePullPolicy: Always
+          name: literanovajr
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2025-06-20T21:04:48Z"
+      lastUpdateTime: "2025-06-20T21:04:48Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-05-22T08:50:37Z"
+      lastUpdateTime: "2025-09-20T07:53:21Z"
+      message: ReplicaSet "literanovajr-deploy-99f4955f9" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 18
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "8"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"literaoctave-app","environment":"prod","project":"zee-project"},"name":"literaoctave-deploy","namespace":"prod"},"spec":{"replicas":5,"selector":{"matchLabels":{"app":"literaoctave-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"literaoctave-app","environment":"prod","project":"zee-project"},"namespace":"prod"},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"literaoctave-config"}},{"secretRef":{"name":"literaoctave-secrets"}}],"image":"docker.io/devzeelearn/literaoctave-prod:latest","imagePullPolicy":"Always","name":"literaoctave-prod","ports":[{"containerPort":5015}],"resources":{"limits":{"cpu":"500m","memory":"256Mi"},"requests":{"cpu":"250m","memory":"128Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/literaoctave-deploy
+        literaoctave-prod=devzeelearn/literaoctave-prod:9 --namespace=prod --record=true
+    creationTimestamp: "2025-06-18T11:32:14Z"
+    generation: 11
+    labels:
+      app: literaoctave-app
+      environment: prod
+      project: zee-project
+    name: literaoctave-deploy
+    namespace: prod
+    resourceVersion: "116656505"
+    uid: c7f70dfa-e0c8-49a0-8876-439be015fe55
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: literaoctave-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+        creationTimestamp: null
+        labels:
+          app: literaoctave-app
+          environment: prod
+          project: zee-project
+        namespace: prod
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: literaoctave-config
+          - secretRef:
+              name: literaoctave-secrets
+          image: devzeelearn/literaoctave-prod:9
+          imagePullPolicy: Always
+          name: literaoctave-prod
+          ports:
+          - containerPort: 5015
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2025-06-20T21:04:50Z"
+      lastUpdateTime: "2025-06-20T21:04:50Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-06-18T11:44:51Z"
+      lastUpdateTime: "2025-09-20T07:55:00Z"
+      message: ReplicaSet "literaoctave-deploy-c5f77fcf5" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 11
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "10"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"literaoctavecms-app","environment":"prod","project":"zee-project"},"name":"literaoctavecms-deploy","namespace":"prod"},"spec":{"selector":{"matchLabels":{"app":"literaoctavecms-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"literaoctavecms-app","environment":"prod","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"literaoctavecms-config"}},{"secretRef":{"name":"literaoctavecms-secrets"}}],"image":"docker.io/devzeelearn/literaoctavecms:latest","imagePullPolicy":"Always","name":"literaoctavecms","ports":[{"containerPort":5011}],"resources":{"limits":{"cpu":"1","memory":"4096Mi"},"requests":{"cpu":"500m","memory":"2048Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/literaoctavecms-deploy
+        literaoctavecms=devzeelearn/literaoctavecms-prod:6 --namespace=prod --record=true
+    creationTimestamp: "2025-07-11T12:22:31Z"
+    generation: 17
+    labels:
+      app: literaoctavecms-app
+      environment: prod
+      project: zee-project
+    name: literaoctavecms-deploy
+    namespace: prod
+    resourceVersion: "116656909"
+    uid: 0cfebf38-6e4f-413d-b4ce-78d8eb787c5f
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: literaoctavecms-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+        creationTimestamp: null
+        labels:
+          app: literaoctavecms-app
+          environment: prod
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: literaoctavecms-config
+          - secretRef:
+              name: literaoctavecms-secrets
+          image: devzeelearn/literaoctavecms-prod:6
+          imagePullPolicy: Always
+          name: literaoctavecms
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 4Gi
+            requests:
+              cpu: 500m
+              memory: 2Gi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2025-07-16T08:40:51Z"
+      lastUpdateTime: "2025-07-16T08:40:51Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-07-16T08:40:39Z"
+      lastUpdateTime: "2025-09-20T07:55:44Z"
+      message: ReplicaSet "literaoctavecms-deploy-85c87cbb88" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 17
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "58"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"lmsapi-app","environment":"prod","project":"zee-project"},"name":"lmsapi-deploy","namespace":"prod"},"spec":{"selector":{"matchLabels":{"app":"lmsapi-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"lmsapi-app","environment":"prod","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"lmsapi-config"}},{"secretRef":{"name":"lmsapi-secrets"}}],"image":"docker.io/devzeelearn/lmsapi-prod:latest","imagePullPolicy":"IfNotPresent","name":"lmsapi","ports":[{"containerPort":5011}],"resources":{"limits":{"cpu":"500m","memory":"256Mi"},"requests":{"cpu":"250m","memory":"128Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/lmsapi-deploy lmsapi=devzeelearn/lmsapi-prod:221
+        --namespace=prod --record=true
+    creationTimestamp: "2025-05-15T14:49:06Z"
+    generation: 61
+    labels:
+      app: lmsapi-app
+      environment: prod
+      project: zee-project
+    name: lmsapi-deploy
+    namespace: prod
+    resourceVersion: "118198915"
+    uid: 6f471e64-bd31-4eaf-ab7b-8d3cee2ab3ef
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: lmsapi-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+        creationTimestamp: null
+        labels:
+          app: lmsapi-app
+          environment: prod
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: lmsapi-config
+          - secretRef:
+              name: lmsapi-secrets
+          image: devzeelearn/lmsapi-prod:221
+          imagePullPolicy: IfNotPresent
+          name: lmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2025-09-20T08:07:23Z"
+      lastUpdateTime: "2025-09-20T08:07:23Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-09-19T11:43:32Z"
+      lastUpdateTime: "2025-09-23T10:39:16Z"
+      message: ReplicaSet "lmsapi-deploy-7bdbb68dd9" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 61
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "23"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"novachat-app","environment":"prod","project":"zee-project"},"name":"novachat-deploy","namespace":"prod"},"spec":{"selector":{"matchLabels":{"app":"novachat-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"novachat-app","environment":"prod","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"novachat-config"}},{"secretRef":{"name":"novachat-secrets"}}],"image":"docker.io/devzeelearn/lmsapi:latest","imagePullPolicy":"Always","name":"novachat","ports":[{"containerPort":4011}],"resources":{"limits":{"cpu":"500m","memory":"1000Mi"},"requests":{"cpu":"250m","memory":"500Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/novachat-deploy novachat=devzeelearn/novachat-prod:8
+        --namespace=prod --record=true
+    creationTimestamp: "2025-05-22T13:37:04Z"
+    generation: 55
+    labels:
+      app: novachat-app
+      environment: prod
+      project: zee-project
+    name: novachat-deploy
+    namespace: prod
+    resourceVersion: "116658836"
+    uid: 6ea3f274-8c9a-47f6-92b6-1a0ab157842c
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: novachat-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+        creationTimestamp: null
+        labels:
+          app: novachat-app
+          environment: prod
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: novachat-config
+          - secretRef:
+              name: novachat-secrets
+          image: devzeelearn/novachat-prod:8
+          imagePullPolicy: Always
+          name: novachat
+          ports:
+          - containerPort: 4011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 2Gi
+            requests:
+              cpu: 250m
+              memory: 1Gi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2025-06-23T16:33:40Z"
+      lastUpdateTime: "2025-06-23T16:33:40Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-05-23T07:23:37Z"
+      lastUpdateTime: "2025-09-20T07:54:34Z"
+      message: ReplicaSet "novachat-deploy-6c57d7bf4b" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 55
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "18"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"pentemind-2023","environment":"prod","project":"zee-project"},"name":"pentemind-23-deploy","namespace":"prod"},"spec":{"replicas":5,"selector":{"matchLabels":{"app":"pentemind-2023","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"pentemind-2023","environment":"prod","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"pentemind-config-23"}},{"secretRef":{"name":"pentemind-secrets-23"}}],"image":"docker.io/devzeelearn/pentemind-apiv1-2023-prod:latest","imagePullPolicy":"Always","name":"pentemind","ports":[{"containerPort":5005}],"resources":{"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"200m","memory":"256Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+    creationTimestamp: "2025-04-25T10:58:47Z"
+    generation: 23
+    labels:
+      app: pentemind-2023
+      environment: prod
+      project: zee-project
+    name: pentemind-23-deploy
+    namespace: prod
+    resourceVersion: "116654999"
+    uid: fe901c40-6883-4754-b3bc-64f91ab6c23b
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: pentemind-2023
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+        creationTimestamp: null
+        labels:
+          app: pentemind-2023
+          environment: prod
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-23
+          - secretRef:
+              name: pentemind-secrets-23
+          image: devzeelearn/pentemind-apiv1-2023:19
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2025-07-22T09:46:28Z"
+      lastUpdateTime: "2025-07-22T09:46:28Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-04-25T11:12:34Z"
+      lastUpdateTime: "2025-09-20T07:52:58Z"
+      message: ReplicaSet "pentemind-23-deploy-945d9bfbf" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 23
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "32"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"pentemind-apps","environment":"prod","project":"zee-project"},"name":"pentemind-24-deploy","namespace":"prod"},"spec":{"replicas":5,"selector":{"matchLabels":{"app":"pentemind-apps","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"pentemind-apps","environment":"prod","project":"zee-project"},"namespace":"prod"},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"pentemind-config-24"}},{"secretRef":{"name":"pentemind-secrets-24"}}],"image":"docker.io/devzeelearn/pentemind-apiv1-2024-prod:latest","imagePullPolicy":"Always","name":"pentemind","ports":[{"containerPort":5005}],"resources":{"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"250m","memory":"256Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-24-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2024-prod:35 --namespace=prod --record=true
+    creationTimestamp: "2025-04-16T07:52:21Z"
+    generation: 36
+    labels:
+      app: pentemind-apps
+      environment: prod
+      project: zee-project
+    name: pentemind-24-deploy
+    namespace: prod
+    resourceVersion: "116656561"
+    uid: 2ef0aee2-0f66-45cb-babd-a8b9994dd286
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 2
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: pentemind-apps
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+        creationTimestamp: null
+        labels:
+          app: pentemind-apps
+          environment: prod
+          project: zee-project
+        namespace: prod
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-24
+          - secretRef:
+              name: pentemind-secrets-24
+          image: devzeelearn/pentemind-apiv1-2024-prod:35
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 2
+    conditions:
+    - lastTransitionTime: "2025-07-22T09:44:06Z"
+      lastUpdateTime: "2025-07-22T09:44:06Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-04-16T08:37:59Z"
+      lastUpdateTime: "2025-09-20T07:55:05Z"
+      message: ReplicaSet "pentemind-24-deploy-6f7d54db84" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 36
+    readyReplicas: 2
+    replicas: 2
+    updatedReplicas: 2
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "19"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"pentemind-app","environment":"prod","project":"zee-project"},"name":"pentemind-25-deploy","namespace":"prod"},"spec":{"replicas":5,"selector":{"matchLabels":{"app":"pentemind-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"pentemind-app","environment":"prod","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"pentemind-config-25"}},{"secretRef":{"name":"pentemind-secrets-25"}}],"image":"docker.io/devzeelearn/pentemind-apiv1-2025-prod:latest","imagePullPolicy":"Always","name":"pentemind","ports":[{"containerPort":5005}],"resources":{"limits":{"cpu":"1000m","memory":"1Gi"},"requests":{"cpu":"500m","memory":"512Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-25-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2025-prod:18 --namespace=prod --record=true
+    creationTimestamp: "2025-04-16T08:22:44Z"
+    generation: 54
+    labels:
+      app: pentemind-app
+      environment: prod
+      project: zee-project
+    name: pentemind-25-deploy
+    namespace: prod
+    resourceVersion: "116660359"
+    uid: 2680651f-9065-4b84-a659-865d49e3d784
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: pentemind-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+        creationTimestamp: null
+        labels:
+          app: pentemind-app
+          environment: prod
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-25
+          - secretRef:
+              name: pentemind-secrets-25
+          image: devzeelearn/pentemind-apiv1-2025-prod:18
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2025-09-02T04:13:25Z"
+      lastUpdateTime: "2025-09-02T04:13:25Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-04-16T08:38:00Z"
+      lastUpdateTime: "2025-09-20T08:03:31Z"
+      message: ReplicaSet "pentemind-25-deploy-66ffd97754" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 54
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "13"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"zllsaathiapi-app","environment":"prod","project":"zee-project"},"name":"zllsaathiapi-deploy","namespace":"prod"},"spec":{"selector":{"matchLabels":{"app":"zllsaathiapi-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"zllsaathiapi-app","environment":"prod","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"zllsaathiapi-config"}},{"secretRef":{"name":"zllsaathiapi-secrets"}}],"image":"docker.io/devzeelearn/literanovacms:latest","imagePullPolicy":"Always","name":"zllsaathiapi","ports":[{"containerPort":5022}],"resources":{"limits":{"cpu":"1","memory":"10Gi"},"requests":{"cpu":"500m","memory":"9Gi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/zllsaathiapi-deploy
+        zllsaathiapi=devzeelearn/zllsaathiapi-prod:8 --namespace=prod --record=true
+    creationTimestamp: "2025-07-31T13:37:55Z"
+    generation: 14
+    labels:
+      app: zllsaathiapi-app
+      environment: prod
+      project: zee-project
+    name: zllsaathiapi-deploy
+    namespace: prod
+    resourceVersion: "119092085"
+    uid: 15f894b8-198a-47a8-b78f-a27306c46f79
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: zllsaathiapi-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+        creationTimestamp: null
+        labels:
+          app: zllsaathiapi-app
+          environment: prod
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: zllsaathiapi-config
+          - secretRef:
+              name: zllsaathiapi-secrets
+          image: devzeelearn/zllsaathiapi-prod:8
+          imagePullPolicy: Always
+          name: zllsaathiapi
+          ports:
+          - containerPort: 3000
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 256Mi
+            requests:
+              cpu: 500m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2025-07-31T14:15:49Z"
+      lastUpdateTime: "2025-07-31T14:15:49Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-07-31T14:12:21Z"
+      lastUpdateTime: "2025-09-25T06:18:33Z"
+      message: ReplicaSet "zllsaathiapi-deploy-7fb44565c9" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 14
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+kind: List
+metadata:
+  resourceVersion: ""

@@ -1,0 +1,677 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-06-20T20:32:06Z"
+    generateName: ks-apiserver-945bb6c8c-
+    labels:
+      app: ks-apiserver
+      pod-template-hash: 945bb6c8c
+      tier: backend
+    name: ks-apiserver-945bb6c8c-dr2pf
+    namespace: kubesphere-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: ks-apiserver-945bb6c8c
+      uid: cf6cb267-a809-4ee4-82ab-877adc7ba7e1
+    resourceVersion: "70961414"
+    uid: dad2c469-d2d2-4c88-a311-775b111bb67e
+  spec:
+    affinity:
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - preference:
+            matchExpressions:
+            - key: node-role.kubernetes.io/master
+              operator: In
+              values:
+              - ""
+          weight: 100
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - ks-apiserver
+          namespaces:
+          - kubesphere-system
+          topologyKey: kubernetes.io/hostname
+    containers:
+    - command:
+      - ks-apiserver
+      - --logtostderr=true
+      image: kubesphere/ks-apiserver:v3.4.1
+      imagePullPolicy: Always
+      livenessProbe:
+        failureThreshold: 8
+        httpGet:
+          path: /healthz
+          port: 9090
+          scheme: HTTP
+        initialDelaySeconds: 15
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      name: ks-apiserver
+      ports:
+      - containerPort: 9090
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 1Gi
+        requests:
+          cpu: 20m
+          memory: 100Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/kubesphere/ingress-controller
+        name: ks-router-config
+      - mountPath: /etc/kubesphere/
+        name: kubesphere-config
+      - mountPath: /etc/localtime
+        name: host-time
+        readOnly: true
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-mwxgh
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: kubesphere
+    serviceAccountName: kubesphere
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+    - key: CriticalAddonsOnly
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 60
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 60
+    volumes:
+    - configMap:
+        defaultMode: 420
+        name: ks-router-config
+      name: ks-router-config
+    - configMap:
+        defaultMode: 420
+        name: kubesphere-config
+      name: kubesphere-config
+    - hostPath:
+        path: /etc/localtime
+        type: ""
+      name: host-time
+    - name: kube-api-access-mwxgh
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:32:39Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:32:06Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:32:39Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:32:39Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:32:06Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://f9ebbaa448c235e7521afbff2b5284f68c451bbd6f7293703da93a2822a62835
+      image: docker.io/kubesphere/ks-apiserver:v3.4.1
+      imageID: docker.io/kubesphere/ks-apiserver@sha256:2cc1e398fcd087d1ea857db440d9251e4bfc8ec0fa42dbaa397b56987990c976
+      lastState: {}
+      name: ks-apiserver
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:32:38Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.237
+    podIPs:
+    - ip: 192.168.3.237
+    qosClass: Burstable
+    startTime: "2025-06-20T20:32:06Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-06-20T20:32:06Z"
+    generateName: ks-console-7bcbf87f4-
+    labels:
+      app: ks-console
+      pod-template-hash: 7bcbf87f4
+      tier: frontend
+    name: ks-console-7bcbf87f4-snqbp
+    namespace: kubesphere-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: ks-console-7bcbf87f4
+      uid: d0603ce7-64eb-4ecb-a8fb-082c0657594d
+    resourceVersion: "70961425"
+    uid: 197d7834-7e85-4516-bc2b-7c0213e9697d
+  spec:
+    affinity:
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - preference:
+            matchExpressions:
+            - key: node-role.kubernetes.io/master
+              operator: In
+              values:
+              - ""
+          weight: 100
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - ks-console
+          namespaces:
+          - kubesphere-system
+          topologyKey: kubernetes.io/hostname
+    containers:
+    - image: kubesphere/ks-console:v3.4.1
+      imagePullPolicy: Always
+      livenessProbe:
+        failureThreshold: 8
+        initialDelaySeconds: 15
+        periodSeconds: 10
+        successThreshold: 1
+        tcpSocket:
+          port: 8000
+        timeoutSeconds: 15
+      name: ks-console
+      resources:
+        limits:
+          cpu: "1"
+          memory: 1Gi
+        requests:
+          cpu: 20m
+          memory: 100Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /opt/kubesphere/console/server/local_config.yaml
+        name: ks-console-config
+        subPath: local_config.yaml
+      - mountPath: /opt/kubesphere/console/server/sample
+        name: sample-bookinfo
+      - mountPath: /etc/localtime
+        name: host-time
+        readOnly: true
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-drlzs
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: kubesphere
+    serviceAccountName: kubesphere
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+    - key: CriticalAddonsOnly
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 60
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 60
+    volumes:
+    - configMap:
+        defaultMode: 420
+        items:
+        - key: local_config.yaml
+          path: local_config.yaml
+        name: ks-console-config
+      name: ks-console-config
+    - configMap:
+        defaultMode: 420
+        name: sample-bookinfo
+      name: sample-bookinfo
+    - hostPath:
+        path: /etc/localtime
+        type: ""
+      name: host-time
+    - name: kube-api-access-drlzs
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:32:43Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:32:06Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:32:43Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:32:43Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:32:06Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://c0b9523f347b073ba377f697be3c9e8fab836c2248ad10bbfb559db995c14bc8
+      image: docker.io/kubesphere/ks-console:v3.4.1
+      imageID: docker.io/kubesphere/ks-console@sha256:8f673616acd6653ffc4e09f4766da15bbeefb84649e28f66155cbedb4d743562
+      lastState: {}
+      name: ks-console
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:32:42Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.236
+    podIPs:
+    - ip: 192.168.3.236
+    qosClass: Burstable
+    startTime: "2025-06-20T20:32:06Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-06-20T20:32:06Z"
+    generateName: ks-controller-manager-6c9757d557-
+    labels:
+      app: ks-controller-manager
+      pod-template-hash: 6c9757d557
+      tier: backend
+    name: ks-controller-manager-6c9757d557-wqqf2
+    namespace: kubesphere-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: ks-controller-manager-6c9757d557
+      uid: 61dd2568-2a2e-428a-9f9c-92eea4e1d4f9
+    resourceVersion: "122979029"
+    uid: 7db78378-22bf-40ae-a316-2436099dc10f
+  spec:
+    affinity:
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - preference:
+            matchExpressions:
+            - key: node-role.kubernetes.io/master
+              operator: In
+              values:
+              - ""
+          weight: 100
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - ks-controller-manager
+          namespaces:
+          - kubesphere-system
+          topologyKey: kubernetes.io/hostname
+    containers:
+    - command:
+      - controller-manager
+      - --logtostderr=true
+      - --leader-elect=true
+      image: kubesphere/ks-controller-manager:v3.4.1
+      imagePullPolicy: Always
+      name: ks-controller-manager
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      - containerPort: 8443
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 1000Mi
+        requests:
+          cpu: 30m
+          memory: 50Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/kubesphere/
+        name: kubesphere-config
+      - mountPath: /tmp/k8s-webhook-server/serving-certs
+        name: webhook-secret
+      - mountPath: /etc/localtime
+        name: host-time
+        readOnly: true
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5x5zm
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: kubesphere
+    serviceAccountName: kubesphere
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+    - key: CriticalAddonsOnly
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 60
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 60
+    volumes:
+    - configMap:
+        defaultMode: 420
+        name: kubesphere-config
+      name: kubesphere-config
+    - name: webhook-secret
+      secret:
+        defaultMode: 420
+        secretName: ks-controller-manager-webhook-cert
+    - hostPath:
+        path: /etc/localtime
+        type: ""
+      name: host-time
+    - name: kube-api-access-5x5zm
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:32:45Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:32:06Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-07-31T01:22:39Z"
+      message: 'containers with unready status: [ks-controller-manager]'
+      reason: ContainersNotReady
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-07-31T01:22:39Z"
+      message: 'containers with unready status: [ks-controller-manager]'
+      reason: ContainersNotReady
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:32:06Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://568dcc9b579d6d7c8d154b5e64202a165998361864a2fbc817071dc2ca6a1c63
+      image: docker.io/kubesphere/ks-controller-manager:v3.4.1
+      imageID: docker.io/kubesphere/ks-controller-manager@sha256:2117332c7313755993bf4d91e50d9f0b4b109f307962af34864786c7aba30a1b
+      lastState:
+        terminated:
+          containerID: containerd://568dcc9b579d6d7c8d154b5e64202a165998361864a2fbc817071dc2ca6a1c63
+          exitCode: 255
+          finishedAt: "2025-07-31T01:22:38Z"
+          reason: Error
+          startedAt: "2025-07-03T00:44:42Z"
+      name: ks-controller-manager
+      ready: false
+      restartCount: 1
+      started: false
+      state:
+        waiting:
+          message: Back-off pulling image "kubesphere/ks-controller-manager:v3.4.1"
+          reason: ImagePullBackOff
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.238
+    podIPs:
+    - ip: 192.168.3.238
+    qosClass: Burstable
+    startTime: "2025-06-20T20:32:06Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-04-16T11:40:19Z"
+    generateName: ks-installer-6647685479-
+    labels:
+      app: ks-installer
+      pod-template-hash: "6647685479"
+    name: ks-installer-6647685479-6gs9f
+    namespace: kubesphere-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: ks-installer-6647685479
+      uid: f768a3cc-1b03-40cc-818e-89b20b30fec4
+    resourceVersion: "70972004"
+    uid: 9436dd16-8fd8-4cd6-86e1-b851f9a9bb8b
+  spec:
+    containers:
+    - image: kubesphere/ks-installer:v3.4.1
+      imagePullPolicy: Always
+      name: installer
+      resources:
+        limits:
+          cpu: "1"
+          memory: 1Gi
+        requests:
+          cpu: 20m
+          memory: 100Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/localtime
+        name: host-time
+        readOnly: true
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-ltmh8
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: ks-installer
+    serviceAccountName: ks-installer
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - hostPath:
+        path: /etc/localtime
+        type: ""
+      name: host-time
+    - name: kube-api-access-ltmh8
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:32:12Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-04-16T12:45:55Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T21:10:26Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T21:10:26Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-04-16T12:48:02Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://afa96e6ae8d61a371185259d6768fa95c007b5148bd4ab2c18100b661c9e84e8
+      image: docker.io/kubesphere/ks-installer:v3.4.1
+      imageID: docker.io/kubesphere/ks-installer@sha256:ddb86c5268ff1ed909c4431f06a86a13cda771d5a39ead777c06efadd1acc74a
+      lastState:
+        terminated:
+          containerID: containerd://63cf155a5d3c1072eefb6706a3f186e6eb816114e1b5913f898835f74264aa11
+          exitCode: 1
+          finishedAt: "2025-06-20T21:05:22Z"
+          reason: Error
+          startedAt: "2025-06-20T21:05:18Z"
+      name: installer
+      ready: true
+      restartCount: 12
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T21:10:25Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.220
+    podIPs:
+    - ip: 192.168.3.220
+    qosClass: Burstable
+    startTime: "2025-04-16T12:45:55Z"
+kind: List
+metadata:
+  resourceVersion: ""

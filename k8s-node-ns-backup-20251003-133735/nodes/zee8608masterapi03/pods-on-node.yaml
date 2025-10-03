@@ -1,0 +1,1805 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-02-07T08:28:36Z"
+    generateName: kube-flannel-ds-
+    labels:
+      app: flannel
+      controller-revision-hash: 6d455c8676
+      pod-template-generation: "1"
+      tier: node
+    name: kube-flannel-ds-892lj
+    namespace: kube-flannel
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: kube-flannel-ds
+      uid: f5ae3f66-75e9-4802-8abb-8c580d4ab38a
+    resourceVersion: "70961294"
+    uid: 31f52bb1-f6ed-4c83-a70d-f28431ffd089
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - zee8608masterapi03
+    containers:
+    - args:
+      - --ip-masq
+      - --kube-subnet-mgr
+      command:
+      - /opt/bin/flanneld
+      env:
+      - name: POD_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: EVENT_QUEUE_DEPTH
+        value: "5000"
+      image: ghcr.io/flannel-io/flannel:v0.26.4
+      imagePullPolicy: IfNotPresent
+      name: kube-flannel
+      resources:
+        requests:
+          cpu: 100m
+          memory: 50Mi
+      securityContext:
+        capabilities:
+          add:
+          - NET_ADMIN
+          - NET_RAW
+        privileged: false
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /run/flannel
+        name: run
+      - mountPath: /etc/kube-flannel/
+        name: flannel-cfg
+      - mountPath: /run/xtables.lock
+        name: xtables-lock
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-66cff
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostNetwork: true
+    initContainers:
+    - args:
+      - -f
+      - /flannel
+      - /opt/cni/bin/flannel
+      command:
+      - cp
+      image: ghcr.io/flannel-io/flannel-cni-plugin:v1.6.2-flannel1
+      imagePullPolicy: IfNotPresent
+      name: install-cni-plugin
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /opt/cni/bin
+        name: cni-plugin
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-66cff
+        readOnly: true
+    - args:
+      - -f
+      - /etc/kube-flannel/cni-conf.json
+      - /etc/cni/net.d/10-flannel.conflist
+      command:
+      - cp
+      image: ghcr.io/flannel-io/flannel:v0.26.4
+      imagePullPolicy: IfNotPresent
+      name: install-cni
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/cni/net.d
+        name: cni
+      - mountPath: /etc/kube-flannel/
+        name: flannel-cfg
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-66cff
+        readOnly: true
+    nodeName: zee8608masterapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 2000001000
+    priorityClassName: system-node-critical
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: flannel
+    serviceAccountName: flannel
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/disk-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/pid-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/unschedulable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/network-unavailable
+      operator: Exists
+    volumes:
+    - hostPath:
+        path: /run/flannel
+        type: ""
+      name: run
+    - hostPath:
+        path: /opt/cni/bin
+        type: ""
+      name: cni-plugin
+    - hostPath:
+        path: /etc/cni/net.d
+        type: ""
+      name: cni
+    - configMap:
+        defaultMode: 420
+        name: kube-flannel-cfg
+      name: flannel-cfg
+    - hostPath:
+        path: /run/xtables.lock
+        type: FileOrCreate
+      name: xtables-lock
+    - name: kube-api-access-66cff
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:12Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-07T08:28:37Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:46Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:46Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-07T08:28:36Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://d4ff8dc8a4b5fc90cf0958bc1dd3530b152e97bc9bb9b16d1906067ef065821b
+      image: ghcr.io/flannel-io/flannel:v0.26.4
+      imageID: ghcr.io/flannel-io/flannel@sha256:b4dcecb6192041d99f57999d70e101c22536c2b058b99f6d00497ca99c470f53
+      lastState:
+        terminated:
+          containerID: containerd://9ea29725b25afd46f8d3db999fc83e56109642ef6474a0965f77aa9b06ca3cbd
+          exitCode: 255
+          finishedAt: "2025-06-20T20:24:06Z"
+          reason: Unknown
+          startedAt: "2025-06-20T20:20:25Z"
+      name: kube-flannel
+      ready: true
+      restartCount: 2
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:24:45Z"
+    hostIP: 10.48.219.137
+    hostIPs:
+    - ip: 10.48.219.137
+    initContainerStatuses:
+    - containerID: containerd://9a2ee57239996e5b720958e86806939b24b1978ac02b1dbb09c4702ed96067b2
+      image: ghcr.io/flannel-io/flannel-cni-plugin:v1.6.2-flannel1
+      imageID: ghcr.io/flannel-io/flannel-cni-plugin@sha256:f1812994f0edbcb5bb5ccb63be2147ba6ad10e1faaa7ca9fcdad4f441739d84f
+      lastState: {}
+      name: install-cni-plugin
+      ready: true
+      restartCount: 2
+      started: false
+      state:
+        terminated:
+          containerID: containerd://9a2ee57239996e5b720958e86806939b24b1978ac02b1dbb09c4702ed96067b2
+          exitCode: 0
+          finishedAt: "2025-06-20T20:24:13Z"
+          reason: Completed
+          startedAt: "2025-06-20T20:24:12Z"
+    - containerID: containerd://e0ce6d3a98e8660f504c046c7ce8f5f22076426786093f98f951f4913c40b244
+      image: ghcr.io/flannel-io/flannel:v0.26.4
+      imageID: ghcr.io/flannel-io/flannel@sha256:b4dcecb6192041d99f57999d70e101c22536c2b058b99f6d00497ca99c470f53
+      lastState: {}
+      name: install-cni
+      ready: true
+      restartCount: 0
+      started: false
+      state:
+        terminated:
+          containerID: containerd://e0ce6d3a98e8660f504c046c7ce8f5f22076426786093f98f951f4913c40b244
+          exitCode: 0
+          finishedAt: "2025-06-20T20:24:41Z"
+          reason: Completed
+          startedAt: "2025-06-20T20:24:41Z"
+    phase: Running
+    podIP: 10.48.219.137
+    podIPs:
+    - ip: 10.48.219.137
+    qosClass: Burstable
+    startTime: "2025-02-07T08:28:35Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubeadm.kubernetes.io/etcd.advertise-client-urls: https://10.48.219.137:2379
+      kubernetes.io/config.hash: ef43c0c06b4315fd879da5d972e6b899
+      kubernetes.io/config.mirror: ef43c0c06b4315fd879da5d972e6b899
+      kubernetes.io/config.seen: "2025-02-07T13:34:04.366245162+05:30"
+      kubernetes.io/config.source: file
+    creationTimestamp: "2025-02-07T08:04:07Z"
+    labels:
+      component: etcd
+      tier: control-plane
+    name: etcd-zee8608masterapi03
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: v1
+      controller: true
+      kind: Node
+      name: zee8608masterapi03
+      uid: b6f50658-eda0-4043-87cd-cc9eb5aecced
+    resourceVersion: "70961290"
+    uid: 5e024630-b62f-4898-b872-0e7e00252bd1
+  spec:
+    containers:
+    - command:
+      - etcd
+      - --advertise-client-urls=https://10.48.219.137:2379
+      - --cert-file=/etc/kubernetes/pki/etcd/server.crt
+      - --client-cert-auth=true
+      - --data-dir=/var/lib/etcd
+      - --experimental-initial-corrupt-check=true
+      - --experimental-watch-progress-notify-interval=5s
+      - --initial-advertise-peer-urls=https://10.48.219.137:2380
+      - --initial-cluster=zee8608masterapi01=https://10.48.219.135:2380,zee8608masterapi03=https://10.48.219.137:2380,zee8608masterapi02=https://10.48.219.136:2380
+      - --initial-cluster-state=existing
+      - --key-file=/etc/kubernetes/pki/etcd/server.key
+      - --listen-client-urls=https://127.0.0.1:2379,https://10.48.219.137:2379
+      - --listen-metrics-urls=http://127.0.0.1:2381
+      - --listen-peer-urls=https://10.48.219.137:2380
+      - --name=zee8608masterapi03
+      - --peer-cert-file=/etc/kubernetes/pki/etcd/peer.crt
+      - --peer-client-cert-auth=true
+      - --peer-key-file=/etc/kubernetes/pki/etcd/peer.key
+      - --peer-trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
+      - --snapshot-count=10000
+      - --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
+      image: registry.k8s.io/etcd:3.5.15-0
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 8
+        httpGet:
+          host: 127.0.0.1
+          path: /health?exclude=NOSPACE&serializable=true
+          port: 2381
+          scheme: HTTP
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      name: etcd
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+      startupProbe:
+        failureThreshold: 24
+        httpGet:
+          host: 127.0.0.1
+          path: /health?serializable=false
+          port: 2381
+          scheme: HTTP
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/lib/etcd
+        name: etcd-data
+      - mountPath: /etc/kubernetes/pki/etcd
+        name: etcd-certs
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostNetwork: true
+    nodeName: zee8608masterapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 2000001000
+    priorityClassName: system-node-critical
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      operator: Exists
+    volumes:
+    - hostPath:
+        path: /etc/kubernetes/pki/etcd
+        type: DirectoryOrCreate
+      name: etcd-certs
+    - hostPath:
+        path: /var/lib/etcd
+        type: DirectoryOrCreate
+      name: etcd-data
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:14Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:08Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:57Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:57Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:08Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://9657f43e3e99e50cd1ae1b3e2bed02fbc325690c7dae8875f29a0cb0a969bfe3
+      image: registry.k8s.io/etcd:3.5.15-0
+      imageID: registry.k8s.io/etcd@sha256:a6dc63e6e8cfa0307d7851762fa6b629afb18f28d8aa3fab5a6e91b4af60026a
+      lastState:
+        terminated:
+          containerID: containerd://da1756cde25e18758afb211be1c7b034d0f7b5c845cfb73dedc9f198a1abac6c
+          exitCode: 255
+          finishedAt: "2025-06-20T20:24:06Z"
+          reason: Unknown
+          startedAt: "2025-06-20T20:19:56Z"
+      name: etcd
+      ready: true
+      restartCount: 2
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:24:13Z"
+    hostIP: 10.48.219.137
+    hostIPs:
+    - ip: 10.48.219.137
+    phase: Running
+    podIP: 10.48.219.137
+    podIPs:
+    - ip: 10.48.219.137
+    qosClass: Burstable
+    startTime: "2025-06-20T20:24:08Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubeadm.kubernetes.io/kube-apiserver.advertise-address.endpoint: 10.48.219.137:6443
+      kubernetes.io/config.hash: 87013789a733fb6424aa99ec69f1e3cd
+      kubernetes.io/config.mirror: 87013789a733fb6424aa99ec69f1e3cd
+      kubernetes.io/config.seen: "2025-02-07T13:34:03.733003941+05:30"
+      kubernetes.io/config.source: file
+    creationTimestamp: "2025-02-07T08:04:07Z"
+    labels:
+      component: kube-apiserver
+      tier: control-plane
+    name: kube-apiserver-zee8608masterapi03
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: v1
+      controller: true
+      kind: Node
+      name: zee8608masterapi03
+      uid: b6f50658-eda0-4043-87cd-cc9eb5aecced
+    resourceVersion: "70961293"
+    uid: 38d822d6-2898-4908-8d00-7a5731d99d70
+  spec:
+    containers:
+    - command:
+      - kube-apiserver
+      - --advertise-address=10.48.219.137
+      - --allow-privileged=true
+      - --authorization-mode=Node,RBAC
+      - --client-ca-file=/etc/kubernetes/pki/ca.crt
+      - --enable-admission-plugins=NodeRestriction
+      - --enable-bootstrap-token-auth=true
+      - --etcd-cafile=/etc/kubernetes/pki/etcd/ca.crt
+      - --etcd-certfile=/etc/kubernetes/pki/apiserver-etcd-client.crt
+      - --etcd-keyfile=/etc/kubernetes/pki/apiserver-etcd-client.key
+      - --etcd-servers=https://127.0.0.1:2379
+      - --kubelet-client-certificate=/etc/kubernetes/pki/apiserver-kubelet-client.crt
+      - --kubelet-client-key=/etc/kubernetes/pki/apiserver-kubelet-client.key
+      - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+      - --proxy-client-cert-file=/etc/kubernetes/pki/front-proxy-client.crt
+      - --proxy-client-key-file=/etc/kubernetes/pki/front-proxy-client.key
+      - --requestheader-allowed-names=front-proxy-client
+      - --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt
+      - --requestheader-extra-headers-prefix=X-Remote-Extra-
+      - --requestheader-group-headers=X-Remote-Group
+      - --requestheader-username-headers=X-Remote-User
+      - --secure-port=6443
+      - --service-account-issuer=https://kubernetes.default.svc.cluster.local
+      - --service-account-key-file=/etc/kubernetes/pki/sa.pub
+      - --service-account-signing-key-file=/etc/kubernetes/pki/sa.key
+      - --service-cluster-ip-range=10.96.0.0/12
+      - --tls-cert-file=/etc/kubernetes/pki/apiserver.crt
+      - --tls-private-key-file=/etc/kubernetes/pki/apiserver.key
+      image: registry.k8s.io/kube-apiserver:v1.30.9
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 8
+        httpGet:
+          host: 10.48.219.137
+          path: /livez
+          port: 6443
+          scheme: HTTPS
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      name: kube-apiserver
+      readinessProbe:
+        failureThreshold: 3
+        httpGet:
+          host: 10.48.219.137
+          path: /readyz
+          port: 6443
+          scheme: HTTPS
+        periodSeconds: 1
+        successThreshold: 1
+        timeoutSeconds: 15
+      resources:
+        requests:
+          cpu: 250m
+      startupProbe:
+        failureThreshold: 24
+        httpGet:
+          host: 10.48.219.137
+          path: /livez
+          port: 6443
+          scheme: HTTPS
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/ssl/certs
+        name: ca-certs
+        readOnly: true
+      - mountPath: /etc/ca-certificates
+        name: etc-ca-certificates
+        readOnly: true
+      - mountPath: /etc/pki
+        name: etc-pki
+        readOnly: true
+      - mountPath: /etc/kubernetes/pki
+        name: k8s-certs
+        readOnly: true
+      - mountPath: /usr/local/share/ca-certificates
+        name: usr-local-share-ca-certificates
+        readOnly: true
+      - mountPath: /usr/share/ca-certificates
+        name: usr-share-ca-certificates
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostNetwork: true
+    nodeName: zee8608masterapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 2000001000
+    priorityClassName: system-node-critical
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      operator: Exists
+    volumes:
+    - hostPath:
+        path: /etc/ssl/certs
+        type: DirectoryOrCreate
+      name: ca-certs
+    - hostPath:
+        path: /etc/ca-certificates
+        type: DirectoryOrCreate
+      name: etc-ca-certificates
+    - hostPath:
+        path: /etc/pki
+        type: DirectoryOrCreate
+      name: etc-pki
+    - hostPath:
+        path: /etc/kubernetes/pki
+        type: DirectoryOrCreate
+      name: k8s-certs
+    - hostPath:
+        path: /usr/local/share/ca-certificates
+        type: DirectoryOrCreate
+      name: usr-local-share-ca-certificates
+    - hostPath:
+        path: /usr/share/ca-certificates
+        type: DirectoryOrCreate
+      name: usr-share-ca-certificates
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:12Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:19:30Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:25:05Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:25:05Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:19:30Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://7b1b4cb49b809a9fa590fba35bd877a65293054c6f883363dc25122b2c87d31d
+      image: registry.k8s.io/kube-apiserver:v1.30.9
+      imageID: registry.k8s.io/kube-apiserver@sha256:540de8f810ac963b8ed93f7393a8746d68e7e8a2c79ea58ff409ac5b9ca6a9fc
+      lastState:
+        terminated:
+          containerID: containerd://d518a18be46e6e3ed560baa96fd333e1307d803fa0ade8c07f3edce4683cb454
+          exitCode: 255
+          finishedAt: "2025-06-20T20:24:06Z"
+          reason: Unknown
+          startedAt: "2025-06-20T20:19:56Z"
+      name: kube-apiserver
+      ready: true
+      restartCount: 2
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:24:12Z"
+    hostIP: 10.48.219.137
+    hostIPs:
+    - ip: 10.48.219.137
+    phase: Running
+    podIP: 10.48.219.137
+    podIPs:
+    - ip: 10.48.219.137
+    qosClass: Burstable
+    startTime: "2025-06-20T20:19:30Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubernetes.io/config.hash: f7e2095244b3560e9ed9d065b97f5ae4
+      kubernetes.io/config.mirror: f7e2095244b3560e9ed9d065b97f5ae4
+      kubernetes.io/config.seen: "2025-02-07T13:34:03.733007709+05:30"
+      kubernetes.io/config.source: file
+    creationTimestamp: "2025-02-07T08:04:07Z"
+    labels:
+      component: kube-controller-manager
+      tier: control-plane
+    name: kube-controller-manager-zee8608masterapi03
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: v1
+      controller: true
+      kind: Node
+      name: zee8608masterapi03
+      uid: b6f50658-eda0-4043-87cd-cc9eb5aecced
+    resourceVersion: "70961302"
+    uid: 30d57836-62de-474f-b844-fa9e6005b84b
+  spec:
+    containers:
+    - command:
+      - kube-controller-manager
+      - --allocate-node-cidrs=true
+      - --authentication-kubeconfig=/etc/kubernetes/controller-manager.conf
+      - --authorization-kubeconfig=/etc/kubernetes/controller-manager.conf
+      - --bind-address=127.0.0.1
+      - --client-ca-file=/etc/kubernetes/pki/ca.crt
+      - --cluster-cidr=192.168.0.0/16
+      - --cluster-name=kubernetes
+      - --cluster-signing-cert-file=/etc/kubernetes/pki/ca.crt
+      - --cluster-signing-key-file=/etc/kubernetes/pki/ca.key
+      - --controllers=*,bootstrapsigner,tokencleaner
+      - --kubeconfig=/etc/kubernetes/controller-manager.conf
+      - --leader-elect=true
+      - --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt
+      - --root-ca-file=/etc/kubernetes/pki/ca.crt
+      - --service-account-private-key-file=/etc/kubernetes/pki/sa.key
+      - --service-cluster-ip-range=10.96.0.0/12
+      - --use-service-account-credentials=true
+      image: registry.k8s.io/kube-controller-manager:v1.30.9
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 8
+        httpGet:
+          host: 127.0.0.1
+          path: /healthz
+          port: 10257
+          scheme: HTTPS
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      name: kube-controller-manager
+      resources:
+        requests:
+          cpu: 200m
+      startupProbe:
+        failureThreshold: 24
+        httpGet:
+          host: 127.0.0.1
+          path: /healthz
+          port: 10257
+          scheme: HTTPS
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/ssl/certs
+        name: ca-certs
+        readOnly: true
+      - mountPath: /etc/ca-certificates
+        name: etc-ca-certificates
+        readOnly: true
+      - mountPath: /etc/pki
+        name: etc-pki
+        readOnly: true
+      - mountPath: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
+        name: flexvolume-dir
+      - mountPath: /etc/kubernetes/pki
+        name: k8s-certs
+        readOnly: true
+      - mountPath: /etc/kubernetes/controller-manager.conf
+        name: kubeconfig
+        readOnly: true
+      - mountPath: /usr/local/share/ca-certificates
+        name: usr-local-share-ca-certificates
+        readOnly: true
+      - mountPath: /usr/share/ca-certificates
+        name: usr-share-ca-certificates
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostNetwork: true
+    nodeName: zee8608masterapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 2000001000
+    priorityClassName: system-node-critical
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      operator: Exists
+    volumes:
+    - hostPath:
+        path: /etc/ssl/certs
+        type: DirectoryOrCreate
+      name: ca-certs
+    - hostPath:
+        path: /etc/ca-certificates
+        type: DirectoryOrCreate
+      name: etc-ca-certificates
+    - hostPath:
+        path: /etc/pki
+        type: DirectoryOrCreate
+      name: etc-pki
+    - hostPath:
+        path: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
+        type: DirectoryOrCreate
+      name: flexvolume-dir
+    - hostPath:
+        path: /etc/kubernetes/pki
+        type: DirectoryOrCreate
+      name: k8s-certs
+    - hostPath:
+        path: /etc/kubernetes/controller-manager.conf
+        type: FileOrCreate
+      name: kubeconfig
+    - hostPath:
+        path: /usr/local/share/ca-certificates
+        type: DirectoryOrCreate
+      name: usr-local-share-ca-certificates
+    - hostPath:
+        path: /usr/share/ca-certificates
+        type: DirectoryOrCreate
+      name: usr-share-ca-certificates
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:12Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:19:30Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:53Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:53Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:19:30Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://f7095dda7af14b674fe986aaaf1db62faf5ea3f939253949e9ab46d0850669ad
+      image: registry.k8s.io/kube-controller-manager:v1.30.9
+      imageID: registry.k8s.io/kube-controller-manager@sha256:6350693c04956b13db2519e01ca12a0bbe58466e9f12ef8617f1429da6081f43
+      lastState:
+        terminated:
+          containerID: containerd://dd1abdf10878a30790b409f13673ac3b9d71aa4f2c7aeec1264441f50129826e
+          exitCode: 255
+          finishedAt: "2025-06-20T20:24:06Z"
+          reason: Unknown
+          startedAt: "2025-06-20T20:19:56Z"
+      name: kube-controller-manager
+      ready: true
+      restartCount: 3
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:24:12Z"
+    hostIP: 10.48.219.137
+    hostIPs:
+    - ip: 10.48.219.137
+    phase: Running
+    podIP: 10.48.219.137
+    podIPs:
+    - ip: 10.48.219.137
+    qosClass: Burstable
+    startTime: "2025-06-20T20:19:30Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-02-07T08:04:04Z"
+    generateName: kube-proxy-
+    labels:
+      controller-revision-hash: 79c94c5cb4
+      k8s-app: kube-proxy
+      pod-template-generation: "1"
+    name: kube-proxy-lkllb
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: kube-proxy
+      uid: 27c3a05f-34c7-4b31-afaa-6a1d52f7b481
+    resourceVersion: "70961291"
+    uid: 7e94fb3e-c5e3-485a-b22d-d52dc0643b0d
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - zee8608masterapi03
+    containers:
+    - command:
+      - /usr/local/bin/kube-proxy
+      - --config=/var/lib/kube-proxy/config.conf
+      - --hostname-override=$(NODE_NAME)
+      env:
+      - name: NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      image: registry.k8s.io/kube-proxy:v1.30.9
+      imagePullPolicy: IfNotPresent
+      name: kube-proxy
+      resources: {}
+      securityContext:
+        privileged: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/lib/kube-proxy
+        name: kube-proxy
+      - mountPath: /run/xtables.lock
+        name: xtables-lock
+      - mountPath: /lib/modules
+        name: lib-modules
+        readOnly: true
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-6jpl4
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostNetwork: true
+    nodeName: zee8608masterapi03
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 2000001000
+    priorityClassName: system-node-critical
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: kube-proxy
+    serviceAccountName: kube-proxy
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/disk-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/pid-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/unschedulable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/network-unavailable
+      operator: Exists
+    volumes:
+    - configMap:
+        defaultMode: 420
+        name: kube-proxy
+      name: kube-proxy
+    - hostPath:
+        path: /run/xtables.lock
+        type: FileOrCreate
+      name: xtables-lock
+    - hostPath:
+        path: /lib/modules
+        type: ""
+      name: lib-modules
+    - name: kube-api-access-6jpl4
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:14Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-07T08:04:04Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:14Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:14Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-07T08:04:04Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://fe73ccc67b3fba83aee6f5e75179b9f61aed46cfc5ddf88a9cd7beacbb8be70f
+      image: registry.k8s.io/kube-proxy:v1.30.9
+      imageID: registry.k8s.io/kube-proxy@sha256:d78dc40d97ff862fd8ddb47f80a5ba3feec17bc73e58a60e963885e33faa0083
+      lastState:
+        terminated:
+          containerID: containerd://2b0e1509d900dd56f105de1e6396d7600bb597c2a60e50db0c9c8f57e842dc05
+          exitCode: 255
+          finishedAt: "2025-06-20T20:24:06Z"
+          reason: Unknown
+          startedAt: "2025-06-20T20:20:16Z"
+      name: kube-proxy
+      ready: true
+      restartCount: 2
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:24:12Z"
+    hostIP: 10.48.219.137
+    hostIPs:
+    - ip: 10.48.219.137
+    phase: Running
+    podIP: 10.48.219.137
+    podIPs:
+    - ip: 10.48.219.137
+    qosClass: BestEffort
+    startTime: "2025-02-07T08:04:04Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubernetes.io/config.hash: cc2bfc213f2af321c389ddde1e513155
+      kubernetes.io/config.mirror: cc2bfc213f2af321c389ddde1e513155
+      kubernetes.io/config.seen: "2025-02-07T13:34:03.733008878+05:30"
+      kubernetes.io/config.source: file
+    creationTimestamp: "2025-02-07T08:04:07Z"
+    labels:
+      component: kube-scheduler
+      tier: control-plane
+    name: kube-scheduler-zee8608masterapi03
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: v1
+      controller: true
+      kind: Node
+      name: zee8608masterapi03
+      uid: b6f50658-eda0-4043-87cd-cc9eb5aecced
+    resourceVersion: "70961298"
+    uid: 26f00a81-18ca-4ab2-89a4-e5fa3f0f33d6
+  spec:
+    containers:
+    - command:
+      - kube-scheduler
+      - --authentication-kubeconfig=/etc/kubernetes/scheduler.conf
+      - --authorization-kubeconfig=/etc/kubernetes/scheduler.conf
+      - --bind-address=127.0.0.1
+      - --kubeconfig=/etc/kubernetes/scheduler.conf
+      - --leader-elect=true
+      image: registry.k8s.io/kube-scheduler:v1.30.9
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 8
+        httpGet:
+          host: 127.0.0.1
+          path: /healthz
+          port: 10259
+          scheme: HTTPS
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      name: kube-scheduler
+      resources:
+        requests:
+          cpu: 100m
+      startupProbe:
+        failureThreshold: 24
+        httpGet:
+          host: 127.0.0.1
+          path: /healthz
+          port: 10259
+          scheme: HTTPS
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/kubernetes/scheduler.conf
+        name: kubeconfig
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostNetwork: true
+    nodeName: zee8608masterapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 2000001000
+    priorityClassName: system-node-critical
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      operator: Exists
+    volumes:
+    - hostPath:
+        path: /etc/kubernetes/scheduler.conf
+        type: FileOrCreate
+      name: kubeconfig
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:14Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:19:30Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:44Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:44Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:19:30Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://aba87826ec0c48a0e85ba0e4ad74b32348ffa75a025fcdf0f99167a9c96f4dc6
+      image: registry.k8s.io/kube-scheduler:v1.30.9
+      imageID: registry.k8s.io/kube-scheduler@sha256:153efd6dc89e61a38ef273cf4c4cebd2bfee68082c2ee3d4fab5da94e4ae13d3
+      lastState:
+        terminated:
+          containerID: containerd://6e8586bbdff11e0477bfc643a9a27913da7f7ec6596ce88bba6fcf62c8f55336
+          exitCode: 255
+          finishedAt: "2025-06-20T20:24:06Z"
+          reason: Unknown
+          startedAt: "2025-06-20T20:19:56Z"
+      name: kube-scheduler
+      ready: true
+      restartCount: 2
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:24:12Z"
+    hostIP: 10.48.219.137
+    hostIPs:
+    - ip: 10.48.219.137
+    phase: Running
+    podIP: 10.48.219.137
+    podIPs:
+    - ip: 10.48.219.137
+    qosClass: Burstable
+    startTime: "2025-06-20T20:19:30Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-06-23T16:45:30Z"
+    generateName: fluent-bit-
+    labels:
+      app.kubernetes.io/name: fluent-bit
+      controller-revision-hash: 767db976
+      pod-template-generation: "1"
+    name: fluent-bit-8q6wr
+    namespace: kubesphere-logging-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: fluent-bit
+      uid: 2576eaf5-f050-486e-aa27-04a9d8690e49
+    resourceVersion: "72244743"
+    uid: 1061394c-dee7-4f63-862f-26e65260d7f5
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - zee8608masterapi03
+    containers:
+    - env:
+      - name: NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      image: kubesphere/fluent-bit:v1.9.4
+      imagePullPolicy: IfNotPresent
+      name: fluent-bit
+      ports:
+      - containerPort: 2020
+        name: metrics
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 200Mi
+        requests:
+          cpu: 10m
+          memory: 25Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/log/containers
+        name: varlibcontainers
+        readOnly: true
+      - mountPath: /fluent-bit/config
+        name: config
+        readOnly: true
+      - mountPath: /var/log/
+        name: varlogs
+        readOnly: true
+      - mountPath: /var/log/journal
+        name: systemd
+        readOnly: true
+      - mountPath: /fluent-bit/tail
+        name: positions
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-qdtw7
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: zee8608masterapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: fluent-bit
+    serviceAccountName: fluent-bit
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/disk-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/pid-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/unschedulable
+      operator: Exists
+    volumes:
+    - hostPath:
+        path: /var/log/containers
+        type: ""
+      name: varlibcontainers
+    - name: config
+      secret:
+        defaultMode: 420
+        secretName: fluent-bit-config
+    - hostPath:
+        path: /var/log
+        type: ""
+      name: varlogs
+    - hostPath:
+        path: /var/log/journal
+        type: ""
+      name: systemd
+    - emptyDir: {}
+      name: positions
+    - name: kube-api-access-qdtw7
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-23T16:45:30Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-23T16:45:30Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-23T16:45:30Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-23T16:45:30Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-23T16:45:30Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://e5b2c818b0e7744a0ba4ba4285116b3bbacb268eac7dfeb3dff0389a8a3234ee
+      image: docker.io/kubesphere/fluent-bit:v1.9.4
+      imageID: docker.io/kubesphere/fluent-bit@sha256:c14d673ad2c51b5441075f8811ec3d899a3abfce3950fe26ea0e51628199af65
+      lastState: {}
+      name: fluent-bit
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-23T16:45:30Z"
+    hostIP: 10.48.219.137
+    hostIPs:
+    - ip: 10.48.219.137
+    phase: Running
+    podIP: 192.168.2.6
+    podIPs:
+    - ip: 192.168.2.6
+    qosClass: Burstable
+    startTime: "2025-06-23T16:45:30Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-02-10T07:02:11Z"
+    generateName: node-exporter-
+    labels:
+      app.kubernetes.io/component: exporter
+      app.kubernetes.io/name: node-exporter
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 1.3.1
+      controller-revision-hash: 7f57ff6bf5
+      pod-template-generation: "1"
+    name: node-exporter-x78rx
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: node-exporter
+      uid: 57c8536a-cdea-4fe5-840d-c6f0289d5d7b
+    resourceVersion: "70961307"
+    uid: f805c1a6-bfeb-4546-9c5d-b8f9c0772579
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - zee8608masterapi03
+    containers:
+    - args:
+      - --web.listen-address=127.0.0.1:9100
+      - --path.procfs=/host/proc
+      - --path.sysfs=/host/sys
+      - --path.rootfs=/host/root
+      - --no-collector.wifi
+      - --no-collector.hwmon
+      - --collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+)($|/)
+      - --collector.filesystem.ignored-fs-types=^(autofs|binfmt_misc|cgroup|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|mqueue|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|sysfs|tracefs)$
+      image: prom/node-exporter:v1.3.1
+      imagePullPolicy: IfNotPresent
+      name: node-exporter
+      resources:
+        limits:
+          cpu: "1"
+          memory: 500Mi
+        requests:
+          cpu: 102m
+          memory: 180Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /host/proc
+        name: proc
+        readOnly: true
+      - mountPath: /host/sys
+        name: sys
+        readOnly: true
+      - mountPath: /host/root
+        mountPropagation: HostToContainer
+        name: root
+        readOnly: true
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-gsrxn
+        readOnly: true
+    - args:
+      - --logtostderr
+      - --secure-listen-address=[$(IP)]:9100
+      - --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+      - --upstream=http://127.0.0.1:9100/
+      env:
+      - name: IP
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: status.podIP
+      image: kubesphere/kube-rbac-proxy:v0.11.0
+      imagePullPolicy: IfNotPresent
+      name: kube-rbac-proxy
+      ports:
+      - containerPort: 9100
+        hostPort: 9100
+        name: https
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      securityContext:
+        runAsGroup: 65532
+        runAsNonRoot: true
+        runAsUser: 65532
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-gsrxn
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostNetwork: true
+    hostPID: true
+    nodeName: zee8608masterapi03
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 65534
+    serviceAccount: node-exporter
+    serviceAccountName: node-exporter
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/disk-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/pid-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/unschedulable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/network-unavailable
+      operator: Exists
+    volumes:
+    - hostPath:
+        path: /proc
+        type: ""
+      name: proc
+    - hostPath:
+        path: /sys
+        type: ""
+      name: sys
+    - hostPath:
+        path: /
+        type: ""
+      name: root
+    - name: kube-api-access-gsrxn
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:16Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-10T07:02:10Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:16Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:16Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-10T07:02:11Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://9923b966cc9ddc7f3dacd3b73317efe38d8b512ea68de5ce1886a998fd1faa58
+      image: docker.io/kubesphere/kube-rbac-proxy:v0.11.0
+      imageID: docker.io/kubesphere/kube-rbac-proxy@sha256:0df4ae70e3bd0feffcec8f5cdb428f4abe666b667af991269ec5cb0bbda65869
+      lastState:
+        terminated:
+          containerID: containerd://58be96ba6461c2ed4a2271b2b764602b0bcf94232267712179ad8cf4a9604630
+          exitCode: 255
+          finishedAt: "2025-06-20T20:24:06Z"
+          reason: Unknown
+          startedAt: "2025-06-20T20:20:17Z"
+      name: kube-rbac-proxy
+      ready: true
+      restartCount: 2
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:24:15Z"
+    - containerID: containerd://56fff4b635de95e398359c79437a278b76abd497053657c26f7a645e192c2b17
+      image: docker.io/prom/node-exporter:v1.3.1
+      imageID: docker.io/prom/node-exporter@sha256:f2269e73124dd0f60a7d19a2ce1264d33d08a985aed0ee6b0b89d0be470592cd
+      lastState:
+        terminated:
+          containerID: containerd://273a3993e1494ed2d443a201f0e7b67a4f38a4c879616cb0c1509c9499a13359
+          exitCode: 255
+          finishedAt: "2025-06-20T20:24:06Z"
+          reason: Unknown
+          startedAt: "2025-06-20T20:20:16Z"
+      name: node-exporter
+      ready: true
+      restartCount: 2
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:24:12Z"
+    hostIP: 10.48.219.137
+    hostIPs:
+    - ip: 10.48.219.137
+    phase: Running
+    podIP: 10.48.219.137
+    podIPs:
+    - ip: 10.48.219.137
+    qosClass: Burstable
+    startTime: "2025-02-10T07:02:10Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      prometheus.io/port: "7472"
+      prometheus.io/scrape: "true"
+    creationTimestamp: "2025-02-07T11:07:41Z"
+    generateName: speaker-
+    labels:
+      app: metallb
+      component: speaker
+      controller-revision-hash: 6c88db67c6
+      pod-template-generation: "1"
+    name: speaker-xzdjz
+    namespace: metallb-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: speaker
+      uid: d3416e4b-a93a-48a4-b43c-d1c4ac2fd037
+    resourceVersion: "70961305"
+    uid: 57e29751-b80f-4830-b06a-80b796dce949
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - zee8608masterapi03
+    containers:
+    - args:
+      - --port=7472
+      - --log-level=info
+      env:
+      - name: METALLB_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: METALLB_POD_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: METALLB_HOST
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: status.hostIP
+      - name: METALLB_ML_BIND_ADDR
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: status.podIP
+      - name: METALLB_ML_LABELS
+        value: app=metallb,component=speaker
+      - name: METALLB_ML_SECRET_KEY_PATH
+        value: /etc/ml_secret_key
+      image: quay.io/metallb/speaker:v0.14.9
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /metrics
+          port: monitoring
+          scheme: HTTP
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      name: speaker
+      ports:
+      - containerPort: 7472
+        hostPort: 7472
+        name: monitoring
+        protocol: TCP
+      - containerPort: 7946
+        hostPort: 7946
+        name: memberlist-tcp
+        protocol: TCP
+      - containerPort: 7946
+        hostPort: 7946
+        name: memberlist-udp
+        protocol: UDP
+      readinessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /metrics
+          port: monitoring
+          scheme: HTTP
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      resources: {}
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          add:
+          - NET_RAW
+          drop:
+          - ALL
+        readOnlyRootFilesystem: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/ml_secret_key
+        name: memberlist
+        readOnly: true
+      - mountPath: /etc/metallb
+        name: metallb-excludel2
+        readOnly: true
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-pjn7n
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostNetwork: true
+    nodeName: zee8608masterapi03
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: speaker
+    serviceAccountName: speaker
+    terminationGracePeriodSeconds: 2
+    tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+      operator: Exists
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/control-plane
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/disk-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/pid-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/unschedulable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/network-unavailable
+      operator: Exists
+    volumes:
+    - name: memberlist
+      secret:
+        defaultMode: 420
+        secretName: memberlist
+    - configMap:
+        defaultMode: 256
+        name: metallb-excludel2
+      name: metallb-excludel2
+    - name: kube-api-access-pjn7n
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:24:14Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-07T11:07:40Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:25:06Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:25:06Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-07T11:07:41Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://f9ec220f849cebc570cab253f2ce19f17a4ade3f241abb037dc091980200974d
+      image: quay.io/metallb/speaker:v0.14.9
+      imageID: quay.io/metallb/speaker@sha256:b09a1dfcf330938950b65115cd58f6989108c0c21d3c096040e7fe9a25a92993
+      lastState:
+        terminated:
+          containerID: containerd://271421f1cb54c7d98a952e28a70ac4c8fd678ebcb8f3b37be394024d66da53d6
+          exitCode: 137
+          finishedAt: "2025-06-20T20:24:49Z"
+          reason: Error
+          startedAt: "2025-06-20T20:24:12Z"
+      name: speaker
+      ready: true
+      restartCount: 4
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:24:51Z"
+    hostIP: 10.48.219.137
+    hostIPs:
+    - ip: 10.48.219.137
+    phase: Running
+    podIP: 10.48.219.137
+    podIPs:
+    - ip: 10.48.219.137
+    qosClass: BestEffort
+    startTime: "2025-02-07T11:07:40Z"
+kind: List
+metadata:
+  resourceVersion: ""

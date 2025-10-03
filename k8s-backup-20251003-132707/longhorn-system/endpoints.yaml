@@ -1,0 +1,218 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:47Z"
+    creationTimestamp: "2025-02-07T11:53:40Z"
+    labels:
+      app: longhorn-admission-webhook
+      app.kubernetes.io/instance: longhorn
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: longhorn
+      app.kubernetes.io/version: v1.8.0
+      helm.sh/chart: longhorn-1.8.0
+    name: longhorn-admission-webhook
+    namespace: longhorn-system
+    resourceVersion: "72238669"
+    uid: 01e4399f-00f3-4f4b-b6e1-fecb25951a3d
+  subsets:
+  - addresses:
+    - ip: 192.168.3.235
+      nodeName: zee8608workerapi02
+      targetRef:
+        kind: Pod
+        name: longhorn-manager-4ckwk
+        namespace: longhorn-system
+        uid: 363862a8-6a6d-44f2-8481-0b92e929fefb
+    - ip: 192.168.4.2
+      nodeName: zee8608workerapi03
+      targetRef:
+        kind: Pod
+        name: longhorn-manager-d8z27
+        namespace: longhorn-system
+        uid: 92b32d4a-d0c7-448a-b21b-2a84e980108d
+    - ip: 192.168.5.221
+      nodeName: zee8608workerapi01
+      targetRef:
+        kind: Pod
+        name: longhorn-manager-pr755
+        namespace: longhorn-system
+        uid: e07bd6d5-e606-4661-a9ab-51c57be792f3
+    ports:
+    - name: admission-webhook
+      port: 9502
+      protocol: TCP
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:47Z"
+    creationTimestamp: "2025-02-07T11:53:40Z"
+    labels:
+      app: longhorn-manager
+      app.kubernetes.io/instance: longhorn
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: longhorn
+      app.kubernetes.io/version: v1.8.0
+      helm.sh/chart: longhorn-1.8.0
+    name: longhorn-backend
+    namespace: longhorn-system
+    resourceVersion: "72238670"
+    uid: 51438d3d-f4bc-456a-b654-0d711463a024
+  subsets:
+  - addresses:
+    - ip: 192.168.3.235
+      nodeName: zee8608workerapi02
+      targetRef:
+        kind: Pod
+        name: longhorn-manager-4ckwk
+        namespace: longhorn-system
+        uid: 363862a8-6a6d-44f2-8481-0b92e929fefb
+    - ip: 192.168.4.2
+      nodeName: zee8608workerapi03
+      targetRef:
+        kind: Pod
+        name: longhorn-manager-d8z27
+        namespace: longhorn-system
+        uid: 92b32d4a-d0c7-448a-b21b-2a84e980108d
+    - ip: 192.168.5.221
+      nodeName: zee8608workerapi01
+      targetRef:
+        kind: Pod
+        name: longhorn-manager-pr755
+        namespace: longhorn-system
+        uid: e07bd6d5-e606-4661-a9ab-51c57be792f3
+    ports:
+    - name: manager
+      port: 9500
+      protocol: TCP
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:47Z"
+    creationTimestamp: "2025-02-07T11:53:40Z"
+    labels:
+      app: longhorn-conversion-webhook
+      app.kubernetes.io/instance: longhorn
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: longhorn
+      app.kubernetes.io/version: v1.8.0
+      helm.sh/chart: longhorn-1.8.0
+    name: longhorn-conversion-webhook
+    namespace: longhorn-system
+    resourceVersion: "72238671"
+    uid: e74e1509-1f49-4647-ad94-8c3f5c9153f6
+  subsets:
+  - addresses:
+    - ip: 192.168.3.235
+      nodeName: zee8608workerapi02
+      targetRef:
+        kind: Pod
+        name: longhorn-manager-4ckwk
+        namespace: longhorn-system
+        uid: 363862a8-6a6d-44f2-8481-0b92e929fefb
+    - ip: 192.168.4.2
+      nodeName: zee8608workerapi03
+      targetRef:
+        kind: Pod
+        name: longhorn-manager-d8z27
+        namespace: longhorn-system
+        uid: 92b32d4a-d0c7-448a-b21b-2a84e980108d
+    - ip: 192.168.5.221
+      nodeName: zee8608workerapi01
+      targetRef:
+        kind: Pod
+        name: longhorn-manager-pr755
+        namespace: longhorn-system
+        uid: e07bd6d5-e606-4661-a9ab-51c57be792f3
+    ports:
+    - name: conversion-webhook
+      port: 9501
+      protocol: TCP
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:23Z"
+    creationTimestamp: "2025-02-07T11:53:40Z"
+    labels:
+      app: longhorn-ui
+      app.kubernetes.io/instance: longhorn
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: longhorn
+      app.kubernetes.io/version: v1.8.0
+      helm.sh/chart: longhorn-1.8.0
+    name: longhorn-frontend
+    namespace: longhorn-system
+    resourceVersion: "72238420"
+    uid: 07155b4d-1569-4254-bfbc-0113090f6ccb
+  subsets:
+  - addresses:
+    - ip: 192.168.5.215
+      nodeName: zee8608workerapi01
+      targetRef:
+        kind: Pod
+        name: longhorn-ui-5fbbcc8fb-vm9kl
+        namespace: longhorn-system
+        uid: b9fb3e64-5688-41bd-853b-6b1b5401ea1a
+    - ip: 192.168.5.220
+      nodeName: zee8608workerapi01
+      targetRef:
+        kind: Pod
+        name: longhorn-ui-5fbbcc8fb-pmls9
+        namespace: longhorn-system
+        uid: d01fe3ac-c14b-49c9-af69-ecb907ce3a09
+    ports:
+    - name: http
+      port: 8000
+      protocol: TCP
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:47Z"
+    creationTimestamp: "2025-02-07T11:53:40Z"
+    labels:
+      app: longhorn-recovery-backend
+      app.kubernetes.io/instance: longhorn
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: longhorn
+      app.kubernetes.io/version: v1.8.0
+      helm.sh/chart: longhorn-1.8.0
+    name: longhorn-recovery-backend
+    namespace: longhorn-system
+    resourceVersion: "72238672"
+    uid: fc47ca6c-b44c-4a7e-a0fa-37537372df56
+  subsets:
+  - addresses:
+    - ip: 192.168.3.235
+      nodeName: zee8608workerapi02
+      targetRef:
+        kind: Pod
+        name: longhorn-manager-4ckwk
+        namespace: longhorn-system
+        uid: 363862a8-6a6d-44f2-8481-0b92e929fefb
+    - ip: 192.168.4.2
+      nodeName: zee8608workerapi03
+      targetRef:
+        kind: Pod
+        name: longhorn-manager-d8z27
+        namespace: longhorn-system
+        uid: 92b32d4a-d0c7-448a-b21b-2a84e980108d
+    - ip: 192.168.5.221
+      nodeName: zee8608workerapi01
+      targetRef:
+        kind: Pod
+        name: longhorn-manager-pr755
+        namespace: longhorn-system
+        uid: e07bd6d5-e606-4661-a9ab-51c57be792f3
+    ports:
+    - name: recovery-backend
+      port: 9503
+      protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""

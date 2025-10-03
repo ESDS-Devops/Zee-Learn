@@ -1,0 +1,2765 @@
+apiVersion: v1
+items:
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-06-02T07:59:10Z"
+    finalizers:
+    - longhorn.io
+    generation: 10
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+      longhornnode: zee8608workerapi02
+      longhornvolume: pvc-177db961-f6fc-43de-8481-f2190187729b
+    name: pvc-177db961-f6fc-43de-8481-f2190187729b-r-2576d1a0
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-177db961-f6fc-43de-8481-f2190187729b
+      uid: 9cf96529-c2c8-4121-a62e-b392a689f3af
+    resourceVersion: "70961107"
+    uid: ebfb60df-9a8c-4a57-bb99-699e80189c7b
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-177db961-f6fc-43de-8481-f2190187729b-9a62316d
+    dataEngine: v1
+    desireState: running
+    diskID: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-177db961-f6fc-43de-8481-f2190187729b-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-02T07:59:30Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:36:12Z"
+    lastHealthyAt: "2025-06-20T20:43:06Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi02
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-177db961-f6fc-43de-8481-f2190187729b
+    volumeSize: "10737418240"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-02T07:59:05Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-02T07:59:05Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-02T07:59:05Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-02T07:59:16Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-cebb946b3b3be3279c2f59f7e76f53b9
+    ip: 192.168.3.239
+    logFetched: false
+    ownerID: zee8608workerapi02
+    port: 10020
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.3.239
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-05-30T17:03:32Z"
+    finalizers:
+    - longhorn.io
+    generation: 10
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+      longhornnode: zee8608workerapi01
+      longhornvolume: pvc-2eb88f72-28f1-4e08-9fe1-267bcafb6d0f
+    name: pvc-2eb88f72-28f1-4e08-9fe1-267bcafb6d0f-r-d49c2fae
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-2eb88f72-28f1-4e08-9fe1-267bcafb6d0f
+      uid: 0f7c5e63-fdc4-44a0-af05-48d6bdb02371
+    resourceVersion: "72238553"
+    uid: 551e2381-1b44-4ce2-acba-704338eacc10
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-2eb88f72-28f1-4e08-9fe1-267bcafb6d0f-f125a829
+    dataEngine: v1
+    desireState: stopped
+    diskID: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-2eb88f72-28f1-4e08-9fe1-267bcafb6d0f-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-05-30T17:05:33Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: ""
+    lastHealthyAt: "2025-06-03T10:55:49Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi01
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-2eb88f72-28f1-4e08-9fe1-267bcafb6d0f
+    volumeSize: "10001317888"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-05-30T17:04:03Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-05-30T17:04:03Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-05-30T17:04:03Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-05-30T17:04:14Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: ""
+    currentState: stopped
+    evictionRequested: false
+    instanceManagerName: ""
+    ip: ""
+    logFetched: false
+    ownerID: zee8608workerapi01
+    port: 0
+    salvageExecuted: false
+    started: false
+    storageIP: ""
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-05-20T10:44:42Z"
+    finalizers:
+    - longhorn.io
+    generation: 22
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+      longhornnode: zee8608workerapi02
+      longhornvolume: pvc-347aa9e7-ffe7-4a8b-bbc0-0614d6cd7cb1
+    name: pvc-347aa9e7-ffe7-4a8b-bbc0-0614d6cd7cb1-r-eb3d1c06
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-347aa9e7-ffe7-4a8b-bbc0-0614d6cd7cb1
+      uid: 491ced27-243d-4970-8657-46f8a15c7eb2
+    resourceVersion: "70960396"
+    uid: c7d4fa56-f52e-4ec8-b4bc-34f2e7466420
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-347aa9e7-ffe7-4a8b-bbc0-0614d6cd7cb1-bded03f2
+    dataEngine: v1
+    desireState: stopped
+    diskID: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-347aa9e7-ffe7-4a8b-bbc0-0614d6cd7cb1-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-05-20T10:45:16Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: ""
+    lastHealthyAt: "2025-06-03T10:52:48Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi02
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-347aa9e7-ffe7-4a8b-bbc0-0614d6cd7cb1
+    volumeSize: "2000683008"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-05-20T10:44:14Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-05-20T10:44:14Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-05-20T10:44:11Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-05-20T10:44:25Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: ""
+    currentState: stopped
+    evictionRequested: false
+    instanceManagerName: ""
+    ip: ""
+    logFetched: false
+    ownerID: zee8608workerapi02
+    port: 0
+    salvageExecuted: false
+    started: false
+    storageIP: ""
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-06-17T10:11:17Z"
+    finalizers:
+    - longhorn.io
+    generation: 12
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+      longhornnode: zee8608workerapi03
+      longhornvolume: pvc-57a929d7-f703-4cb8-9b39-05c4e967ab3a
+    name: pvc-57a929d7-f703-4cb8-9b39-05c4e967ab3a-r-0e6ebe60
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-57a929d7-f703-4cb8-9b39-05c4e967ab3a
+      uid: 962ba8eb-9c22-4b4c-beee-1212d20f1158
+    resourceVersion: "72240829"
+    uid: 52ca619c-d63a-4bfc-b9a4-2a68efb0a373
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-57a929d7-f703-4cb8-9b39-05c4e967ab3a-d7622bac
+    dataEngine: v1
+    desireState: running
+    diskID: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-57a929d7-f703-4cb8-9b39-05c4e967ab3a-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-17T10:12:00Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:42:35Z"
+    lastHealthyAt: "2025-06-23T16:39:28Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi03
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-57a929d7-f703-4cb8-9b39-05c4e967ab3a
+    volumeSize: "10001317888"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-17T10:11:17Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-17T10:11:17Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-17T10:11:17Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-17T10:11:30Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-07ccad272ad0241589616ab358b3c6c2
+    ip: 192.168.4.3
+    logFetched: false
+    ownerID: zee8608workerapi03
+    port: 10064
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.4.3
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-06-02T07:58:29Z"
+    finalizers:
+    - longhorn.io
+    generation: 16
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+      longhornnode: zee8608workerapi02
+      longhornvolume: pvc-66201b3b-4d52-4d62-a73e-6f897fe8f535
+    name: pvc-66201b3b-4d52-4d62-a73e-6f897fe8f535-r-66c2d3a4
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-66201b3b-4d52-4d62-a73e-6f897fe8f535
+      uid: d61e44c7-95fe-4d68-ad85-9d826d6ccb40
+    resourceVersion: "72242699"
+    uid: ccef75a2-fda2-4704-9686-af5987b71fb7
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-66201b3b-4d52-4d62-a73e-6f897fe8f535-2375410f
+    dataEngine: v1
+    desireState: running
+    diskID: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-66201b3b-4d52-4d62-a73e-6f897fe8f535-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-02T07:59:55Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:27:15Z"
+    lastHealthyAt: "2025-06-23T16:42:18Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi02
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-66201b3b-4d52-4d62-a73e-6f897fe8f535
+    volumeSize: "21474836480"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-02T07:59:06Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-02T07:59:06Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-02T07:58:55Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-02T07:59:27Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-cebb946b3b3be3279c2f59f7e76f53b9
+    ip: 192.168.3.239
+    logFetched: false
+    ownerID: zee8608workerapi02
+    port: 10184
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.3.239
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-05-20T10:44:42Z"
+    finalizers:
+    - longhorn.io
+    generation: 22
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+      longhornnode: zee8608workerapi02
+      longhornvolume: pvc-6d693a13-925b-43e0-83e7-d017975c2b3a
+    name: pvc-6d693a13-925b-43e0-83e7-d017975c2b3a-r-7d27027c
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-6d693a13-925b-43e0-83e7-d017975c2b3a
+      uid: 016c8700-b236-47be-9ad7-00b21ace2260
+    resourceVersion: "70960301"
+    uid: 92c6ccb1-c870-40ac-9f72-14786bca9c3f
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-6d693a13-925b-43e0-83e7-d017975c2b3a-b5c89e3a
+    dataEngine: v1
+    desireState: stopped
+    diskID: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-6d693a13-925b-43e0-83e7-d017975c2b3a-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-05-20T10:45:36Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: ""
+    lastHealthyAt: "2025-06-03T10:52:48Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi02
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-6d693a13-925b-43e0-83e7-d017975c2b3a
+    volumeSize: "10001317888"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-05-20T10:44:14Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-05-20T10:44:14Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-05-20T10:44:12Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-05-20T10:44:59Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: ""
+    currentState: stopped
+    evictionRequested: false
+    instanceManagerName: ""
+    ip: ""
+    logFetched: false
+    ownerID: zee8608workerapi02
+    port: 0
+    salvageExecuted: false
+    started: false
+    storageIP: ""
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-06-17T10:11:17Z"
+    finalizers:
+    - longhorn.io
+    generation: 8
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+      longhornnode: zee8608workerapi03
+      longhornvolume: pvc-a6b05366-d771-4c1e-854c-66b57739227d
+    name: pvc-a6b05366-d771-4c1e-854c-66b57739227d-r-e3c9a738
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-a6b05366-d771-4c1e-854c-66b57739227d
+      uid: 95789c6a-5ea1-498c-b220-a5d65439c622
+    resourceVersion: "70961215"
+    uid: 1d58e382-a7d3-46cb-9f80-cb94ed4df18d
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-a6b05366-d771-4c1e-854c-66b57739227d-f7168046
+    dataEngine: v1
+    desireState: running
+    diskID: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-a6b05366-d771-4c1e-854c-66b57739227d-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-17T10:13:04Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:36:18Z"
+    lastHealthyAt: "2025-06-20T20:43:06Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi03
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-a6b05366-d771-4c1e-854c-66b57739227d
+    volumeSize: "21474836480"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-17T10:11:17Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-17T10:11:17Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-17T10:11:17Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-17T10:11:30Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-07ccad272ad0241589616ab358b3c6c2
+    ip: 192.168.4.3
+    logFetched: false
+    ownerID: zee8608workerapi03
+    port: 10022
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.4.3
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-06-02T07:59:22Z"
+    finalizers:
+    - longhorn.io
+    generation: 10
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+      longhornnode: zee8608workerapi02
+      longhornvolume: pvc-aa466509-d3b3-4559-9be5-28da4630a9ce
+    name: pvc-aa466509-d3b3-4559-9be5-28da4630a9ce-r-3dc1c216
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-aa466509-d3b3-4559-9be5-28da4630a9ce
+      uid: b9485c0e-f9eb-47a4-9ae9-904235901257
+    resourceVersion: "70961352"
+    uid: 375d1815-be37-485a-ae9e-490c74a2f9bf
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-aa466509-d3b3-4559-9be5-28da4630a9ce-3c765d56
+    dataEngine: v1
+    desireState: running
+    diskID: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-aa466509-d3b3-4559-9be5-28da4630a9ce-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-02T07:59:48Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:27:15Z"
+    lastHealthyAt: "2025-06-20T20:43:12Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi02
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-aa466509-d3b3-4559-9be5-28da4630a9ce
+    volumeSize: "10737418240"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-02T07:59:18Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-02T07:59:18Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-02T07:59:18Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-02T07:59:41Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-cebb946b3b3be3279c2f59f7e76f53b9
+    ip: 192.168.3.239
+    logFetched: false
+    ownerID: zee8608workerapi02
+    port: 10010
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.3.239
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-02-10T07:02:49Z"
+    finalizers:
+    - longhorn.io
+    generation: 3174
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+      longhornnode: zee8608workerapi02
+      longhornvolume: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5
+    name: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5-r-5b3a5e54
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5
+      uid: ecb5b434-dc48-4963-89e1-f6d6b024aaf3
+    resourceVersion: "72240636"
+    uid: 1961a0a4-48d2-48d6-8f77-2cfc052605c7
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5-c3eba9f2
+    dataEngine: v1
+    desireState: running
+    diskID: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-02-19T12:59:06Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:42:31Z"
+    lastHealthyAt: "2025-04-16T12:47:28Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi02
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5
+    volumeSize: "21474836480"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-10T07:02:52Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-10T07:02:52Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-10T07:03:02Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-19T12:48:56Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-cebb946b3b3be3279c2f59f7e76f53b9
+    ip: 192.168.3.239
+    logFetched: false
+    ownerID: zee8608workerapi02
+    port: 10164
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.3.239
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-04-16T13:01:28Z"
+    finalizers:
+    - longhorn.io
+    generation: 9
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+      longhornnode: zee8608workerapi01
+      longhornvolume: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5
+    name: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5-r-87791d47
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5
+      uid: ecb5b434-dc48-4963-89e1-f6d6b024aaf3
+    resourceVersion: "72251757"
+    uid: 097c2084-20e8-49c2-bf5e-b0f60fcc92a9
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5-ab442200
+    dataEngine: v1
+    desireState: running
+    diskID: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-23T16:59:49Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-23T16:56:30Z"
+    lastHealthyAt: "2025-06-23T16:59:49Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi01
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5
+    volumeSize: "21474836480"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:59:44Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:59:44Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:59:45Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:57:11Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-0d91d974e534c34183045b1d57ce4ece
+    ip: 192.168.5.224
+    logFetched: false
+    ownerID: zee8608workerapi01
+    port: 10117
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.5.224
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-02-10T07:02:49Z"
+    finalizers:
+    - longhorn.io
+    generation: 20510
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+      longhornnode: zee8608workerapi03
+      longhornvolume: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5
+    name: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5-r-cc3a4a1f
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5
+      uid: ecb5b434-dc48-4963-89e1-f6d6b024aaf3
+    resourceVersion: "72246939"
+    uid: 5cbca05a-b897-4ff7-9a18-b7fd1b21acf1
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5-231abc01
+    dataEngine: v1
+    desireState: running
+    diskID: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-23T16:48:59Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:42:31Z"
+    lastHealthyAt: "2025-06-23T16:48:59Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi03
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5
+    volumeSize: "21474836480"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-10T07:02:51Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-10T07:02:51Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-10T07:03:02Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-19T14:19:34Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-07ccad272ad0241589616ab358b3c6c2
+    ip: 192.168.4.3
+    logFetched: false
+    ownerID: zee8608workerapi03
+    port: 10094
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.4.3
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-06-23T16:39:24Z"
+    finalizers:
+    - longhorn.io
+    generation: 6
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+      longhornnode: zee8608workerapi01
+      longhornvolume: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047
+    name: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047-r-413b6ab3
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047
+      uid: 36c79664-509b-4cb1-91c3-fcdf99f971b6
+    resourceVersion: "72244999"
+    uid: c2a70edc-fa99-41d5-92a9-016bf0cff33b
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047-52077b7d
+    dataEngine: v1
+    desireState: running
+    diskID: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-23T16:39:39Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: ""
+    lastHealthyAt: "2025-06-23T16:45:46Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi01
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047
+    volumeSize: "4294967296"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:39:24Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:39:24Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:39:24Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:39:34Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-0d91d974e534c34183045b1d57ce4ece
+    ip: 192.168.5.224
+    logFetched: false
+    ownerID: zee8608workerapi01
+    port: 10066
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.5.224
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-03-04T08:40:52Z"
+    finalizers:
+    - longhorn.io
+    generation: 30
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+      longhornnode: zee8608workerapi02
+      longhornvolume: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047
+    name: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047-r-4aa59f7a
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047
+      uid: 36c79664-509b-4cb1-91c3-fcdf99f971b6
+    resourceVersion: "72244990"
+    uid: beb197a8-cd23-455c-8930-02873f4c809d
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047-5398093b
+    dataEngine: v1
+    desireState: running
+    diskID: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-20T20:37:50Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:27:35Z"
+    lastHealthyAt: "2025-06-23T16:45:46Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi02
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047
+    volumeSize: "4294967296"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T08:41:07Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T08:41:07Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T10:04:41Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-20T20:37:36Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-cebb946b3b3be3279c2f59f7e76f53b9
+    ip: 192.168.3.239
+    logFetched: false
+    ownerID: zee8608workerapi02
+    port: 10194
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.3.239
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-03-04T08:40:52Z"
+    finalizers:
+    - longhorn.io
+    generation: 30
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+      longhornnode: zee8608workerapi03
+      longhornvolume: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047
+    name: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047-r-e6c605b0
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047
+      uid: 36c79664-509b-4cb1-91c3-fcdf99f971b6
+    resourceVersion: "72244992"
+    uid: 3e926e0d-0966-44eb-b327-20f619dde0a7
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047-93599eed
+    dataEngine: v1
+    desireState: running
+    diskID: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-03-04T08:41:18Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:36:17Z"
+    lastHealthyAt: "2025-06-23T16:45:46Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi03
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047
+    volumeSize: "4294967296"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T08:41:07Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T08:41:07Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T08:41:10Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-07ccad272ad0241589616ab358b3c6c2
+    ip: 192.168.4.3
+    logFetched: false
+    ownerID: zee8608workerapi03
+    port: 10125
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.4.3
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-03-04T08:40:52Z"
+    finalizers:
+    - longhorn.io
+    generation: 3138
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+      longhornnode: zee8608workerapi02
+      longhornvolume: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426
+    name: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426-r-28db97ac
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426
+      uid: d052a3a8-1652-4438-a05b-cda2b65920f1
+    resourceVersion: "70961365"
+    uid: 922923cf-5903-4ca3-a432-98f27c8be2a6
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426-fd718331
+    dataEngine: v1
+    desireState: running
+    diskID: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-20T20:38:05Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:27:35Z"
+    lastHealthyAt: "2025-06-20T20:43:12Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi02
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426
+    volumeSize: "4294967296"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T08:41:10Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T08:41:10Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T10:04:41Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-20T20:37:36Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-cebb946b3b3be3279c2f59f7e76f53b9
+    ip: 192.168.3.239
+    logFetched: false
+    ownerID: zee8608workerapi02
+    port: 10053
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.3.239
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-03-04T08:40:52Z"
+    finalizers:
+    - longhorn.io
+    generation: 20614
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+      longhornnode: zee8608workerapi03
+      longhornvolume: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426
+    name: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426-r-65e9d182
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426
+      uid: d052a3a8-1652-4438-a05b-cda2b65920f1
+    resourceVersion: "70961354"
+    uid: 04a01f6b-c6af-490b-867e-73246f6e0768
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426-63588d34
+    dataEngine: v1
+    desireState: running
+    diskID: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-04-16T12:49:35Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:36:16Z"
+    lastHealthyAt: "2025-06-20T20:43:12Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi03
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426
+    volumeSize: "4294967296"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T08:41:06Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T08:41:06Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T08:41:10Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:48:02Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-07ccad272ad0241589616ab358b3c6c2
+    ip: 192.168.4.3
+    logFetched: false
+    ownerID: zee8608workerapi03
+    port: 10002
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.4.3
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-06-23T16:39:23Z"
+    finalizers:
+    - longhorn.io
+    generation: 3
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+      longhornnode: zee8608workerapi01
+      longhornvolume: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426
+    name: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426-r-a73c6d8f
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426
+      uid: d052a3a8-1652-4438-a05b-cda2b65920f1
+    resourceVersion: "72241036"
+    uid: 15cbef1c-1e98-498a-bcc2-4c2e7b3863c9
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426-6716aa90
+    dataEngine: v1
+    desireState: running
+    diskID: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-23T16:39:39Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: ""
+    lastHealthyAt: "2025-06-23T16:39:39Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi01
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426
+    volumeSize: "4294967296"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:39:23Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:39:23Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:39:24Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:39:34Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-0d91d974e534c34183045b1d57ce4ece
+    ip: 192.168.5.224
+    logFetched: false
+    ownerID: zee8608workerapi01
+    port: 10005
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.5.224
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-02-21T15:48:54Z"
+    finalizers:
+    - longhorn.io
+    generation: 17
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+      longhornnode: zee8608workerapi03
+      longhornvolume: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87
+    name: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87-r-08fc9bb3
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87
+      uid: 153b2497-447f-40b3-bde7-632756179913
+    resourceVersion: "70961216"
+    uid: 28efdef7-a485-4d1c-8037-6ea063588456
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87-b895dc90
+    dataEngine: v1
+    desireState: running
+    diskID: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-02-21T15:49:15Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:36:18Z"
+    lastHealthyAt: "2025-06-20T20:43:07Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi03
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87
+    volumeSize: "10737418240"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-21T15:49:01Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-21T15:49:01Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-21T15:49:05Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-07ccad272ad0241589616ab358b3c6c2
+    ip: 192.168.4.3
+    logFetched: false
+    ownerID: zee8608workerapi03
+    port: 10032
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.4.3
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-06-23T16:39:24Z"
+    finalizers:
+    - longhorn.io
+    generation: 3
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+      longhornnode: zee8608workerapi01
+      longhornvolume: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87
+    name: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87-r-4db87c96
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87
+      uid: 153b2497-447f-40b3-bde7-632756179913
+    resourceVersion: "72241016"
+    uid: c0648a23-a444-411c-b0ac-abcca9ee4353
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87-0e01fa0e
+    dataEngine: v1
+    desireState: running
+    diskID: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-23T16:39:38Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: ""
+    lastHealthyAt: "2025-06-23T16:39:38Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi01
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87
+    volumeSize: "10737418240"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:39:24Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:39:24Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:39:24Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:39:34Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-0d91d974e534c34183045b1d57ce4ece
+    ip: 192.168.5.224
+    logFetched: false
+    ownerID: zee8608workerapi01
+    port: 10025
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.5.224
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-04-16T12:48:55Z"
+    finalizers:
+    - longhorn.io
+    generation: 14
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+      longhornnode: zee8608workerapi02
+      longhornvolume: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87
+    name: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87-r-a3043530
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87
+      uid: 153b2497-447f-40b3-bde7-632756179913
+    resourceVersion: "70961143"
+    uid: cef8afe6-307c-4612-836d-34ef77ba653f
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87-54f3dbaf
+    dataEngine: v1
+    desireState: running
+    diskID: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-20T20:37:50Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:37:25Z"
+    lastHealthyAt: "2025-06-20T20:43:06Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi02
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87
+    volumeSize: "10737418240"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:46:49Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:46:49Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:46:49Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:47:00Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-cebb946b3b3be3279c2f59f7e76f53b9
+    ip: 192.168.3.239
+    logFetched: false
+    ownerID: zee8608workerapi02
+    port: 10063
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.3.239
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-04-16T12:48:55Z"
+    finalizers:
+    - longhorn.io
+    generation: 22
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+      longhornnode: zee8608workerapi02
+      longhornvolume: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc
+    name: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc-r-1010f431
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc
+      uid: 8cb5ac5c-1c16-4824-9e8a-65b026964513
+    resourceVersion: "72245237"
+    uid: 2fbe2203-4acd-4d30-bdbd-b8aa2b394d78
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc-696449a7
+    dataEngine: v1
+    desireState: running
+    diskID: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-04-16T12:47:09Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:42:38Z"
+    lastHealthyAt: "2025-06-23T16:46:04Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi02
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc
+    volumeSize: "4294967296"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:46:49Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:46:49Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:46:49Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:47:00Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-cebb946b3b3be3279c2f59f7e76f53b9
+    ip: 192.168.3.239
+    logFetched: false
+    ownerID: zee8608workerapi02
+    port: 10204
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.3.239
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-04-16T12:48:55Z"
+    finalizers:
+    - longhorn.io
+    generation: 21
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+      longhornnode: zee8608workerapi01
+      longhornvolume: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc
+    name: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc-r-3777e217
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc
+      uid: 8cb5ac5c-1c16-4824-9e8a-65b026964513
+    resourceVersion: "72245234"
+    uid: ec2db381-2738-4eb2-97f0-04c3f0febff7
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc-1865f0d6
+    dataEngine: v1
+    desireState: running
+    diskID: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-23T16:43:14Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-23T16:42:25Z"
+    lastHealthyAt: "2025-06-23T16:46:04Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi01
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc
+    volumeSize: "4294967296"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:46:49Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:46:49Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:47:06Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:42:46Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-0d91d974e534c34183045b1d57ce4ece
+    ip: 192.168.5.224
+    logFetched: false
+    ownerID: zee8608workerapi01
+    port: 10077
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.5.224
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-03-04T08:40:52Z"
+    finalizers:
+    - longhorn.io
+    generation: 28
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+      longhornnode: zee8608workerapi03
+      longhornvolume: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc
+    name: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc-r-91464976
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc
+      uid: 8cb5ac5c-1c16-4824-9e8a-65b026964513
+    resourceVersion: "72245236"
+    uid: 3f064b2b-e043-4557-ae7c-44cba984346b
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc-f429e796
+    dataEngine: v1
+    desireState: running
+    diskID: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-23T16:41:04Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:42:38Z"
+    lastHealthyAt: "2025-06-23T16:46:04Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi03
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc
+    volumeSize: "4294967296"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T08:41:10Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T08:41:10Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-04T08:41:10Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:39:40Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-07ccad272ad0241589616ab358b3c6c2
+    ip: 192.168.4.3
+    logFetched: false
+    ownerID: zee8608workerapi03
+    port: 10135
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.4.3
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-04-16T13:07:55Z"
+    finalizers:
+    - longhorn.io
+    generation: 20
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+      longhornnode: zee8608workerapi02
+      longhornvolume: pvc-eff7f51d-6933-4463-be30-349048ebf08a
+    name: pvc-eff7f51d-6933-4463-be30-349048ebf08a-r-1a180a0d
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-eff7f51d-6933-4463-be30-349048ebf08a
+      uid: 3f08ee16-e4ad-4d1f-83bd-5db82e896e27
+    resourceVersion: "70960482"
+    uid: c9bf6e8d-0f6f-46df-bf7b-8877e5f6614e
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-eff7f51d-6933-4463-be30-349048ebf08a-816ba6aa
+    dataEngine: v1
+    desireState: stopped
+    diskID: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-eff7f51d-6933-4463-be30-349048ebf08a-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-04-16T13:06:14Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: ""
+    lastHealthyAt: "2025-06-03T10:55:50Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi02
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-eff7f51d-6933-4463-be30-349048ebf08a
+    volumeSize: "2000683008"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T13:05:49Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T13:05:49Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T13:05:49Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T13:06:00Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: ""
+    currentState: stopped
+    evictionRequested: false
+    instanceManagerName: ""
+    ip: ""
+    logFetched: false
+    ownerID: zee8608workerapi02
+    port: 0
+    salvageExecuted: false
+    started: false
+    storageIP: ""
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-04-16T13:07:55Z"
+    finalizers:
+    - longhorn.io
+    generation: 23
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+      longhornnode: zee8608workerapi01
+      longhornvolume: pvc-eff7f51d-6933-4463-be30-349048ebf08a
+    name: pvc-eff7f51d-6933-4463-be30-349048ebf08a-r-8756d79f
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-eff7f51d-6933-4463-be30-349048ebf08a
+      uid: 3f08ee16-e4ad-4d1f-83bd-5db82e896e27
+    resourceVersion: "72238583"
+    uid: 379ddedf-12bd-4576-9780-a52911593172
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-eff7f51d-6933-4463-be30-349048ebf08a-0bd34ac4
+    dataEngine: v1
+    desireState: stopped
+    diskID: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-eff7f51d-6933-4463-be30-349048ebf08a-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-04-16T13:07:14Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-04-16T13:06:54Z"
+    lastHealthyAt: "2025-06-03T10:55:50Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi01
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-eff7f51d-6933-4463-be30-349048ebf08a
+    volumeSize: "2000683008"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T13:05:49Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T13:05:49Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T13:05:49Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T13:07:10Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: ""
+    currentState: stopped
+    evictionRequested: false
+    instanceManagerName: ""
+    ip: ""
+    logFetched: false
+    ownerID: zee8608workerapi01
+    port: 0
+    salvageExecuted: false
+    started: false
+    storageIP: ""
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-03-03T13:40:58Z"
+    finalizers:
+    - longhorn.io
+    generation: 27
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+      longhornnode: zee8608workerapi03
+      longhornvolume: pvc-eff7f51d-6933-4463-be30-349048ebf08a
+    name: pvc-eff7f51d-6933-4463-be30-349048ebf08a-r-ff963040
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-eff7f51d-6933-4463-be30-349048ebf08a
+      uid: 3f08ee16-e4ad-4d1f-83bd-5db82e896e27
+    resourceVersion: "70961186"
+    uid: 25c62396-166c-48e4-b490-467c6a1f18f5
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-eff7f51d-6933-4463-be30-349048ebf08a-b37b3cc0
+    dataEngine: v1
+    desireState: stopped
+    diskID: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-eff7f51d-6933-4463-be30-349048ebf08a-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-03-03T13:41:29Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: ""
+    lastHealthyAt: "2025-06-03T10:55:50Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi03
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-eff7f51d-6933-4463-be30-349048ebf08a
+    volumeSize: "2000683008"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-03T13:41:13Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-03T13:41:13Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-03T13:41:18Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    currentImage: ""
+    currentState: stopped
+    evictionRequested: false
+    instanceManagerName: ""
+    ip: ""
+    logFetched: false
+    ownerID: zee8608workerapi03
+    port: 0
+    salvageExecuted: false
+    started: false
+    storageIP: ""
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-06-23T16:48:51Z"
+    finalizers:
+    - longhorn.io
+    generation: 3
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+      longhornnode: zee8608workerapi01
+      longhornvolume: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3
+    name: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3-r-18f47483
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3
+      uid: 0277376f-bc24-4e72-bdb2-4b4d58fad385
+    resourceVersion: "72247331"
+    uid: 861a0926-277b-41b8-8d5d-79510fb87a79
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3-ea216cb9
+    dataEngine: v1
+    desireState: running
+    diskID: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-23T16:49:46Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: ""
+    lastHealthyAt: "2025-06-23T16:49:46Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi01
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3
+    volumeSize: "21474836480"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:48:51Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:48:51Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:48:51Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:49:02Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-0d91d974e534c34183045b1d57ce4ece
+    ip: 192.168.5.224
+    logFetched: false
+    ownerID: zee8608workerapi01
+    port: 10087
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.5.224
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-03-07T09:51:52Z"
+    finalizers:
+    - longhorn.io
+    generation: 30
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+      longhornnode: zee8608workerapi03
+      longhornvolume: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3
+    name: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3-r-3cc59985
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3
+      uid: 0277376f-bc24-4e72-bdb2-4b4d58fad385
+    resourceVersion: "72246851"
+    uid: 5a476f35-7127-4634-9a20-90e0d600ce33
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3-873b76ae
+    dataEngine: v1
+    desireState: running
+    diskID: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-23T16:48:51Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-23T16:47:37Z"
+    lastHealthyAt: "2025-06-23T16:48:51Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi03
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3
+    volumeSize: "21474836480"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-07T09:52:13Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-07T09:52:13Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-07T09:52:49Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:48:18Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-07ccad272ad0241589616ab358b3c6c2
+    ip: 192.168.4.3
+    logFetched: false
+    ownerID: zee8608workerapi03
+    port: 10145
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.4.3
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-03-07T09:51:52Z"
+    finalizers:
+    - longhorn.io
+    generation: 27
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+      longhornnode: zee8608workerapi02
+      longhornvolume: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3
+    name: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3-r-c0825e84
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3
+      uid: 0277376f-bc24-4e72-bdb2-4b4d58fad385
+    resourceVersion: "72242666"
+    uid: 78414c03-478c-4fe0-84f7-3a5f7dc78046
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3-c6fdf180
+    dataEngine: v1
+    desireState: running
+    diskID: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-03-07T09:52:57Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:42:34Z"
+    lastHealthyAt: "2025-06-23T16:42:16Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi02
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3
+    volumeSize: "21474836480"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-07T09:52:09Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-07T09:52:09Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-03-07T09:52:51Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-cebb946b3b3be3279c2f59f7e76f53b9
+    ip: 192.168.3.239
+    logFetched: false
+    ownerID: zee8608workerapi02
+    port: 10174
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.3.239
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-02-10T11:35:11Z"
+    finalizers:
+    - longhorn.io
+    generation: 43
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+      longhornnode: zee8608workerapi03
+      longhornvolume: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15
+    name: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15-r-0e28498f
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15
+      uid: d3d857a7-a5a5-43ab-97c9-6315f20b9c1c
+    resourceVersion: "72244400"
+    uid: 7833c989-f877-4fe7-be66-f12a9c6eaedc
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15-824e8e61
+    dataEngine: v1
+    desireState: running
+    diskID: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-23T16:45:19Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:42:38Z"
+    lastHealthyAt: "2025-06-23T16:45:19Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi03
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15
+    volumeSize: "2000683008"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-10T11:35:12Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-10T11:35:12Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-10T11:35:17Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-19T12:57:57Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-07ccad272ad0241589616ab358b3c6c2
+    ip: 192.168.4.3
+    logFetched: false
+    ownerID: zee8608workerapi03
+    port: 10104
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.4.3
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-02-10T11:35:11Z"
+    finalizers:
+    - longhorn.io
+    generation: 41
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+      longhornnode: zee8608workerapi02
+      longhornvolume: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15
+    name: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15-r-223d9cd9
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15
+      uid: d3d857a7-a5a5-43ab-97c9-6315f20b9c1c
+    resourceVersion: "72240635"
+    uid: 5bcf1854-def6-4999-a085-87dcb04c6037
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15-873a2393
+    dataEngine: v1
+    desireState: running
+    diskID: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-02-19T12:57:47Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-20T20:42:38Z"
+    lastHealthyAt: "2025-06-17T10:11:25Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi02
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15
+    volumeSize: "2000683008"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-10T11:35:12Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-10T11:35:12Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-10T11:35:17Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-19T12:50:12Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-cebb946b3b3be3279c2f59f7e76f53b9
+    ip: 192.168.3.239
+    logFetched: false
+    ownerID: zee8608workerapi02
+    port: 10144
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.3.239
+- apiVersion: longhorn.io/v1beta2
+  kind: Replica
+  metadata:
+    creationTimestamp: "2025-04-16T12:48:58Z"
+    finalizers:
+    - longhorn.io
+    generation: 29
+    labels:
+      longhorn.io/backing-image: ""
+      longhorndiskuuid: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+      longhornnode: zee8608workerapi01
+      longhornvolume: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15
+    name: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15-r-f43a11b0
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: longhorn.io/v1beta2
+      kind: Volume
+      name: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15
+      uid: d3d857a7-a5a5-43ab-97c9-6315f20b9c1c
+    resourceVersion: "72247702"
+    uid: 256fb579-7a9b-4e4e-bc9c-e50fbef1f8b8
+  spec:
+    active: true
+    backendStoreDriver: ""
+    backingImage: ""
+    dataDirectoryName: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15-c957a29b
+    dataEngine: v1
+    desireState: running
+    diskID: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+    diskPath: /zee_data/
+    engineImage: ""
+    engineName: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15-e-0
+    evictionRequested: false
+    failedAt: ""
+    hardNodeAffinity: ""
+    healthyAt: "2025-06-23T16:50:29Z"
+    image: longhornio/longhorn-engine:v1.8.0
+    lastFailedAt: "2025-06-23T16:48:50Z"
+    lastHealthyAt: "2025-06-23T16:50:29Z"
+    logRequested: false
+    migrationEngineName: ""
+    nodeID: zee8608workerapi01
+    rebuildRetryCount: 0
+    revisionCounterDisabled: true
+    salvageRequested: false
+    snapshotMaxCount: 250
+    snapshotMaxSize: "0"
+    unmapMarkDiskChainRemovedEnabled: false
+    volumeName: pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15
+    volumeSize: "2000683008"
+  status:
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:47:15Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: InstanceCreation
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:47:15Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: FilesystemReadOnly
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-04-16T12:47:15Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: WaitForBackingImage
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:49:31Z"
+      message: ""
+      reason: ""
+      status: "False"
+      type: RebuildFailed
+    currentImage: longhornio/longhorn-engine:v1.8.0
+    currentState: running
+    evictionRequested: false
+    instanceManagerName: instance-manager-0d91d974e534c34183045b1d57ce4ece
+    ip: 192.168.5.224
+    logFetched: false
+    ownerID: zee8608workerapi01
+    port: 10097
+    salvageExecuted: false
+    started: true
+    storageIP: 192.168.5.224
+kind: List
+metadata:
+  resourceVersion: ""

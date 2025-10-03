@@ -1,0 +1,99 @@
+apiVersion: v1
+items:
+- apiVersion: monitoring.coreos.com/v1
+  kind: Prometheus
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"monitoring.coreos.com/v1","kind":"Prometheus","metadata":{"annotations":{},"labels":{"app.kubernetes.io/component":"prometheus","app.kubernetes.io/instance":"k8s","app.kubernetes.io/name":"prometheus","app.kubernetes.io/part-of":"kube-prometheus","app.kubernetes.io/version":"2.39.1"},"name":"k8s","namespace":"kubesphere-monitoring-system"},"spec":{"affinity":{"nodeAffinity":{"preferredDuringSchedulingIgnoredDuringExecution":[{"preference":{"matchExpressions":[{"key":"node-role.kubernetes.io/monitoring","operator":"Exists"}]},"weight":100}]},"podAntiAffinity":{"preferredDuringSchedulingIgnoredDuringExecution":[{"podAffinityTerm":{"labelSelector":{"matchLabels":{"app.kubernetes.io/component":"prometheus","app.kubernetes.io/instance":"k8s","app.kubernetes.io/name":"prometheus","app.kubernetes.io/part-of":"kube-prometheus"}},"namespaces":["kubesphere-monitoring-system"],"topologyKey":"kubernetes.io/hostname"},"weight":100}]}},"alerting":{"alertmanagers":[{"name":"alertmanager-main","namespace":"kubesphere-monitoring-system","port":"web"}]},"evaluationInterval":"1m","image":"prom/prometheus:v2.39.1","nodeSelector":{"kubernetes.io/os":"linux"},"podMetadata":{"labels":{"app.kubernetes.io/component":"prometheus","app.kubernetes.io/instance":"k8s","app.kubernetes.io/name":"prometheus","app.kubernetes.io/part-of":"kube-prometheus","app.kubernetes.io/version":"2.39.1"}},"podMonitorNamespaceSelector":{},"podMonitorSelector":{},"query":{"maxConcurrency":1000},"replicas":2,"resources":{"limits":{"cpu":"4","memory":"16Gi"},"requests":{"cpu":"200m","memory":"400Mi"}},"retention":"7d","ruleNamespaceSelector":{},"ruleSelector":{"matchLabels":{"prometheus":"k8s","role":"alert-rules"}},"scrapeInterval":"1m","securityContext":{"fsGroup":0,"runAsNonRoot":false,"runAsUser":0},"serviceAccountName":"prometheus-k8s","serviceMonitorNamespaceSelector":{},"serviceMonitorSelector":{},"storage":{"volumeClaimTemplate":{"spec":{"resources":{"requests":{"storage":"20Gi"}}}}},"tolerations":[{"effect":"NoSchedule","key":"dedicated","operator":"Equal","value":"monitoring"}],"version":"v2.39.1"}}
+    creationTimestamp: "2025-02-10T07:02:15Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 2.39.1
+    name: k8s
+    namespace: kubesphere-monitoring-system
+    resourceVersion: "1022921"
+    uid: 4b040f98-bedd-48d7-8312-46382d0fa134
+  spec:
+    affinity:
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - preference:
+            matchExpressions:
+            - key: node-role.kubernetes.io/monitoring
+              operator: Exists
+          weight: 100
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector:
+              matchLabels:
+                app.kubernetes.io/component: prometheus
+                app.kubernetes.io/instance: k8s
+                app.kubernetes.io/name: prometheus
+                app.kubernetes.io/part-of: kube-prometheus
+            namespaces:
+            - kubesphere-monitoring-system
+            topologyKey: kubernetes.io/hostname
+          weight: 100
+    alerting:
+      alertmanagers:
+      - name: alertmanager-main
+        namespace: kubesphere-monitoring-system
+        port: web
+    evaluationInterval: 1m
+    image: prom/prometheus:v2.39.1
+    nodeSelector:
+      kubernetes.io/os: linux
+    podMetadata:
+      labels:
+        app.kubernetes.io/component: prometheus
+        app.kubernetes.io/instance: k8s
+        app.kubernetes.io/name: prometheus
+        app.kubernetes.io/part-of: kube-prometheus
+        app.kubernetes.io/version: 2.39.1
+    podMonitorNamespaceSelector: {}
+    podMonitorSelector: {}
+    query:
+      maxConcurrency: 1000
+    replicas: 2
+    resources:
+      limits:
+        cpu: "4"
+        memory: 16Gi
+      requests:
+        cpu: 200m
+        memory: 400Mi
+    retention: 7d
+    ruleNamespaceSelector: {}
+    ruleSelector:
+      matchLabels:
+        prometheus: k8s
+        role: alert-rules
+    scrapeInterval: 1m
+    securityContext:
+      fsGroup: 0
+      runAsNonRoot: false
+      runAsUser: 0
+    serviceAccountName: prometheus-k8s
+    serviceMonitorNamespaceSelector: {}
+    serviceMonitorSelector: {}
+    storage:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 20Gi
+    tolerations:
+    - effect: NoSchedule
+      key: dedicated
+      operator: Equal
+      value: monitoring
+    version: v2.39.1
+kind: List
+metadata:
+  resourceVersion: ""

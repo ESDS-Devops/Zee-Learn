@@ -1,0 +1,457 @@
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2025-02-10T07:02:13Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/component: exporter
+      app.kubernetes.io/name: kube-state-metrics
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 2.6.0
+      pod-template-hash: 99bf7fbb6
+    name: kube-state-metrics-99bf7fbb6
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: kube-state-metrics
+      uid: ba7f8cf9-b358-4a0f-a754-387cbc4af619
+    resourceVersion: "70961413"
+    uid: 2586c0b1-7d7b-48e7-a791-40da15dfd71c
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app.kubernetes.io/component: exporter
+        app.kubernetes.io/name: kube-state-metrics
+        app.kubernetes.io/part-of: kube-prometheus
+        pod-template-hash: 99bf7fbb6
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app.kubernetes.io/component: exporter
+          app.kubernetes.io/name: kube-state-metrics
+          app.kubernetes.io/part-of: kube-prometheus
+          app.kubernetes.io/version: 2.6.0
+          pod-template-hash: 99bf7fbb6
+      spec:
+        affinity: {}
+        containers:
+        - args:
+          - --host=127.0.0.1
+          - --port=8081
+          - --telemetry-host=127.0.0.1
+          - --telemetry-port=8082
+          - --metric-denylist=kube_.+_version,kube_.+_created,kube_deployment_(spec_paused|spec_strategy_rollingupdate_.+),kube_endpoint_(info|address_.+),kube_job_(info|owner|spec_(parallelism|active_deadline_seconds)|status_(active|.+_time)),kube_cronjob_(info|status_.+|spec_.+),kube_namespace_(status_phase),kube_persistentvolume_(info|capacity_.+),kube_persistentvolumeclaim_(resource_.+|access_.+),kube_secret_(type),kube_service_(spec_.+|status_.+),kube_ingress_(info|path|tls),kube_replicaset_(status_.+|spec_.+|owner),kube_poddisruptionbudget_status_.+,kube_replicationcontroller_.+,kube_node_info,kube_(hpa|replicaset|replicationcontroller)_.+_generation
+          - --metric-labels-allowlist=namespaces=[kubesphere.io/workspace],storageclasses=[storage.kubesphere.io/storagetype]
+          image: kubesphere/kube-state-metrics:v2.6.0
+          imagePullPolicy: IfNotPresent
+          name: kube-state-metrics
+          resources:
+            limits:
+              cpu: "1"
+              memory: 8Gi
+            requests:
+              cpu: 100m
+              memory: 150Mi
+          securityContext:
+            runAsUser: 65534
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/localtime
+            name: host-time
+            readOnly: true
+        - args:
+          - --logtostderr
+          - --secure-listen-address=:8443
+          - --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+          - --upstream=http://127.0.0.1:8081/
+          image: kubesphere/kube-rbac-proxy:v0.11.0
+          imagePullPolicy: IfNotPresent
+          name: kube-rbac-proxy-main
+          ports:
+          - containerPort: 8443
+            name: https-main
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 100Mi
+            requests:
+              cpu: 10m
+              memory: 20Mi
+          securityContext:
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        - args:
+          - --logtostderr
+          - --secure-listen-address=:9443
+          - --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+          - --upstream=http://127.0.0.1:8082/
+          image: kubesphere/kube-rbac-proxy:v0.11.0
+          imagePullPolicy: IfNotPresent
+          name: kube-rbac-proxy-self
+          ports:
+          - containerPort: 9443
+            name: https-self
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 100Mi
+            requests:
+              cpu: 10m
+              memory: 20Mi
+          securityContext:
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          kubernetes.io/os: linux
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: kube-state-metrics
+        serviceAccountName: kube-state-metrics
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - hostPath:
+            path: /etc/localtime
+            type: ""
+          name: host-time
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "2"
+      deployment.kubernetes.io/max-replicas: "3"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2025-02-10T07:03:20Z"
+    generation: 1
+    labels:
+      app: notification-manager
+      notification-manager: notification-manager
+      pod-template-hash: c9d789f99
+    name: notification-manager-deployment-c9d789f99
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: notification-manager-deployment
+      uid: 0a20c955-5c79-4da2-93a3-2274adb4e6ab
+    resourceVersion: "72238182"
+    uid: fceec78a-ae96-4af7-bfb1-a1732e1ad323
+  spec:
+    replicas: 2
+    selector:
+      matchLabels:
+        app: notification-manager
+        notification-manager: notification-manager
+        pod-template-hash: c9d789f99
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: notification-manager
+          notification-manager: notification-manager
+          pod-template-hash: c9d789f99
+      spec:
+        affinity: {}
+        containers:
+        - env:
+          - name: NAMESPACE
+            value: kubesphere-monitoring-federated
+          image: kubesphere/notification-manager:v2.3.0
+          imagePullPolicy: IfNotPresent
+          name: notification-manager
+          ports:
+          - containerPort: 19093
+            name: webhook
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 500Mi
+            requests:
+              cpu: 5m
+              memory: 20Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        - image: kubesphere/notification-tenant-sidecar:v3.2.0
+          imagePullPolicy: IfNotPresent
+          name: tenant
+          ports:
+          - containerPort: 19094
+            name: tenant
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: notification-manager-sa
+        serviceAccountName: notification-manager-sa
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 2
+    fullyLabeledReplicas: 2
+    observedGeneration: 1
+    readyReplicas: 2
+    replicas: 2
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+      meta.helm.sh/release-name: notification-manager
+      meta.helm.sh/release-namespace: kubesphere-monitoring-system
+    creationTimestamp: "2025-02-10T07:03:08Z"
+    generation: 1
+    labels:
+      control-plane: controller-manager
+      pod-template-hash: 9949f4878
+    name: notification-manager-operator-9949f4878
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: notification-manager-operator
+      uid: 0f6f8eab-7ac2-4184-8323-82b56d3d1fde
+    resourceVersion: "70961450"
+    uid: 4764bed3-304c-4992-b336-dcea8b5c0305
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        control-plane: controller-manager
+        pod-template-hash: 9949f4878
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          control-plane: controller-manager
+          pod-template-hash: 9949f4878
+      spec:
+        affinity: {}
+        containers:
+        - args:
+          - --secure-listen-address=0.0.0.0:8443
+          - --upstream=http://127.0.0.1:8080/
+          - --logtostderr=true
+          - --v=10
+          image: kubesphere/kube-rbac-proxy:v0.11.0
+          imagePullPolicy: IfNotPresent
+          name: kube-rbac-proxy
+          ports:
+          - containerPort: 8443
+            name: https
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 50m
+              memory: 50Mi
+            requests:
+              cpu: 5m
+              memory: 10Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        - args:
+          - --metrics-addr=127.0.0.1:8080
+          - --enable-leader-election
+          command:
+          - /notification-manager-operator
+          env:
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          image: kubesphere/notification-manager-operator:v2.3.0
+          imagePullPolicy: IfNotPresent
+          name: notification-manager-operator
+          ports:
+          - containerPort: 9443
+            name: webhook-server
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 50m
+              memory: 50Mi
+            requests:
+              cpu: 5m
+              memory: 20Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /tmp/k8s-webhook-server/serving-certs
+            name: cert
+            readOnly: true
+          - mountPath: /etc/localtime
+            name: host-time
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: notification-manager-sa
+        serviceAccountName: notification-manager-sa
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: cert
+          secret:
+            defaultMode: 420
+            secretName: notification-manager-webhook-server-cert
+        - hostPath:
+            path: /etc/localtime
+            type: ""
+          name: host-time
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2025-02-10T07:01:43Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/name: prometheus-operator
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: v0.55.1
+      pod-template-hash: 7888d46fbd
+    name: prometheus-operator-7888d46fbd
+    namespace: kubesphere-monitoring-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: prometheus-operator
+      uid: 2ddf1ca9-6bf3-4104-836b-5025696f2f44
+    resourceVersion: "72238474"
+    uid: 7c2ce707-9dc5-4ef8-b683-d23a233162b6
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app.kubernetes.io/component: controller
+        app.kubernetes.io/name: prometheus-operator
+        app.kubernetes.io/part-of: kube-prometheus
+        pod-template-hash: 7888d46fbd
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/default-container: prometheus-operator
+        creationTimestamp: null
+        labels:
+          app.kubernetes.io/component: controller
+          app.kubernetes.io/name: prometheus-operator
+          app.kubernetes.io/part-of: kube-prometheus
+          app.kubernetes.io/version: v0.55.1
+          pod-template-hash: 7888d46fbd
+      spec:
+        affinity: {}
+        containers:
+        - args:
+          - --kubelet-service=kube-system/kubelet
+          - --prometheus-config-reloader=kubesphere/prometheus-config-reloader:v0.55.1
+          image: kubesphere/prometheus-operator:v0.55.1
+          imagePullPolicy: IfNotPresent
+          name: prometheus-operator
+          ports:
+          - containerPort: 8080
+            name: http
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        - args:
+          - --logtostderr
+          - --secure-listen-address=:8443
+          - --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+          - --upstream=http://127.0.0.1:8080/
+          image: kubesphere/kube-rbac-proxy:v0.11.0
+          imagePullPolicy: IfNotPresent
+          name: kube-rbac-proxy
+          ports:
+          - containerPort: 8443
+            name: https
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 100Mi
+            requests:
+              cpu: 10m
+              memory: 20Mi
+          securityContext:
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          kubernetes.io/os: linux
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 65534
+        serviceAccount: prometheus-operator
+        serviceAccountName: prometheus-operator
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+kind: List
+metadata:
+  resourceVersion: ""

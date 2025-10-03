@@ -1,0 +1,326 @@
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app.kubernetes.io/component":"operator","app.kubernetes.io/name":"fluentbit-operator"},"name":"fluentbit-operator","namespace":"kubesphere-logging-system"},"spec":{"selector":{"matchLabels":{"app.kubernetes.io/component":"operator","app.kubernetes.io/name":"fluentbit-operator"}},"template":{"metadata":{"labels":{"app.kubernetes.io/component":"operator","app.kubernetes.io/name":"fluentbit-operator"}},"spec":{"affinity":{},"containers":[{"image":"kubesphere/fluentbit-operator:v0.14.0","name":"fluentbit-operator","resources":{"limits":{"cpu":"200m","memory":"200Mi"},"requests":{"cpu":"10m","memory":"20Mi"}},"volumeMounts":[{"mountPath":"/fluentbit-operator","name":"env"}]}],"initContainers":[{"command":["/bin/sh","-c","set -ex; echo CONTAINER_ROOT_DIR=/var/log \u003e /fluentbit-operator/fluent-bit.env"],"image":"docker:19.03","name":"setenv","volumeMounts":[{"mountPath":"/fluentbit-operator","name":"env"}]}],"nodeSelector":{},"serviceAccountName":"fluentbit-operator","tolerations":[],"volumes":[{"emptyDir":{},"name":"env"}]}}}}
+    creationTimestamp: "2025-03-04T08:41:05Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/component: operator
+      app.kubernetes.io/name: fluentbit-operator
+    name: fluentbit-operator
+    namespace: kubesphere-logging-system
+    resourceVersion: "72245154"
+    uid: 1403052d-4a96-44dd-bcc9-87d1047bf8d7
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app.kubernetes.io/component: operator
+        app.kubernetes.io/name: fluentbit-operator
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app.kubernetes.io/component: operator
+          app.kubernetes.io/name: fluentbit-operator
+      spec:
+        affinity: {}
+        containers:
+        - image: kubesphere/fluentbit-operator:v0.14.0
+          imagePullPolicy: IfNotPresent
+          name: fluentbit-operator
+          resources:
+            limits:
+              cpu: 200m
+              memory: 200Mi
+            requests:
+              cpu: 10m
+              memory: 20Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /fluentbit-operator
+            name: env
+        dnsPolicy: ClusterFirst
+        initContainers:
+        - command:
+          - /bin/sh
+          - -c
+          - set -ex; echo CONTAINER_ROOT_DIR=/var/log > /fluentbit-operator/fluent-bit.env
+          image: docker:19.03
+          imagePullPolicy: IfNotPresent
+          name: setenv
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /fluentbit-operator
+            name: env
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: fluentbit-operator
+        serviceAccountName: fluentbit-operator
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - emptyDir: {}
+          name: env
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2025-03-04T08:40:54Z"
+      lastUpdateTime: "2025-03-04T08:41:31Z"
+      message: ReplicaSet "fluentbit-operator-c9568f955" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2025-06-23T16:45:58Z"
+      lastUpdateTime: "2025-06-23T16:45:58Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      meta.helm.sh/release-name: kube-auditing
+      meta.helm.sh/release-namespace: kubesphere-logging-system
+    creationTimestamp: "2025-03-04T08:44:16Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: Helm
+    name: kube-auditing-operator
+    namespace: kubesphere-logging-system
+    resourceVersion: "72245050"
+    uid: a9e34c6a-f60e-43ec-8fe7-df50788fd561
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        name: kube-auditing-operator
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          name: kube-auditing-operator
+      spec:
+        affinity: {}
+        containers:
+        - command:
+          - kube-auditing-operator
+          env:
+          - name: WATCH_NAMESPACE
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          - name: OPERATOR_NAME
+            value: kube-auditing-operator
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          image: kubesphere/kube-auditing-operator:v0.2.0
+          imagePullPolicy: IfNotPresent
+          name: kube-auditing-operator
+          resources:
+            limits:
+              cpu: 200m
+              memory: 200Mi
+            requests:
+              cpu: 20m
+              memory: 20Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/localtime
+            name: host-time
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: kube-auditing-operator
+        serviceAccountName: kube-auditing-operator
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - hostPath:
+            path: /etc/localtime
+            type: ""
+          name: host-time
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2025-03-04T08:44:05Z"
+      lastUpdateTime: "2025-03-04T08:44:12Z"
+      message: ReplicaSet "kube-auditing-operator-67bf65bdcf" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2025-06-23T16:45:49Z"
+      lastUpdateTime: "2025-06-23T16:45:49Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2025-03-04T08:44:25Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: Helm
+    name: kube-auditing-webhook-deploy
+    namespace: kubesphere-logging-system
+    ownerReferences:
+    - apiVersion: auditing.kubesphere.io/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Webhook
+      name: kube-auditing-webhook
+      uid: 381df018-419a-4c6e-a83a-8edcf99ab1a4
+    resourceVersion: "72246342"
+    uid: ecde8bcd-d4e0-4054-a154-4351358b9f95
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 2
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: kube-auditing-webhook
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: kube-auditing-webhook
+      spec:
+        affinity: {}
+        containers:
+        - args:
+          - --port=6443
+          - --tls=true
+          command:
+          - kube-auditing-webhook
+          - --auditing-webhook-name=kube-auditing-webhook
+          image: kubesphere/kube-auditing-webhook:v0.2.0
+          imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              httpGet:
+                path: /preStop
+                port: 6443
+                scheme: HTTPS
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /readiness
+              port: 6443
+              scheme: HTTPS
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 3
+          name: kube-auditing-webhook
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /readiness
+              port: 6443
+              scheme: HTTPS
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 3
+          resources:
+            limits:
+              cpu: 200m
+              memory: 500Mi
+            requests:
+              cpu: 20m
+              memory: 50Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/kube/auditing/
+            name: cert
+            readOnly: true
+          - mountPath: /etc/localtime
+            name: host-time
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: kube-auditing-operator
+        serviceAccountName: kube-auditing-operator
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: cert
+          secret:
+            defaultMode: 420
+            secretName: kube-auditing-webhook-secret
+        - hostPath:
+            path: /etc/localtime
+            type: ""
+          name: host-time
+  status:
+    availableReplicas: 2
+    conditions:
+    - lastTransitionTime: "2025-03-04T08:44:14Z"
+      lastUpdateTime: "2025-03-04T08:44:35Z"
+      message: ReplicaSet "kube-auditing-webhook-deploy-5dc6f88977" has successfully
+        progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2025-06-23T16:47:58Z"
+      lastUpdateTime: "2025-06-23T16:47:58Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 1
+    readyReplicas: 2
+    replicas: 2
+    updatedReplicas: 2
+kind: List
+metadata:
+  resourceVersion: ""

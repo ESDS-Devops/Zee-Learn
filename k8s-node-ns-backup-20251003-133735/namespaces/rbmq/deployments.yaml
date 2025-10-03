@@ -1,0 +1,321 @@
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "2"
+      meta.helm.sh/release-name: rabbitmq
+      meta.helm.sh/release-namespace: rbmq
+    creationTimestamp: "2025-02-21T15:47:25Z"
+    generation: 2
+    labels:
+      app.kubernetes.io/component: rabbitmq-operator
+      app.kubernetes.io/instance: rabbitmq
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: rabbitmq-cluster-operator
+      app.kubernetes.io/part-of: rabbitmq
+      app.kubernetes.io/version: 2.12.1
+      helm.sh/chart: rabbitmq-cluster-operator-4.4.5
+    name: rabbitmq-rabbitmq-cluster-operator
+    namespace: rbmq
+    resourceVersion: "70961644"
+    uid: 3a6b7c8b-405f-495b-993e-b6fcde597074
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app.kubernetes.io/component: rabbitmq-operator
+        app.kubernetes.io/instance: rabbitmq
+        app.kubernetes.io/name: rabbitmq-cluster-operator
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-30T12:29:34+05:30"
+        creationTimestamp: null
+        labels:
+          app.kubernetes.io/component: rabbitmq-operator
+          app.kubernetes.io/instance: rabbitmq
+          app.kubernetes.io/managed-by: Helm
+          app.kubernetes.io/name: rabbitmq-cluster-operator
+          app.kubernetes.io/part-of: rabbitmq
+          app.kubernetes.io/version: 2.12.1
+          helm.sh/chart: rabbitmq-cluster-operator-4.4.5
+      spec:
+        affinity:
+          podAntiAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/component: rabbitmq-operator
+                    app.kubernetes.io/instance: rabbitmq
+                    app.kubernetes.io/name: rabbitmq-cluster-operator
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+        automountServiceAccountToken: true
+        containers:
+        - args:
+          - --metrics-bind-address=:9782
+          command:
+          - /manager
+          env:
+          - name: OPERATOR_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: DEFAULT_RABBITMQ_IMAGE
+            value: docker.io/bitnami/rabbitmq:4.0.6-debian-12-r0
+          - name: DEFAULT_USER_UPDATER_IMAGE
+            value: docker.io/bitnami/rmq-default-credential-updater:1.0.5-debian-12-r4
+          image: docker.io/bitnami/rabbitmq-cluster-operator:2.12.1-debian-12-r3
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 5
+            initialDelaySeconds: 5
+            periodSeconds: 30
+            successThreshold: 1
+            tcpSocket:
+              port: http
+            timeoutSeconds: 5
+          name: rabbitmq-cluster-operator
+          ports:
+          - containerPort: 9782
+            name: http
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /metrics
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: 150m
+              ephemeral-storage: 2Gi
+              memory: 192Mi
+            requests:
+              cpu: 100m
+              ephemeral-storage: 50Mi
+              memory: 128Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 1001
+            runAsNonRoot: true
+            runAsUser: 1001
+            seLinuxOptions: {}
+            seccompProfile:
+              type: RuntimeDefault
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext:
+          fsGroup: 1001
+          fsGroupChangePolicy: Always
+        serviceAccount: rabbitmq-rabbitmq-cluster-operator
+        serviceAccountName: rabbitmq-rabbitmq-cluster-operator
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2025-02-21T15:47:25Z"
+      lastUpdateTime: "2025-05-30T07:03:37Z"
+      message: ReplicaSet "rabbitmq-rabbitmq-cluster-operator-7d48ffb769" has successfully
+        progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2025-06-20T20:43:22Z"
+      lastUpdateTime: "2025-06-20T20:43:22Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "2"
+      meta.helm.sh/release-name: rabbitmq
+      meta.helm.sh/release-namespace: rbmq
+    creationTimestamp: "2025-02-21T15:47:25Z"
+    generation: 2
+    labels:
+      app.kubernetes.io/component: messaging-topology-operator
+      app.kubernetes.io/instance: rabbitmq
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: rabbitmq-cluster-operator
+      app.kubernetes.io/part-of: rabbitmq
+      app.kubernetes.io/version: 1.16.0
+      helm.sh/chart: rabbitmq-cluster-operator-4.4.5
+    name: rabbitmq-rabbitmq-messaging-topology-operator
+    namespace: rbmq
+    resourceVersion: "71496619"
+    uid: 7bf17940-e853-413f-8d88-ac47743a1b87
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app.kubernetes.io/component: messaging-topology-operator
+        app.kubernetes.io/instance: rabbitmq
+        app.kubernetes.io/name: rabbitmq-cluster-operator
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-30T12:32:49+05:30"
+        creationTimestamp: null
+        labels:
+          app.kubernetes.io/component: messaging-topology-operator
+          app.kubernetes.io/instance: rabbitmq
+          app.kubernetes.io/managed-by: Helm
+          app.kubernetes.io/name: rabbitmq-cluster-operator
+          app.kubernetes.io/part-of: rabbitmq
+          app.kubernetes.io/version: 1.16.0
+          helm.sh/chart: rabbitmq-cluster-operator-4.4.5
+      spec:
+        affinity:
+          podAntiAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/component: messaging-topology-operator
+                    app.kubernetes.io/instance: rabbitmq
+                    app.kubernetes.io/name: rabbitmq-cluster-operator
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+        automountServiceAccountToken: true
+        containers:
+        - args:
+          - --metrics-bind-address=:8080
+          command:
+          - /manager
+          env:
+          - name: OPERATOR_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          image: docker.io/bitnami/rmq-messaging-topology-operator:1.16.0-debian-12-r1
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 5
+            initialDelaySeconds: 5
+            periodSeconds: 30
+            successThreshold: 1
+            tcpSocket:
+              port: http-metrics
+            timeoutSeconds: 5
+          name: rabbitmq-cluster-operator
+          ports:
+          - containerPort: 9443
+            name: https-webhook
+            protocol: TCP
+          - containerPort: 8080
+            name: http-metrics
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /metrics
+              port: http-metrics
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: 150m
+              ephemeral-storage: 2Gi
+              memory: 192Mi
+            requests:
+              cpu: 100m
+              ephemeral-storage: 50Mi
+              memory: 128Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 1001
+            runAsNonRoot: true
+            runAsUser: 1001
+            seLinuxOptions: {}
+            seccompProfile:
+              type: RuntimeDefault
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /tmp/k8s-webhook-server/serving-certs
+            name: cert
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext:
+          fsGroup: 1001
+          fsGroupChangePolicy: Always
+        serviceAccount: rabbitmq-rabbitmq-messaging-topology-operator
+        serviceAccountName: rabbitmq-rabbitmq-messaging-topology-operator
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: cert
+          secret:
+            defaultMode: 420
+            secretName: rabbitmq-rabbitmq-messaging-topology-operator-webhook
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2025-02-21T15:47:25Z"
+      lastUpdateTime: "2025-05-30T07:06:21Z"
+      message: ReplicaSet "rabbitmq-rabbitmq-messaging-topology-operator-58f55d7f57"
+        has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2025-06-22T01:04:28Z"
+      lastUpdateTime: "2025-06-22T01:04:28Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+kind: List
+metadata:
+  resourceVersion: ""

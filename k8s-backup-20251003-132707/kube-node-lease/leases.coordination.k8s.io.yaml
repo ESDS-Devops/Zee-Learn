@@ -1,0 +1,107 @@
+apiVersion: v1
+items:
+- apiVersion: coordination.k8s.io/v1
+  kind: Lease
+  metadata:
+    creationTimestamp: "2025-02-07T07:59:18Z"
+    name: zee8608masterapi01
+    namespace: kube-node-lease
+    ownerReferences:
+    - apiVersion: v1
+      kind: Node
+      name: zee8608masterapi01
+      uid: 11c19884-be32-41bc-8747-929a8a145cc0
+    resourceVersion: "122979980"
+    uid: ccff0068-cfeb-49c7-9620-5a1fe3bb77a4
+  spec:
+    holderIdentity: zee8608masterapi01
+    leaseDurationSeconds: 40
+    renewTime: "2025-10-03T07:58:46.795307Z"
+- apiVersion: coordination.k8s.io/v1
+  kind: Lease
+  metadata:
+    creationTimestamp: "2025-02-07T08:02:14Z"
+    name: zee8608masterapi02
+    namespace: kube-node-lease
+    ownerReferences:
+    - apiVersion: v1
+      kind: Node
+      name: zee8608masterapi02
+      uid: 629d0995-9d9f-4d7e-9fef-4c8103bd0f19
+    resourceVersion: "122979971"
+    uid: 606b24f9-5d0c-4521-967c-4879ab6e1549
+  spec:
+    holderIdentity: zee8608masterapi02
+    leaseDurationSeconds: 40
+    renewTime: "2025-10-03T07:58:02.695810Z"
+- apiVersion: coordination.k8s.io/v1
+  kind: Lease
+  metadata:
+    creationTimestamp: "2025-02-07T08:04:04Z"
+    name: zee8608masterapi03
+    namespace: kube-node-lease
+    ownerReferences:
+    - apiVersion: v1
+      kind: Node
+      name: zee8608masterapi03
+      uid: b6f50658-eda0-4043-87cd-cc9eb5aecced
+    resourceVersion: "122979935"
+    uid: 2cbe7410-fd82-43cf-8128-0c80ec7dd271
+  spec:
+    holderIdentity: zee8608masterapi03
+    leaseDurationSeconds: 40
+    renewTime: "2025-10-03T07:57:35.597902Z"
+- apiVersion: coordination.k8s.io/v1
+  kind: Lease
+  metadata:
+    creationTimestamp: "2025-02-07T08:15:49Z"
+    name: zee8608workerapi01
+    namespace: kube-node-lease
+    ownerReferences:
+    - apiVersion: v1
+      kind: Node
+      name: zee8608workerapi01
+      uid: 607e01e2-6bdd-484f-ad6e-fd2492e46c67
+    resourceVersion: "122979982"
+    uid: 93510046-77a7-4ae5-ad44-54e176a492ac
+  spec:
+    holderIdentity: zee8608workerapi01
+    leaseDurationSeconds: 40
+    renewTime: "2025-10-03T07:57:54.232020Z"
+- apiVersion: coordination.k8s.io/v1
+  kind: Lease
+  metadata:
+    creationTimestamp: "2025-02-07T08:04:39Z"
+    name: zee8608workerapi02
+    namespace: kube-node-lease
+    ownerReferences:
+    - apiVersion: v1
+      kind: Node
+      name: zee8608workerapi02
+      uid: b17faf6c-f8e6-410a-9473-9237a22e0c13
+    resourceVersion: "122979981"
+    uid: 29c8cbdb-763f-45b2-a227-3e54bf155ecc
+  spec:
+    holderIdentity: zee8608workerapi02
+    leaseDurationSeconds: 40
+    renewTime: "2025-10-03T07:57:57.688762Z"
+- apiVersion: coordination.k8s.io/v1
+  kind: Lease
+  metadata:
+    creationTimestamp: "2025-02-07T08:07:51Z"
+    name: zee8608workerapi03
+    namespace: kube-node-lease
+    ownerReferences:
+    - apiVersion: v1
+      kind: Node
+      name: zee8608workerapi03
+      uid: 1e4d30ae-fd34-490e-96ff-03345e1eb644
+    resourceVersion: "122979944"
+    uid: 0b11eb06-dcd7-4212-bde5-49a69d931e43
+  spec:
+    holderIdentity: zee8608workerapi03
+    leaseDurationSeconds: 40
+    renewTime: "2025-10-03T07:57:37.583455Z"
+kind: List
+metadata:
+  resourceVersion: ""

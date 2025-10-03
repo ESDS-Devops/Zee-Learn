@@ -1,0 +1,728 @@
+apiVersion: v1
+items:
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/aggregation-roles: '["role-template-view-members","role-template-manage-members",
+        "role-template-view-roles","role-template-manage-roles", "role-template-view-app-workloads","role-template-manage-app-workloads",
+        "role-template-view-volumes","role-template-manage-volumes", "role-template-view-snapshots","role-template-manage-snapshots",
+        "role-template-view-secrets","role-template-manage-secrets", "role-template-view-serviceaccount","role-template-manage-serviceaccount",
+        "role-template-view-configmaps","role-template-manage-configmaps", "role-template-view-alerting-policies","role-template-manage-alerting-policies",
+        "role-template-view-alerting-messages", "role-template-view-custom-monitoring","role-template-manage-custom-monitoring",
+        "role-template-view-pipelines","role-template-manage-pipelines", "role-template-view-pipelineruns","role-template-manage-pipelineruns",
+        "role-template-view-credentials","role-template-manage-credentials", "role-template-view-gitrepositories","role-template-manage-gitrepositories",
+        "role-template-view-gitops-applications","role-template-manage-gitops-applications",
+        "role-template-manage-project-settings","role-template-manage-devops-settings"]'
+      kubesphere.io/creator: system
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    name: admin
+    namespace: kube-node-lease
+    resourceVersion: "1024794"
+    uid: f9f2a46e-cfc7-445f-a473-7ed70e918bd1
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - '*'
+    verbs:
+    - '*'
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/aggregation-roles: '["role-template-view-members","role-template-view-roles",
+        "role-template-view-app-workloads","role-template-manage-app-workloads", "role-template-view-volumes","role-template-manage-volumes",
+        "role-template-view-snapshots","role-template-manage-snapshots", "role-template-view-secrets","role-template-manage-secrets",
+        "role-template-view-serviceaccount","role-template-manage-serviceaccount",
+        "role-template-view-configmaps","role-template-manage-configmaps", "role-template-view-alerting-policies","role-template-manage-alerting-policies",
+        "role-template-view-alerting-messages", "role-template-view-custom-monitoring","role-template-manage-custom-monitoring",
+        "role-template-view-pipelines","role-template-manage-pipelines", "role-template-view-pipelineruns","role-template-manage-pipelineruns",
+        "role-template-view-credentials","role-template-manage-credentials", "role-template-view-gitrepositories","role-template-manage-gitrepositories",
+        "role-template-view-gitops-applications","role-template-manage-gitops-applications"]'
+      kubesphere.io/creator: system
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    name: operator
+    namespace: kube-node-lease
+    resourceVersion: "1024788"
+    uid: 3681be9c-2202-4a94-a8bc-5a824ceca5b8
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - '*'
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - ""
+    - apps
+    - extensions
+    - batch
+    - logging.kubesphere.io
+    - monitoring.kubesphere.io
+    - monitoring.coreos.com
+    - metering.kubesphere.io
+    - notification.kubesphere.io
+    - autoscaling
+    - alerting.kubesphere.io
+    - openpitrix.io
+    - app.k8s.io
+    - servicemesh.kubesphere.io
+    - operations.kubesphere.io
+    - devops.kubesphere.io
+    - gitops.kubesphere.io
+    - resources.kubesphere.io
+    - config.istio.io
+    - events.k8s.io
+    - events.kubesphere.io
+    - snapshot.storage.k8s.io
+    - monitoring.coreos.com
+    - networking.k8s.io
+    resources:
+    - '*'
+    verbs:
+    - '*'
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/dependencies: '["role-template-view-alerting-policies"]'
+      iam.kubesphere.io/module: Monitoring & Alerting
+      iam.kubesphere.io/role-template-rules: '{"alert-rules": "manage"}'
+      kubesphere.io/alias-name: Alerting Policies Management
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-manage-alerting-policies
+    namespace: kube-node-lease
+    resourceVersion: "1024798"
+    uid: c4c712c8-fb8f-4668-a9b7-41301e4ca84c
+  rules:
+  - apiGroups:
+    - alerting.kubesphere.io
+    resources:
+    - '*'
+    verbs:
+    - '*'
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/dependencies: '["role-template-view-app-workloads"]'
+      iam.kubesphere.io/module: Application Workloads
+      iam.kubesphere.io/role-template-rules: '{"applications":"manage","deployments":"manage","statefulsets":"manage",
+        "daemonsets":"manage","jobs":"manage","cronjobs":"manage","pods":"manage","services":"manage","ingresses":"manage",
+        "s2ibuilders":"manage","grayscale-release": "manage"}'
+      kubesphere.io/alias-name: Application Workloads Management
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-manage-app-workloads
+    namespace: kube-node-lease
+    resourceVersion: "1024795"
+    uid: c3a8d306-50d3-4b41-bd6a-cc7cd44ec2e6
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - services
+    - applications
+    - controllerrevisions
+    - deployments
+    - replicasets
+    - statefulsets
+    - daemonsets
+    - jobs
+    - cronjobs
+    - pods
+    - pods/log
+    - pods/exec
+    - pods/containers
+    - services
+    - ingresses
+    - router
+    - workloads
+    - s2ibinaries
+    - s2ibinaries/file
+    - s2ibuilders
+    - s2ibuildertemplates
+    - s2iruns
+    - horizontalpodautoscalers
+    verbs:
+    - '*'
+  - apiGroups:
+    - '*'
+    resources:
+    - secrets
+    verbs:
+    - list
+  - apiGroups:
+    - servicemesh.kubesphere.io
+    resources:
+    - '*'
+    verbs:
+    - '*'
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/dependencies: '["role-template-view-configmaps"]'
+      iam.kubesphere.io/module: Configuration Center
+      iam.kubesphere.io/role-template-rules: '{"configmaps": "manage"}'
+      kubesphere.io/alias-name: ConfigMaps Management
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-manage-configmaps
+    namespace: kube-node-lease
+    resourceVersion: "1024779"
+    uid: 4915a109-8548-46fe-9243-4ac32374c049
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - configmaps
+    verbs:
+    - '*'
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/dependencies: '["role-template-view-custom-monitoring"]'
+      iam.kubesphere.io/module: Monitoring & Alerting
+      iam.kubesphere.io/role-template-rules: '{"custom-monitoring": "manage"}'
+      kubesphere.io/alias-name: Custom Monitoring Management
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-manage-custom-monitoring
+    namespace: kube-node-lease
+    resourceVersion: "1024789"
+    uid: 5eb32c09-be5b-4234-aa17-98a584292b5f
+  rules:
+  - apiGroups:
+    - monitoring.kubesphere.io
+    - metering.kubesphere.io
+    - monitoring.coreos.com
+    resources:
+    - '*'
+    verbs:
+    - '*'
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/module: Access Control
+      iam.kubesphere.io/role-template-rules: '{"members": "manage"}'
+      kubesphere.io/alias-name: Project Members Management
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "false"
+    name: role-template-manage-members
+    namespace: kube-node-lease
+    resourceVersion: "1024791"
+    uid: e626c3fb-47a0-42a3-834f-d8ca5ff49c99
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - members
+    - rolebindings
+    verbs:
+    - '*'
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/module: Project Settings
+      iam.kubesphere.io/role-template-rules: '{"project-settings": "manage"}'
+      kubesphere.io/alias-name: Project Settings
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-manage-project-settings
+    namespace: kube-node-lease
+    resourceVersion: "1024784"
+    uid: dfd4bb95-f4c9-4185-866d-c82d0abd3a58
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - '*'
+    verbs:
+    - '*'
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/module: Access Control
+      iam.kubesphere.io/role-template-rules: '{"roles": "manage"}'
+      kubesphere.io/alias-name: Project Roles Management
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "false"
+    name: role-template-manage-roles
+    namespace: kube-node-lease
+    resourceVersion: "1024785"
+    uid: 2894d80b-bdcd-46ba-b130-9f417f035e5b
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - roles
+    verbs:
+    - '*'
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/dependencies: '["role-template-view-secrets"]'
+      iam.kubesphere.io/module: Configuration Center
+      iam.kubesphere.io/role-template-rules: '{"secrets": "manage"}'
+      kubesphere.io/alias-name: Secrets Management
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-manage-secrets
+    namespace: kube-node-lease
+    resourceVersion: "1024792"
+    uid: 41ef43b6-4808-4542-a967-c34a749fe41b
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - secrets
+    verbs:
+    - '*'
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/dependencies: '["role-template-view-serviceaccount"]'
+      iam.kubesphere.io/module: Configuration Center
+      iam.kubesphere.io/role-template-rules: '{"serviceaccounts": "manage"}'
+      kubesphere.io/alias-name: ServiceAccount Management
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-manage-serviceaccount
+    namespace: kube-node-lease
+    resourceVersion: "1024786"
+    uid: 87b7a2f0-e0e4-4972-a1b4-69ca67f4a66d
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - serviceaccounts
+    verbs:
+    - '*'
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/dependencies: '["role-template-view-snapshots"]'
+      iam.kubesphere.io/module: Storage Management
+      iam.kubesphere.io/role-template-rules: '{"volume-snapshots": "manage"}'
+      kubesphere.io/alias-name: Volume Snapshots Management
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-manage-snapshots
+    namespace: kube-node-lease
+    resourceVersion: "1024787"
+    uid: 5d7e0394-b38e-4296-8647-4549b6458499
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - volumesnapshots
+    verbs:
+    - '*'
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/dependencies: '["role-template-view-volumes","role-template-manage-snapshots"]'
+      iam.kubesphere.io/module: Storage Management
+      iam.kubesphere.io/role-template-rules: '{"volumes": "manage"}'
+      kubesphere.io/alias-name: Volumes Management
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-manage-volumes
+    namespace: kube-node-lease
+    resourceVersion: "1024783"
+    uid: fd0c6c87-7743-4c8b-9a5a-db6b72501000
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - persistentvolumeclaims
+    verbs:
+    - '*'
+  - apiGroups:
+    - '*'
+    resources:
+    - pods
+    verbs:
+    - list
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/module: Monitoring & Alerting
+      iam.kubesphere.io/role-template-rules: '{"alerts": "view"}'
+      kubesphere.io/alias-name: Alerting Messages View
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-view-alerting-messages
+    namespace: kube-node-lease
+    resourceVersion: "1024796"
+    uid: 8b35b2ef-083b-4915-9dae-0491db71cd0b
+  rules:
+  - apiGroups:
+    - alerting.kubesphere.io
+    resources:
+    - '*'
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/module: Monitoring & Alerting
+      iam.kubesphere.io/role-template-rules: '{"alert-rules": "view"}'
+      kubesphere.io/alias-name: Alerting Policies View
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-view-alerting-policies
+    namespace: kube-node-lease
+    resourceVersion: "1024797"
+    uid: 01f6b8e7-d337-4578-8780-52988fcedae7
+  rules:
+  - apiGroups:
+    - alerting.kubesphere.io
+    resources:
+    - '*'
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - resources.kubesphere.io
+    resources:
+    - '*'
+    verbs:
+    - list
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/dependencies: '["role-template-view-volumes","role-template-view-secrets","role-template-view-configmaps"]'
+      iam.kubesphere.io/module: Application Workloads
+      iam.kubesphere.io/role-template-rules: '{"applications":"view","deployments":"view","statefulsets":"view",
+        "daemonsets":"view","jobs":"view","cronjobs":"view","pods":"view","services":"view","ingresses":"view"}'
+      kubesphere.io/alias-name: Application Workloads View
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-view-app-workloads
+    namespace: kube-node-lease
+    resourceVersion: "1024793"
+    uid: dc21ef0e-f6b7-400d-8b7a-f9d3f3a05f88
+  rules:
+  - apiGroups:
+    - monitoring.kubesphere.io
+    - metering.kubesphere.io
+    - monitoring.coreos.com
+    - servicemesh.kubesphere.io
+    resources:
+    - '*'
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - '*'
+    resources:
+    - services
+    - applications
+    - controllerrevisions
+    - deployments
+    - replicasets
+    - statefulsets
+    - daemonsets
+    - jobs
+    - cronjobs
+    - pods
+    - pods/log
+    - pods/containers
+    - services
+    - ingresses
+    - router
+    - s2ibinaries
+    - s2ibinaries/file
+    - s2ibuilders
+    - s2ibuildertemplates
+    - s2iruns
+    - horizontalpodautoscalers
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/role-template-rules: '{"basic": "view"}'
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-view-basic
+    namespace: kube-node-lease
+    resourceVersion: "1024799"
+    uid: f2bf775a-c205-422f-898d-05e4e0b4496f
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - namespaces
+    - quotas
+    - abnormalworkloads
+    - workloads
+    - limitranges
+    - events
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/module: Configuration Center
+      iam.kubesphere.io/role-template-rules: '{"configmaps": "view"}'
+      kubesphere.io/alias-name: ConfigMaps View
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-view-configmaps
+    namespace: kube-node-lease
+    resourceVersion: "1024780"
+    uid: 011ce3bf-d8bf-4861-bcdb-b11e756fa101
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - configmaps
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/module: Monitoring & Alerting
+      iam.kubesphere.io/role-template-rules: '{"custom-monitoring": "view"}'
+      kubesphere.io/alias-name: Custom Monitoring View
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-view-custom-monitoring
+    namespace: kube-node-lease
+    resourceVersion: "1024778"
+    uid: 74f2a9d2-4aa6-4c1c-a792-286e77033693
+  rules:
+  - apiGroups:
+    - monitoring.kubesphere.io
+    - metering.kubesphere.io
+    - monitoring.coreos.com
+    resources:
+    - '*'
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/module: Access Control
+      iam.kubesphere.io/role-template-rules: '{"members": "view"}'
+      kubesphere.io/alias-name: Project Members View
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-view-members
+    namespace: kube-node-lease
+    resourceVersion: "1024790"
+    uid: 58118e74-23f0-4395-a45c-8bb3123abb47
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - members
+    - rolebindings
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/dependencies: '["role-template-view-members"]'
+      iam.kubesphere.io/module: Access Control
+      iam.kubesphere.io/role-template-rules: '{"roles": "view"}'
+      kubesphere.io/alias-name: Project Roles View
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-view-roles
+    namespace: kube-node-lease
+    resourceVersion: "1024800"
+    uid: 8ea9125d-e126-4beb-9453-8f23a7fe8eb1
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - roles
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/module: Configuration Center
+      iam.kubesphere.io/role-template-rules: '{"secrets": "view"}'
+      kubesphere.io/alias-name: Secrets View
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-view-secrets
+    namespace: kube-node-lease
+    resourceVersion: "1024781"
+    uid: fdfe9309-2a86-4afb-9864-78264c14389b
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - secrets
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/dependencies: '["role-template-view-roles","role-template-view-secrets"]'
+      iam.kubesphere.io/module: Configuration Center
+      iam.kubesphere.io/role-template-rules: '{"serviceaccounts": "view"}'
+      kubesphere.io/alias-name: ServiceAccount View
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-view-serviceaccount
+    namespace: kube-node-lease
+    resourceVersion: "1024776"
+    uid: cd9f5d2e-9092-4f24-b647-d246b96030c6
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - serviceaccounts
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/module: Storage Management
+      iam.kubesphere.io/role-template-rules: '{"volume-snapshots": "view"}'
+      kubesphere.io/alias-name: Volume Snapshots View
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-view-snapshots
+    namespace: kube-node-lease
+    resourceVersion: "1024777"
+    uid: 2ede80d0-3d20-4547-8a64-b035d48219d3
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - volumesnapshots
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/dependencies: '["role-template-view-snapshots"]'
+      iam.kubesphere.io/module: Storage Management
+      iam.kubesphere.io/role-template-rules: '{"volumes": "view"}'
+      kubesphere.io/alias-name: Volumes View
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    labels:
+      iam.kubesphere.io/role-template: "true"
+    name: role-template-view-volumes
+    namespace: kube-node-lease
+    resourceVersion: "1024782"
+    uid: 431adf6d-2a3c-4ef6-8a6a-58733b5a01d4
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - persistentvolumeclaims
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - '*'
+    resources:
+    - pods
+    verbs:
+    - list
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      iam.kubesphere.io/aggregation-roles: '["role-template-view-members","role-template-view-roles",
+        "role-template-view-app-workloads","role-template-view-custom-monitoring",
+        "role-template-view-volumes","role-template-view-snapshots", "role-template-view-secrets","role-template-view-configmaps","role-template-view-serviceaccount",
+        "role-template-view-alerting-policies","role-template-view-alerting-messages",
+        "role-template-view-pipelines","role-template-view-pipelineruns","role-template-view-credentials",
+        "role-template-view-gitrepositories", "role-template-view-gitops-applications"]'
+      kubesphere.io/creator: system
+    creationTimestamp: "2025-02-10T07:04:44Z"
+    name: viewer
+    namespace: kube-node-lease
+    resourceVersion: "1024801"
+    uid: cc9dd03a-f85a-4014-9e00-6bf095e90339
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - '*'
+    verbs:
+    - get
+    - list
+    - watch
+kind: List
+metadata:
+  resourceVersion: ""

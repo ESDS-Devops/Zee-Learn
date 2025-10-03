@@ -1,0 +1,33 @@
+apiVersion: v1
+items:
+- apiVersion: coordination.k8s.io/v1
+  kind: Lease
+  metadata:
+    creationTimestamp: "2025-02-07T12:37:42Z"
+    name: messaging-topology-operator-leader-election
+    namespace: default
+    resourceVersion: "43601"
+    uid: 3f58412f-1a4f-4d75-8758-dd14d6724833
+  spec:
+    acquireTime: "2025-02-07T12:37:41.591028Z"
+    holderIdentity: rabbitmq-cluster-rabbitmq-messaging-topology-operator-5c4fz69nw_ea162298-b628-4c14-9696-26962f21e0c9
+    leaseDurationSeconds: 15
+    leaseTransitions: 0
+    renewTime: "2025-02-07T12:44:51.560317Z"
+- apiVersion: coordination.k8s.io/v1
+  kind: Lease
+  metadata:
+    creationTimestamp: "2025-02-07T12:37:41Z"
+    name: rabbitmq-cluster-operator-leader-election
+    namespace: default
+    resourceVersion: "43599"
+    uid: 9f12b441-705c-4d31-a20b-4eb8e0fe1688
+  spec:
+    acquireTime: "2025-02-07T12:37:41.338718Z"
+    holderIdentity: rabbitmq-cluster-rabbitmq-cluster-operator-b76c655d4-8v8sf_cd6a4284-c9ba-438c-9678-80571d64764d
+    leaseDurationSeconds: 15
+    leaseTransitions: 0
+    renewTime: "2025-02-07T12:44:51.189969Z"
+kind: List
+metadata:
+  resourceVersion: ""

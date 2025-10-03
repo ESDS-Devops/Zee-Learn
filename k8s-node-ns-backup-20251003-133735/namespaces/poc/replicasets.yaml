@@ -1,0 +1,5595 @@
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "27"
+      kubernetes.io/change-cause: kubectl set image deployment/cmsapi-deploy cmsapi=devzeelearn/cmsapi-poc:30
+        --namespace=poc --record=true
+    creationTimestamp: "2025-08-07T12:45:32Z"
+    generation: 2
+    labels:
+      app: cmsapi-app
+      environment: poc
+      pod-template-hash: 5596b8dcbf
+      project: zee-project
+    name: cmsapi-deploy-5596b8dcbf
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: cmsapi-deploy
+      uid: 6bf36a4a-1cfa-4720-bb23-adbd2c2d46cc
+    resourceVersion: "111274606"
+    uid: b6ce1221-d31a-4967-8e29-54fbaf373f41
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: cmsapi-app
+        pod-template-hash: 5596b8dcbf
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: cmsapi-app
+          environment: poc
+          pod-template-hash: 5596b8dcbf
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: cmsapi-config
+          - secretRef:
+              name: cmsapi-secrets
+          image: devzeelearn/cmsapi-poc:30
+          imagePullPolicy: Always
+          name: cmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "25"
+      kubernetes.io/change-cause: kubectl set image deployment/cmsapi-deploy cmsapi=devzeelearn/cmsapi-poc:28
+        --namespace=poc --record=true
+    creationTimestamp: "2025-07-29T07:38:06Z"
+    generation: 2
+    labels:
+      app: cmsapi-app
+      environment: poc
+      pod-template-hash: 55b67b596d
+      project: zee-project
+    name: cmsapi-deploy-55b67b596d
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: cmsapi-deploy
+      uid: 6bf36a4a-1cfa-4720-bb23-adbd2c2d46cc
+    resourceVersion: "95387358"
+    uid: e3bf9c76-45b1-42a3-b6fe-4967dafd46ed
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: cmsapi-app
+        pod-template-hash: 55b67b596d
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: cmsapi-app
+          environment: poc
+          pod-template-hash: 55b67b596d
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: cmsapi-config
+          - secretRef:
+              name: cmsapi-secrets
+          image: devzeelearn/cmsapi-poc:28
+          imagePullPolicy: Always
+          name: cmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "21"
+      kubernetes.io/change-cause: kubectl set image deployment/cmsapi-deploy cmsapi=devzeelearn/cmsapi-poc:24
+        --namespace=poc --record=true
+    creationTimestamp: "2025-05-30T09:15:55Z"
+    generation: 2
+    labels:
+      app: cmsapi-app
+      environment: poc
+      pod-template-hash: 57b975d968
+      project: zee-project
+    name: cmsapi-deploy-57b975d968
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: cmsapi-deploy
+      uid: 6bf36a4a-1cfa-4720-bb23-adbd2c2d46cc
+    resourceVersion: "70187608"
+    uid: e61d8dc7-aeb5-4ed6-9ccb-6b4b858cad7c
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: cmsapi-app
+        pod-template-hash: 57b975d968
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: cmsapi-app
+          environment: poc
+          pod-template-hash: 57b975d968
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: cmsapi-config
+          - secretRef:
+              name: cmsapi-secrets
+          image: devzeelearn/cmsapi-poc:24
+          imagePullPolicy: Always
+          name: cmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "26"
+      kubernetes.io/change-cause: kubectl set image deployment/cmsapi-deploy cmsapi=devzeelearn/cmsapi-poc:29
+        --namespace=poc --record=true
+    creationTimestamp: "2025-08-07T09:06:31Z"
+    generation: 2
+    labels:
+      app: cmsapi-app
+      environment: poc
+      pod-template-hash: 5f855f8455
+      project: zee-project
+    name: cmsapi-deploy-5f855f8455
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: cmsapi-deploy
+      uid: 6bf36a4a-1cfa-4720-bb23-adbd2c2d46cc
+    resourceVersion: "95462694"
+    uid: 14ec10d8-83cf-4e4f-897f-f2863768234a
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: cmsapi-app
+        pod-template-hash: 5f855f8455
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: cmsapi-app
+          environment: poc
+          pod-template-hash: 5f855f8455
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: cmsapi-config
+          - secretRef:
+              name: cmsapi-secrets
+          image: devzeelearn/cmsapi-poc:29
+          imagePullPolicy: Always
+          name: cmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "29"
+      kubernetes.io/change-cause: kubectl set image deployment/cmsapi-deploy cmsapi=devzeelearn/cmsapi-poc:32
+        --namespace=poc --record=true
+    creationTimestamp: "2025-09-19T11:33:47Z"
+    generation: 2
+    labels:
+      app: cmsapi-app
+      environment: poc
+      pod-template-hash: 65c56bbb4c
+      project: zee-project
+    name: cmsapi-deploy-65c56bbb4c
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: cmsapi-deploy
+      uid: 6bf36a4a-1cfa-4720-bb23-adbd2c2d46cc
+    resourceVersion: "116220370"
+    uid: 45e00e97-297a-4f11-8d3e-8675aec3d9dc
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: cmsapi-app
+        pod-template-hash: 65c56bbb4c
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: cmsapi-app
+          environment: poc
+          pod-template-hash: 65c56bbb4c
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: cmsapi-config
+          - secretRef:
+              name: cmsapi-secrets
+          image: devzeelearn/cmsapi-poc:32
+          imagePullPolicy: Always
+          name: cmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "31"
+      kubernetes.io/change-cause: kubectl set image deployment/cmsapi-deploy cmsapi=devzeelearn/cmsapi-poc:181
+        --namespace=poc --record=true
+    creationTimestamp: "2025-09-23T08:40:53Z"
+    generation: 1
+    labels:
+      app: cmsapi-app
+      environment: poc
+      pod-template-hash: 67c4fffb7d
+      project: zee-project
+    name: cmsapi-deploy-67c4fffb7d
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: cmsapi-deploy
+      uid: 6bf36a4a-1cfa-4720-bb23-adbd2c2d46cc
+    resourceVersion: "118157776"
+    uid: 3513541d-789c-40ce-9f79-b5014a5bd0c1
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: cmsapi-app
+        pod-template-hash: 67c4fffb7d
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: cmsapi-app
+          environment: poc
+          pod-template-hash: 67c4fffb7d
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: cmsapi-config
+          - secretRef:
+              name: cmsapi-secrets
+          image: devzeelearn/cmsapi-poc:181
+          imagePullPolicy: Always
+          name: cmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "22"
+      kubernetes.io/change-cause: kubectl set image deployment/cmsapi-deploy cmsapi=devzeelearn/cmsapi-poc:25
+        --namespace=poc --record=true
+    creationTimestamp: "2025-06-19T09:20:07Z"
+    generation: 4
+    labels:
+      app: cmsapi-app
+      environment: poc
+      pod-template-hash: 68cfb7dd59
+      project: zee-project
+    name: cmsapi-deploy-68cfb7dd59
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: cmsapi-deploy
+      uid: 6bf36a4a-1cfa-4720-bb23-adbd2c2d46cc
+    resourceVersion: "79950355"
+    uid: 0e74e998-5e87-46ee-bfc0-92db4d9da92f
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: cmsapi-app
+        pod-template-hash: 68cfb7dd59
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: cmsapi-app
+          environment: poc
+          pod-template-hash: 68cfb7dd59
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: cmsapi-config
+          - secretRef:
+              name: cmsapi-secrets
+          image: devzeelearn/cmsapi-poc:25
+          imagePullPolicy: Always
+          name: cmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 4
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "20"
+      kubernetes.io/change-cause: kubectl set image deployment/cmsapi-deploy cmsapi=devzeelearn/cmsapi-poc:23
+        --namespace=poc --record=true
+    creationTimestamp: "2025-05-29T10:39:53Z"
+    generation: 2
+    labels:
+      app: cmsapi-app
+      environment: poc
+      pod-template-hash: 74bdc8f59c
+      project: zee-project
+    name: cmsapi-deploy-74bdc8f59c
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: cmsapi-deploy
+      uid: 6bf36a4a-1cfa-4720-bb23-adbd2c2d46cc
+    resourceVersion: "59750364"
+    uid: 775a30e8-a3cc-4347-a636-c0fb96f4e4cc
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: cmsapi-app
+        pod-template-hash: 74bdc8f59c
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: cmsapi-app
+          environment: poc
+          pod-template-hash: 74bdc8f59c
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: cmsapi-config
+          - secretRef:
+              name: cmsapi-secrets
+          image: devzeelearn/cmsapi-poc:23
+          imagePullPolicy: Always
+          name: cmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "23"
+      kubernetes.io/change-cause: kubectl set image deployment/cmsapi-deploy cmsapi=devzeelearn/cmsapi-poc:26
+        --namespace=poc --record=true
+    creationTimestamp: "2025-07-08T07:29:02Z"
+    generation: 2
+    labels:
+      app: cmsapi-app
+      environment: poc
+      pod-template-hash: 78d8865d6
+      project: zee-project
+    name: cmsapi-deploy-78d8865d6
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: cmsapi-deploy
+      uid: 6bf36a4a-1cfa-4720-bb23-adbd2c2d46cc
+    resourceVersion: "87861563"
+    uid: 99d4b88c-7e32-42d6-95d0-0f1646aa642f
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: cmsapi-app
+        pod-template-hash: 78d8865d6
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: cmsapi-app
+          environment: poc
+          pod-template-hash: 78d8865d6
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: cmsapi-config
+          - secretRef:
+              name: cmsapi-secrets
+          image: devzeelearn/cmsapi-poc:26
+          imagePullPolicy: Always
+          name: cmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "30"
+      deployment.kubernetes.io/revision-history: "28"
+      kubernetes.io/change-cause: kubectl set image deployment/cmsapi-deploy cmsapi=devzeelearn/cmsapi-poc:31
+        --namespace=poc --record=true
+    creationTimestamp: "2025-09-09T06:13:35Z"
+    generation: 2
+    labels:
+      app: cmsapi-app
+      environment: poc
+      pod-template-hash: 78f9df9b7d
+      project: zee-project
+    name: cmsapi-deploy-78f9df9b7d
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: cmsapi-deploy
+      uid: 6bf36a4a-1cfa-4720-bb23-adbd2c2d46cc
+    resourceVersion: "118157786"
+    uid: 3c64ca27-5cb5-4c44-b4ee-d8ca6f3b28c9
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: cmsapi-app
+        pod-template-hash: 78f9df9b7d
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: cmsapi-app
+          environment: poc
+          pod-template-hash: 78f9df9b7d
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: cmsapi-config
+          - secretRef:
+              name: cmsapi-secrets
+          image: devzeelearn/cmsapi-poc:31
+          imagePullPolicy: Always
+          name: cmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "24"
+      kubernetes.io/change-cause: kubectl set image deployment/cmsapi-deploy cmsapi=devzeelearn/cmsapi-poc:27
+        --namespace=poc --record=true
+    creationTimestamp: "2025-07-23T10:25:47Z"
+    generation: 2
+    labels:
+      app: cmsapi-app
+      environment: poc
+      pod-template-hash: 7b7674976f
+      project: zee-project
+    name: cmsapi-deploy-7b7674976f
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: cmsapi-deploy
+      uid: 6bf36a4a-1cfa-4720-bb23-adbd2c2d46cc
+    resourceVersion: "90899195"
+    uid: c4425e70-16d6-46d9-89b2-7025c2d20cbd
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: cmsapi-app
+        pod-template-hash: 7b7674976f
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: cmsapi-app
+          environment: poc
+          pod-template-hash: 7b7674976f
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: cmsapi-config
+          - secretRef:
+              name: cmsapi-secrets
+          image: devzeelearn/cmsapi-poc:27
+          imagePullPolicy: Always
+          name: cmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "36"
+      kubernetes.io/change-cause: kubectl set image deployment/graphql-deploy graphql=devzeelearn/graphql:47
+        --namespace=poc --record=true
+    creationTimestamp: "2025-07-02T09:03:08Z"
+    generation: 2
+    labels:
+      app: graphql-app
+      environment: poc
+      pod-template-hash: 578d77cb75
+      project: zee-project
+    name: graphql-deploy-578d77cb75
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: graphql-deploy
+      uid: 458b2800-369b-49eb-aec6-2664603a5939
+    resourceVersion: "81092873"
+    uid: 98e64222-8dfd-45cb-8e30-cab814e4dc1a
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: graphql-app
+        pod-template-hash: 578d77cb75
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-12T17:09:16+05:30"
+          kubesphere.io/restartedAt: "2025-03-10T07:55:53.367Z"
+        creationTimestamp: null
+        labels:
+          app: graphql-app
+          environment: poc
+          pod-template-hash: 578d77cb75
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: graphql-config
+          - secretRef:
+              name: graphql-secrets
+          image: devzeelearn/graphql:47
+          imagePullPolicy: Always
+          name: graphql
+          ports:
+          - containerPort: 5015
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "35"
+      kubernetes.io/change-cause: kubectl set image deployment/graphql-deploy graphql=devzeelearn/graphql:46
+        --namespace=poc --record=true
+    creationTimestamp: "2025-06-26T05:49:26Z"
+    generation: 2
+    labels:
+      app: graphql-app
+      environment: poc
+      pod-template-hash: 59c9c4d5d4
+      project: zee-project
+    name: graphql-deploy-59c9c4d5d4
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: graphql-deploy
+      uid: 458b2800-369b-49eb-aec6-2664603a5939
+    resourceVersion: "76856438"
+    uid: 58312aba-27ca-481e-9145-71bb63a9c0eb
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: graphql-app
+        pod-template-hash: 59c9c4d5d4
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-12T17:09:16+05:30"
+          kubesphere.io/restartedAt: "2025-03-10T07:55:53.367Z"
+        creationTimestamp: null
+        labels:
+          app: graphql-app
+          environment: poc
+          pod-template-hash: 59c9c4d5d4
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: graphql-config
+          - secretRef:
+              name: graphql-secrets
+          image: devzeelearn/graphql:46
+          imagePullPolicy: Always
+          name: graphql
+          ports:
+          - containerPort: 5015
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "38"
+      kubernetes.io/change-cause: kubectl set image deployment/graphql-deploy graphql=devzeelearn/graphql:49
+        --namespace=poc --record=true
+    creationTimestamp: "2025-08-25T09:25:52Z"
+    generation: 2
+    labels:
+      app: graphql-app
+      environment: poc
+      pod-template-hash: 65d5c5c5fc
+      project: zee-project
+    name: graphql-deploy-65d5c5c5fc
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: graphql-deploy
+      uid: 458b2800-369b-49eb-aec6-2664603a5939
+    resourceVersion: "104523759"
+    uid: b58e4c3e-5d47-4b5e-8a95-3c16aa2c9a01
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: graphql-app
+        pod-template-hash: 65d5c5c5fc
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-12T17:09:16+05:30"
+          kubesphere.io/restartedAt: "2025-03-10T07:55:53.367Z"
+        creationTimestamp: null
+        labels:
+          app: graphql-app
+          environment: poc
+          pod-template-hash: 65d5c5c5fc
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: graphql-config
+          - secretRef:
+              name: graphql-secrets
+          image: devzeelearn/graphql:49
+          imagePullPolicy: Always
+          name: graphql
+          ports:
+          - containerPort: 5015
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "31"
+      kubernetes.io/change-cause: kubectl set image deployment/graphql-deploy graphql=devzeelearn/graphql:42
+        --namespace=poc --record=true
+    creationTimestamp: "2025-06-18T08:07:36Z"
+    generation: 2
+    labels:
+      app: graphql-app
+      environment: poc
+      pod-template-hash: 686d9bfddd
+      project: zee-project
+    name: graphql-deploy-686d9bfddd
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: graphql-deploy
+      uid: 458b2800-369b-49eb-aec6-2664603a5939
+    resourceVersion: "69656743"
+    uid: cc155502-dd98-494b-89f9-f6e445a782a9
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: graphql-app
+        pod-template-hash: 686d9bfddd
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-12T17:09:16+05:30"
+          kubesphere.io/restartedAt: "2025-03-10T07:55:53.367Z"
+        creationTimestamp: null
+        labels:
+          app: graphql-app
+          environment: poc
+          pod-template-hash: 686d9bfddd
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: graphql-config
+          - secretRef:
+              name: graphql-secrets
+          image: devzeelearn/graphql:42
+          imagePullPolicy: Always
+          name: graphql
+          ports:
+          - containerPort: 5015
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "29"
+      kubernetes.io/change-cause: kubectl set image deployment/graphql-deploy graphql=devzeelearn/graphql:40
+        --namespace=poc --record=true
+    creationTimestamp: "2025-06-18T08:06:05Z"
+    generation: 3
+    labels:
+      app: graphql-app
+      environment: poc
+      pod-template-hash: 69c75b9ccd
+      project: zee-project
+    name: graphql-deploy-69c75b9ccd
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: graphql-deploy
+      uid: 458b2800-369b-49eb-aec6-2664603a5939
+    resourceVersion: "69638761"
+    uid: 427670e0-f80b-4f5f-b6ba-b2c3b9f19813
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: graphql-app
+        pod-template-hash: 69c75b9ccd
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-12T17:09:16+05:30"
+          kubesphere.io/restartedAt: "2025-03-10T07:55:53.367Z"
+        creationTimestamp: null
+        labels:
+          app: graphql-app
+          environment: poc
+          pod-template-hash: 69c75b9ccd
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: graphql-config
+          - secretRef:
+              name: graphql-secrets
+          image: devzeelearn/graphql:40
+          imagePullPolicy: Always
+          name: graphql
+          ports:
+          - containerPort: 5015
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 3
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "39"
+      kubernetes.io/change-cause: kubectl set image deployment/graphql-deploy graphql=devzeelearn/graphql:50
+        --namespace=poc --record=true
+    creationTimestamp: "2025-08-26T05:26:41Z"
+    generation: 1
+    labels:
+      app: graphql-app
+      environment: poc
+      pod-template-hash: 77cb567f9
+      project: zee-project
+    name: graphql-deploy-77cb567f9
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: graphql-deploy
+      uid: 458b2800-369b-49eb-aec6-2664603a5939
+    resourceVersion: "104523747"
+    uid: c614f15c-cdfb-4923-ab34-20a297d05863
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: graphql-app
+        pod-template-hash: 77cb567f9
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-12T17:09:16+05:30"
+          kubesphere.io/restartedAt: "2025-03-10T07:55:53.367Z"
+        creationTimestamp: null
+        labels:
+          app: graphql-app
+          environment: poc
+          pod-template-hash: 77cb567f9
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: graphql-config
+          - secretRef:
+              name: graphql-secrets
+          image: devzeelearn/graphql:50
+          imagePullPolicy: Always
+          name: graphql
+          ports:
+          - containerPort: 5015
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "30"
+      kubernetes.io/change-cause: kubectl set image deployment/graphql-deploy graphql=devzeelearn/graphql:41
+        --namespace=poc --record=true
+    creationTimestamp: "2025-06-18T08:06:11Z"
+    generation: 3
+    labels:
+      app: graphql-app
+      environment: poc
+      pod-template-hash: 794ddc8f77
+      project: zee-project
+    name: graphql-deploy-794ddc8f77
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: graphql-deploy
+      uid: 458b2800-369b-49eb-aec6-2664603a5939
+    resourceVersion: "69639567"
+    uid: 07e5840d-9bfb-4361-9601-61cb9e2663ca
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: graphql-app
+        pod-template-hash: 794ddc8f77
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-12T17:09:16+05:30"
+          kubesphere.io/restartedAt: "2025-03-10T07:55:53.367Z"
+        creationTimestamp: null
+        labels:
+          app: graphql-app
+          environment: poc
+          pod-template-hash: 794ddc8f77
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: graphql-config
+          - secretRef:
+              name: graphql-secrets
+          image: devzeelearn/graphql:41
+          imagePullPolicy: Always
+          name: graphql
+          ports:
+          - containerPort: 5015
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 3
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "37"
+      kubernetes.io/change-cause: kubectl set image deployment/graphql-deploy graphql=devzeelearn/graphql:48
+        --namespace=poc --record=true
+    creationTimestamp: "2025-07-10T12:25:28Z"
+    generation: 2
+    labels:
+      app: graphql-app
+      environment: poc
+      pod-template-hash: 79fcd8d646
+      project: zee-project
+    name: graphql-deploy-79fcd8d646
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: graphql-deploy
+      uid: 458b2800-369b-49eb-aec6-2664603a5939
+    resourceVersion: "104121159"
+    uid: af56e459-c967-40ac-8aaa-1e579d8d8307
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: graphql-app
+        pod-template-hash: 79fcd8d646
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-12T17:09:16+05:30"
+          kubesphere.io/restartedAt: "2025-03-10T07:55:53.367Z"
+        creationTimestamp: null
+        labels:
+          app: graphql-app
+          environment: poc
+          pod-template-hash: 79fcd8d646
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: graphql-config
+          - secretRef:
+              name: graphql-secrets
+          image: devzeelearn/graphql:48
+          imagePullPolicy: Always
+          name: graphql
+          ports:
+          - containerPort: 5015
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "32"
+      kubernetes.io/change-cause: kubectl set image deployment/graphql-deploy graphql=devzeelearn/graphql:43
+        --namespace=poc --record=true
+    creationTimestamp: "2025-06-18T08:53:36Z"
+    generation: 2
+    labels:
+      app: graphql-app
+      environment: poc
+      pod-template-hash: 7bf8b49d95
+      project: zee-project
+    name: graphql-deploy-7bf8b49d95
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: graphql-deploy
+      uid: 458b2800-369b-49eb-aec6-2664603a5939
+    resourceVersion: "69660110"
+    uid: b0084757-b585-4310-b3b1-1623aeff28d9
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: graphql-app
+        pod-template-hash: 7bf8b49d95
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-12T17:09:16+05:30"
+          kubesphere.io/restartedAt: "2025-03-10T07:55:53.367Z"
+        creationTimestamp: null
+        labels:
+          app: graphql-app
+          environment: poc
+          pod-template-hash: 7bf8b49d95
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: graphql-config
+          - secretRef:
+              name: graphql-secrets
+          image: devzeelearn/graphql:43
+          imagePullPolicy: Always
+          name: graphql
+          ports:
+          - containerPort: 5015
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "34"
+      kubernetes.io/change-cause: kubectl set image deployment/graphql-deploy graphql=devzeelearn/graphql:45
+        --namespace=poc --record=true
+    creationTimestamp: "2025-06-18T09:54:08Z"
+    generation: 4
+    labels:
+      app: graphql-app
+      environment: poc
+      pod-template-hash: 7d84698789
+      project: zee-project
+    name: graphql-deploy-7d84698789
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: graphql-deploy
+      uid: 458b2800-369b-49eb-aec6-2664603a5939
+    resourceVersion: "73618704"
+    uid: e4a754e9-be44-46a0-bf53-a828122e3817
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: graphql-app
+        pod-template-hash: 7d84698789
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-12T17:09:16+05:30"
+          kubesphere.io/restartedAt: "2025-03-10T07:55:53.367Z"
+        creationTimestamp: null
+        labels:
+          app: graphql-app
+          environment: poc
+          pod-template-hash: 7d84698789
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: graphql-config
+          - secretRef:
+              name: graphql-secrets
+          image: devzeelearn/graphql:45
+          imagePullPolicy: Always
+          name: graphql
+          ports:
+          - containerPort: 5015
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 4
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "33"
+      kubernetes.io/change-cause: kubectl set image deployment/graphql-deploy graphql=devzeelearn/graphql:44
+        --namespace=poc --record=true
+    creationTimestamp: "2025-06-18T09:02:17Z"
+    generation: 2
+    labels:
+      app: graphql-app
+      environment: poc
+      pod-template-hash: d6f9cc874
+      project: zee-project
+    name: graphql-deploy-d6f9cc874
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: graphql-deploy
+      uid: 458b2800-369b-49eb-aec6-2664603a5939
+    resourceVersion: "69679031"
+    uid: 8c83bbdb-107e-4765-9dac-7e46f3a40004
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: graphql-app
+        pod-template-hash: d6f9cc874
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-12T17:09:16+05:30"
+          kubesphere.io/restartedAt: "2025-03-10T07:55:53.367Z"
+        creationTimestamp: null
+        labels:
+          app: graphql-app
+          environment: poc
+          pod-template-hash: d6f9cc874
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: graphql-config
+          - secretRef:
+              name: graphql-secrets
+          image: devzeelearn/graphql:44
+          imagePullPolicy: Always
+          name: graphql
+          ports:
+          - containerPort: 5015
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "19"
+      kubernetes.io/change-cause: kubectl set image deployment/juapi-deploy juapi=devzeelearn/juapi-poc:166
+        --namespace=poc --record=true
+    creationTimestamp: "2025-09-23T08:41:57Z"
+    generation: 1
+    labels:
+      app: juapi-app
+      environment: poc
+      pod-template-hash: 56f7b9bc7c
+      project: zee-project
+    name: juapi-deploy-56f7b9bc7c
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: juapi-deploy
+      uid: 5f7d3fe3-0ded-4bb9-a320-40c090d43e31
+    resourceVersion: "118158225"
+    uid: 8045f3de-9c7a-4904-b624-db9cb4d46764
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: juapi-app
+        pod-template-hash: 56f7b9bc7c
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-21T13:24:32+05:30"
+        creationTimestamp: null
+        labels:
+          app: juapi-app
+          environment: poc
+          pod-template-hash: 56f7b9bc7c
+          project: zee-project
+      spec:
+        containers:
+        - env:
+          - name: TZ
+            value: Asia/Kolkata
+          envFrom:
+          - configMapRef:
+              name: juapi-config
+          - secretRef:
+              name: juapi-secrets
+          image: devzeelearn/juapi-poc:166
+          imagePullPolicy: Always
+          name: juapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "14"
+      kubernetes.io/change-cause: kubectl set image deployment/juapi-deploy juapi=devzeelearn/juapi-poc:11
+        --namespace=poc --record=true
+    creationTimestamp: "2025-07-29T07:38:27Z"
+    generation: 2
+    labels:
+      app: juapi-app
+      environment: poc
+      pod-template-hash: 57fc6b9986
+      project: zee-project
+    name: juapi-deploy-57fc6b9986
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: juapi-deploy
+      uid: 5f7d3fe3-0ded-4bb9-a320-40c090d43e31
+    resourceVersion: "95386977"
+    uid: 47e6d833-02b0-45f6-906d-dede7ad3d5b3
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: juapi-app
+        pod-template-hash: 57fc6b9986
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-21T13:24:32+05:30"
+        creationTimestamp: null
+        labels:
+          app: juapi-app
+          environment: poc
+          pod-template-hash: 57fc6b9986
+          project: zee-project
+      spec:
+        containers:
+        - env:
+          - name: TZ
+            value: Asia/Kolkata
+          envFrom:
+          - configMapRef:
+              name: juapi-config
+          - secretRef:
+              name: juapi-secrets
+          image: devzeelearn/juapi-poc:11
+          imagePullPolicy: Always
+          name: juapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "18"
+      kubernetes.io/change-cause: kubectl set image deployment/juapi-deploy juapi=devzeelearn/juapi-poc:15
+        --namespace=poc --record=true
+    creationTimestamp: "2025-09-19T11:21:11Z"
+    generation: 2
+    labels:
+      app: juapi-app
+      environment: poc
+      pod-template-hash: 59c4bbf686
+      project: zee-project
+    name: juapi-deploy-59c4bbf686
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: juapi-deploy
+      uid: 5f7d3fe3-0ded-4bb9-a320-40c090d43e31
+    resourceVersion: "118158237"
+    uid: f1749959-2394-412f-aebc-8015986e8fa7
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: juapi-app
+        pod-template-hash: 59c4bbf686
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-21T13:24:32+05:30"
+        creationTimestamp: null
+        labels:
+          app: juapi-app
+          environment: poc
+          pod-template-hash: 59c4bbf686
+          project: zee-project
+      spec:
+        containers:
+        - env:
+          - name: TZ
+            value: Asia/Kolkata
+          envFrom:
+          - configMapRef:
+              name: juapi-config
+          - secretRef:
+              name: juapi-secrets
+          image: devzeelearn/juapi-poc:15
+          imagePullPolicy: Always
+          name: juapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "13"
+      kubernetes.io/change-cause: kubectl set image deployment/juapi-deploy juapi=devzeelearn/juapi-poc:10
+        --namespace=poc --record=true
+    creationTimestamp: "2025-07-23T10:25:28Z"
+    generation: 2
+    labels:
+      app: juapi-app
+      environment: poc
+      pod-template-hash: 5bd66fb5dc
+      project: zee-project
+    name: juapi-deploy-5bd66fb5dc
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: juapi-deploy
+      uid: 5f7d3fe3-0ded-4bb9-a320-40c090d43e31
+    resourceVersion: "90899436"
+    uid: 9613e817-0b17-4cc3-9943-27d9dbfddd0c
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: juapi-app
+        pod-template-hash: 5bd66fb5dc
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-21T13:24:32+05:30"
+        creationTimestamp: null
+        labels:
+          app: juapi-app
+          environment: poc
+          pod-template-hash: 5bd66fb5dc
+          project: zee-project
+      spec:
+        containers:
+        - env:
+          - name: TZ
+            value: Asia/Kolkata
+          envFrom:
+          - configMapRef:
+              name: juapi-config
+          - secretRef:
+              name: juapi-secrets
+          image: devzeelearn/juapi-poc:10
+          imagePullPolicy: Always
+          name: juapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "15"
+      kubernetes.io/change-cause: kubectl set image deployment/juapi-deploy juapi=devzeelearn/juapi-poc:12
+        --namespace=poc --record=true
+    creationTimestamp: "2025-08-07T09:06:09Z"
+    generation: 2
+    labels:
+      app: juapi-app
+      environment: poc
+      pod-template-hash: 5fbb454d5
+      project: zee-project
+    name: juapi-deploy-5fbb454d5
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: juapi-deploy
+      uid: 5f7d3fe3-0ded-4bb9-a320-40c090d43e31
+    resourceVersion: "95462397"
+    uid: 1db7fa02-c75b-4c70-a61e-7f7ce7fe6474
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: juapi-app
+        pod-template-hash: 5fbb454d5
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-21T13:24:32+05:30"
+        creationTimestamp: null
+        labels:
+          app: juapi-app
+          environment: poc
+          pod-template-hash: 5fbb454d5
+          project: zee-project
+      spec:
+        containers:
+        - env:
+          - name: TZ
+            value: Asia/Kolkata
+          envFrom:
+          - configMapRef:
+              name: juapi-config
+          - secretRef:
+              name: juapi-secrets
+          image: devzeelearn/juapi-poc:12
+          imagePullPolicy: Always
+          name: juapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "10"
+      kubernetes.io/change-cause: kubectl set image deployment/juapi-deploy juapi=devzeelearn/juapi-poc:7
+        --namespace=poc --record=true
+    creationTimestamp: "2025-05-30T09:12:03Z"
+    generation: 2
+    labels:
+      app: juapi-app
+      environment: poc
+      pod-template-hash: 65db7d6dcf
+      project: zee-project
+    name: juapi-deploy-65db7d6dcf
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: juapi-deploy
+      uid: 5f7d3fe3-0ded-4bb9-a320-40c090d43e31
+    resourceVersion: "70188120"
+    uid: 3bf2cc32-c1f1-4bbf-8fb5-40eb335a56dc
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: juapi-app
+        pod-template-hash: 65db7d6dcf
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-21T13:24:32+05:30"
+        creationTimestamp: null
+        labels:
+          app: juapi-app
+          environment: poc
+          pod-template-hash: 65db7d6dcf
+          project: zee-project
+      spec:
+        containers:
+        - env:
+          - name: TZ
+            value: Asia/Kolkata
+          envFrom:
+          - configMapRef:
+              name: juapi-config
+          - secretRef:
+              name: juapi-secrets
+          image: devzeelearn/juapi-poc:7
+          imagePullPolicy: Always
+          name: juapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "17"
+      kubernetes.io/change-cause: kubectl set image deployment/juapi-deploy juapi=devzeelearn/juapi-poc:14
+        --namespace=poc --record=true
+    creationTimestamp: "2025-09-09T06:12:17Z"
+    generation: 2
+    labels:
+      app: juapi-app
+      environment: poc
+      pod-template-hash: 6b4656b4cf
+      project: zee-project
+    name: juapi-deploy-6b4656b4cf
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: juapi-deploy
+      uid: 5f7d3fe3-0ded-4bb9-a320-40c090d43e31
+    resourceVersion: "116212473"
+    uid: 0e70b809-2790-4e78-9532-814b9d679f46
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: juapi-app
+        pod-template-hash: 6b4656b4cf
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-21T13:24:32+05:30"
+        creationTimestamp: null
+        labels:
+          app: juapi-app
+          environment: poc
+          pod-template-hash: 6b4656b4cf
+          project: zee-project
+      spec:
+        containers:
+        - env:
+          - name: TZ
+            value: Asia/Kolkata
+          envFrom:
+          - configMapRef:
+              name: juapi-config
+          - secretRef:
+              name: juapi-secrets
+          image: devzeelearn/juapi-poc:14
+          imagePullPolicy: Always
+          name: juapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "16"
+      kubernetes.io/change-cause: kubectl set image deployment/juapi-deploy juapi=devzeelearn/juapi-poc:13
+        --namespace=poc --record=true
+    creationTimestamp: "2025-08-07T12:45:21Z"
+    generation: 2
+    labels:
+      app: juapi-app
+      environment: poc
+      pod-template-hash: 7cdc6c8b7b
+      project: zee-project
+    name: juapi-deploy-7cdc6c8b7b
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: juapi-deploy
+      uid: 5f7d3fe3-0ded-4bb9-a320-40c090d43e31
+    resourceVersion: "111274382"
+    uid: dbcfdb43-9574-4e81-8cae-12b071b07aed
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: juapi-app
+        pod-template-hash: 7cdc6c8b7b
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-21T13:24:32+05:30"
+        creationTimestamp: null
+        labels:
+          app: juapi-app
+          environment: poc
+          pod-template-hash: 7cdc6c8b7b
+          project: zee-project
+      spec:
+        containers:
+        - env:
+          - name: TZ
+            value: Asia/Kolkata
+          envFrom:
+          - configMapRef:
+              name: juapi-config
+          - secretRef:
+              name: juapi-secrets
+          image: devzeelearn/juapi-poc:13
+          imagePullPolicy: Always
+          name: juapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "9"
+      kubernetes.io/change-cause: kubectl set image deployment/juapi-deploy juapi=devzeelearn/juapi-poc:6
+        --namespace=poc --record=true
+    creationTimestamp: "2025-05-29T10:40:42Z"
+    generation: 2
+    labels:
+      app: juapi-app
+      environment: poc
+      pod-template-hash: 7f6c4c96f4
+      project: zee-project
+    name: juapi-deploy-7f6c4c96f4
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: juapi-deploy
+      uid: 5f7d3fe3-0ded-4bb9-a320-40c090d43e31
+    resourceVersion: "59748942"
+    uid: 3f404c4a-a75b-4be3-ba43-ae032dc155aa
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: juapi-app
+        pod-template-hash: 7f6c4c96f4
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-21T13:24:32+05:30"
+        creationTimestamp: null
+        labels:
+          app: juapi-app
+          environment: poc
+          pod-template-hash: 7f6c4c96f4
+          project: zee-project
+      spec:
+        containers:
+        - env:
+          - name: TZ
+            value: Asia/Kolkata
+          envFrom:
+          - configMapRef:
+              name: juapi-config
+          - secretRef:
+              name: juapi-secrets
+          image: devzeelearn/juapi-poc:6
+          imagePullPolicy: Always
+          name: juapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "11"
+      kubernetes.io/change-cause: kubectl set image deployment/juapi-deploy juapi=devzeelearn/juapi-poc:8
+        --namespace=poc --record=true
+    creationTimestamp: "2025-06-19T09:20:18Z"
+    generation: 4
+    labels:
+      app: juapi-app
+      environment: poc
+      pod-template-hash: dd78598cb
+      project: zee-project
+    name: juapi-deploy-dd78598cb
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: juapi-deploy
+      uid: 5f7d3fe3-0ded-4bb9-a320-40c090d43e31
+    resourceVersion: "79950578"
+    uid: c58c7234-fefa-4a5b-a10e-3ba84fa370fc
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: juapi-app
+        pod-template-hash: dd78598cb
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-21T13:24:32+05:30"
+        creationTimestamp: null
+        labels:
+          app: juapi-app
+          environment: poc
+          pod-template-hash: dd78598cb
+          project: zee-project
+      spec:
+        containers:
+        - env:
+          - name: TZ
+            value: Asia/Kolkata
+          envFrom:
+          - configMapRef:
+              name: juapi-config
+          - secretRef:
+              name: juapi-secrets
+          image: devzeelearn/juapi-poc:8
+          imagePullPolicy: Always
+          name: juapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 4
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "12"
+      kubernetes.io/change-cause: kubectl set image deployment/juapi-deploy juapi=devzeelearn/juapi-poc:9
+        --namespace=poc --record=true
+    creationTimestamp: "2025-07-08T07:29:04Z"
+    generation: 2
+    labels:
+      app: juapi-app
+      environment: poc
+      pod-template-hash: fc596d8d5
+      project: zee-project
+    name: juapi-deploy-fc596d8d5
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: juapi-deploy
+      uid: 5f7d3fe3-0ded-4bb9-a320-40c090d43e31
+    resourceVersion: "87861531"
+    uid: 3794c64a-5d5b-47fe-bdc8-d9d7b4502ac5
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: juapi-app
+        pod-template-hash: fc596d8d5
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-21T13:24:32+05:30"
+        creationTimestamp: null
+        labels:
+          app: juapi-app
+          environment: poc
+          pod-template-hash: fc596d8d5
+          project: zee-project
+      spec:
+        containers:
+        - env:
+          - name: TZ
+            value: Asia/Kolkata
+          envFrom:
+          - configMapRef:
+              name: juapi-config
+          - secretRef:
+              name: juapi-secrets
+          image: devzeelearn/juapi-poc:9
+          imagePullPolicy: Always
+          name: juapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "18"
+      kubernetes.io/change-cause: kubectl set image deployment/lmsapi-deploy lmsapi=devzeelearn/lmsapi-poc:165
+        --namespace=poc --record=true
+    creationTimestamp: "2025-09-23T08:41:05Z"
+    generation: 1
+    labels:
+      app: lmsapi-app
+      environment: poc
+      pod-template-hash: 5b7d878f85
+      project: zee-project
+    name: lmsapi-deploy-5b7d878f85
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: lmsapi-deploy
+      uid: 31c15057-8636-4a7d-906a-7686a263e532
+    resourceVersion: "118157980"
+    uid: f248c24a-1835-4449-ae7c-edaf8ebf6925
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: lmsapi-app
+        pod-template-hash: 5b7d878f85
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: lmsapi-app
+          environment: poc
+          pod-template-hash: 5b7d878f85
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: lmsapi-config
+          - secretRef:
+              name: lmsapi-secrets
+          image: devzeelearn/lmsapi-poc:165
+          imagePullPolicy: Always
+          name: lmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "13"
+      kubernetes.io/change-cause: kubectl set image deployment/lmsapi-deploy lmsapi=devzeelearn/lmsapi-poc:12
+        --namespace=poc --record=true
+    creationTimestamp: "2025-07-29T07:38:18Z"
+    generation: 2
+    labels:
+      app: lmsapi-app
+      environment: poc
+      pod-template-hash: 5c79f45974
+      project: zee-project
+    name: lmsapi-deploy-5c79f45974
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: lmsapi-deploy
+      uid: 31c15057-8636-4a7d-906a-7686a263e532
+    resourceVersion: "95386695"
+    uid: 362dbf43-61a5-4faf-adce-728f49f697f3
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: lmsapi-app
+        pod-template-hash: 5c79f45974
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: lmsapi-app
+          environment: poc
+          pod-template-hash: 5c79f45974
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: lmsapi-config
+          - secretRef:
+              name: lmsapi-secrets
+          image: devzeelearn/lmsapi-poc:12
+          imagePullPolicy: Always
+          name: lmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "16"
+      kubernetes.io/change-cause: kubectl set image deployment/lmsapi-deploy lmsapi=devzeelearn/lmsapi-poc:15
+        --namespace=poc --record=true
+    creationTimestamp: "2025-09-09T06:13:42Z"
+    generation: 2
+    labels:
+      app: lmsapi-app
+      environment: poc
+      pod-template-hash: 6d5f95f9ff
+      project: zee-project
+    name: lmsapi-deploy-6d5f95f9ff
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: lmsapi-deploy
+      uid: 31c15057-8636-4a7d-906a-7686a263e532
+    resourceVersion: "116214721"
+    uid: bc69c60a-9391-440b-9e70-c402456663e6
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: lmsapi-app
+        pod-template-hash: 6d5f95f9ff
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: lmsapi-app
+          environment: poc
+          pod-template-hash: 6d5f95f9ff
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: lmsapi-config
+          - secretRef:
+              name: lmsapi-secrets
+          image: devzeelearn/lmsapi-poc:15
+          imagePullPolicy: Always
+          name: lmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "15"
+      kubernetes.io/change-cause: kubectl set image deployment/lmsapi-deploy lmsapi=devzeelearn/lmsapi-poc:14
+        --namespace=poc --record=true
+    creationTimestamp: "2025-08-07T12:46:12Z"
+    generation: 2
+    labels:
+      app: lmsapi-app
+      environment: poc
+      pod-template-hash: 6fbbbb5896
+      project: zee-project
+    name: lmsapi-deploy-6fbbbb5896
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: lmsapi-deploy
+      uid: 31c15057-8636-4a7d-906a-7686a263e532
+    resourceVersion: "111272350"
+    uid: c44f847f-4594-482c-b3ec-a5699ac763a1
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: lmsapi-app
+        pod-template-hash: 6fbbbb5896
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: lmsapi-app
+          environment: poc
+          pod-template-hash: 6fbbbb5896
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: lmsapi-config
+          - secretRef:
+              name: lmsapi-secrets
+          image: devzeelearn/lmsapi-poc:14
+          imagePullPolicy: Always
+          name: lmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "7"
+      kubernetes.io/change-cause: kubectl set image deployment/lmsapi-deploy lmsapi=devzeelearn/lmsapi-poc:7
+        --namespace=poc --record=true
+    creationTimestamp: "2025-05-29T10:40:36Z"
+    generation: 2
+    labels:
+      app: lmsapi-app
+      environment: poc
+      pod-template-hash: 6fbd8f77db
+      project: zee-project
+    name: lmsapi-deploy-6fbd8f77db
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: lmsapi-deploy
+      uid: 31c15057-8636-4a7d-906a-7686a263e532
+    resourceVersion: "59738898"
+    uid: 0b6a1ae9-5a1d-4971-bfc5-aa09b93f042a
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: lmsapi-app
+        pod-template-hash: 6fbd8f77db
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: lmsapi-app
+          environment: poc
+          pod-template-hash: 6fbd8f77db
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: lmsapi-config
+          - secretRef:
+              name: lmsapi-secrets
+          image: devzeelearn/lmsapi-poc:7
+          imagePullPolicy: Always
+          name: lmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "12"
+      kubernetes.io/change-cause: kubectl set image deployment/lmsapi-deploy lmsapi=devzeelearn/lmsapi-poc:11
+        --namespace=poc --record=true
+    creationTimestamp: "2025-07-23T10:23:38Z"
+    generation: 2
+    labels:
+      app: lmsapi-app
+      environment: poc
+      pod-template-hash: 6fdd9dbcc5
+      project: zee-project
+    name: lmsapi-deploy-6fdd9dbcc5
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: lmsapi-deploy
+      uid: 31c15057-8636-4a7d-906a-7686a263e532
+    resourceVersion: "90899272"
+    uid: cb11416c-5a8e-4811-a35e-054040766652
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: lmsapi-app
+        pod-template-hash: 6fdd9dbcc5
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: lmsapi-app
+          environment: poc
+          pod-template-hash: 6fdd9dbcc5
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: lmsapi-config
+          - secretRef:
+              name: lmsapi-secrets
+          image: devzeelearn/lmsapi-poc:11
+          imagePullPolicy: Always
+          name: lmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "11"
+      deployment.kubernetes.io/revision-history: "9"
+      kubernetes.io/change-cause: kubectl set image deployment/lmsapi-deploy lmsapi=devzeelearn/lmsapi-poc:9
+        --namespace=poc --record=true
+    creationTimestamp: "2025-06-19T09:20:11Z"
+    generation: 4
+    labels:
+      app: lmsapi-app
+      environment: poc
+      pod-template-hash: 79c48bd96
+      project: zee-project
+    name: lmsapi-deploy-79c48bd96
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: lmsapi-deploy
+      uid: 31c15057-8636-4a7d-906a-7686a263e532
+    resourceVersion: "87860648"
+    uid: 424bfc19-a390-42d2-a0da-31d83ef345c3
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: lmsapi-app
+        pod-template-hash: 79c48bd96
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: lmsapi-app
+          environment: poc
+          pod-template-hash: 79c48bd96
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: lmsapi-config
+          - secretRef:
+              name: lmsapi-secrets
+          image: devzeelearn/lmsapi-poc:9
+          imagePullPolicy: Always
+          name: lmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 4
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "17"
+      kubernetes.io/change-cause: kubectl set image deployment/lmsapi-deploy lmsapi=devzeelearn/lmsapi-poc:16
+        --namespace=poc --record=true
+    creationTimestamp: "2025-09-19T11:24:38Z"
+    generation: 2
+    labels:
+      app: lmsapi-app
+      environment: poc
+      pod-template-hash: 7bbfd66ddb
+      project: zee-project
+    name: lmsapi-deploy-7bbfd66ddb
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: lmsapi-deploy
+      uid: 31c15057-8636-4a7d-906a-7686a263e532
+    resourceVersion: "118157990"
+    uid: f195986d-bb3a-4ae1-9552-1fe120c2a3f2
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: lmsapi-app
+        pod-template-hash: 7bbfd66ddb
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: lmsapi-app
+          environment: poc
+          pod-template-hash: 7bbfd66ddb
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: lmsapi-config
+          - secretRef:
+              name: lmsapi-secrets
+          image: devzeelearn/lmsapi-poc:16
+          imagePullPolicy: Always
+          name: lmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "8"
+      kubernetes.io/change-cause: kubectl set image deployment/lmsapi-deploy lmsapi=devzeelearn/lmsapi-poc:8
+        --namespace=poc --record=true
+    creationTimestamp: "2025-05-30T08:45:50Z"
+    generation: 2
+    labels:
+      app: lmsapi-app
+      environment: poc
+      pod-template-hash: 84877cf9f
+      project: zee-project
+    name: lmsapi-deploy-84877cf9f
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: lmsapi-deploy
+      uid: 31c15057-8636-4a7d-906a-7686a263e532
+    resourceVersion: "70187851"
+    uid: 0d619664-09c4-49bb-a33e-28eb5e648f07
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: lmsapi-app
+        pod-template-hash: 84877cf9f
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: lmsapi-app
+          environment: poc
+          pod-template-hash: 84877cf9f
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: lmsapi-config
+          - secretRef:
+              name: lmsapi-secrets
+          image: devzeelearn/lmsapi-poc:8
+          imagePullPolicy: Always
+          name: lmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "14"
+      kubernetes.io/change-cause: kubectl set image deployment/lmsapi-deploy lmsapi=devzeelearn/lmsapi-poc:13
+        --namespace=poc --record=true
+    creationTimestamp: "2025-08-07T09:06:00Z"
+    generation: 2
+    labels:
+      app: lmsapi-app
+      environment: poc
+      pod-template-hash: d54d58f8f
+      project: zee-project
+    name: lmsapi-deploy-d54d58f8f
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: lmsapi-deploy
+      uid: 31c15057-8636-4a7d-906a-7686a263e532
+    resourceVersion: "95462906"
+    uid: 9eb4b89a-9412-4500-910b-4486c95ac65d
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: lmsapi-app
+        pod-template-hash: d54d58f8f
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: lmsapi-app
+          environment: poc
+          pod-template-hash: d54d58f8f
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: lmsapi-config
+          - secretRef:
+              name: lmsapi-secrets
+          image: devzeelearn/lmsapi-poc:13
+          imagePullPolicy: Always
+          name: lmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "10"
+      kubernetes.io/change-cause: kubectl set image deployment/lmsapi-deploy lmsapi=devzeelearn/lmsapi-poc:10
+        --namespace=poc --record=true
+    creationTimestamp: "2025-07-08T07:29:06Z"
+    generation: 2
+    labels:
+      app: lmsapi-app
+      environment: poc
+      pod-template-hash: f7cb8b6dd
+      project: zee-project
+    name: lmsapi-deploy-f7cb8b6dd
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: lmsapi-deploy
+      uid: 31c15057-8636-4a7d-906a-7686a263e532
+    resourceVersion: "79953885"
+    uid: e91330fa-717b-44d5-bd02-2f50b162c943
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: lmsapi-app
+        pod-template-hash: f7cb8b6dd
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: lmsapi-app
+          environment: poc
+          pod-template-hash: f7cb8b6dd
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: lmsapi-config
+          - secretRef:
+              name: lmsapi-secrets
+          image: devzeelearn/lmsapi-poc:10
+          imagePullPolicy: Always
+          name: lmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "5"
+      kubernetes.io/change-cause: kubectl set image deployment/novachat-deploy novachat=devzeelearn/novachat-poc:4
+        --namespace=poc --record=true
+    creationTimestamp: "2025-06-18T08:07:14Z"
+    generation: 3
+    labels:
+      app: novachat-app
+      environment: poc
+      pod-template-hash: 5d784f8755
+      project: zee-project
+    name: novachat-deploy-5d784f8755
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: novachat-deploy
+      uid: 5b2dac42-b4d9-436c-8265-bc264be9dbff
+    resourceVersion: "91240551"
+    uid: 2ec3baad-fd11-43dd-b5b0-273ebc69174f
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: novachat-app
+        pod-template-hash: 5d784f8755
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-30T11:25:50+05:30"
+        creationTimestamp: null
+        labels:
+          app: novachat-app
+          environment: poc
+          pod-template-hash: 5d784f8755
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: novachat-config
+          - secretRef:
+              name: novachat-secrets
+          image: devzeelearn/novachat-poc:4
+          imagePullPolicy: Always
+          name: novachat
+          ports:
+          - containerPort: 4011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 3
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "3"
+      kubernetes.io/change-cause: kubectl set image deployment/novachat-deploy novachat=devzeelearn/novachat-poc:3
+        --namespace=poc --record=true
+    creationTimestamp: "2025-05-21T13:19:46Z"
+    generation: 2
+    labels:
+      app: novachat-app
+      environment: poc
+      pod-template-hash: 5f69ccc867
+      project: zee-project
+    name: novachat-deploy-5f69ccc867
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: novachat-deploy
+      uid: 5b2dac42-b4d9-436c-8265-bc264be9dbff
+    resourceVersion: "59675630"
+    uid: 0a3c7518-656e-4cab-92f5-553902058c86
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: novachat-app
+        pod-template-hash: 5f69ccc867
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: novachat-app
+          environment: poc
+          pod-template-hash: 5f69ccc867
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: novachat-config
+          - secretRef:
+              name: novachat-secrets
+          image: devzeelearn/novachat-poc:3
+          imagePullPolicy: Always
+          name: novachat
+          ports:
+          - containerPort: 4011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "2"
+      kubernetes.io/change-cause: kubectl set image deployment/novachat-deploy novachat=devzeelearn/novachat-poc:3
+        --namespace=poc --record=true
+    creationTimestamp: "2025-05-21T12:57:26Z"
+    generation: 2
+    labels:
+      app: novachat-app
+      environment: poc
+      pod-template-hash: 6649b4b57
+      project: zee-project
+    name: novachat-deploy-6649b4b57
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: novachat-deploy
+      uid: 5b2dac42-b4d9-436c-8265-bc264be9dbff
+    resourceVersion: "55021115"
+    uid: 7232c4e7-2093-4c5c-808b-46a57d6d7227
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: novachat-app
+        pod-template-hash: 6649b4b57
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: novachat-app
+          environment: poc
+          pod-template-hash: 6649b4b57
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: novachat-config
+          - secretRef:
+              name: novachat-secrets
+          image: devzeelearn/novachat-poc:3
+          imagePullPolicy: Always
+          name: novachat
+          ports:
+          - containerPort: 4011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "4"
+      kubernetes.io/change-cause: kubectl set image deployment/novachat-deploy novachat=devzeelearn/novachat-poc:3
+        --namespace=poc --record=true
+    creationTimestamp: "2025-05-30T05:58:52Z"
+    generation: 2
+    labels:
+      app: novachat-app
+      environment: poc
+      pod-template-hash: 7c9fd9fc98
+      project: zee-project
+    name: novachat-deploy-7c9fd9fc98
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: novachat-deploy
+      uid: 5b2dac42-b4d9-436c-8265-bc264be9dbff
+    resourceVersion: "69639529"
+    uid: 4b0fd2ab-5ef3-496e-8829-1a1754f74686
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: novachat-app
+        pod-template-hash: 7c9fd9fc98
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-30T11:25:50+05:30"
+        creationTimestamp: null
+        labels:
+          app: novachat-app
+          environment: poc
+          pod-template-hash: 7c9fd9fc98
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: novachat-config
+          - secretRef:
+              name: novachat-secrets
+          image: devzeelearn/novachat-poc:3
+          imagePullPolicy: Always
+          name: novachat
+          ports:
+          - containerPort: 4011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2025-05-21T08:42:20Z"
+    generation: 2
+    labels:
+      app: novachat-app
+      environment: poc
+      pod-template-hash: 86b885cb57
+      project: zee-project
+    name: novachat-deploy-86b885cb57
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: novachat-deploy
+      uid: 5b2dac42-b4d9-436c-8265-bc264be9dbff
+    resourceVersion: "55012975"
+    uid: 6ddc91cd-80ba-49b0-af37-559cc9a35736
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: novachat-app
+        pod-template-hash: 86b885cb57
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: novachat-app
+          environment: poc
+          pod-template-hash: 86b885cb57
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: novachat-config
+          - secretRef:
+              name: novachat-secrets
+          image: docker.io/devzeelearn/lmsapi:latest
+          imagePullPolicy: Always
+          name: novachat
+          ports:
+          - containerPort: 4011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "3"
+    creationTimestamp: "2025-04-30T07:56:55Z"
+    generation: 3
+    labels:
+      app: pentemind-2023
+      environment: poc
+      pod-template-hash: 5d5479cffd
+      project: zee-project
+    name: pentemind-23-deploy-5d5479cffd
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-23-deploy
+      uid: 818fe108-9bce-4a7b-a04c-4addf36bf066
+    resourceVersion: "70965143"
+    uid: 10c16466-c645-4fcd-a9b5-b08f68d48141
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: pentemind-2023
+        pod-template-hash: 5d5479cffd
+        project: zee-project
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-04-30T13:24:47+05:30"
+        creationTimestamp: null
+        labels:
+          app: pentemind-2023
+          environment: poc
+          pod-template-hash: 5d5479cffd
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-23
+          - secretRef:
+              name: pentemind-secrets-23
+          image: devzeelearn/pentemind-apiv1-2023:4
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 3
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "2"
+    creationTimestamp: "2025-04-28T10:41:27Z"
+    generation: 17
+    labels:
+      app: pentemind-2023
+      environment: poc
+      pod-template-hash: 5ddbfbcf8f
+      project: zee-project
+    name: pentemind-23-deploy-5ddbfbcf8f
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-23-deploy
+      uid: 818fe108-9bce-4a7b-a04c-4addf36bf066
+    resourceVersion: "43493015"
+    uid: 15032dee-5620-4568-b88e-bbdf15365b50
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-2023
+        pod-template-hash: 5ddbfbcf8f
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-2023
+          environment: poc
+          pod-template-hash: 5ddbfbcf8f
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-23
+          - secretRef:
+              name: pentemind-secrets-23
+          image: devzeelearn/pentemind-apiv1-2023:4
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 17
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "39"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-24-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2024:46 --namespace=poc --record=true
+    creationTimestamp: "2025-08-11T09:46:18Z"
+    generation: 3
+    labels:
+      app: pentemind-apps
+      environment: poc
+      pod-template-hash: 566d98ffcc
+      project: zee-project
+    name: pentemind-24-deploy-566d98ffcc
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-24-deploy
+      uid: 8d1f4df3-be04-427b-bc1f-b379a062c96b
+    resourceVersion: "97332935"
+    uid: df42a3e8-bb10-448b-a72b-5d8651e67e3a
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-apps
+        pod-template-hash: 566d98ffcc
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-apps
+          environment: poc
+          pod-template-hash: 566d98ffcc
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-24
+          - secretRef:
+              name: pentemind-secrets-24
+          image: devzeelearn/pentemind-apiv1-2024:46
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 3
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "40"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-24-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2024:48 --namespace=poc --record=true
+    creationTimestamp: "2025-08-11T09:46:21Z"
+    generation: 3
+    labels:
+      app: pentemind-apps
+      environment: poc
+      pod-template-hash: 5bbf6cdd6c
+      project: zee-project
+    name: pentemind-24-deploy-5bbf6cdd6c
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-24-deploy
+      uid: 8d1f4df3-be04-427b-bc1f-b379a062c96b
+    resourceVersion: "97332976"
+    uid: 2d00a1d9-885b-4262-8e24-1ce2acdb73c6
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-apps
+        pod-template-hash: 5bbf6cdd6c
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-apps
+          environment: poc
+          pod-template-hash: 5bbf6cdd6c
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-24
+          - secretRef:
+              name: pentemind-secrets-24
+          image: devzeelearn/pentemind-apiv1-2024:48
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 3
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "43"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-24-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2024:52 --namespace=poc --record=true
+    creationTimestamp: "2025-08-20T13:20:57Z"
+    generation: 2
+    labels:
+      app: pentemind-apps
+      environment: poc
+      pod-template-hash: 5d4777d4b8
+      project: zee-project
+    name: pentemind-24-deploy-5d4777d4b8
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-24-deploy
+      uid: 8d1f4df3-be04-427b-bc1f-b379a062c96b
+    resourceVersion: "101778693"
+    uid: 086c2a82-345f-4ec6-af73-fc4a15cc6c9e
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-apps
+        pod-template-hash: 5d4777d4b8
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-apps
+          environment: poc
+          pod-template-hash: 5d4777d4b8
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-24
+          - secretRef:
+              name: pentemind-secrets-24
+          image: devzeelearn/pentemind-apiv1-2024:52
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "36"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-24-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2024:44 --namespace=poc --record=true
+    creationTimestamp: "2025-07-31T09:39:47Z"
+    generation: 2
+    labels:
+      app: pentemind-apps
+      environment: poc
+      pod-template-hash: 64cb9759bc
+      project: zee-project
+    name: pentemind-24-deploy-64cb9759bc
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-24-deploy
+      uid: 8d1f4df3-be04-427b-bc1f-b379a062c96b
+    resourceVersion: "97318892"
+    uid: 5354b0bd-dd39-406c-8c63-22a2bffc6cf4
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-apps
+        pod-template-hash: 64cb9759bc
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-apps
+          environment: poc
+          pod-template-hash: 64cb9759bc
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-24
+          - secretRef:
+              name: pentemind-secrets-24
+          image: devzeelearn/pentemind-apiv1-2024:44
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "37"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-24-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2024:45 --namespace=poc --record=true
+    creationTimestamp: "2025-08-11T09:05:28Z"
+    generation: 2
+    labels:
+      app: pentemind-apps
+      environment: poc
+      pod-template-hash: 7647d8d4cb
+      project: zee-project
+    name: pentemind-24-deploy-7647d8d4cb
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-24-deploy
+      uid: 8d1f4df3-be04-427b-bc1f-b379a062c96b
+    resourceVersion: "97333166"
+    uid: 0349573e-9041-488a-b00e-cc013342361a
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-apps
+        pod-template-hash: 7647d8d4cb
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-apps
+          environment: poc
+          pod-template-hash: 7647d8d4cb
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-24
+          - secretRef:
+              name: pentemind-secrets-24
+          image: devzeelearn/pentemind-apiv1-2024:45
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "42"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-24-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2024:51 --namespace=poc --record=true
+    creationTimestamp: "2025-08-20T13:18:03Z"
+    generation: 2
+    labels:
+      app: pentemind-apps
+      environment: poc
+      pod-template-hash: 768689b57
+      project: zee-project
+    name: pentemind-24-deploy-768689b57
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-24-deploy
+      uid: 8d1f4df3-be04-427b-bc1f-b379a062c96b
+    resourceVersion: "101777749"
+    uid: 2550b5b7-e99c-46dd-9802-e432e261f9f3
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-apps
+        pod-template-hash: 768689b57
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-apps
+          environment: poc
+          pod-template-hash: 768689b57
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-24
+          - secretRef:
+              name: pentemind-secrets-24
+          image: devzeelearn/pentemind-apiv1-2024:51
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "44"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-24-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2024:53 --namespace=poc --record=true
+    creationTimestamp: "2025-08-20T13:23:08Z"
+    generation: 2
+    labels:
+      app: pentemind-apps
+      environment: poc
+      pod-template-hash: 769689997f
+      project: zee-project
+    name: pentemind-24-deploy-769689997f
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-24-deploy
+      uid: 8d1f4df3-be04-427b-bc1f-b379a062c96b
+    resourceVersion: "101778436"
+    uid: e9c9619f-4e9a-4b59-8228-c36b17d4e253
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-apps
+        pod-template-hash: 769689997f
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-apps
+          environment: poc
+          pod-template-hash: 769689997f
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-24
+          - secretRef:
+              name: pentemind-secrets-24
+          image: devzeelearn/pentemind-apiv1-2024:53
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "41"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-24-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2024:49 --namespace=poc --record=true
+    creationTimestamp: "2025-08-11T09:46:24Z"
+    generation: 3
+    labels:
+      app: pentemind-apps
+      environment: poc
+      pod-template-hash: 7d6bf89796
+      project: zee-project
+    name: pentemind-24-deploy-7d6bf89796
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-24-deploy
+      uid: 8d1f4df3-be04-427b-bc1f-b379a062c96b
+    resourceVersion: "101776588"
+    uid: 78651759-8f03-4211-9a15-35bc9beeb40a
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-apps
+        pod-template-hash: 7d6bf89796
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-apps
+          environment: poc
+          pod-template-hash: 7d6bf89796
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-24
+          - secretRef:
+              name: pentemind-secrets-24
+          image: devzeelearn/pentemind-apiv1-2024:49
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 3
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "45"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-24-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2024:54 --namespace=poc --record=true
+    creationTimestamp: "2025-08-20T13:23:10Z"
+    generation: 3
+    labels:
+      app: pentemind-apps
+      environment: poc
+      pod-template-hash: 7d9c77bc4
+      project: zee-project
+    name: pentemind-24-deploy-7d9c77bc4
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-24-deploy
+      uid: 8d1f4df3-be04-427b-bc1f-b379a062c96b
+    resourceVersion: "101779852"
+    uid: 1d9619ce-c281-4330-9e4e-e41e58509d09
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-apps
+        pod-template-hash: 7d9c77bc4
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-apps
+          environment: poc
+          pod-template-hash: 7d9c77bc4
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-24
+          - secretRef:
+              name: pentemind-secrets-24
+          image: devzeelearn/pentemind-apiv1-2024:54
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 3
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "46"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-24-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2024:55 --namespace=poc --record=true
+    creationTimestamp: "2025-08-20T13:26:41Z"
+    generation: 1
+    labels:
+      app: pentemind-apps
+      environment: poc
+      pod-template-hash: 7f5949d8c7
+      project: zee-project
+    name: pentemind-24-deploy-7f5949d8c7
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-24-deploy
+      uid: 8d1f4df3-be04-427b-bc1f-b379a062c96b
+    resourceVersion: "101779842"
+    uid: 4497c877-4520-40d6-8651-cf616ec52a67
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: pentemind-apps
+        pod-template-hash: 7f5949d8c7
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-apps
+          environment: poc
+          pod-template-hash: 7f5949d8c7
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-24
+          - secretRef:
+              name: pentemind-secrets-24
+          image: devzeelearn/pentemind-apiv1-2024:55
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "38"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-24-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2024:47 --namespace=poc --record=true
+    creationTimestamp: "2025-08-11T09:46:18Z"
+    generation: 2
+    labels:
+      app: pentemind-apps
+      environment: poc
+      pod-template-hash: b5f7fdf78
+      project: zee-project
+    name: pentemind-24-deploy-b5f7fdf78
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-24-deploy
+      uid: 8d1f4df3-be04-427b-bc1f-b379a062c96b
+    resourceVersion: "97332902"
+    uid: 6ed2f2f7-8656-471a-a3ad-41cc4520701c
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-apps
+        pod-template-hash: b5f7fdf78
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-apps
+          environment: poc
+          pod-template-hash: b5f7fdf78
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-24
+          - secretRef:
+              name: pentemind-secrets-24
+          image: devzeelearn/pentemind-apiv1-2024:47
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "21"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-25-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2025:23 --namespace=poc --record=true
+    creationTimestamp: "2025-07-23T05:58:21Z"
+    generation: 2
+    labels:
+      app: pentemind-app
+      environment: poc
+      pod-template-hash: 54bd6b89d8
+      project: zee-project
+    name: pentemind-25-deploy-54bd6b89d8
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-25-deploy
+      uid: b8ab4c66-7561-4dc3-aa46-09335af50e67
+    resourceVersion: "91968461"
+    uid: 0bcc64bb-a308-41d1-ad48-f29276af1245
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-app
+        pod-template-hash: 54bd6b89d8
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-app
+          environment: poc
+          pod-template-hash: 54bd6b89d8
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-25
+          - secretRef:
+              name: pentemind-secrets-25
+          image: devzeelearn/pentemind-apiv1-2025:23
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "19"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-25-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2025:21 --namespace=poc --record=true
+    creationTimestamp: "2025-07-22T09:17:50Z"
+    generation: 2
+    labels:
+      app: pentemind-app
+      environment: poc
+      pod-template-hash: 565ff9d646
+      project: zee-project
+    name: pentemind-25-deploy-565ff9d646
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-25-deploy
+      uid: b8ab4c66-7561-4dc3-aa46-09335af50e67
+    resourceVersion: "87327367"
+    uid: 668b2557-4c68-4dbd-bfa1-8400009ce45b
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-app
+        pod-template-hash: 565ff9d646
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-app
+          environment: poc
+          pod-template-hash: 565ff9d646
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-25
+          - secretRef:
+              name: pentemind-secrets-25
+          image: devzeelearn/pentemind-apiv1-2025:21
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "16"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-25-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2025:17 --namespace=poc --record=true
+    creationTimestamp: "2025-05-07T13:02:19Z"
+    generation: 4
+    labels:
+      app: pentemind-app
+      environment: poc
+      pod-template-hash: 598bcc4cb7
+      project: zee-project
+    name: pentemind-25-deploy-598bcc4cb7
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-25-deploy
+      uid: b8ab4c66-7561-4dc3-aa46-09335af50e67
+    resourceVersion: "77337341"
+    uid: f1e1a98d-9bc5-411a-bcbc-1be75f0800c8
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-app
+        pod-template-hash: 598bcc4cb7
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-app
+          environment: poc
+          pod-template-hash: 598bcc4cb7
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-25
+          - secretRef:
+              name: pentemind-secrets-25
+          image: devzeelearn/pentemind-apiv1-2025:17
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 4
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "17"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-25-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2025:19 --namespace=poc --record=true
+    creationTimestamp: "2025-07-03T06:58:10Z"
+    generation: 2
+    labels:
+      app: pentemind-app
+      environment: poc
+      pod-template-hash: 5d54c55cbf
+      project: zee-project
+    name: pentemind-25-deploy-5d54c55cbf
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-25-deploy
+      uid: b8ab4c66-7561-4dc3-aa46-09335af50e67
+    resourceVersion: "77927267"
+    uid: f19aa8e0-3e2f-4c30-be9b-4b3285dfceb8
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-app
+        pod-template-hash: 5d54c55cbf
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-app
+          environment: poc
+          pod-template-hash: 5d54c55cbf
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-25
+          - secretRef:
+              name: pentemind-secrets-25
+          image: devzeelearn/pentemind-apiv1-2025:19
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "22"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-25-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2025:24 --namespace=poc --record=true
+    creationTimestamp: "2025-07-31T09:39:32Z"
+    generation: 2
+    labels:
+      app: pentemind-app
+      environment: poc
+      pod-template-hash: 5f95fdccc
+      project: zee-project
+    name: pentemind-25-deploy-5f95fdccc
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-25-deploy
+      uid: b8ab4c66-7561-4dc3-aa46-09335af50e67
+    resourceVersion: "97318684"
+    uid: 716f6e11-3759-4860-9cd9-6c889e692b42
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-app
+        pod-template-hash: 5f95fdccc
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-app
+          environment: poc
+          pod-template-hash: 5f95fdccc
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-25
+          - secretRef:
+              name: pentemind-secrets-25
+          image: devzeelearn/pentemind-apiv1-2025:24
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "24"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-25-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2025:26 --namespace=poc --record=true
+    creationTimestamp: "2025-08-11T09:43:09Z"
+    generation: 2
+    labels:
+      app: pentemind-app
+      environment: poc
+      pod-template-hash: 6cdf65c979
+      project: zee-project
+    name: pentemind-25-deploy-6cdf65c979
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-25-deploy
+      uid: b8ab4c66-7561-4dc3-aa46-09335af50e67
+    resourceVersion: "101775171"
+    uid: 833134cd-6266-4bc5-bb38-83289cac1c81
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-app
+        pod-template-hash: 6cdf65c979
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-app
+          environment: poc
+          pod-template-hash: 6cdf65c979
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-25
+          - secretRef:
+              name: pentemind-secrets-25
+          image: devzeelearn/pentemind-apiv1-2025:26
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "15"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-25-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2025:16 --namespace=poc --record=true
+    creationTimestamp: "2025-04-25T07:39:06Z"
+    generation: 2
+    labels:
+      app: pentemind-app
+      environment: poc
+      pod-template-hash: 786c7959d8
+      project: zee-project
+    name: pentemind-25-deploy-786c7959d8
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-25-deploy
+      uid: b8ab4c66-7561-4dc3-aa46-09335af50e67
+    resourceVersion: "47437774"
+    uid: fcc16273-3040-4905-8a01-aa7f1b1d6b1f
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-app
+        pod-template-hash: 786c7959d8
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-app
+          environment: poc
+          pod-template-hash: 786c7959d8
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-25
+          - secretRef:
+              name: pentemind-secrets-25
+          image: devzeelearn/pentemind-apiv1-2025:16
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "23"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-25-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2025:25 --namespace=poc --record=true
+    creationTimestamp: "2025-08-11T09:05:25Z"
+    generation: 2
+    labels:
+      app: pentemind-app
+      environment: poc
+      pod-template-hash: 78dc5849d6
+      project: zee-project
+    name: pentemind-25-deploy-78dc5849d6
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-25-deploy
+      uid: b8ab4c66-7561-4dc3-aa46-09335af50e67
+    resourceVersion: "97331674"
+    uid: 83eb3182-6aa0-4a6b-a61d-98b240c6bd57
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-app
+        pod-template-hash: 78dc5849d6
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-app
+          environment: poc
+          pod-template-hash: 78dc5849d6
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-25
+          - secretRef:
+              name: pentemind-secrets-25
+          image: devzeelearn/pentemind-apiv1-2025:25
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "20"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-25-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2025:22 --namespace=poc --record=true
+    creationTimestamp: "2025-07-22T09:43:54Z"
+    generation: 2
+    labels:
+      app: pentemind-app
+      environment: poc
+      pod-template-hash: 859c5f4f5
+      project: zee-project
+    name: pentemind-25-deploy-859c5f4f5
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-25-deploy
+      uid: b8ab4c66-7561-4dc3-aa46-09335af50e67
+    resourceVersion: "87764071"
+    uid: b4564924-cc2c-4464-afcb-cdb0e99ae33e
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-app
+        pod-template-hash: 859c5f4f5
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-app
+          environment: poc
+          pod-template-hash: 859c5f4f5
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-25
+          - secretRef:
+              name: pentemind-secrets-25
+          image: devzeelearn/pentemind-apiv1-2025:22
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "18"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-25-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2025:20 --namespace=poc --record=true
+    creationTimestamp: "2025-07-04T09:50:40Z"
+    generation: 2
+    labels:
+      app: pentemind-app
+      environment: poc
+      pod-template-hash: d4dbc5545
+      project: zee-project
+    name: pentemind-25-deploy-d4dbc5545
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-25-deploy
+      uid: b8ab4c66-7561-4dc3-aa46-09335af50e67
+    resourceVersion: "87315658"
+    uid: ae6d446a-552e-4c84-a967-fe5408ac7b7f
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: pentemind-app
+        pod-template-hash: d4dbc5545
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-app
+          environment: poc
+          pod-template-hash: d4dbc5545
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-25
+          - secretRef:
+              name: pentemind-secrets-25
+          image: devzeelearn/pentemind-apiv1-2025:20
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "25"
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-25-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2025:28 --namespace=poc --record=true
+    creationTimestamp: "2025-08-20T13:15:16Z"
+    generation: 1
+    labels:
+      app: pentemind-app
+      environment: poc
+      pod-template-hash: dfd88f99c
+      project: zee-project
+    name: pentemind-25-deploy-dfd88f99c
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: pentemind-25-deploy
+      uid: b8ab4c66-7561-4dc3-aa46-09335af50e67
+    resourceVersion: "101775162"
+    uid: fbaf2fd9-31dc-481a-bcc7-00a0e8da56b2
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: pentemind-app
+        pod-template-hash: dfd88f99c
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-app
+          environment: poc
+          pod-template-hash: dfd88f99c
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-25
+          - secretRef:
+              name: pentemind-secrets-25
+          image: devzeelearn/pentemind-apiv1-2025:28
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2025-05-09T10:46:32Z"
+    generation: 3
+    labels:
+      app: zeelearnwebsite-app
+      environment: poc
+      pod-template-hash: cd7bb7cb
+      project: zee-project
+    name: zeelearnwebsite-deploy-cd7bb7cb
+    namespace: poc
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: zeelearnwebsite-deploy
+      uid: ae007a4d-2599-4b03-86ca-2aad6644ae8b
+    resourceVersion: "70971496"
+    uid: 64a7c150-d893-4c1b-ba90-466d53d885e3
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: zeelearnwebsite-app
+        pod-template-hash: cd7bb7cb
+        project: zee-project
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: zeelearnwebsite-app
+          environment: poc
+          pod-template-hash: cd7bb7cb
+          project: zee-project
+      spec:
+        containers:
+        - command:
+          - pm2-runtime
+          - dist/Zeelearnwebsite/browser/server.js
+          envFrom:
+          - configMapRef:
+              name: zeelearnwebsite-config
+          image: docker.io/devzeelearn/zeelearnwebsite:latest
+          imagePullPolicy: Always
+          name: zeelearnwebsite
+          ports:
+          - containerPort: 4000
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    fullyLabeledReplicas: 1
+    observedGeneration: 3
+    replicas: 1
+kind: List
+metadata:
+  resourceVersion: ""

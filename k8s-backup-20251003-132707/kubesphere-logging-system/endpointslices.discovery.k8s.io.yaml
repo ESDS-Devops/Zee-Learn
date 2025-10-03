@@ -1,0 +1,333 @@
+apiVersion: v1
+items:
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.5.235
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: kube-auditing-webhook-deploy-5dc6f88977-6mf7d
+      namespace: kubesphere-logging-system
+      uid: beafe8e9-770a-476d-b8eb-16dfdd0eccdb
+  - addresses:
+    - 192.168.4.58
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi03
+    targetRef:
+      kind: Pod
+      name: kube-auditing-webhook-deploy-5dc6f88977-p6xf2
+      namespace: kubesphere-logging-system
+      uid: ca94c8bb-e6c8-4b95-834e-6810fd7749c1
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:47:58Z"
+    creationTimestamp: "2025-03-04T08:44:14Z"
+    generateName: kube-auditing-webhook-svc-
+    generation: 39
+    labels:
+      app.kubernetes.io/managed-by: Helm
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: kube-auditing-webhook-svc
+    name: kube-auditing-webhook-svc-9z2r9
+    namespace: kubesphere-logging-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: kube-auditing-webhook-svc
+      uid: 5c3fd485-9768-41f1-9d9d-d2a86fc42912
+    resourceVersion: "72246339"
+    uid: 14bceecd-d5a3-4c19-adfc-d34e7449bc40
+  ports:
+  - name: event
+    port: 6443
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.5.237
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    hostname: opensearch-cluster-data-0
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: opensearch-cluster-data-0
+      namespace: kubesphere-logging-system
+      uid: 635ccafb-c790-4cf2-a89b-511b9dfca8d8
+  - addresses:
+    - 192.168.4.61
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    hostname: opensearch-cluster-data-1
+    nodeName: zee8608workerapi03
+    targetRef:
+      kind: Pod
+      name: opensearch-cluster-data-1
+      namespace: kubesphere-logging-system
+      uid: 785a1750-6363-4117-851c-c77c3c7edd65
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:50:31Z"
+    creationTimestamp: "2025-03-04T08:40:42Z"
+    generateName: opensearch-cluster-data-headless-
+    generation: 64
+    labels:
+      app.kubernetes.io/component: opensearch-cluster-data
+      app.kubernetes.io/instance: opensearch-data
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: opensearch
+      app.kubernetes.io/version: 2.6.0
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      helm.sh/chart: opensearch-2.11.0
+      kubernetes.io/service-name: opensearch-cluster-data-headless
+      service.kubernetes.io/headless: ""
+    name: opensearch-cluster-data-headless-6z5fh
+    namespace: kubesphere-logging-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: opensearch-cluster-data-headless
+      uid: 020ad26a-db89-4d04-9f9e-166d8015ef6e
+    resourceVersion: "72247726"
+    uid: 02fac29c-e5cf-4c84-8d80-47ad9a07ed4c
+  ports:
+  - name: http
+    port: 9200
+    protocol: TCP
+  - name: transport
+    port: 9300
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.5.237
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: opensearch-cluster-data-0
+      namespace: kubesphere-logging-system
+      uid: 635ccafb-c790-4cf2-a89b-511b9dfca8d8
+  - addresses:
+    - 192.168.4.61
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi03
+    targetRef:
+      kind: Pod
+      name: opensearch-cluster-data-1
+      namespace: kubesphere-logging-system
+      uid: 785a1750-6363-4117-851c-c77c3c7edd65
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:50:31Z"
+    creationTimestamp: "2025-03-04T08:40:42Z"
+    generateName: opensearch-cluster-data-
+    generation: 64
+    labels:
+      app.kubernetes.io/component: opensearch-cluster-data
+      app.kubernetes.io/instance: opensearch-data
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: opensearch
+      app.kubernetes.io/version: 2.6.0
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      helm.sh/chart: opensearch-2.11.0
+      kubernetes.io/service-name: opensearch-cluster-data
+    name: opensearch-cluster-data-kng5s
+    namespace: kubesphere-logging-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: opensearch-cluster-data
+      uid: 7e5731f9-fde9-49fe-ba40-32411a90ef1a
+    resourceVersion: "72247725"
+    uid: 702abb34-e1af-4614-9b2c-7c1053066559
+  ports:
+  - name: http
+    port: 9200
+    protocol: TCP
+  - name: transport
+    port: 9300
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.5.238
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    hostname: opensearch-cluster-master-0
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: opensearch-cluster-master-0
+      namespace: kubesphere-logging-system
+      uid: c065c248-c891-47d7-aa84-7305d5380d33
+  - addresses:
+    - 192.168.3.17
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    hostname: opensearch-cluster-master-1
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: opensearch-cluster-master-1
+      namespace: kubesphere-logging-system
+      uid: b21a01af-69e9-4bb5-b7a1-f0503a96a48a
+  - addresses:
+    - 192.168.4.60
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    hostname: opensearch-cluster-master-2
+    nodeName: zee8608workerapi03
+    targetRef:
+      kind: Pod
+      name: opensearch-cluster-master-2
+      namespace: kubesphere-logging-system
+      uid: 4530e4ab-3a57-4c48-ab5c-f857f07b686c
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:50:26Z"
+    creationTimestamp: "2025-03-04T08:40:41Z"
+    generateName: opensearch-cluster-master-headless-
+    generation: 109
+    labels:
+      app.kubernetes.io/component: opensearch-cluster-master
+      app.kubernetes.io/instance: opensearch-master
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: opensearch
+      app.kubernetes.io/version: 2.6.0
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      helm.sh/chart: opensearch-2.11.0
+      kubernetes.io/service-name: opensearch-cluster-master-headless
+      service.kubernetes.io/headless: ""
+    name: opensearch-cluster-master-headless-n5pfh
+    namespace: kubesphere-logging-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: opensearch-cluster-master-headless
+      uid: f13e4125-7547-417e-b592-4d79bacb7cac
+    resourceVersion: "72247663"
+    uid: 50a7a687-9004-4343-97f5-1580aea0406f
+  ports:
+  - name: http
+    port: 9200
+    protocol: TCP
+  - name: transport
+    port: 9300
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.5.238
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: opensearch-cluster-master-0
+      namespace: kubesphere-logging-system
+      uid: c065c248-c891-47d7-aa84-7305d5380d33
+  - addresses:
+    - 192.168.3.17
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: opensearch-cluster-master-1
+      namespace: kubesphere-logging-system
+      uid: b21a01af-69e9-4bb5-b7a1-f0503a96a48a
+  - addresses:
+    - 192.168.4.60
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi03
+    targetRef:
+      kind: Pod
+      name: opensearch-cluster-master-2
+      namespace: kubesphere-logging-system
+      uid: 4530e4ab-3a57-4c48-ab5c-f857f07b686c
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:50:26Z"
+    creationTimestamp: "2025-03-04T08:40:41Z"
+    generateName: opensearch-cluster-master-
+    generation: 109
+    labels:
+      app.kubernetes.io/component: opensearch-cluster-master
+      app.kubernetes.io/instance: opensearch-master
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: opensearch
+      app.kubernetes.io/version: 2.6.0
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      helm.sh/chart: opensearch-2.11.0
+      kubernetes.io/service-name: opensearch-cluster-master
+    name: opensearch-cluster-master-xcjnk
+    namespace: kubesphere-logging-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: opensearch-cluster-master
+      uid: 128bb4ae-21a8-405c-bf68-53dad6fcbced
+    resourceVersion: "72247666"
+    uid: 3a75b82a-7ce7-4add-a386-6f7a9cf752b6
+  ports:
+  - name: http
+    port: 9200
+    protocol: TCP
+  - name: transport
+    port: 9300
+    protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""

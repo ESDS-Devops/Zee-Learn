@@ -1,0 +1,59 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  count: 431
+  eventTime: null
+  firstTimestamp: "2025-06-20T20:29:24Z"
+  involvedObject:
+    apiVersion: v1
+    kind: Service
+    name: ks-console
+    namespace: kubesphere-system
+    resourceVersion: "83205003"
+    uid: 0b791a77-5748-4a03-9d29-f6bec6c4ca18
+  kind: Event
+  lastTimestamp: "2025-10-03T07:06:25Z"
+  message: announcing from node "zee8608workerapi01" with protocol "layer2"
+  metadata:
+    creationTimestamp: "2025-10-03T06:51:41Z"
+    name: ks-console.184ada3dfba40fef
+    namespace: kubesphere-system
+    resourceVersion: "122962485"
+    uid: b283b9db-fd2d-4398-a62f-227fcff193c3
+  reason: nodeAssigned
+  reportingComponent: metallb-speaker
+  reportingInstance: ""
+  source:
+    component: metallb-speaker
+  type: Normal
+- apiVersion: v1
+  count: 406798
+  eventTime: null
+  firstTimestamp: "2025-07-31T01:23:08Z"
+  involvedObject:
+    apiVersion: v1
+    fieldPath: spec.containers{ks-controller-manager}
+    kind: Pod
+    name: ks-controller-manager-6c9757d557-wqqf2
+    namespace: kubesphere-system
+    resourceVersion: "70951334"
+    uid: 7db78378-22bf-40ae-a316-2436099dc10f
+  kind: Event
+  lastTimestamp: "2025-10-03T07:57:44Z"
+  message: Back-off pulling image "kubesphere/ks-controller-manager:v3.4.1"
+  metadata:
+    creationTimestamp: "2025-07-31T01:23:11Z"
+    name: ks-controller-manager-6c9757d557-wqqf2.1857317bfb116595
+    namespace: kubesphere-system
+    resourceVersion: "122979911"
+    uid: e0dbce0e-81ad-4ee8-b49e-ec615d44b101
+  reason: BackOff
+  reportingComponent: kubelet
+  reportingInstance: zee8608workerapi02
+  source:
+    component: kubelet
+    host: zee8608workerapi02
+  type: Normal
+kind: List
+metadata:
+  resourceVersion: ""

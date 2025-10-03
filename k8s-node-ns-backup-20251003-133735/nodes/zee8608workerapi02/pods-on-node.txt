@@ -1,0 +1,45 @@
+NAMESPACE                      NAME                                                READY   STATUS             RESTARTS        AGE    IP              NODE                 NOMINATED NODE   READINESS GATES
+cert-manager                   cert-manager-97f647775-wxbkc                        1/1     Running            2 (104d ago)    169d   192.168.3.234   zee8608workerapi02   <none>           <none>
+ingress-nginx                  ingress-nginx-controller-57fb89d679-t8hfl           1/1     Running            1 (104d ago)    112d   192.168.3.223   zee8608workerapi02   <none>           <none>
+kube-flannel                   kube-flannel-ds-h9rrs                               1/1     Running            3 (104d ago)    237d   10.48.219.139   zee8608workerapi02   <none>           <none>
+kube-system                    kube-proxy-7hm8t                                    1/1     Running            2 (104d ago)    238d   10.48.219.139   zee8608workerapi02   <none>           <none>
+kube-system                    metrics-server-b79d5c976-27hfl                      1/1     Running            0               104d   192.168.3.8     zee8608workerapi02   <none>           <none>
+kube-system                    snapshot-controller-0                               1/1     Running            1 (104d ago)    169d   192.168.3.230   zee8608workerapi02   <none>           <none>
+kubesphere-controls-system     kubectl-admin-6bb69fcfdf-zfndf                      1/1     Running            1 (104d ago)    169d   192.168.3.228   zee8608workerapi02   <none>           <none>
+kubesphere-logging-system      fluent-bit-jzkzz                                    1/1     Running            0               101d   192.168.3.16    zee8608workerapi02   <none>           <none>
+kubesphere-logging-system      opensearch-cluster-master-1                         1/1     Running            5 (101d ago)    101d   192.168.3.17    zee8608workerapi02   <none>           <none>
+kubesphere-monitoring-system   alertmanager-main-0                                 2/2     Running            2 (104d ago)    169d   192.168.3.226   zee8608workerapi02   <none>           <none>
+kubesphere-monitoring-system   alertmanager-main-1                                 2/2     Running            2 (104d ago)    169d   192.168.3.218   zee8608workerapi02   <none>           <none>
+kubesphere-monitoring-system   kube-state-metrics-99bf7fbb6-ntzsh                  3/3     Running            3 (104d ago)    169d   192.168.3.217   zee8608workerapi02   <none>           <none>
+kubesphere-monitoring-system   node-exporter-8c59f                                 2/2     Running            4 (104d ago)    235d   10.48.219.139   zee8608workerapi02   <none>           <none>
+kubesphere-monitoring-system   notification-manager-deployment-c9d789f99-785kq     2/2     Running            17 (104d ago)   169d   192.168.3.224   zee8608workerapi02   <none>           <none>
+kubesphere-monitoring-system   notification-manager-operator-9949f4878-x9vqw       2/2     Running            7 (104d ago)    169d   192.168.3.219   zee8608workerapi02   <none>           <none>
+kubesphere-monitoring-system   prometheus-k8s-1                                    2/2     Running            0               104d   192.168.3.242   zee8608workerapi02   <none>           <none>
+kubesphere-monitoring-system   thanos-ruler-kubesphere-0                           2/2     Running            27 (104d ago)   169d   192.168.3.227   zee8608workerapi02   <none>           <none>
+kubesphere-system              ks-apiserver-945bb6c8c-dr2pf                        1/1     Running            0               104d   192.168.3.237   zee8608workerapi02   <none>           <none>
+kubesphere-system              ks-console-7bcbf87f4-snqbp                          1/1     Running            0               104d   192.168.3.236   zee8608workerapi02   <none>           <none>
+kubesphere-system              ks-controller-manager-6c9757d557-wqqf2              0/1     ImagePullBackOff   1 (64d ago)     104d   192.168.3.238   zee8608workerapi02   <none>           <none>
+kubesphere-system              ks-installer-6647685479-6gs9f                       1/1     Running            12 (104d ago)   169d   192.168.3.220   zee8608workerapi02   <none>           <none>
+longhorn-system                engine-image-ei-c2d50bcc-rqwsm                      1/1     Running            3 (104d ago)    237d   192.168.3.232   zee8608workerapi02   <none>           <none>
+longhorn-system                instance-manager-cebb946b3b3be3279c2f59f7e76f53b9   1/1     Running            0               104d   192.168.3.239   zee8608workerapi02   <none>           <none>
+longhorn-system                longhorn-csi-plugin-6dcgc                           3/3     Running            17 (104d ago)   236d   192.168.3.222   zee8608workerapi02   <none>           <none>
+longhorn-system                longhorn-manager-4ckwk                              2/2     Running            7 (104d ago)    237d   192.168.3.235   zee8608workerapi02   <none>           <none>
+metallb-system                 speaker-7m6cb                                       1/1     Running            4 (104d ago)    237d   10.48.219.139   zee8608workerapi02   <none>           <none>
+prod                           cmsapi-deploy-f545f8c6d-vgx6b                       1/1     Running            65 (20h ago)    13d    192.168.3.192   zee8608workerapi02   <none>           <none>
+prod                           graphql-deploy-98cc44b8b-vndxg                      1/1     Running            3 (2d2h ago)    13d    192.168.3.194   zee8608workerapi02   <none>           <none>
+prod                           graphql-deploy-98cc44b8b-w4jgb                      1/1     Running            3 (4d3h ago)    13d    192.168.3.196   zee8608workerapi02   <none>           <none>
+prod                           graphql-deploy-98cc44b8b-zsw9g                      1/1     Running            3 (3d23h ago)   13d    192.168.3.191   zee8608workerapi02   <none>           <none>
+prod                           juapi-deploy-559fc8cf7c-b7pql                       1/1     Running            1 (2d21h ago)   9d     192.168.3.211   zee8608workerapi02   <none>           <none>
+prod                           literanovacms-deploy-7cb9c56bc9-4n8dg               1/1     Running            0               13d    192.168.3.203   zee8608workerapi02   <none>           <none>
+prod                           literanovacms-deploy-7cb9c56bc9-f5s2g               1/1     Running            0               13d    192.168.3.206   zee8608workerapi02   <none>           <none>
+prod                           literanovacms-deploy-7cb9c56bc9-xzgvn               1/1     Running            0               13d    192.168.3.202   zee8608workerapi02   <none>           <none>
+prod                           literaoctavecms-deploy-85c87cbb88-8rmbj             1/1     Running            0               13d    192.168.3.195   zee8608workerapi02   <none>           <none>
+prod                           lmsapi-deploy-7bdbb68dd9-tr2x9                      1/1     Running            0               9d     192.168.3.212   zee8608workerapi02   <none>           <none>
+prod                           novachat-deploy-6c57d7bf4b-cfqgm                    1/1     Running            0               13d    192.168.3.198   zee8608workerapi02   <none>           <none>
+prod                           pentemind-24-deploy-6f7d54db84-sfd8b                1/1     Running            0               13d    192.168.3.199   zee8608workerapi02   <none>           <none>
+prod                           pentemind-24-deploy-6f7d54db84-vwkwx                1/1     Running            0               13d    192.168.3.197   zee8608workerapi02   <none>           <none>
+prod                           pentemind-25-deploy-66ffd97754-dxbjb                1/1     Running            0               13d    192.168.3.204   zee8608workerapi02   <none>           <none>
+prod                           zllsaathiapi-deploy-7fb44565c9-pfh7j                1/1     Running            0               8d     192.168.3.213   zee8608workerapi02   <none>           <none>
+rbmq                           rabbitmq-cluster-server-1                           1/1     Running            0               104d   192.168.3.241   zee8608workerapi02   <none>           <none>
+rbmq                           rabbitmq-cluster-server-2                           1/1     Running            0               104d   192.168.3.240   zee8608workerapi02   <none>           <none>
+redis                          redis-594bb96598-5zds9                              1/1     Running            1 (104d ago)    169d   192.168.3.229   zee8608workerapi02   <none>           <none>

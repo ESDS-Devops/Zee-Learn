@@ -1,0 +1,794 @@
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "31"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"cmsapi-app","environment":"poc","project":"zee-project"},"name":"cmsapi-deploy","namespace":"poc"},"spec":{"selector":{"matchLabels":{"app":"cmsapi-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"cmsapi-app","environment":"poc","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"cmsapi-config"}},{"secretRef":{"name":"cmsapi-secrets"}}],"image":"docker.io/devzeelearn/cmsapi:latest","imagePullPolicy":"Always","name":"cmsapi","ports":[{"containerPort":5011}],"resources":{"limits":{"cpu":"500m","memory":"256Mi"},"requests":{"cpu":"250m","memory":"128Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/cmsapi-deploy cmsapi=devzeelearn/cmsapi-poc:181
+        --namespace=poc --record=true
+    creationTimestamp: "2025-05-13T11:07:47Z"
+    generation: 44
+    labels:
+      app: cmsapi-app
+      environment: poc
+      project: zee-project
+    name: cmsapi-deploy
+    namespace: poc
+    resourceVersion: "118157787"
+    uid: 6bf36a4a-1cfa-4720-bb23-adbd2c2d46cc
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: cmsapi-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: cmsapi-app
+          environment: poc
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: cmsapi-config
+          - secretRef:
+              name: cmsapi-secrets
+          image: devzeelearn/cmsapi-poc:181
+          imagePullPolicy: Always
+          name: cmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2025-06-20T20:51:50Z"
+      lastUpdateTime: "2025-06-20T20:51:50Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-09-19T11:43:54Z"
+      lastUpdateTime: "2025-09-23T08:41:46Z"
+      message: ReplicaSet "cmsapi-deploy-67c4fffb7d" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 44
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "39"
+      kubernetes.io/change-cause: kubectl set image deployment/graphql-deploy graphql=devzeelearn/graphql:50
+        --namespace=poc --record=true
+    creationTimestamp: "2025-02-27T08:39:06Z"
+    generation: 43
+    labels:
+      app: graphql-app
+      environment: poc
+      project: zee-project
+    name: graphql-deploy
+    namespace: poc
+    resourceVersion: "104523760"
+    uid: 458b2800-369b-49eb-aec6-2664603a5939
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: graphql-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-12T17:09:16+05:30"
+          kubesphere.io/restartedAt: "2025-03-10T07:55:53.367Z"
+        creationTimestamp: null
+        labels:
+          app: graphql-app
+          environment: poc
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: graphql-config
+          - secretRef:
+              name: graphql-secrets
+          image: devzeelearn/graphql:50
+          imagePullPolicy: Always
+          name: graphql
+          ports:
+          - containerPort: 5015
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2025-06-20T20:51:28Z"
+      lastUpdateTime: "2025-06-20T20:51:28Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-04-16T07:35:57Z"
+      lastUpdateTime: "2025-08-26T05:27:03Z"
+      message: ReplicaSet "graphql-deploy-77cb567f9" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 43
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "19"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"juapi-app","environment":"poc","project":"zee-project"},"name":"juapi-deploy","namespace":"poc"},"spec":{"selector":{"matchLabels":{"app":"juapi-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"juapi-app","environment":"poc","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"juapi-config"}},{"secretRef":{"name":"juapi-secrets"}}],"image":"docker.io/devzeelearn/juapi:latest","imagePullPolicy":"Always","name":"juapi","ports":[{"containerPort":5011}],"resources":{"limits":{"cpu":"500m","memory":"256Mi"},"requests":{"cpu":"250m","memory":"128Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/juapi-deploy juapi=devzeelearn/juapi-poc:166
+        --namespace=poc --record=true
+    creationTimestamp: "2025-05-15T14:31:23Z"
+    generation: 25
+    labels:
+      app: juapi-app
+      environment: poc
+      project: zee-project
+    name: juapi-deploy
+    namespace: poc
+    resourceVersion: "118158238"
+    uid: 5f7d3fe3-0ded-4bb9-a320-40c090d43e31
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: juapi-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-21T13:24:32+05:30"
+        creationTimestamp: null
+        labels:
+          app: juapi-app
+          environment: poc
+          project: zee-project
+      spec:
+        containers:
+        - env:
+          - name: TZ
+            value: Asia/Kolkata
+          envFrom:
+          - configMapRef:
+              name: juapi-config
+          - secretRef:
+              name: juapi-secrets
+          image: devzeelearn/juapi-poc:166
+          imagePullPolicy: Always
+          name: juapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2025-09-23T08:42:52Z"
+      lastUpdateTime: "2025-09-23T08:42:52Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-05-15T14:48:03Z"
+      lastUpdateTime: "2025-09-23T08:42:52Z"
+      message: ReplicaSet "juapi-deploy-56f7b9bc7c" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 25
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "18"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"lmsapi-app","environment":"poc","project":"zee-project"},"name":"lmsapi-deploy","namespace":"poc"},"spec":{"selector":{"matchLabels":{"app":"lmsapi-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"lmsapi-app","environment":"poc","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"lmsapi-config"}},{"secretRef":{"name":"lmsapi-secrets"}}],"image":"docker.io/devzeelearn/lmsapi:latest","imagePullPolicy":"Always","name":"lmsapi","ports":[{"containerPort":5011}],"resources":{"limits":{"cpu":"500m","memory":"256Mi"},"requests":{"cpu":"250m","memory":"128Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/lmsapi-deploy lmsapi=devzeelearn/lmsapi-poc:165
+        --namespace=poc --record=true
+    creationTimestamp: "2025-05-15T14:31:41Z"
+    generation: 20
+    labels:
+      app: lmsapi-app
+      environment: poc
+      project: zee-project
+    name: lmsapi-deploy
+    namespace: poc
+    resourceVersion: "118157992"
+    uid: 31c15057-8636-4a7d-906a-7686a263e532
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: lmsapi-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: lmsapi-app
+          environment: poc
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: lmsapi-config
+          - secretRef:
+              name: lmsapi-secrets
+          image: devzeelearn/lmsapi-poc:165
+          imagePullPolicy: Always
+          name: lmsapi
+          ports:
+          - containerPort: 5011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2025-09-23T08:42:15Z"
+      lastUpdateTime: "2025-09-23T08:42:15Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-07-08T07:39:13Z"
+      lastUpdateTime: "2025-09-23T08:42:16Z"
+      message: ReplicaSet "lmsapi-deploy-5b7d878f85" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 20
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "5"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"novachat-app","environment":"poc","project":"zee-project"},"name":"novachat-deploy","namespace":"poc"},"spec":{"selector":{"matchLabels":{"app":"novachat-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"novachat-app","environment":"poc","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"novachat-config"}},{"secretRef":{"name":"novachat-secrets"}}],"image":"docker.io/devzeelearn/lmsapi:latest","imagePullPolicy":"Always","name":"novachat","ports":[{"containerPort":4011}],"resources":{"limits":{"cpu":"500m","memory":"256Mi"},"requests":{"cpu":"250m","memory":"128Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/novachat-deploy novachat=devzeelearn/novachat-poc:4
+        --namespace=poc --record=true
+    creationTimestamp: "2025-05-21T08:42:50Z"
+    generation: 7
+    labels:
+      app: novachat-app
+      environment: poc
+      project: zee-project
+    name: novachat-deploy
+    namespace: poc
+    resourceVersion: "91240554"
+    uid: 5b2dac42-b4d9-436c-8265-bc264be9dbff
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: novachat-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-05-30T11:25:50+05:30"
+        creationTimestamp: null
+        labels:
+          app: novachat-app
+          environment: poc
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: novachat-config
+          - secretRef:
+              name: novachat-secrets
+          image: devzeelearn/novachat-poc:4
+          imagePullPolicy: Always
+          name: novachat
+          ports:
+          - containerPort: 4011
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2025-05-21T12:57:26Z"
+      lastUpdateTime: "2025-06-18T08:07:58Z"
+      message: ReplicaSet "novachat-deploy-5d784f8755" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2025-07-29T23:28:57Z"
+      lastUpdateTime: "2025-07-29T23:28:57Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 7
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "3"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"pentemind-2023","environment":"poc","project":"zee-project"},"name":"pentemind-23-deploy","namespace":"poc"},"spec":{"replicas":5,"selector":{"matchLabels":{"app":"pentemind-2023","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"pentemind-2023","environment":"poc","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"pentemind-config-23"}},{"secretRef":{"name":"pentemind-secrets-23"}}],"image":"docker.io/devzeelearn/pentemind-apiv1-2023:latest","imagePullPolicy":"Always","name":"pentemind","ports":[{"containerPort":5005}],"resources":{"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"200m","memory":"256Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+    creationTimestamp: "2025-04-28T10:36:06Z"
+    generation: 17
+    labels:
+      app: pentemind-2023
+      environment: poc
+      project: zee-project
+    name: pentemind-23-deploy
+    namespace: poc
+    resourceVersion: "70965144"
+    uid: 818fe108-9bce-4a7b-a04c-4addf36bf066
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: pentemind-2023
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2025-04-30T13:24:47+05:30"
+        creationTimestamp: null
+        labels:
+          app: pentemind-2023
+          environment: poc
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-23
+          - secretRef:
+              name: pentemind-secrets-23
+          image: devzeelearn/pentemind-apiv1-2023:4
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2025-04-28T10:36:06Z"
+      lastUpdateTime: "2025-04-30T07:56:58Z"
+      message: ReplicaSet "pentemind-23-deploy-5d5479cffd" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2025-06-20T20:51:51Z"
+      lastUpdateTime: "2025-06-20T20:51:51Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 17
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "46"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"pentemind-apps","environment":"poc","project":"zee-project"},"name":"pentemind-24-deploy","namespace":"poc"},"spec":{"replicas":5,"selector":{"matchLabels":{"app":"pentemind-apps","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"pentemind-apps","environment":"poc","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"pentemind-config-24"}},{"secretRef":{"name":"pentemind-secrets-24"}}],"image":"docker.io/devzeelearn/pentemind-apiv1-2024:latest","imagePullPolicy":"Always","name":"pentemind","ports":[{"containerPort":5005}],"resources":{"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"250m","memory":"256Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-24-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2024:55 --namespace=poc --record=true
+    creationTimestamp: "2025-02-28T06:02:42Z"
+    generation: 49
+    labels:
+      app: pentemind-apps
+      environment: poc
+      project: zee-project
+    name: pentemind-24-deploy
+    namespace: poc
+    resourceVersion: "101779853"
+    uid: 8d1f4df3-be04-427b-bc1f-b379a062c96b
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: pentemind-apps
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-apps
+          environment: poc
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-24
+          - secretRef:
+              name: pentemind-secrets-24
+          image: devzeelearn/pentemind-apiv1-2024:55
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2025-07-22T09:46:42Z"
+      lastUpdateTime: "2025-07-22T09:46:42Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-02-28T06:02:33Z"
+      lastUpdateTime: "2025-08-20T13:27:01Z"
+      message: ReplicaSet "pentemind-24-deploy-7f5949d8c7" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 49
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "25"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"pentemind-app","environment":"poc","project":"zee-project"},"name":"pentemind-25-deploy","namespace":"poc"},"spec":{"replicas":5,"selector":{"matchLabels":{"app":"pentemind-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"pentemind-app","environment":"poc","project":"zee-project"}},"spec":{"containers":[{"envFrom":[{"configMapRef":{"name":"pentemind-config-25"}},{"secretRef":{"name":"pentemind-secrets-25"}}],"image":"docker.io/devzeelearn/pentemind-apiv1-2025:latest","imagePullPolicy":"Always","name":"pentemind-app","ports":[{"containerPort":5005}],"resources":{"limits":{"cpu":"1000m","memory":"1Gi"},"requests":{"cpu":"500m","memory":"512Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+      kubernetes.io/change-cause: kubectl set image deployment/pentemind-25-deploy
+        pentemind=devzeelearn/pentemind-apiv1-2025:28 --namespace=poc --record=true
+    creationTimestamp: "2025-02-28T06:38:50Z"
+    generation: 30
+    labels:
+      app: pentemind-app
+      environment: poc
+      project: zee-project
+    name: pentemind-25-deploy
+    namespace: poc
+    resourceVersion: "101775173"
+    uid: b8ab4c66-7561-4dc3-aa46-09335af50e67
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: pentemind-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: pentemind-app
+          environment: poc
+          project: zee-project
+      spec:
+        containers:
+        - envFrom:
+          - configMapRef:
+              name: pentemind-config-25
+          - secretRef:
+              name: pentemind-secrets-25
+          image: devzeelearn/pentemind-apiv1-2025:28
+          imagePullPolicy: Always
+          name: pentemind
+          ports:
+          - containerPort: 5005
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2025-07-22T09:44:10Z"
+      lastUpdateTime: "2025-07-22T09:44:10Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-03-07T09:51:53Z"
+      lastUpdateTime: "2025-08-20T13:15:35Z"
+      message: ReplicaSet "pentemind-25-deploy-dfd88f99c" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 30
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"zeelearnwebsite-app","environment":"poc","project":"zee-project"},"name":"zeelearnwebsite-deploy","namespace":"poc"},"spec":{"selector":{"matchLabels":{"app":"zeelearnwebsite-app","project":"zee-project"}},"template":{"metadata":{"labels":{"app":"zeelearnwebsite-app","environment":"poc","project":"zee-project"}},"spec":{"containers":[{"command":["pm2-runtime","dist/Zeelearnwebsite/browser/server.js"],"envFrom":[{"configMapRef":{"name":"zeelearnwebsite-config"}}],"image":"docker.io/devzeelearn/zeelearnwebsite:latest","imagePullPolicy":"Always","name":"zeelearnwebsite","ports":[{"containerPort":4000}],"resources":{"limits":{"cpu":"500m","memory":"256Mi"},"requests":{"cpu":"250m","memory":"128Mi"}}}],"imagePullSecrets":[{"name":"zee-docker-secret"}],"restartPolicy":"Always"}}}}
+    creationTimestamp: "2025-05-09T10:46:58Z"
+    generation: 3
+    labels:
+      app: zeelearnwebsite-app
+      environment: poc
+      project: zee-project
+    name: zeelearnwebsite-deploy
+    namespace: poc
+    resourceVersion: "70971499"
+    uid: ae007a4d-2599-4b03-86ca-2aad6644ae8b
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: zeelearnwebsite-app
+        project: zee-project
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: zeelearnwebsite-app
+          environment: poc
+          project: zee-project
+      spec:
+        containers:
+        - command:
+          - pm2-runtime
+          - dist/Zeelearnwebsite/browser/server.js
+          envFrom:
+          - configMapRef:
+              name: zeelearnwebsite-config
+          image: docker.io/devzeelearn/zeelearnwebsite:latest
+          imagePullPolicy: Always
+          name: zeelearnwebsite
+          ports:
+          - containerPort: 4000
+            protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: zee-docker-secret
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    conditions:
+    - lastTransitionTime: "2025-06-20T19:07:41Z"
+      lastUpdateTime: "2025-06-20T19:07:41Z"
+      message: ReplicaSet "zeelearnwebsite-deploy-cd7bb7cb" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2025-06-20T20:51:13Z"
+      lastUpdateTime: "2025-06-20T20:51:13Z"
+      message: Deployment does not have minimum availability.
+      reason: MinimumReplicasUnavailable
+      status: "False"
+      type: Available
+    observedGeneration: 3
+    replicas: 1
+    unavailableReplicas: 1
+    updatedReplicas: 1
+kind: List
+metadata:
+  resourceVersion: ""

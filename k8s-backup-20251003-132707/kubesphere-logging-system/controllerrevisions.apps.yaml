@@ -1,0 +1,874 @@
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  data:
+    spec:
+      template:
+        $patch: replace
+        metadata:
+          creationTimestamp: null
+          labels:
+            app.kubernetes.io/name: fluent-bit
+          name: fluent-bit
+          namespace: kubesphere-logging-system
+        spec:
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                - matchExpressions:
+                  - key: node-role.kubernetes.io/edge
+                    operator: DoesNotExist
+          containers:
+          - env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: spec.nodeName
+            image: kubesphere/fluent-bit:v1.9.4
+            imagePullPolicy: IfNotPresent
+            name: fluent-bit
+            ports:
+            - containerPort: 2020
+              name: metrics
+              protocol: TCP
+            resources:
+              limits:
+                cpu: 500m
+                memory: 200Mi
+              requests:
+                cpu: 10m
+                memory: 25Mi
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+            - mountPath: /var/log/containers
+              name: varlibcontainers
+              readOnly: true
+            - mountPath: /fluent-bit/config
+              name: config
+              readOnly: true
+            - mountPath: /var/log/
+              name: varlogs
+              readOnly: true
+            - mountPath: /var/log/journal
+              name: systemd
+              readOnly: true
+            - mountPath: /fluent-bit/tail
+              name: positions
+          dnsPolicy: ClusterFirst
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          securityContext: {}
+          serviceAccount: fluent-bit
+          serviceAccountName: fluent-bit
+          terminationGracePeriodSeconds: 30
+          tolerations:
+          - operator: Exists
+          volumes:
+          - hostPath:
+              path: /var/log/containers
+              type: ""
+            name: varlibcontainers
+          - name: config
+            secret:
+              defaultMode: 420
+              secretName: fluent-bit-config
+          - hostPath:
+              path: /var/log
+              type: ""
+            name: varlogs
+          - hostPath:
+              path: /var/log/journal
+              type: ""
+            name: systemd
+          - emptyDir: {}
+            name: positions
+  kind: ControllerRevision
+  metadata:
+    annotations:
+      deprecated.daemonset.template.generation: "1"
+    creationTimestamp: "2025-03-04T08:41:33Z"
+    labels:
+      app.kubernetes.io/name: fluent-bit
+      controller-revision-hash: 767db976
+    name: fluent-bit-767db976
+    namespace: kubesphere-logging-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: fluent-bit
+      uid: 2576eaf5-f050-486e-aa27-04a9d8690e49
+    resourceVersion: "11875304"
+    uid: 14b0a7dd-bcd6-48a3-b445-ac4ea579a484
+  revision: 1
+- apiVersion: apps/v1
+  data:
+    spec:
+      template:
+        $patch: replace
+        metadata:
+          annotations:
+            configchecksum: 7ae9ee8976556684117227f195eef403383946c42d4a80240e54080c8fb0393
+          creationTimestamp: null
+          labels:
+            app.kubernetes.io/component: opensearch-cluster-data
+            app.kubernetes.io/instance: opensearch-data
+            app.kubernetes.io/managed-by: Helm
+            app.kubernetes.io/name: opensearch
+            app.kubernetes.io/version: 2.6.0
+            helm.sh/chart: opensearch-2.11.0
+          name: opensearch-cluster-data
+        spec:
+          affinity:
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - podAffinityTerm:
+                  labelSelector:
+                    matchExpressions:
+                    - key: app.kubernetes.io/instance
+                      operator: In
+                      values:
+                      - opensearch-data
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                      - opensearch
+                  topologyKey: kubernetes.io/hostname
+                weight: 1
+          containers:
+          - env:
+            - name: node.name
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
+            - name: discovery.seed_hosts
+              value: opensearch-cluster-master-headless
+            - name: cluster.name
+              value: opensearch-cluster
+            - name: network.host
+              value: 0.0.0.0
+            - name: OPENSEARCH_JAVA_OPTS
+              value: -Xmx1536M -Xms1536M
+            - name: node.roles
+              value: ingest,data,remote_cluster_client,
+            image: opensearchproject/opensearch:2.6.0
+            imagePullPolicy: IfNotPresent
+            name: opensearch
+            ports:
+            - containerPort: 9200
+              name: http
+              protocol: TCP
+            - containerPort: 9300
+              name: transport
+              protocol: TCP
+            readinessProbe:
+              failureThreshold: 3
+              periodSeconds: 5
+              successThreshold: 1
+              tcpSocket:
+                port: 9200
+              timeoutSeconds: 3
+            resources:
+              requests:
+                cpu: "1"
+                memory: 1536Mi
+            securityContext:
+              capabilities:
+                drop:
+                - ALL
+              runAsNonRoot: true
+              runAsUser: 1000
+            startupProbe:
+              failureThreshold: 30
+              initialDelaySeconds: 5
+              periodSeconds: 10
+              successThreshold: 1
+              tcpSocket:
+                port: 9200
+              timeoutSeconds: 3
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+            - mountPath: /usr/share/opensearch/data
+              name: opensearch-cluster-data
+            - mountPath: /usr/share/opensearch/config/opensearch.yml
+              name: config
+              subPath: opensearch.yml
+          dnsPolicy: ClusterFirst
+          enableServiceLinks: true
+          initContainers:
+          - args:
+            - chown -R 1000:1000 /usr/share/opensearch/data
+            command:
+            - sh
+            - -c
+            image: busybox:latest
+            imagePullPolicy: Always
+            name: fsgroup-volume
+            resources: {}
+            securityContext:
+              runAsUser: 0
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+            - mountPath: /usr/share/opensearch/data
+              name: opensearch-cluster-data
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          securityContext:
+            fsGroup: 1000
+            runAsUser: 1000
+          terminationGracePeriodSeconds: 120
+          volumes:
+          - configMap:
+              defaultMode: 420
+              name: opensearch-cluster-data-config
+            name: config
+  kind: ControllerRevision
+  metadata:
+    annotations:
+      majorVersion: "2"
+      meta.helm.sh/release-name: opensearch-data
+      meta.helm.sh/release-namespace: kubesphere-logging-system
+    creationTimestamp: "2025-03-04T08:40:42Z"
+    labels:
+      app.kubernetes.io/component: opensearch-cluster-data
+      app.kubernetes.io/instance: opensearch-data
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: opensearch
+      app.kubernetes.io/version: 2.6.0
+      controller.kubernetes.io/hash: 566d7fd4d8
+      helm.sh/chart: opensearch-2.11.0
+    name: opensearch-cluster-data-566d7fd4d8
+    namespace: kubesphere-logging-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: opensearch-cluster-data
+      uid: d43daa48-f995-4b6c-bf07-413d72c8f3ba
+    resourceVersion: "11874543"
+    uid: 962d4aa3-c49b-43e7-b967-a30a6fc0fce7
+  revision: 1
+- apiVersion: apps/v1
+  data:
+    spec:
+      template:
+        $patch: replace
+        metadata:
+          annotations:
+            configchecksum: 7ae9ee8976556684117227f195eef403383946c42d4a80240e54080c8fb0393
+            kubectl.kubernetes.io/restartedAt: "2025-04-25T13:01:16+05:30"
+          creationTimestamp: null
+          labels:
+            app.kubernetes.io/component: opensearch-cluster-data
+            app.kubernetes.io/instance: opensearch-data
+            app.kubernetes.io/managed-by: Helm
+            app.kubernetes.io/name: opensearch
+            app.kubernetes.io/version: 2.6.0
+            helm.sh/chart: opensearch-2.11.0
+          name: opensearch-cluster-data
+        spec:
+          affinity:
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - podAffinityTerm:
+                  labelSelector:
+                    matchExpressions:
+                    - key: app.kubernetes.io/instance
+                      operator: In
+                      values:
+                      - opensearch-data
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                      - opensearch
+                  topologyKey: kubernetes.io/hostname
+                weight: 1
+          containers:
+          - env:
+            - name: node.name
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
+            - name: discovery.seed_hosts
+              value: opensearch-cluster-master-headless
+            - name: cluster.name
+              value: opensearch-cluster
+            - name: network.host
+              value: 0.0.0.0
+            - name: OPENSEARCH_JAVA_OPTS
+              value: -Xmx1536M -Xms1536M
+            - name: node.roles
+              value: ingest,data,remote_cluster_client,
+            image: opensearchproject/opensearch:2.6.0
+            imagePullPolicy: IfNotPresent
+            name: opensearch
+            ports:
+            - containerPort: 9200
+              name: http
+              protocol: TCP
+            - containerPort: 9300
+              name: transport
+              protocol: TCP
+            readinessProbe:
+              failureThreshold: 3
+              periodSeconds: 5
+              successThreshold: 1
+              tcpSocket:
+                port: 9200
+              timeoutSeconds: 3
+            resources:
+              requests:
+                cpu: "1"
+                memory: 1536Mi
+            securityContext:
+              capabilities:
+                drop:
+                - ALL
+              runAsNonRoot: true
+              runAsUser: 1000
+            startupProbe:
+              failureThreshold: 30
+              initialDelaySeconds: 5
+              periodSeconds: 10
+              successThreshold: 1
+              tcpSocket:
+                port: 9200
+              timeoutSeconds: 3
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+            - mountPath: /usr/share/opensearch/data
+              name: opensearch-cluster-data
+            - mountPath: /usr/share/opensearch/config/opensearch.yml
+              name: config
+              subPath: opensearch.yml
+          dnsPolicy: ClusterFirst
+          enableServiceLinks: true
+          initContainers:
+          - args:
+            - chown -R 1000:1000 /usr/share/opensearch/data
+            command:
+            - sh
+            - -c
+            image: busybox:latest
+            imagePullPolicy: Always
+            name: fsgroup-volume
+            resources: {}
+            securityContext:
+              runAsUser: 0
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+            - mountPath: /usr/share/opensearch/data
+              name: opensearch-cluster-data
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          securityContext:
+            fsGroup: 1000
+            runAsUser: 1000
+          terminationGracePeriodSeconds: 120
+          volumes:
+          - configMap:
+              defaultMode: 420
+              name: opensearch-cluster-data-config
+            name: config
+  kind: ControllerRevision
+  metadata:
+    annotations:
+      majorVersion: "2"
+      meta.helm.sh/release-name: opensearch-data
+      meta.helm.sh/release-namespace: kubesphere-logging-system
+    creationTimestamp: "2025-04-25T07:33:15Z"
+    labels:
+      app.kubernetes.io/component: opensearch-cluster-data
+      app.kubernetes.io/instance: opensearch-data
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: opensearch
+      app.kubernetes.io/version: 2.6.0
+      controller.kubernetes.io/hash: 8b8964d67
+      helm.sh/chart: opensearch-2.11.0
+    name: opensearch-cluster-data-8b8964d67
+    namespace: kubesphere-logging-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: opensearch-cluster-data
+      uid: d43daa48-f995-4b6c-bf07-413d72c8f3ba
+    resourceVersion: "40701326"
+    uid: 146f0ce5-8f1e-466f-bf58-6bea14629ec3
+  revision: 2
+- apiVersion: apps/v1
+  data:
+    spec:
+      template:
+        $patch: replace
+        metadata:
+          annotations:
+            configchecksum: eb70eea659188d444ae38c6d48b6cce2f1c6bd3d9a4b073c07f3839a50e6a01
+          creationTimestamp: null
+          labels:
+            app.kubernetes.io/component: opensearch-cluster-master
+            app.kubernetes.io/instance: opensearch-master
+            app.kubernetes.io/managed-by: Helm
+            app.kubernetes.io/name: opensearch
+            app.kubernetes.io/version: 2.6.0
+            helm.sh/chart: opensearch-2.11.0
+          name: opensearch-cluster-master
+        spec:
+          affinity:
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - podAffinityTerm:
+                  labelSelector:
+                    matchExpressions:
+                    - key: app.kubernetes.io/instance
+                      operator: In
+                      values:
+                      - opensearch-master
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                      - opensearch
+                  topologyKey: kubernetes.io/hostname
+                weight: 1
+          containers:
+          - env:
+            - name: node.name
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
+            - name: cluster.initial_master_nodes
+              value: opensearch-cluster-master-0,opensearch-cluster-master-1,opensearch-cluster-master-2,
+            - name: discovery.seed_hosts
+              value: opensearch-cluster-master-headless
+            - name: cluster.name
+              value: opensearch-cluster
+            - name: network.host
+              value: 0.0.0.0
+            - name: OPENSEARCH_JAVA_OPTS
+              value: -Xmx512M -Xms512M
+            - name: node.roles
+              value: master,
+            image: opensearchproject/opensearch:2.6.0
+            imagePullPolicy: IfNotPresent
+            name: opensearch
+            ports:
+            - containerPort: 9200
+              name: http
+              protocol: TCP
+            - containerPort: 9300
+              name: transport
+              protocol: TCP
+            readinessProbe:
+              failureThreshold: 3
+              periodSeconds: 5
+              successThreshold: 1
+              tcpSocket:
+                port: 9200
+              timeoutSeconds: 3
+            resources:
+              requests:
+                cpu: "1"
+                memory: 512Mi
+            securityContext:
+              capabilities:
+                drop:
+                - ALL
+              runAsNonRoot: true
+              runAsUser: 1000
+            startupProbe:
+              failureThreshold: 30
+              initialDelaySeconds: 5
+              periodSeconds: 10
+              successThreshold: 1
+              tcpSocket:
+                port: 9200
+              timeoutSeconds: 3
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+            - mountPath: /usr/share/opensearch/data
+              name: opensearch-cluster-master
+            - mountPath: /usr/share/opensearch/config/opensearch.yml
+              name: config
+              subPath: opensearch.yml
+          dnsPolicy: ClusterFirst
+          enableServiceLinks: true
+          initContainers:
+          - args:
+            - chown -R 1000:1000 /usr/share/opensearch/data
+            command:
+            - sh
+            - -c
+            image: busybox:latest
+            imagePullPolicy: Always
+            name: fsgroup-volume
+            resources: {}
+            securityContext:
+              runAsUser: 0
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+            - mountPath: /usr/share/opensearch/data
+              name: opensearch-cluster-master
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          securityContext:
+            fsGroup: 1000
+            runAsUser: 1000
+          terminationGracePeriodSeconds: 120
+          volumes:
+          - configMap:
+              defaultMode: 420
+              name: opensearch-cluster-master-config
+            name: config
+  kind: ControllerRevision
+  metadata:
+    annotations:
+      majorVersion: "2"
+      meta.helm.sh/release-name: opensearch-master
+      meta.helm.sh/release-namespace: kubesphere-logging-system
+    creationTimestamp: "2025-03-04T08:40:41Z"
+    labels:
+      app.kubernetes.io/component: opensearch-cluster-master
+      app.kubernetes.io/instance: opensearch-master
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: opensearch
+      app.kubernetes.io/version: 2.6.0
+      controller.kubernetes.io/hash: 5ddbcbcfd
+      helm.sh/chart: opensearch-2.11.0
+    name: opensearch-cluster-master-5ddbcbcfd
+    namespace: kubesphere-logging-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: opensearch-cluster-master
+      uid: 02876eb4-d790-4e1f-b787-812b274eddf5
+    resourceVersion: "11874420"
+    uid: beeef3ee-80d8-4067-a7cf-348b55002d7e
+  revision: 1
+- apiVersion: apps/v1
+  data:
+    spec:
+      template:
+        $patch: replace
+        metadata:
+          annotations:
+            configchecksum: eb70eea659188d444ae38c6d48b6cce2f1c6bd3d9a4b073c07f3839a50e6a01
+            kubectl.kubernetes.io/restartedAt: "2025-03-04T15:36:07+05:30"
+          creationTimestamp: null
+          labels:
+            app.kubernetes.io/component: opensearch-cluster-master
+            app.kubernetes.io/instance: opensearch-master
+            app.kubernetes.io/managed-by: Helm
+            app.kubernetes.io/name: opensearch
+            app.kubernetes.io/version: 2.6.0
+            helm.sh/chart: opensearch-2.11.0
+          name: opensearch-cluster-master
+        spec:
+          affinity:
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - podAffinityTerm:
+                  labelSelector:
+                    matchExpressions:
+                    - key: app.kubernetes.io/instance
+                      operator: In
+                      values:
+                      - opensearch-master
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                      - opensearch
+                  topologyKey: kubernetes.io/hostname
+                weight: 1
+          containers:
+          - env:
+            - name: node.name
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
+            - name: cluster.initial_master_nodes
+              value: opensearch-cluster-master-0,opensearch-cluster-master-1,opensearch-cluster-master-2,
+            - name: discovery.seed_hosts
+              value: opensearch-cluster-master-headless
+            - name: cluster.name
+              value: opensearch-cluster
+            - name: network.host
+              value: 0.0.0.0
+            - name: OPENSEARCH_JAVA_OPTS
+              value: -Xmx512M -Xms512M
+            - name: node.roles
+              value: master,
+            image: opensearchproject/opensearch:2.6.0
+            imagePullPolicy: IfNotPresent
+            name: opensearch
+            ports:
+            - containerPort: 9200
+              name: http
+              protocol: TCP
+            - containerPort: 9300
+              name: transport
+              protocol: TCP
+            readinessProbe:
+              failureThreshold: 3
+              periodSeconds: 5
+              successThreshold: 1
+              tcpSocket:
+                port: 9200
+              timeoutSeconds: 3
+            resources:
+              requests:
+                cpu: "1"
+                memory: 512Mi
+            securityContext:
+              capabilities:
+                drop:
+                - ALL
+              runAsNonRoot: true
+              runAsUser: 1000
+            startupProbe:
+              failureThreshold: 30
+              initialDelaySeconds: 5
+              periodSeconds: 10
+              successThreshold: 1
+              tcpSocket:
+                port: 9200
+              timeoutSeconds: 3
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+            - mountPath: /usr/share/opensearch/data
+              name: opensearch-cluster-master
+            - mountPath: /usr/share/opensearch/config/opensearch.yml
+              name: config
+              subPath: opensearch.yml
+          dnsPolicy: ClusterFirst
+          enableServiceLinks: true
+          initContainers:
+          - args:
+            - chown -R 1000:1000 /usr/share/opensearch/data
+            command:
+            - sh
+            - -c
+            image: busybox:latest
+            imagePullPolicy: Always
+            name: fsgroup-volume
+            resources: {}
+            securityContext:
+              runAsUser: 0
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+            - mountPath: /usr/share/opensearch/data
+              name: opensearch-cluster-master
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          securityContext:
+            fsGroup: 1000
+            runAsUser: 1000
+          terminationGracePeriodSeconds: 120
+          volumes:
+          - configMap:
+              defaultMode: 420
+              name: opensearch-cluster-master-config
+            name: config
+  kind: ControllerRevision
+  metadata:
+    annotations:
+      majorVersion: "2"
+      meta.helm.sh/release-name: opensearch-master
+      meta.helm.sh/release-namespace: kubesphere-logging-system
+    creationTimestamp: "2025-03-04T10:06:44Z"
+    labels:
+      app.kubernetes.io/component: opensearch-cluster-master
+      app.kubernetes.io/instance: opensearch-master
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: opensearch
+      app.kubernetes.io/version: 2.6.0
+      controller.kubernetes.io/hash: 7b6499479
+      helm.sh/chart: opensearch-2.11.0
+    name: opensearch-cluster-master-7b6499479
+    namespace: kubesphere-logging-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: opensearch-cluster-master
+      uid: 02876eb4-d790-4e1f-b787-812b274eddf5
+    resourceVersion: "11912489"
+    uid: a542a75e-24ae-4666-b236-74a21ac2f47f
+  revision: 2
+- apiVersion: apps/v1
+  data:
+    spec:
+      template:
+        $patch: replace
+        metadata:
+          annotations:
+            configchecksum: eb70eea659188d444ae38c6d48b6cce2f1c6bd3d9a4b073c07f3839a50e6a01
+            kubectl.kubernetes.io/restartedAt: "2025-04-25T13:01:23+05:30"
+          creationTimestamp: null
+          labels:
+            app.kubernetes.io/component: opensearch-cluster-master
+            app.kubernetes.io/instance: opensearch-master
+            app.kubernetes.io/managed-by: Helm
+            app.kubernetes.io/name: opensearch
+            app.kubernetes.io/version: 2.6.0
+            helm.sh/chart: opensearch-2.11.0
+          name: opensearch-cluster-master
+        spec:
+          affinity:
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - podAffinityTerm:
+                  labelSelector:
+                    matchExpressions:
+                    - key: app.kubernetes.io/instance
+                      operator: In
+                      values:
+                      - opensearch-master
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                      - opensearch
+                  topologyKey: kubernetes.io/hostname
+                weight: 1
+          containers:
+          - env:
+            - name: node.name
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
+            - name: cluster.initial_master_nodes
+              value: opensearch-cluster-master-0,opensearch-cluster-master-1,opensearch-cluster-master-2,
+            - name: discovery.seed_hosts
+              value: opensearch-cluster-master-headless
+            - name: cluster.name
+              value: opensearch-cluster
+            - name: network.host
+              value: 0.0.0.0
+            - name: OPENSEARCH_JAVA_OPTS
+              value: -Xmx512M -Xms512M
+            - name: node.roles
+              value: master,
+            image: opensearchproject/opensearch:2.6.0
+            imagePullPolicy: IfNotPresent
+            name: opensearch
+            ports:
+            - containerPort: 9200
+              name: http
+              protocol: TCP
+            - containerPort: 9300
+              name: transport
+              protocol: TCP
+            readinessProbe:
+              failureThreshold: 3
+              periodSeconds: 5
+              successThreshold: 1
+              tcpSocket:
+                port: 9200
+              timeoutSeconds: 3
+            resources:
+              requests:
+                cpu: "1"
+                memory: 512Mi
+            securityContext:
+              capabilities:
+                drop:
+                - ALL
+              runAsNonRoot: true
+              runAsUser: 1000
+            startupProbe:
+              failureThreshold: 30
+              initialDelaySeconds: 5
+              periodSeconds: 10
+              successThreshold: 1
+              tcpSocket:
+                port: 9200
+              timeoutSeconds: 3
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+            - mountPath: /usr/share/opensearch/data
+              name: opensearch-cluster-master
+            - mountPath: /usr/share/opensearch/config/opensearch.yml
+              name: config
+              subPath: opensearch.yml
+          dnsPolicy: ClusterFirst
+          enableServiceLinks: true
+          initContainers:
+          - args:
+            - chown -R 1000:1000 /usr/share/opensearch/data
+            command:
+            - sh
+            - -c
+            image: busybox:latest
+            imagePullPolicy: Always
+            name: fsgroup-volume
+            resources: {}
+            securityContext:
+              runAsUser: 0
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+            - mountPath: /usr/share/opensearch/data
+              name: opensearch-cluster-master
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          securityContext:
+            fsGroup: 1000
+            runAsUser: 1000
+          terminationGracePeriodSeconds: 120
+          volumes:
+          - configMap:
+              defaultMode: 420
+              name: opensearch-cluster-master-config
+            name: config
+  kind: ControllerRevision
+  metadata:
+    annotations:
+      majorVersion: "2"
+      meta.helm.sh/release-name: opensearch-master
+      meta.helm.sh/release-namespace: kubesphere-logging-system
+    creationTimestamp: "2025-04-25T07:33:21Z"
+    labels:
+      app.kubernetes.io/component: opensearch-cluster-master
+      app.kubernetes.io/instance: opensearch-master
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: opensearch
+      app.kubernetes.io/version: 2.6.0
+      controller.kubernetes.io/hash: 856cd98799
+      helm.sh/chart: opensearch-2.11.0
+    name: opensearch-cluster-master-856cd98799
+    namespace: kubesphere-logging-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: opensearch-cluster-master
+      uid: 02876eb4-d790-4e1f-b787-812b274eddf5
+    resourceVersion: "40701399"
+    uid: 5ee53112-4b15-4401-ac94-bca494425258
+  revision: 3
+kind: List
+metadata:
+  resourceVersion: ""

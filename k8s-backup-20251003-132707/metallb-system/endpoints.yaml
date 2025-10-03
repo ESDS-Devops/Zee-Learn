@@ -1,0 +1,27 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:58Z"
+    creationTimestamp: "2025-02-07T11:07:40Z"
+    name: metallb-webhook-service
+    namespace: metallb-system
+    resourceVersion: "72238863"
+    uid: b0bdd6cc-84d1-45a1-92a5-ca7709778ee4
+  subsets:
+  - addresses:
+    - ip: 192.168.5.222
+      nodeName: zee8608workerapi01
+      targetRef:
+        kind: Pod
+        name: controller-7dcb87658-x2wzx
+        namespace: metallb-system
+        uid: 9c61a516-4ebf-45f7-b25a-04ff4e7ec492
+    ports:
+    - port: 9443
+      protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""

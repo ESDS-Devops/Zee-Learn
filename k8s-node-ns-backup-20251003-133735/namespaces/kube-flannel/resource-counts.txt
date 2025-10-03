@@ -1,0 +1,12 @@
+Namespace: kube-flannel
+==========================
+pods: 6
+deployments: 0
+services: 0
+configmaps: 2
+secrets: 0
+horizontalpodautoscalers: 0
+ingresses: 0
+statefulsets: 0
+daemonsets: 1
+replicasets: 0

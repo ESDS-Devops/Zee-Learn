@@ -1,0 +1,38 @@
+apiVersion: v1
+items:
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: default-http-backend
+    usage:
+      cpu: 53765n
+      memory: 5152Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:30Z"
+    labels:
+      app: kubesphere
+      component: kubesphere-router
+      pod-template-hash: 5bf7597cb7
+    name: default-http-backend-5bf7597cb7-45crg
+    namespace: kubesphere-controls-system
+  timestamp: "2025-10-03T07:58:15Z"
+  window: 15.642s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kubectl
+    usage:
+      cpu: "0"
+      memory: 2032Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:30Z"
+    labels:
+      kubesphere.io/username: admin
+      pod-template-hash: 6bb69fcfdf
+    name: kubectl-admin-6bb69fcfdf-zfndf
+    namespace: kubesphere-controls-system
+  timestamp: "2025-10-03T07:58:11Z"
+  window: 25.232s
+kind: List
+metadata:
+  resourceVersion: ""

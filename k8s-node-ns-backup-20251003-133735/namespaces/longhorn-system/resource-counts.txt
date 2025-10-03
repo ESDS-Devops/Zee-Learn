@@ -1,0 +1,12 @@
+Namespace: longhorn-system
+==========================
+pods: 27
+deployments: 6
+services: 5
+configmaps: 4
+secrets: 3
+horizontalpodautoscalers: 0
+ingresses: 0
+statefulsets: 0
+daemonsets: 3
+replicasets: 6

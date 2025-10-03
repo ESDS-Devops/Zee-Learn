@@ -1,0 +1,12 @@
+Namespace: kube-system
+==========================
+pods: 23
+deployments: 2
+services: 5
+configmaps: 7
+secrets: 5
+horizontalpodautoscalers: 0
+ingresses: 0
+statefulsets: 1
+daemonsets: 1
+replicasets: 3

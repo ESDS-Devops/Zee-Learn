@@ -1,0 +1,12 @@
+Namespace: kubesphere-monitoring-system
+==========================
+pods: 18
+deployments: 4
+services: 12
+configmaps: 6
+secrets: 9
+horizontalpodautoscalers: 0
+ingresses: 0
+statefulsets: 3
+daemonsets: 1
+replicasets: 4

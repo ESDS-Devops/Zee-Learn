@@ -1,0 +1,93 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    creationTimestamp: "2025-02-08T18:54:49Z"
+    labels:
+      app: cert-manager
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: cert-manager
+      app.kubernetes.io/name: cert-manager
+      app.kubernetes.io/version: v1.17.0
+    name: cert-manager
+    namespace: cert-manager
+    resourceVersion: "70961508"
+    uid: 679a46ca-cdf6-4966-ad8a-46c83ba08b6a
+  subsets:
+  - addresses:
+    - ip: 192.168.3.234
+      nodeName: zee8608workerapi02
+      targetRef:
+        kind: Pod
+        name: cert-manager-97f647775-wxbkc
+        namespace: cert-manager
+        uid: e40e7bd4-7282-4935-ade6-7815c1c275ea
+    ports:
+    - name: tcp-prometheus-servicemonitor
+      port: 9402
+      protocol: TCP
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:16Z"
+    creationTimestamp: "2025-02-08T18:54:49Z"
+    labels:
+      app: cainjector
+      app.kubernetes.io/component: cainjector
+      app.kubernetes.io/instance: cert-manager
+      app.kubernetes.io/name: cainjector
+      app.kubernetes.io/version: v1.17.0
+    name: cert-manager-cainjector
+    namespace: cert-manager
+    resourceVersion: "72238338"
+    uid: 0c9424b5-e4a4-42e9-ace4-6100a0b89584
+  subsets:
+  - addresses:
+    - ip: 192.168.5.208
+      nodeName: zee8608workerapi01
+      targetRef:
+        kind: Pod
+        name: cert-manager-cainjector-67ff4bc9cd-zlxr5
+        namespace: cert-manager
+        uid: bfda7dcf-2a43-4348-b99c-b2b518b22247
+    ports:
+    - name: http-metrics
+      port: 9402
+      protocol: TCP
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:54Z"
+    creationTimestamp: "2025-02-08T18:54:49Z"
+    labels:
+      app: webhook
+      app.kubernetes.io/component: webhook
+      app.kubernetes.io/instance: cert-manager
+      app.kubernetes.io/name: webhook
+      app.kubernetes.io/version: v1.17.0
+    name: cert-manager-webhook
+    namespace: cert-manager
+    resourceVersion: "72238789"
+    uid: 785bbaca-8640-4ffd-834b-154be5fbce2a
+  subsets:
+  - addresses:
+    - ip: 192.168.5.212
+      nodeName: zee8608workerapi01
+      targetRef:
+        kind: Pod
+        name: cert-manager-webhook-db89558c5-lsvdj
+        namespace: cert-manager
+        uid: 0e2d0f71-7a63-40d8-8fae-4f4fb39003ed
+    ports:
+    - name: https
+      port: 10250
+      protocol: TCP
+    - name: metrics
+      port: 9402
+      protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""

@@ -1,0 +1,12 @@
+Namespace: prod
+==========================
+pods: 41
+deployments: 14
+services: 14
+configmaps: 15
+secrets: 17
+horizontalpodautoscalers: 14
+ingresses: 14
+statefulsets: 0
+daemonsets: 0
+replicasets: 150

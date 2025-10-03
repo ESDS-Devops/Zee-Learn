@@ -1,0 +1,1307 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-06-20T20:37:18Z"
+    generateName: rabbitmq-cluster-server-
+    labels:
+      app.kubernetes.io/component: rabbitmq
+      app.kubernetes.io/name: rabbitmq-cluster
+      app.kubernetes.io/part-of: rabbitmq
+      apps.kubernetes.io/pod-index: "0"
+      controller-revision-hash: rabbitmq-cluster-server-cc559864f
+      statefulset.kubernetes.io/pod-name: rabbitmq-cluster-server-0
+    name: rabbitmq-cluster-server-0
+    namespace: rbmq
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: rabbitmq-cluster-server
+      uid: 3c5ea3c8-a946-4043-8866-28d13d2d3385
+    resourceVersion: "70961982"
+    uid: 58b408e2-5d8a-45fa-8cbe-c35da947e191
+  spec:
+    automountServiceAccountToken: true
+    containers:
+    - env:
+      - name: MY_POD_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: MY_POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: K8S_SERVICE_NAME
+        value: rabbitmq-cluster-nodes
+      - name: RABBITMQ_ENABLED_PLUGINS_FILE
+        value: /operator/enabled_plugins
+      - name: RABBITMQ_USE_LONGNAME
+        value: "true"
+      - name: RABBITMQ_NODENAME
+        value: rabbit@$(MY_POD_NAME).$(K8S_SERVICE_NAME).$(MY_POD_NAMESPACE)
+      - name: K8S_HOSTNAME_SUFFIX
+        value: .$(K8S_SERVICE_NAME).$(MY_POD_NAMESPACE)
+      image: docker.io/bitnami/rabbitmq:4.0.6-debian-12-r0
+      imagePullPolicy: IfNotPresent
+      lifecycle:
+        preStop:
+          exec:
+            command:
+            - /bin/bash
+            - -c
+            - if [ ! -z "$(cat /etc/pod-info/skipPreStopChecks)" ]; then exit 0; fi;
+              rabbitmq-upgrade await_online_quorum_plus_one -t 604800 && rabbitmq-upgrade
+              await_online_synchronized_mirror -t 604800 || true && rabbitmq-upgrade
+              drain -t 604800
+      name: rabbitmq
+      ports:
+      - containerPort: 4369
+        name: epmd
+        protocol: TCP
+      - containerPort: 5672
+        name: amqp
+        protocol: TCP
+      - containerPort: 15672
+        name: management
+        protocol: TCP
+      - containerPort: 15692
+        name: prometheus
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 3
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        tcpSocket:
+          port: amqp
+        timeoutSeconds: 5
+      resources:
+        limits:
+          cpu: "2"
+          memory: 2Gi
+        requests:
+          cpu: "1"
+          memory: 2Gi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/lib/rabbitmq/
+        name: rabbitmq-erlang-cookie
+      - mountPath: /var/lib/rabbitmq/mnesia/
+        name: persistence
+      - mountPath: /operator
+        name: rabbitmq-plugins
+      - mountPath: /etc/rabbitmq/conf.d/10-operatorDefaults.conf
+        name: rabbitmq-confd
+        subPath: operatorDefaults.conf
+      - mountPath: /etc/rabbitmq/conf.d/90-userDefinedConfiguration.conf
+        name: rabbitmq-confd
+        subPath: userDefinedConfiguration.conf
+      - mountPath: /etc/pod-info/
+        name: pod-info
+      - mountPath: /etc/rabbitmq/conf.d/11-default_user.conf
+        name: rabbitmq-confd
+        subPath: default_user.conf
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-2sdqn
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostname: rabbitmq-cluster-server-0
+    initContainers:
+    - command:
+      - sh
+      - -c
+      - cp /tmp/erlang-cookie-secret/.erlang.cookie /var/lib/rabbitmq/.erlang.cookie
+        && chmod 600 /var/lib/rabbitmq/.erlang.cookie ; cp /tmp/rabbitmq-plugins/enabled_plugins
+        /operator/enabled_plugins ; echo '[default]' > /var/lib/rabbitmq/.rabbitmqadmin.conf
+        && sed -e 's/default_user/username/' -e 's/default_pass/password/' /tmp/default_user.conf
+        >> /var/lib/rabbitmq/.rabbitmqadmin.conf && chmod 600 /var/lib/rabbitmq/.rabbitmqadmin.conf
+        ; sleep 30
+      image: docker.io/bitnami/rabbitmq:4.0.6-debian-12-r0
+      imagePullPolicy: IfNotPresent
+      name: setup-container
+      resources:
+        limits:
+          cpu: 100m
+          memory: 500Mi
+        requests:
+          cpu: 100m
+          memory: 500Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /tmp/rabbitmq-plugins/
+        name: plugins-conf
+      - mountPath: /var/lib/rabbitmq/
+        name: rabbitmq-erlang-cookie
+      - mountPath: /tmp/erlang-cookie-secret/
+        name: erlang-cookie-secret
+      - mountPath: /operator
+        name: rabbitmq-plugins
+      - mountPath: /var/lib/rabbitmq/mnesia/
+        name: persistence
+      - mountPath: /tmp/default_user.conf
+        name: rabbitmq-confd
+        subPath: default_user.conf
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-2sdqn
+        readOnly: true
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 0
+      runAsUser: 999
+    serviceAccount: rabbitmq-cluster-server
+    serviceAccountName: rabbitmq-cluster-server
+    subdomain: rabbitmq-cluster-nodes
+    terminationGracePeriodSeconds: 604800
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    topologySpreadConstraints:
+    - labelSelector:
+        matchLabels:
+          app.kubernetes.io/name: rabbitmq-cluster
+      maxSkew: 1
+      topologyKey: topology.kubernetes.io/zone
+      whenUnsatisfiable: ScheduleAnyway
+    volumes:
+    - name: persistence
+      persistentVolumeClaim:
+        claimName: persistence-rabbitmq-cluster-server-0
+    - configMap:
+        defaultMode: 420
+        name: rabbitmq-cluster-plugins-conf
+      name: plugins-conf
+    - name: rabbitmq-confd
+      projected:
+        defaultMode: 420
+        sources:
+        - configMap:
+            items:
+            - key: operatorDefaults.conf
+              path: operatorDefaults.conf
+            - key: userDefinedConfiguration.conf
+              path: userDefinedConfiguration.conf
+            name: rabbitmq-cluster-server-conf
+        - secret:
+            items:
+            - key: default_user.conf
+              path: default_user.conf
+            name: rabbitmq-cluster-default-user
+    - emptyDir: {}
+      name: rabbitmq-erlang-cookie
+    - name: erlang-cookie-secret
+      secret:
+        defaultMode: 420
+        secretName: rabbitmq-cluster-erlang-cookie
+    - emptyDir: {}
+      name: rabbitmq-plugins
+    - downwardAPI:
+        defaultMode: 420
+        items:
+        - fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.labels['skipPreStopChecks']
+          path: skipPreStopChecks
+      name: pod-info
+    - name: kube-api-access-2sdqn
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:37:27Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:37:57Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:44:06Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:44:06Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:37:18Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://b2cd9c763d3b0d78483c185f7b30ffb7ec56a897bac2c7fc8584f3582aac7184
+      image: docker.io/bitnami/rabbitmq:4.0.6-debian-12-r0
+      imageID: docker.io/bitnami/rabbitmq@sha256:46d28071536bdaf2e8469e51502f101e893fd5458da36100ce85e9e0320a0dff
+      lastState:
+        terminated:
+          containerID: containerd://88e4f3ef9ddd50b317cf370cd4b4ad422df347abd3f8096a22501105d038a31a
+          exitCode: 1
+          finishedAt: "2025-06-20T20:43:40Z"
+          reason: Error
+          startedAt: "2025-06-20T20:37:57Z"
+      name: rabbitmq
+      ready: true
+      restartCount: 1
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:43:41Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    initContainerStatuses:
+    - containerID: containerd://126d830d16d333647cf5e5b4046a8b703ee913f846d72863efaacd6722e71b34
+      image: docker.io/bitnami/rabbitmq:4.0.6-debian-12-r0
+      imageID: docker.io/bitnami/rabbitmq@sha256:46d28071536bdaf2e8469e51502f101e893fd5458da36100ce85e9e0320a0dff
+      lastState: {}
+      name: setup-container
+      ready: true
+      restartCount: 0
+      started: false
+      state:
+        terminated:
+          containerID: containerd://126d830d16d333647cf5e5b4046a8b703ee913f846d72863efaacd6722e71b34
+          exitCode: 0
+          finishedAt: "2025-06-20T20:37:57Z"
+          reason: Completed
+          startedAt: "2025-06-20T20:37:27Z"
+    phase: Running
+    podIP: 192.168.4.4
+    podIPs:
+    - ip: 192.168.4.4
+    qosClass: Burstable
+    startTime: "2025-06-20T20:37:18Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-06-20T20:42:57Z"
+    generateName: rabbitmq-cluster-server-
+    labels:
+      app.kubernetes.io/component: rabbitmq
+      app.kubernetes.io/name: rabbitmq-cluster
+      app.kubernetes.io/part-of: rabbitmq
+      apps.kubernetes.io/pod-index: "1"
+      controller-revision-hash: rabbitmq-cluster-server-cc559864f
+      statefulset.kubernetes.io/pod-name: rabbitmq-cluster-server-1
+    name: rabbitmq-cluster-server-1
+    namespace: rbmq
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: rabbitmq-cluster-server
+      uid: 3c5ea3c8-a946-4043-8866-28d13d2d3385
+    resourceVersion: "70962008"
+    uid: d060f233-12a9-40ac-a86a-9d970b299ae1
+  spec:
+    automountServiceAccountToken: true
+    containers:
+    - env:
+      - name: MY_POD_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: MY_POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: K8S_SERVICE_NAME
+        value: rabbitmq-cluster-nodes
+      - name: RABBITMQ_ENABLED_PLUGINS_FILE
+        value: /operator/enabled_plugins
+      - name: RABBITMQ_USE_LONGNAME
+        value: "true"
+      - name: RABBITMQ_NODENAME
+        value: rabbit@$(MY_POD_NAME).$(K8S_SERVICE_NAME).$(MY_POD_NAMESPACE)
+      - name: K8S_HOSTNAME_SUFFIX
+        value: .$(K8S_SERVICE_NAME).$(MY_POD_NAMESPACE)
+      image: docker.io/bitnami/rabbitmq:4.0.6-debian-12-r0
+      imagePullPolicy: IfNotPresent
+      lifecycle:
+        preStop:
+          exec:
+            command:
+            - /bin/bash
+            - -c
+            - if [ ! -z "$(cat /etc/pod-info/skipPreStopChecks)" ]; then exit 0; fi;
+              rabbitmq-upgrade await_online_quorum_plus_one -t 604800 && rabbitmq-upgrade
+              await_online_synchronized_mirror -t 604800 || true && rabbitmq-upgrade
+              drain -t 604800
+      name: rabbitmq
+      ports:
+      - containerPort: 4369
+        name: epmd
+        protocol: TCP
+      - containerPort: 5672
+        name: amqp
+        protocol: TCP
+      - containerPort: 15672
+        name: management
+        protocol: TCP
+      - containerPort: 15692
+        name: prometheus
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 3
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        tcpSocket:
+          port: amqp
+        timeoutSeconds: 5
+      resources:
+        limits:
+          cpu: "2"
+          memory: 2Gi
+        requests:
+          cpu: "1"
+          memory: 2Gi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/lib/rabbitmq/
+        name: rabbitmq-erlang-cookie
+      - mountPath: /var/lib/rabbitmq/mnesia/
+        name: persistence
+      - mountPath: /operator
+        name: rabbitmq-plugins
+      - mountPath: /etc/rabbitmq/conf.d/10-operatorDefaults.conf
+        name: rabbitmq-confd
+        subPath: operatorDefaults.conf
+      - mountPath: /etc/rabbitmq/conf.d/90-userDefinedConfiguration.conf
+        name: rabbitmq-confd
+        subPath: userDefinedConfiguration.conf
+      - mountPath: /etc/pod-info/
+        name: pod-info
+      - mountPath: /etc/rabbitmq/conf.d/11-default_user.conf
+        name: rabbitmq-confd
+        subPath: default_user.conf
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-xvfwj
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostname: rabbitmq-cluster-server-1
+    initContainers:
+    - command:
+      - sh
+      - -c
+      - cp /tmp/erlang-cookie-secret/.erlang.cookie /var/lib/rabbitmq/.erlang.cookie
+        && chmod 600 /var/lib/rabbitmq/.erlang.cookie ; cp /tmp/rabbitmq-plugins/enabled_plugins
+        /operator/enabled_plugins ; echo '[default]' > /var/lib/rabbitmq/.rabbitmqadmin.conf
+        && sed -e 's/default_user/username/' -e 's/default_pass/password/' /tmp/default_user.conf
+        >> /var/lib/rabbitmq/.rabbitmqadmin.conf && chmod 600 /var/lib/rabbitmq/.rabbitmqadmin.conf
+        ; sleep 30
+      image: docker.io/bitnami/rabbitmq:4.0.6-debian-12-r0
+      imagePullPolicy: IfNotPresent
+      name: setup-container
+      resources:
+        limits:
+          cpu: 100m
+          memory: 500Mi
+        requests:
+          cpu: 100m
+          memory: 500Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /tmp/rabbitmq-plugins/
+        name: plugins-conf
+      - mountPath: /var/lib/rabbitmq/
+        name: rabbitmq-erlang-cookie
+      - mountPath: /tmp/erlang-cookie-secret/
+        name: erlang-cookie-secret
+      - mountPath: /operator
+        name: rabbitmq-plugins
+      - mountPath: /var/lib/rabbitmq/mnesia/
+        name: persistence
+      - mountPath: /tmp/default_user.conf
+        name: rabbitmq-confd
+        subPath: default_user.conf
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-xvfwj
+        readOnly: true
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 0
+      runAsUser: 999
+    serviceAccount: rabbitmq-cluster-server
+    serviceAccountName: rabbitmq-cluster-server
+    subdomain: rabbitmq-cluster-nodes
+    terminationGracePeriodSeconds: 604800
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    topologySpreadConstraints:
+    - labelSelector:
+        matchLabels:
+          app.kubernetes.io/name: rabbitmq-cluster
+      maxSkew: 1
+      topologyKey: topology.kubernetes.io/zone
+      whenUnsatisfiable: ScheduleAnyway
+    volumes:
+    - name: persistence
+      persistentVolumeClaim:
+        claimName: persistence-rabbitmq-cluster-server-1
+    - configMap:
+        defaultMode: 420
+        name: rabbitmq-cluster-plugins-conf
+      name: plugins-conf
+    - name: rabbitmq-confd
+      projected:
+        defaultMode: 420
+        sources:
+        - configMap:
+            items:
+            - key: operatorDefaults.conf
+              path: operatorDefaults.conf
+            - key: userDefinedConfiguration.conf
+              path: userDefinedConfiguration.conf
+            name: rabbitmq-cluster-server-conf
+        - secret:
+            items:
+            - key: default_user.conf
+              path: default_user.conf
+            name: rabbitmq-cluster-default-user
+    - emptyDir: {}
+      name: rabbitmq-erlang-cookie
+    - name: erlang-cookie-secret
+      secret:
+        defaultMode: 420
+        secretName: rabbitmq-cluster-erlang-cookie
+    - emptyDir: {}
+      name: rabbitmq-plugins
+    - downwardAPI:
+        defaultMode: 420
+        items:
+        - fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.labels['skipPreStopChecks']
+          path: skipPreStopChecks
+      name: pod-info
+    - name: kube-api-access-xvfwj
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:43:21Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:43:52Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:44:10Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:44:10Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:42:59Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://17362af6f3db09524aab28cdbf3826985034a0cff5b98665238ec5448bf16389
+      image: docker.io/bitnami/rabbitmq:4.0.6-debian-12-r0
+      imageID: docker.io/bitnami/rabbitmq@sha256:46d28071536bdaf2e8469e51502f101e893fd5458da36100ce85e9e0320a0dff
+      lastState: {}
+      name: rabbitmq
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:43:52Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    initContainerStatuses:
+    - containerID: containerd://5a569061c86cd7752e0d2c80f6cd348ca5770adb3c974fc6f8a28d46f078fb39
+      image: docker.io/bitnami/rabbitmq:4.0.6-debian-12-r0
+      imageID: docker.io/bitnami/rabbitmq@sha256:46d28071536bdaf2e8469e51502f101e893fd5458da36100ce85e9e0320a0dff
+      lastState: {}
+      name: setup-container
+      ready: true
+      restartCount: 0
+      started: false
+      state:
+        terminated:
+          containerID: containerd://5a569061c86cd7752e0d2c80f6cd348ca5770adb3c974fc6f8a28d46f078fb39
+          exitCode: 0
+          finishedAt: "2025-06-20T20:43:51Z"
+          reason: Completed
+          startedAt: "2025-06-20T20:43:21Z"
+    phase: Running
+    podIP: 192.168.3.241
+    podIPs:
+    - ip: 192.168.3.241
+    qosClass: Burstable
+    startTime: "2025-06-20T20:43:17Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-06-20T20:42:57Z"
+    generateName: rabbitmq-cluster-server-
+    labels:
+      app.kubernetes.io/component: rabbitmq
+      app.kubernetes.io/name: rabbitmq-cluster
+      app.kubernetes.io/part-of: rabbitmq
+      apps.kubernetes.io/pod-index: "2"
+      controller-revision-hash: rabbitmq-cluster-server-cc559864f
+      statefulset.kubernetes.io/pod-name: rabbitmq-cluster-server-2
+    name: rabbitmq-cluster-server-2
+    namespace: rbmq
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: rabbitmq-cluster-server
+      uid: 3c5ea3c8-a946-4043-8866-28d13d2d3385
+    resourceVersion: "70962003"
+    uid: 1d1bdc41-9dd0-4b3e-abe1-72877d97506d
+  spec:
+    automountServiceAccountToken: true
+    containers:
+    - env:
+      - name: MY_POD_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      - name: MY_POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: K8S_SERVICE_NAME
+        value: rabbitmq-cluster-nodes
+      - name: RABBITMQ_ENABLED_PLUGINS_FILE
+        value: /operator/enabled_plugins
+      - name: RABBITMQ_USE_LONGNAME
+        value: "true"
+      - name: RABBITMQ_NODENAME
+        value: rabbit@$(MY_POD_NAME).$(K8S_SERVICE_NAME).$(MY_POD_NAMESPACE)
+      - name: K8S_HOSTNAME_SUFFIX
+        value: .$(K8S_SERVICE_NAME).$(MY_POD_NAMESPACE)
+      image: docker.io/bitnami/rabbitmq:4.0.6-debian-12-r0
+      imagePullPolicy: IfNotPresent
+      lifecycle:
+        preStop:
+          exec:
+            command:
+            - /bin/bash
+            - -c
+            - if [ ! -z "$(cat /etc/pod-info/skipPreStopChecks)" ]; then exit 0; fi;
+              rabbitmq-upgrade await_online_quorum_plus_one -t 604800 && rabbitmq-upgrade
+              await_online_synchronized_mirror -t 604800 || true && rabbitmq-upgrade
+              drain -t 604800
+      name: rabbitmq
+      ports:
+      - containerPort: 4369
+        name: epmd
+        protocol: TCP
+      - containerPort: 5672
+        name: amqp
+        protocol: TCP
+      - containerPort: 15672
+        name: management
+        protocol: TCP
+      - containerPort: 15692
+        name: prometheus
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 3
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        tcpSocket:
+          port: amqp
+        timeoutSeconds: 5
+      resources:
+        limits:
+          cpu: "2"
+          memory: 2Gi
+        requests:
+          cpu: "1"
+          memory: 2Gi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/lib/rabbitmq/
+        name: rabbitmq-erlang-cookie
+      - mountPath: /var/lib/rabbitmq/mnesia/
+        name: persistence
+      - mountPath: /operator
+        name: rabbitmq-plugins
+      - mountPath: /etc/rabbitmq/conf.d/10-operatorDefaults.conf
+        name: rabbitmq-confd
+        subPath: operatorDefaults.conf
+      - mountPath: /etc/rabbitmq/conf.d/90-userDefinedConfiguration.conf
+        name: rabbitmq-confd
+        subPath: userDefinedConfiguration.conf
+      - mountPath: /etc/pod-info/
+        name: pod-info
+      - mountPath: /etc/rabbitmq/conf.d/11-default_user.conf
+        name: rabbitmq-confd
+        subPath: default_user.conf
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-6g8jf
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostname: rabbitmq-cluster-server-2
+    initContainers:
+    - command:
+      - sh
+      - -c
+      - cp /tmp/erlang-cookie-secret/.erlang.cookie /var/lib/rabbitmq/.erlang.cookie
+        && chmod 600 /var/lib/rabbitmq/.erlang.cookie ; cp /tmp/rabbitmq-plugins/enabled_plugins
+        /operator/enabled_plugins ; echo '[default]' > /var/lib/rabbitmq/.rabbitmqadmin.conf
+        && sed -e 's/default_user/username/' -e 's/default_pass/password/' /tmp/default_user.conf
+        >> /var/lib/rabbitmq/.rabbitmqadmin.conf && chmod 600 /var/lib/rabbitmq/.rabbitmqadmin.conf
+        ; sleep 30
+      image: docker.io/bitnami/rabbitmq:4.0.6-debian-12-r0
+      imagePullPolicy: IfNotPresent
+      name: setup-container
+      resources:
+        limits:
+          cpu: 100m
+          memory: 500Mi
+        requests:
+          cpu: 100m
+          memory: 500Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /tmp/rabbitmq-plugins/
+        name: plugins-conf
+      - mountPath: /var/lib/rabbitmq/
+        name: rabbitmq-erlang-cookie
+      - mountPath: /tmp/erlang-cookie-secret/
+        name: erlang-cookie-secret
+      - mountPath: /operator
+        name: rabbitmq-plugins
+      - mountPath: /var/lib/rabbitmq/mnesia/
+        name: persistence
+      - mountPath: /tmp/default_user.conf
+        name: rabbitmq-confd
+        subPath: default_user.conf
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-6g8jf
+        readOnly: true
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 0
+      runAsUser: 999
+    serviceAccount: rabbitmq-cluster-server
+    serviceAccountName: rabbitmq-cluster-server
+    subdomain: rabbitmq-cluster-nodes
+    terminationGracePeriodSeconds: 604800
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    topologySpreadConstraints:
+    - labelSelector:
+        matchLabels:
+          app.kubernetes.io/name: rabbitmq-cluster
+      maxSkew: 1
+      topologyKey: topology.kubernetes.io/zone
+      whenUnsatisfiable: ScheduleAnyway
+    volumes:
+    - name: persistence
+      persistentVolumeClaim:
+        claimName: persistence-rabbitmq-cluster-server-2
+    - configMap:
+        defaultMode: 420
+        name: rabbitmq-cluster-plugins-conf
+      name: plugins-conf
+    - name: rabbitmq-confd
+      projected:
+        defaultMode: 420
+        sources:
+        - configMap:
+            items:
+            - key: operatorDefaults.conf
+              path: operatorDefaults.conf
+            - key: userDefinedConfiguration.conf
+              path: userDefinedConfiguration.conf
+            name: rabbitmq-cluster-server-conf
+        - secret:
+            items:
+            - key: default_user.conf
+              path: default_user.conf
+            name: rabbitmq-cluster-default-user
+    - emptyDir: {}
+      name: rabbitmq-erlang-cookie
+    - name: erlang-cookie-secret
+      secret:
+        defaultMode: 420
+        secretName: rabbitmq-cluster-erlang-cookie
+    - emptyDir: {}
+      name: rabbitmq-plugins
+    - downwardAPI:
+        defaultMode: 420
+        items:
+        - fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.labels['skipPreStopChecks']
+          path: skipPreStopChecks
+      name: pod-info
+    - name: kube-api-access-6g8jf
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:43:21Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:43:52Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:44:10Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:44:10Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:42:59Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://bc02b34f999e6666aa5e8ad73922d47ac4d55f32a0a8b112949705c615c099ee
+      image: docker.io/bitnami/rabbitmq:4.0.6-debian-12-r0
+      imageID: docker.io/bitnami/rabbitmq@sha256:46d28071536bdaf2e8469e51502f101e893fd5458da36100ce85e9e0320a0dff
+      lastState: {}
+      name: rabbitmq
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:43:52Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    initContainerStatuses:
+    - containerID: containerd://c8d7f776ec4813502be845aad961a81de598680e0e87b1d0ce1fe7e543866676
+      image: docker.io/bitnami/rabbitmq:4.0.6-debian-12-r0
+      imageID: docker.io/bitnami/rabbitmq@sha256:46d28071536bdaf2e8469e51502f101e893fd5458da36100ce85e9e0320a0dff
+      lastState: {}
+      name: setup-container
+      ready: true
+      restartCount: 0
+      started: false
+      state:
+        terminated:
+          containerID: containerd://c8d7f776ec4813502be845aad961a81de598680e0e87b1d0ce1fe7e543866676
+          exitCode: 0
+          finishedAt: "2025-06-20T20:43:51Z"
+          reason: Completed
+          startedAt: "2025-06-20T20:43:21Z"
+    phase: Running
+    podIP: 192.168.3.240
+    podIPs:
+    - ip: 192.168.3.240
+    qosClass: Burstable
+    startTime: "2025-06-20T20:43:17Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-05-30T12:29:34+05:30"
+    creationTimestamp: "2025-05-30T07:02:36Z"
+    generateName: rabbitmq-rabbitmq-cluster-operator-7d48ffb769-
+    labels:
+      app.kubernetes.io/component: rabbitmq-operator
+      app.kubernetes.io/instance: rabbitmq
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: rabbitmq-cluster-operator
+      app.kubernetes.io/part-of: rabbitmq
+      app.kubernetes.io/version: 2.12.1
+      helm.sh/chart: rabbitmq-cluster-operator-4.4.5
+      pod-template-hash: 7d48ffb769
+    name: rabbitmq-rabbitmq-cluster-operator-7d48ffb769-ttbbf
+    namespace: rbmq
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: rabbitmq-rabbitmq-cluster-operator-7d48ffb769
+      uid: 89bc8ce5-e6ec-4ca4-bb50-10c80852ca70
+    resourceVersion: "70961641"
+    uid: f1d8c4f1-2138-4c4d-bb8d-dda477c0fcf7
+  spec:
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector:
+              matchLabels:
+                app.kubernetes.io/component: rabbitmq-operator
+                app.kubernetes.io/instance: rabbitmq
+                app.kubernetes.io/name: rabbitmq-cluster-operator
+            topologyKey: kubernetes.io/hostname
+          weight: 1
+    automountServiceAccountToken: true
+    containers:
+    - args:
+      - --metrics-bind-address=:9782
+      command:
+      - /manager
+      env:
+      - name: OPERATOR_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      - name: DEFAULT_RABBITMQ_IMAGE
+        value: docker.io/bitnami/rabbitmq:4.0.6-debian-12-r0
+      - name: DEFAULT_USER_UPDATER_IMAGE
+        value: docker.io/bitnami/rmq-default-credential-updater:1.0.5-debian-12-r4
+      image: docker.io/bitnami/rabbitmq-cluster-operator:2.12.1-debian-12-r3
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 5
+        initialDelaySeconds: 5
+        periodSeconds: 30
+        successThreshold: 1
+        tcpSocket:
+          port: http
+        timeoutSeconds: 5
+      name: rabbitmq-cluster-operator
+      ports:
+      - containerPort: 9782
+        name: http
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /metrics
+          port: http
+          scheme: HTTP
+        initialDelaySeconds: 5
+        periodSeconds: 30
+        successThreshold: 1
+        timeoutSeconds: 5
+      resources:
+        limits:
+          cpu: 150m
+          ephemeral-storage: 2Gi
+          memory: 192Mi
+        requests:
+          cpu: 100m
+          ephemeral-storage: 50Mi
+          memory: 128Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        privileged: false
+        readOnlyRootFilesystem: true
+        runAsGroup: 1001
+        runAsNonRoot: true
+        runAsUser: 1001
+        seLinuxOptions: {}
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-7bb79
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1001
+      fsGroupChangePolicy: Always
+    serviceAccount: rabbitmq-rabbitmq-cluster-operator
+    serviceAccountName: rabbitmq-rabbitmq-cluster-operator
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-7bb79
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:35:39Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-05-30T07:03:07Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:35:58Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:35:58Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-05-30T07:02:36Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://a0cd4381feb85e80c4773cb374625eef28d0cf4305c8c44c55d4154e9efc28c7
+      image: docker.io/bitnami/rabbitmq-cluster-operator:2.12.1-debian-12-r3
+      imageID: docker.io/bitnami/rabbitmq-cluster-operator@sha256:a063b4b2be8e94b9d776be67a37e42f479428dbf96567ea5e8c9b048e1607907
+      lastState:
+        terminated:
+          containerID: containerd://ea6c683803d2f900f321f040ab65ab40aeb3ea1a426c672f316516e67bbc5142
+          exitCode: 255
+          finishedAt: "2025-06-20T20:34:22Z"
+          reason: Unknown
+          startedAt: "2025-06-20T20:19:57Z"
+      name: rabbitmq-cluster-operator
+      ready: true
+      restartCount: 6
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-20T20:35:38Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    phase: Running
+    podIP: 192.168.4.251
+    podIPs:
+    - ip: 192.168.4.251
+    qosClass: Burstable
+    startTime: "2025-05-30T07:03:07Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-05-30T12:32:49+05:30"
+    creationTimestamp: "2025-05-30T07:05:51Z"
+    generateName: rabbitmq-rabbitmq-messaging-topology-operator-58f55d7f57-
+    labels:
+      app.kubernetes.io/component: messaging-topology-operator
+      app.kubernetes.io/instance: rabbitmq
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: rabbitmq-cluster-operator
+      app.kubernetes.io/part-of: rabbitmq
+      app.kubernetes.io/version: 1.16.0
+      helm.sh/chart: rabbitmq-cluster-operator-4.4.5
+      pod-template-hash: 58f55d7f57
+    name: rabbitmq-rabbitmq-messaging-topology-operator-58f55d7f57-b7k2s
+    namespace: rbmq
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: rabbitmq-rabbitmq-messaging-topology-operator-58f55d7f57
+      uid: 16885d45-0c45-495b-8e5d-17e0f0c5e940
+    resourceVersion: "71496614"
+    uid: 3313636d-e7c7-4654-bbec-3d55d56c7c4e
+  spec:
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector:
+              matchLabels:
+                app.kubernetes.io/component: messaging-topology-operator
+                app.kubernetes.io/instance: rabbitmq
+                app.kubernetes.io/name: rabbitmq-cluster-operator
+            topologyKey: kubernetes.io/hostname
+          weight: 1
+    automountServiceAccountToken: true
+    containers:
+    - args:
+      - --metrics-bind-address=:8080
+      command:
+      - /manager
+      env:
+      - name: OPERATOR_NAMESPACE
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
+      image: docker.io/bitnami/rmq-messaging-topology-operator:1.16.0-debian-12-r1
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 5
+        initialDelaySeconds: 5
+        periodSeconds: 30
+        successThreshold: 1
+        tcpSocket:
+          port: http-metrics
+        timeoutSeconds: 5
+      name: rabbitmq-cluster-operator
+      ports:
+      - containerPort: 9443
+        name: https-webhook
+        protocol: TCP
+      - containerPort: 8080
+        name: http-metrics
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /metrics
+          port: http-metrics
+          scheme: HTTP
+        initialDelaySeconds: 5
+        periodSeconds: 30
+        successThreshold: 1
+        timeoutSeconds: 5
+      resources:
+        limits:
+          cpu: 150m
+          ephemeral-storage: 2Gi
+          memory: 192Mi
+        requests:
+          cpu: 100m
+          ephemeral-storage: 50Mi
+          memory: 128Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        privileged: false
+        readOnlyRootFilesystem: true
+        runAsGroup: 1001
+        runAsNonRoot: true
+        runAsUser: 1001
+        seLinuxOptions: {}
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /tmp/k8s-webhook-server/serving-certs
+        name: cert
+        readOnly: true
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-zzqx6
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1001
+      fsGroupChangePolicy: Always
+    serviceAccount: rabbitmq-rabbitmq-messaging-topology-operator
+    serviceAccountName: rabbitmq-rabbitmq-messaging-topology-operator
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: cert
+      secret:
+        defaultMode: 420
+        secretName: rabbitmq-rabbitmq-messaging-topology-operator-webhook
+    - name: kube-api-access-zzqx6
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-20T20:35:38Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-05-30T07:06:21Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-22T01:04:26Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-06-22T01:04:26Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-05-30T07:05:51Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://1dd9481c1d40d5873a70ed84259f0965439168db7f3d09ea26c287eecb2c0d13
+      image: docker.io/bitnami/rmq-messaging-topology-operator:1.16.0-debian-12-r1
+      imageID: docker.io/bitnami/rmq-messaging-topology-operator@sha256:5da13b22e8cbbb042db35c7766edd5e49c27f626e55ff776616d30f3ee9d565a
+      lastState:
+        terminated:
+          containerID: containerd://13a2232d5ea65b00576818aa96e086e662058640ad00622f5c483597254f3a50
+          exitCode: 1
+          finishedAt: "2025-06-22T01:04:05Z"
+          reason: Error
+          startedAt: "2025-06-20T20:35:37Z"
+      name: rabbitmq-cluster-operator
+      ready: true
+      restartCount: 4
+      started: true
+      state:
+        running:
+          startedAt: "2025-06-22T01:04:06Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    phase: Running
+    podIP: 192.168.4.249
+    podIPs:
+    - ip: 192.168.4.249
+    qosClass: Burstable
+    startTime: "2025-05-30T07:06:21Z"
+kind: List
+metadata:
+  resourceVersion: ""

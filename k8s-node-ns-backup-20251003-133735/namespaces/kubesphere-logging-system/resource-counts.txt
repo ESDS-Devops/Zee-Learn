@@ -1,0 +1,12 @@
+Namespace: kubesphere-logging-system
+==========================
+pods: 18
+deployments: 3
+services: 5
+configmaps: 5
+secrets: 7
+horizontalpodautoscalers: 0
+ingresses: 0
+statefulsets: 2
+daemonsets: 1
+replicasets: 3

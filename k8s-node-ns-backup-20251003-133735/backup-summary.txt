@@ -1,0 +1,35 @@
+Kubernetes Backup Summary
+Generated: Fri Oct  3 01:37:55 PM IST 2025
+
+Cluster Information:
+- Total Nodes: 6
+- Total Namespaces: 18
+
+Node Summary:
+NAME                 STATUS   ROLES           AGE    VERSION   INTERNAL-IP     EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION       CONTAINER-RUNTIME
+zee8608masterapi01   Ready    control-plane   238d   v1.30.9   10.48.219.135   <none>        Ubuntu 22.04.5 LTS   5.15.0-141-generic   containerd://1.7.25
+zee8608masterapi02   Ready    control-plane   238d   v1.30.9   10.48.219.136   <none>        Ubuntu 22.04.5 LTS   5.15.0-141-generic   containerd://1.7.25
+zee8608masterapi03   Ready    control-plane   238d   v1.30.9   10.48.219.137   <none>        Ubuntu 22.04.5 LTS   5.15.0-141-generic   containerd://1.7.25
+zee8608workerapi01   Ready    worker          237d   v1.30.9   10.48.219.138   <none>        Ubuntu 22.04.5 LTS   5.15.0-141-generic   containerd://1.7.25
+zee8608workerapi02   Ready    worker          238d   v1.30.9   10.48.219.139   <none>        Ubuntu 22.04.5 LTS   5.15.0-141-generic   containerd://1.7.25
+zee8608workerapi03   Ready    worker          238d   v1.30.9   10.48.219.140   <none>        Ubuntu 22.04.5 LTS   5.15.0-141-generic   containerd://1.7.25
+
+Namespace Resource Summary:
+- cert-manager: 3 pods
+- default: 2 pods
+- ingress-nginx: 1 pods
+- kube-flannel: 6 pods
+- kube-node-lease: 0 pods
+- kube-public: 0 pods
+- kube-system: 23 pods
+- kubesphere-controls-system: 2 pods
+- kubesphere-logging-system: 18 pods
+- kubesphere-monitoring-federated: 0 pods
+- kubesphere-monitoring-system: 18 pods
+- kubesphere-system: 4 pods
+- longhorn-system: 27 pods
+- metallb-system: 7 pods
+- poc: 9 pods
+- prod: 41 pods
+- rbmq: 5 pods
+- redis: 2 pods

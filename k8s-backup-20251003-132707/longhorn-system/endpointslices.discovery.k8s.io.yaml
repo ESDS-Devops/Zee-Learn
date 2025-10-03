@@ -1,0 +1,343 @@
+apiVersion: v1
+items:
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.235
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: longhorn-manager-4ckwk
+      namespace: longhorn-system
+      uid: 363862a8-6a6d-44f2-8481-0b92e929fefb
+  - addresses:
+    - 192.168.4.2
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi03
+    targetRef:
+      kind: Pod
+      name: longhorn-manager-d8z27
+      namespace: longhorn-system
+      uid: 92b32d4a-d0c7-448a-b21b-2a84e980108d
+  - addresses:
+    - 192.168.5.221
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: longhorn-manager-pr755
+      namespace: longhorn-system
+      uid: e07bd6d5-e606-4661-a9ab-51c57be792f3
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:47Z"
+    creationTimestamp: "2025-02-07T11:53:40Z"
+    generateName: longhorn-admission-webhook-
+    generation: 52
+    labels:
+      app: longhorn-admission-webhook
+      app.kubernetes.io/instance: longhorn
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: longhorn
+      app.kubernetes.io/version: v1.8.0
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      helm.sh/chart: longhorn-1.8.0
+      kubernetes.io/service-name: longhorn-admission-webhook
+    name: longhorn-admission-webhook-htd59
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: longhorn-admission-webhook
+      uid: f4a53972-a993-43ca-8bb1-65d024283dfd
+    resourceVersion: "72238675"
+    uid: d615b5e1-2e74-4493-89e1-fe1cfd7d3ed8
+  ports:
+  - name: admission-webhook
+    port: 9502
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.235
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: longhorn-manager-4ckwk
+      namespace: longhorn-system
+      uid: 363862a8-6a6d-44f2-8481-0b92e929fefb
+  - addresses:
+    - 192.168.4.2
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi03
+    targetRef:
+      kind: Pod
+      name: longhorn-manager-d8z27
+      namespace: longhorn-system
+      uid: 92b32d4a-d0c7-448a-b21b-2a84e980108d
+  - addresses:
+    - 192.168.5.221
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: longhorn-manager-pr755
+      namespace: longhorn-system
+      uid: e07bd6d5-e606-4661-a9ab-51c57be792f3
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:47Z"
+    creationTimestamp: "2025-02-07T11:53:40Z"
+    generateName: longhorn-backend-
+    generation: 55
+    labels:
+      app: longhorn-manager
+      app.kubernetes.io/instance: longhorn
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: longhorn
+      app.kubernetes.io/version: v1.8.0
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      helm.sh/chart: longhorn-1.8.0
+      kubernetes.io/service-name: longhorn-backend
+    name: longhorn-backend-bpdmr
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: longhorn-backend
+      uid: 4e018390-79c4-47f8-af8e-ae5fd79a4ca2
+    resourceVersion: "72238673"
+    uid: 7c66bd3c-930b-49b1-a552-d07a87328fb3
+  ports:
+  - name: manager
+    port: 9500
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.235
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: longhorn-manager-4ckwk
+      namespace: longhorn-system
+      uid: 363862a8-6a6d-44f2-8481-0b92e929fefb
+  - addresses:
+    - 192.168.4.2
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi03
+    targetRef:
+      kind: Pod
+      name: longhorn-manager-d8z27
+      namespace: longhorn-system
+      uid: 92b32d4a-d0c7-448a-b21b-2a84e980108d
+  - addresses:
+    - 192.168.5.221
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: longhorn-manager-pr755
+      namespace: longhorn-system
+      uid: e07bd6d5-e606-4661-a9ab-51c57be792f3
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:47Z"
+    creationTimestamp: "2025-02-07T11:53:40Z"
+    generateName: longhorn-conversion-webhook-
+    generation: 53
+    labels:
+      app: longhorn-conversion-webhook
+      app.kubernetes.io/instance: longhorn
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: longhorn
+      app.kubernetes.io/version: v1.8.0
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      helm.sh/chart: longhorn-1.8.0
+      kubernetes.io/service-name: longhorn-conversion-webhook
+    name: longhorn-conversion-webhook-ghgbb
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: longhorn-conversion-webhook
+      uid: da9cd437-b77e-4749-87b7-0da27c3d5e19
+    resourceVersion: "72238668"
+    uid: 001167d4-4777-4a3a-b50b-64e4e56f362a
+  ports:
+  - name: conversion-webhook
+    port: 9501
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.5.220
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: longhorn-ui-5fbbcc8fb-pmls9
+      namespace: longhorn-system
+      uid: d01fe3ac-c14b-49c9-af69-ecb907ce3a09
+  - addresses:
+    - 192.168.5.215
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: longhorn-ui-5fbbcc8fb-vm9kl
+      namespace: longhorn-system
+      uid: b9fb3e64-5688-41bd-853b-6b1b5401ea1a
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:23Z"
+    creationTimestamp: "2025-02-07T11:53:40Z"
+    generateName: longhorn-frontend-
+    generation: 29
+    labels:
+      app: longhorn-ui
+      app.kubernetes.io/instance: longhorn
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: longhorn
+      app.kubernetes.io/version: v1.8.0
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      helm.sh/chart: longhorn-1.8.0
+      kubernetes.io/service-name: longhorn-frontend
+    name: longhorn-frontend-dwfd2
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: longhorn-frontend
+      uid: 8a564ff7-2d82-47c3-915e-0723cf2f9d94
+    resourceVersion: "72238419"
+    uid: e03f537f-d4a0-4047-a24f-21c3108e1c05
+  ports:
+  - name: http
+    port: 8000
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.235
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: longhorn-manager-4ckwk
+      namespace: longhorn-system
+      uid: 363862a8-6a6d-44f2-8481-0b92e929fefb
+  - addresses:
+    - 192.168.4.2
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi03
+    targetRef:
+      kind: Pod
+      name: longhorn-manager-d8z27
+      namespace: longhorn-system
+      uid: 92b32d4a-d0c7-448a-b21b-2a84e980108d
+  - addresses:
+    - 192.168.5.221
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi01
+    targetRef:
+      kind: Pod
+      name: longhorn-manager-pr755
+      namespace: longhorn-system
+      uid: e07bd6d5-e606-4661-a9ab-51c57be792f3
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2025-06-23T16:34:47Z"
+    creationTimestamp: "2025-02-07T11:53:40Z"
+    generateName: longhorn-recovery-backend-
+    generation: 52
+    labels:
+      app: longhorn-recovery-backend
+      app.kubernetes.io/instance: longhorn
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: longhorn
+      app.kubernetes.io/version: v1.8.0
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      helm.sh/chart: longhorn-1.8.0
+      kubernetes.io/service-name: longhorn-recovery-backend
+    name: longhorn-recovery-backend-gqscv
+    namespace: longhorn-system
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: longhorn-recovery-backend
+      uid: d526fdbb-69c3-4cfe-b555-54e07efe9ba9
+    resourceVersion: "72238674"
+    uid: b7499b11-c49a-4f02-b174-d0fc1c81f84c
+  ports:
+  - name: recovery-backend
+    port: 9503
+    protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""

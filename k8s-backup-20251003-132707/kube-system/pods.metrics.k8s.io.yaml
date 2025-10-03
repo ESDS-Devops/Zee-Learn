@@ -1,0 +1,381 @@
+apiVersion: v1
+items:
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: coredns
+    usage:
+      cpu: 2797496n
+      memory: 33672Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      k8s-app: kube-dns
+      pod-template-hash: 55cb58b774
+    name: coredns-55cb58b774-6hg5n
+    namespace: kube-system
+  timestamp: "2025-10-03T07:57:43Z"
+  window: 15.659s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: coredns
+    usage:
+      cpu: 2117711n
+      memory: 23136Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      k8s-app: kube-dns
+      pod-template-hash: 55cb58b774
+    name: coredns-55cb58b774-gb6cw
+    namespace: kube-system
+  timestamp: "2025-10-03T07:57:43Z"
+  window: 16.345s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: etcd
+    usage:
+      cpu: 58616634n
+      memory: 130068Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      component: etcd
+      tier: control-plane
+    name: etcd-zee8608masterapi01
+    namespace: kube-system
+  timestamp: "2025-10-03T07:58:46Z"
+  window: 16.736s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: etcd
+    usage:
+      cpu: 37186999n
+      memory: 133240Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      component: etcd
+      tier: control-plane
+    name: etcd-zee8608masterapi02
+    namespace: kube-system
+  timestamp: "2025-10-03T07:58:13Z"
+  window: 22.369s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: etcd
+    usage:
+      cpu: 50073269n
+      memory: 125684Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      component: etcd
+      tier: control-plane
+    name: etcd-zee8608masterapi03
+    namespace: kube-system
+  timestamp: "2025-10-03T07:57:52Z"
+  window: 10.591s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-apiserver
+    usage:
+      cpu: 71755363n
+      memory: 1034084Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      component: kube-apiserver
+      tier: control-plane
+    name: kube-apiserver-zee8608masterapi01
+    namespace: kube-system
+  timestamp: "2025-10-03T07:58:51Z"
+  window: 14.916s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-apiserver
+    usage:
+      cpu: 53130807n
+      memory: 1001268Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      component: kube-apiserver
+      tier: control-plane
+    name: kube-apiserver-zee8608masterapi02
+    namespace: kube-system
+  timestamp: "2025-10-03T07:58:06Z"
+  window: 19.823s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-apiserver
+    usage:
+      cpu: 69383603n
+      memory: 968888Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      component: kube-apiserver
+      tier: control-plane
+    name: kube-apiserver-zee8608masterapi03
+    namespace: kube-system
+  timestamp: "2025-10-03T07:57:50Z"
+  window: 15.125s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-controller-manager
+    usage:
+      cpu: 22003167n
+      memory: 126900Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      component: kube-controller-manager
+      tier: control-plane
+    name: kube-controller-manager-zee8608masterapi01
+    namespace: kube-system
+  timestamp: "2025-10-03T07:58:54Z"
+  window: 16.418s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-controller-manager
+    usage:
+      cpu: 940889n
+      memory: 21588Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      component: kube-controller-manager
+      tier: control-plane
+    name: kube-controller-manager-zee8608masterapi02
+    namespace: kube-system
+  timestamp: "2025-10-03T07:58:04Z"
+  window: 19.032s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-controller-manager
+    usage:
+      cpu: 1023683n
+      memory: 21616Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      component: kube-controller-manager
+      tier: control-plane
+    name: kube-controller-manager-zee8608masterapi03
+    namespace: kube-system
+  timestamp: "2025-10-03T07:57:41Z"
+  window: 19.338s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-proxy
+    usage:
+      cpu: 207269n
+      memory: 23708Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      controller-revision-hash: 79c94c5cb4
+      k8s-app: kube-proxy
+      pod-template-generation: "1"
+    name: kube-proxy-25p9p
+    namespace: kube-system
+  timestamp: "2025-10-03T07:58:58Z"
+  window: 28.668s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-proxy
+    usage:
+      cpu: 37509n
+      memory: 29528Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      controller-revision-hash: 79c94c5cb4
+      k8s-app: kube-proxy
+      pod-template-generation: "1"
+    name: kube-proxy-7hm8t
+    namespace: kube-system
+  timestamp: "2025-10-03T07:58:08Z"
+  window: 17.249s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-proxy
+    usage:
+      cpu: 564391n
+      memory: 35176Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      controller-revision-hash: 79c94c5cb4
+      k8s-app: kube-proxy
+      pod-template-generation: "1"
+    name: kube-proxy-b9ddc
+    namespace: kube-system
+  timestamp: "2025-10-03T07:57:54Z"
+  window: 18.434s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-proxy
+    usage:
+      cpu: 328777n
+      memory: 23052Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      controller-revision-hash: 79c94c5cb4
+      k8s-app: kube-proxy
+      pod-template-generation: "1"
+    name: kube-proxy-lkllb
+    namespace: kube-system
+  timestamp: "2025-10-03T07:57:52Z"
+  window: 17.708s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-proxy
+    usage:
+      cpu: 81262n
+      memory: 23260Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      controller-revision-hash: 79c94c5cb4
+      k8s-app: kube-proxy
+      pod-template-generation: "1"
+    name: kube-proxy-nkvxz
+    namespace: kube-system
+  timestamp: "2025-10-03T07:58:04Z"
+  window: 17.142s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-proxy
+    usage:
+      cpu: 375220n
+      memory: 28228Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      controller-revision-hash: 79c94c5cb4
+      k8s-app: kube-proxy
+      pod-template-generation: "1"
+    name: kube-proxy-pxw75
+    namespace: kube-system
+  timestamp: "2025-10-03T07:57:51Z"
+  window: 16.982s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-scheduler
+    usage:
+      cpu: 2248992n
+      memory: 33720Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      component: kube-scheduler
+      tier: control-plane
+    name: kube-scheduler-zee8608masterapi01
+    namespace: kube-system
+  timestamp: "2025-10-03T07:58:44Z"
+  window: 26.555s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-scheduler
+    usage:
+      cpu: 1410778n
+      memory: 28652Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      component: kube-scheduler
+      tier: control-plane
+    name: kube-scheduler-zee8608masterapi02
+    namespace: kube-system
+  timestamp: "2025-10-03T07:58:12Z"
+  window: 18.723s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: kube-scheduler
+    usage:
+      cpu: 1784748n
+      memory: 28308Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      component: kube-scheduler
+      tier: control-plane
+    name: kube-scheduler-zee8608masterapi03
+    namespace: kube-system
+  timestamp: "2025-10-03T07:57:46Z"
+  window: 13.677s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: metrics-server
+    usage:
+      cpu: 3103567n
+      memory: 50448Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      k8s-app: metrics-server
+      pod-template-hash: b79d5c976
+    name: metrics-server-b79d5c976-27hfl
+    namespace: kube-system
+  timestamp: "2025-10-03T07:57:58Z"
+  window: 13.624s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: metrics-server
+    usage:
+      cpu: 2848280n
+      memory: 27828Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      k8s-app: metrics-server
+      pod-template-hash: b79d5c976
+    name: metrics-server-b79d5c976-cjwkh
+    namespace: kube-system
+  timestamp: "2025-10-03T07:57:49Z"
+  window: 13.492s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: snapshot-controller
+    usage:
+      cpu: 265882n
+      memory: 17644Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:58:21Z"
+    labels:
+      app: snapshot-controller
+      apps.kubernetes.io/pod-index: "0"
+      controller-revision-hash: snapshot-controller-7d87fc7c78
+      statefulset.kubernetes.io/pod-name: snapshot-controller-0
+    name: snapshot-controller-0
+    namespace: kube-system
+  timestamp: "2025-10-03T07:58:07Z"
+  window: 16.323s
+kind: List
+metadata:
+  resourceVersion: ""

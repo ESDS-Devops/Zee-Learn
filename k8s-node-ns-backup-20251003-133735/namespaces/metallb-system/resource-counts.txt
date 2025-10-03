@@ -1,0 +1,12 @@
+Namespace: metallb-system
+==========================
+pods: 7
+deployments: 1
+services: 1
+configmaps: 2
+secrets: 2
+horizontalpodautoscalers: 0
+ingresses: 0
+statefulsets: 0
+daemonsets: 1
+replicasets: 1

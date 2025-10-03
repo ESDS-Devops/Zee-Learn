@@ -1,0 +1,147 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      metallb.io/ip-allocated-from-pool: first-pool
+    creationTimestamp: "2025-02-21T15:48:54Z"
+    labels:
+      app.kubernetes.io/component: rabbitmq
+      app.kubernetes.io/name: rabbitmq-cluster
+      app.kubernetes.io/part-of: rabbitmq
+    name: rabbitmq-cluster
+    namespace: rbmq
+    ownerReferences:
+    - apiVersion: rabbitmq.com/v1beta1
+      blockOwnerDeletion: true
+      controller: true
+      kind: RabbitmqCluster
+      name: rabbitmq-cluster
+      uid: df0e84b3-643d-42c7-960a-e7f9daca5421
+    resourceVersion: "6110235"
+    uid: d8dbcbcf-ee14-4d55-b633-8e491fd36245
+  spec:
+    allocateLoadBalancerNodePorts: true
+    clusterIP: 10.100.15.78
+    clusterIPs:
+    - 10.100.15.78
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - appProtocol: amqp
+      name: amqp
+      nodePort: 31931
+      port: 5672
+      protocol: TCP
+      targetPort: 5672
+    - appProtocol: http
+      name: management
+      nodePort: 30552
+      port: 15672
+      protocol: TCP
+      targetPort: 15672
+    - appProtocol: prometheus.io/metrics
+      name: prometheus
+      nodePort: 30203
+      port: 15692
+      protocol: TCP
+      targetPort: 15692
+    selector:
+      app.kubernetes.io/name: rabbitmq-cluster
+    sessionAffinity: None
+    type: LoadBalancer
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.173
+        ipMode: VIP
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2025-02-21T15:48:54Z"
+    labels:
+      app.kubernetes.io/component: rabbitmq
+      app.kubernetes.io/name: rabbitmq-cluster
+      app.kubernetes.io/part-of: rabbitmq
+    name: rabbitmq-cluster-nodes
+    namespace: rbmq
+    ownerReferences:
+    - apiVersion: rabbitmq.com/v1beta1
+      blockOwnerDeletion: true
+      controller: true
+      kind: RabbitmqCluster
+      name: rabbitmq-cluster
+      uid: df0e84b3-643d-42c7-960a-e7f9daca5421
+    resourceVersion: "6107592"
+    uid: 00f0c8e8-7a47-4ecd-b576-57fb67cfe093
+  spec:
+    clusterIP: None
+    clusterIPs:
+    - None
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: epmd
+      port: 4369
+      protocol: TCP
+      targetPort: 4369
+    - name: cluster-rpc
+      port: 25672
+      protocol: TCP
+      targetPort: 25672
+    publishNotReadyAddresses: true
+    selector:
+      app.kubernetes.io/name: rabbitmq-cluster
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: rabbitmq
+      meta.helm.sh/release-namespace: rbmq
+    creationTimestamp: "2025-02-21T15:47:25Z"
+    labels:
+      app.kubernetes.io/component: messaging-topology-operator
+      app.kubernetes.io/instance: rabbitmq
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: rabbitmq-cluster-operator
+      app.kubernetes.io/part-of: rabbitmq
+      app.kubernetes.io/version: 1.16.0
+      helm.sh/chart: rabbitmq-cluster-operator-4.4.5
+    name: rabbitmq-rabbitmq-messaging-topology-operator-webhook
+    namespace: rbmq
+    resourceVersion: "6106989"
+    uid: d4790a34-3566-4b52-a73e-224609222385
+  spec:
+    clusterIP: 10.100.42.249
+    clusterIPs:
+    - 10.100.42.249
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: https-webhook
+    selector:
+      app.kubernetes.io/component: messaging-topology-operator
+      app.kubernetes.io/instance: rabbitmq
+      app.kubernetes.io/name: rabbitmq-cluster-operator
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""

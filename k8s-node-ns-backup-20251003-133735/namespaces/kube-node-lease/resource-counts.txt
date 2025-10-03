@@ -1,0 +1,12 @@
+Namespace: kube-node-lease
+==========================
+pods: 0
+deployments: 0
+services: 0
+configmaps: 1
+secrets: 0
+horizontalpodautoscalers: 0
+ingresses: 0
+statefulsets: 0
+daemonsets: 0
+replicasets: 0

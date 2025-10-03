@@ -1,0 +1,70 @@
+apiVersion: v1
+items:
+- apiVersion: monitoring.coreos.com/v1
+  kind: ThanosRuler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"monitoring.coreos.com/v1","kind":"ThanosRuler","metadata":{"annotations":{},"labels":{"app.kubernetes.io/component":"thanos-ruler","app.kubernetes.io/instance":"kubesphere","app.kubernetes.io/name":"thanos-ruler","app.kubernetes.io/part-of":"kube-prometheus","app.kubernetes.io/version":"0.31.0"},"name":"kubesphere","namespace":"kubesphere-monitoring-system"},"spec":{"affinity":{"podAntiAffinity":{"preferredDuringSchedulingIgnoredDuringExecution":[{"podAffinityTerm":{"labelSelector":{"matchLabels":{"app.kubernetes.io/component":"thanos-ruler","app.kubernetes.io/instance":"kubesphere","app.kubernetes.io/name":"thanos-ruler","app.kubernetes.io/part-of":"kube-prometheus"}},"namespaces":["kubesphere-monitoring-system"],"topologyKey":"kubernetes.io/hostname"},"weight":100}]}},"alertmanagersUrl":["dnssrv+http://alertmanager-operated.kubesphere-monitoring-system.svc:9093"],"evaluationInterval":"1m","image":"thanosio/thanos:v0.31.0","nodeSelector":{"kubernetes.io/os":"linux"},"podMetadata":{"labels":{"app.kubernetes.io/component":"thanos-ruler","app.kubernetes.io/instance":"kubesphere","app.kubernetes.io/name":"thanos-ruler","app.kubernetes.io/part-of":"kube-prometheus","app.kubernetes.io/version":"0.31.0"}},"queryEndpoints":["http://prometheus-operated.kubesphere-monitoring-system.svc:9090"],"replicas":2,"resources":{"limits":{"cpu":"1","memory":"1Gi"},"requests":{"cpu":"100m","memory":"100Mi"}},"ruleSelector":{"matchExpressions":[{"key":"alerting.kubesphere.io/rule_level","operator":"In","values":["namespace","cluster","global"]}]},"tolerations":[]}}
+    creationTimestamp: "2025-03-04T08:46:03Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/component: thanos-ruler
+      app.kubernetes.io/instance: kubesphere
+      app.kubernetes.io/name: thanos-ruler
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 0.31.0
+    name: kubesphere
+    namespace: kubesphere-monitoring-system
+    resourceVersion: "11877370"
+    uid: 8f59f3d8-07d7-4bef-a0a9-b0522abba605
+  spec:
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector:
+              matchLabels:
+                app.kubernetes.io/component: thanos-ruler
+                app.kubernetes.io/instance: kubesphere
+                app.kubernetes.io/name: thanos-ruler
+                app.kubernetes.io/part-of: kube-prometheus
+            namespaces:
+            - kubesphere-monitoring-system
+            topologyKey: kubernetes.io/hostname
+          weight: 100
+    alertmanagersUrl:
+    - dnssrv+http://alertmanager-operated.kubesphere-monitoring-system.svc:9093
+    evaluationInterval: 1m
+    image: thanosio/thanos:v0.31.0
+    nodeSelector:
+      kubernetes.io/os: linux
+    podMetadata:
+      labels:
+        app.kubernetes.io/component: thanos-ruler
+        app.kubernetes.io/instance: kubesphere
+        app.kubernetes.io/name: thanos-ruler
+        app.kubernetes.io/part-of: kube-prometheus
+        app.kubernetes.io/version: 0.31.0
+    queryEndpoints:
+    - http://prometheus-operated.kubesphere-monitoring-system.svc:9090
+    replicas: 2
+    resources:
+      limits:
+        cpu: "1"
+        memory: 1Gi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+    ruleSelector:
+      matchExpressions:
+      - key: alerting.kubesphere.io/rule_level
+        operator: In
+        values:
+        - namespace
+        - cluster
+        - global
+    tolerations: []
+kind: List
+metadata:
+  resourceVersion: ""

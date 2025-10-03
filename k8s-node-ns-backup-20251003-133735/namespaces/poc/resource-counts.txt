@@ -1,0 +1,12 @@
+Namespace: poc
+==========================
+pods: 9
+deployments: 9
+services: 9
+configmaps: 10
+secrets: 11
+horizontalpodautoscalers: 0
+ingresses: 9
+statefulsets: 0
+daemonsets: 0
+replicasets: 74

@@ -1,0 +1,120 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubernetes.io/created-by: kubesphere.io/ks-apiserver
+      meta.helm.sh/release-name: ks-core
+      meta.helm.sh/release-namespace: kubesphere-system
+    creationTimestamp: "2025-02-10T06:58:20Z"
+    labels:
+      app: ks-apiserver
+      app.kubernetes.io/managed-by: Helm
+      tier: backend
+      version: v3.3.2
+    name: ks-apiserver
+    namespace: kubesphere-system
+    resourceVersion: "1021556"
+    uid: 650f4883-5ca5-44ac-96b9-0b0638f35ac7
+  spec:
+    clusterIP: 10.98.185.36
+    clusterIPs:
+    - 10.98.185.36
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 9090
+    selector:
+      app: ks-apiserver
+      tier: backend
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: ks-core
+      meta.helm.sh/release-namespace: kubesphere-system
+      metallb.io/ip-allocated-from-pool: first-pool
+    creationTimestamp: "2025-02-10T06:58:20Z"
+    labels:
+      app: ks-console
+      app.kubernetes.io/managed-by: Helm
+      tier: frontend
+      version: v3.3.2
+    name: ks-console
+    namespace: kubesphere-system
+    resourceVersion: "83205003"
+    uid: 0b791a77-5748-4a03-9d29-f6bec6c4ca18
+  spec:
+    allocateLoadBalancerNodePorts: true
+    clusterIP: 10.96.198.141
+    clusterIPs:
+    - 10.96.198.141
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    loadBalancerIP: 10.48.219.172
+    ports:
+    - name: nginx
+      nodePort: 30880
+      port: 80
+      protocol: TCP
+      targetPort: 8000
+    selector:
+      app: ks-console
+      tier: frontend
+    sessionAffinity: None
+    type: LoadBalancer
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.172
+        ipMode: VIP
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: ks-core
+      meta.helm.sh/release-namespace: kubesphere-system
+    creationTimestamp: "2025-02-10T06:58:20Z"
+    labels:
+      app: ks-controller-manager
+      app.kubernetes.io/managed-by: Helm
+      tier: backend
+      version: v3.3.2
+    name: ks-controller-manager
+    namespace: kubesphere-system
+    resourceVersion: "1021548"
+    uid: 87c7ad77-9e60-4f76-82ba-5cc544f60945
+  spec:
+    clusterIP: 10.101.40.145
+    clusterIPs:
+    - 10.101.40.145
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 443
+      protocol: TCP
+      targetPort: 8443
+    selector:
+      app: ks-controller-manager
+      tier: backend
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""

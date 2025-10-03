@@ -1,0 +1,813 @@
+apiVersion: v1
+items:
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"labels":{"app":"cmsapi-app","environment":"prod","project":"zee-project"},"name":"cmsapi-hpa","namespace":"prod"},"spec":{"maxReplicas":10,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"}],"minReplicas":3,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"cmsapi-deploy"}}}
+    creationTimestamp: "2025-05-07T12:43:37Z"
+    labels:
+      app: cmsapi-app
+      environment: prod
+      project: zee-project
+    name: cmsapi-hpa
+    namespace: prod
+    resourceVersion: "122983281"
+    uid: b358e8c4-9b7f-4c61-93f3-6ddf5e00c462
+  spec:
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 70
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: cmsapi-deploy
+  status:
+    conditions:
+    - lastTransitionTime: "2025-05-07T12:43:26Z"
+      message: recommended size matches current size
+      reason: ReadyForNewScale
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2025-10-01T11:18:11Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2025-09-30T06:48:03Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: 1m
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+    lastScaleTime: "2025-05-07T12:47:26Z"
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"labels":{"app":"graphql-app","environment":"prod","project":"zee-project"},"name":"graphql-hpa","namespace":"prod"},"spec":{"maxReplicas":10,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"}],"minReplicas":5,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"graphql-deploy"}}}
+    creationTimestamp: "2025-04-16T08:43:28Z"
+    labels:
+      app: graphql-app
+      environment: prod
+      project: zee-project
+    name: graphql-hpa
+    namespace: prod
+    resourceVersion: "122982943"
+    uid: fcfd574f-3fc6-4489-b1ed-5e3fd9236b9c
+  spec:
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 70
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: graphql-deploy
+  status:
+    conditions:
+    - lastTransitionTime: "2025-06-20T20:51:41Z"
+      message: recommended size matches current size
+      reason: ReadyForNewScale
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2025-08-17T02:06:30Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2025-09-20T07:59:45Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: 1m
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+    lastScaleTime: "2025-08-17T02:12:01Z"
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"labels":{"app":"juapi-app","environment":"prod","project":"zee-project"},"name":"juapi-hpa","namespace":"prod"},"spec":{"maxReplicas":10,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"}],"minReplicas":3,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"juapi-deploy"}}}
+    creationTimestamp: "2025-05-15T15:12:50Z"
+    labels:
+      app: juapi-app
+      environment: prod
+      project: zee-project
+    name: juapi-hpa
+    namespace: prod
+    resourceVersion: "122983201"
+    uid: 60c5ced0-af1a-4218-9cdb-f55cf85bcb26
+  spec:
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 70
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: juapi-deploy
+  status:
+    conditions:
+    - lastTransitionTime: "2025-05-15T15:13:05Z"
+      message: recent recommendations were higher than current one, applying the highest
+        recent recommendation
+      reason: ScaleDownStabilized
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2025-08-08T14:59:38Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2025-09-20T08:14:01Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: 1m
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+    lastScaleTime: "2025-05-15T15:13:05Z"
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"labels":{"app":"k12-app","environment":"prod","project":"zee-project"},"name":"k12-hpa","namespace":"prod"},"spec":{"maxReplicas":10,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"}],"minReplicas":3,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"k12-deploy"}}}
+    creationTimestamp: "2025-09-04T11:49:54Z"
+    labels:
+      app: k12-app
+      environment: prod
+      project: zee-project
+    name: k12-hpa
+    namespace: prod
+    resourceVersion: "122964048"
+    uid: 4a16d13d-b611-47f5-acb2-b252604476c2
+  spec:
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 70
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: k12-deploy
+  status:
+    conditions:
+    - lastTransitionTime: "2025-09-04T11:51:10Z"
+      message: recommended size matches current size
+      reason: ReadyForNewScale
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2025-09-23T10:31:13Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2025-09-20T08:11:31Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: "0"
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+    lastScaleTime: "2025-09-04T11:51:10Z"
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"labels":{"app":"literanovacms-app","environment":"prod","project":"zee-project"},"name":"literanovacms-hpa","namespace":"prod"},"spec":{"maxReplicas":10,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"}],"minReplicas":3,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"literanovacms-deploy"}}}
+    creationTimestamp: "2025-07-11T12:01:46Z"
+    labels:
+      app: literanovacms-app
+      environment: prod
+      project: zee-project
+    name: literanovacms-hpa
+    namespace: prod
+    resourceVersion: "122016378"
+    uid: a884a65f-2db4-4c7d-bc80-1104531d3b98
+  spec:
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 70
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: literanovacms-deploy
+  status:
+    conditions:
+    - lastTransitionTime: "2025-09-24T08:26:56Z"
+      message: recommended size matches current size
+      reason: ReadyForNewScale
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2025-07-15T07:14:48Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2025-07-16T08:04:52Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: "0"
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+    lastScaleTime: "2025-07-15T07:21:03Z"
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"labels":{"app":"literanovajr","environment":"prod","project":"zee-project"},"name":"literanovajr-hpa","namespace":"prod"},"spec":{"maxReplicas":10,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"}],"minReplicas":3,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"literanovajr-deploy"}}}
+    creationTimestamp: "2025-05-22T08:50:37Z"
+    labels:
+      app: literanovajr
+      environment: prod
+      project: zee-project
+    name: literanovajr-hpa
+    namespace: prod
+    resourceVersion: "122983282"
+    uid: deddce1a-e7e9-41ce-8b37-8d7d0e1eacdc
+  spec:
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 70
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: literanovajr-deploy
+  status:
+    conditions:
+    - lastTransitionTime: "2025-05-22T08:50:52Z"
+      message: recent recommendations were higher than current one, applying the highest
+        recent recommendation
+      reason: ScaleDownStabilized
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2025-06-20T21:09:27Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2025-08-21T08:55:24Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: 1m
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+    lastScaleTime: "2025-05-22T08:57:37Z"
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"labels":{"app":"literaoctave-app","environment":"prod","project":"zee-project"},"name":"literaoctave-hpa","namespace":"prod"},"spec":{"maxReplicas":10,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"}],"minReplicas":3,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"literaoctave-deploy"}}}
+    creationTimestamp: "2025-06-18T11:32:14Z"
+    labels:
+      app: literaoctave-app
+      environment: prod
+      project: zee-project
+    name: literaoctave-hpa
+    namespace: prod
+    resourceVersion: "122982770"
+    uid: 1fddc871-0ee7-4bcc-a8ce-3e11f1d5ed55
+  spec:
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 70
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: literaoctave-deploy
+  status:
+    conditions:
+    - lastTransitionTime: "2025-06-18T11:32:29Z"
+      message: recommended size matches current size
+      reason: ReadyForNewScale
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2025-07-10T11:19:42Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2025-07-10T11:24:12Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: "0"
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+    lastScaleTime: "2025-06-18T11:45:45Z"
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"labels":{"app":"literaoctavecms-app","environment":"prod","project":"zee-project"},"name":"literaoctavecms-hpa","namespace":"prod"},"spec":{"maxReplicas":10,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"}],"minReplicas":3,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"literaoctavecms-deploy"}}}
+    creationTimestamp: "2025-07-11T12:22:31Z"
+    labels:
+      app: literaoctavecms-app
+      environment: prod
+      project: zee-project
+    name: literaoctavecms-hpa
+    namespace: prod
+    resourceVersion: "116659368"
+    uid: 34c32265-f31d-45e8-8845-c5932bd560c0
+  spec:
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 70
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: literaoctavecms-deploy
+  status:
+    conditions:
+    - lastTransitionTime: "2025-07-11T12:22:46Z"
+      message: recommended size matches current size
+      reason: ReadyForNewScale
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2025-07-14T10:33:41Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2025-07-15T08:01:50Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: "0"
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+    lastScaleTime: "2025-07-15T08:01:50Z"
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"labels":{"app":"lmsapi-app","environment":"prod","project":"zee-project"},"name":"lmsapi-hpa","namespace":"prod"},"spec":{"maxReplicas":10,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":75,"type":"Utilization"}},"type":"Resource"}],"minReplicas":3,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"lmsapi-deploy"}}}
+    creationTimestamp: "2025-05-15T14:49:06Z"
+    labels:
+      app: lmsapi-app
+      environment: prod
+      project: zee-project
+    name: lmsapi-hpa
+    namespace: prod
+    resourceVersion: "122982090"
+    uid: 07c42e06-c92c-4e01-9262-c7f6c4ec4ca2
+  spec:
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 75
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: lmsapi-deploy
+  status:
+    conditions:
+    - lastTransitionTime: "2025-05-15T14:48:52Z"
+      message: recommended size matches current size
+      reason: ReadyForNewScale
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2025-09-20T08:07:31Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2025-09-20T08:12:31Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: "0"
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+    lastScaleTime: "2025-05-15T14:48:52Z"
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"labels":{"app":"novachat","environment":"prod","project":"zee-project"},"name":"novachat-hpa","namespace":"prod"},"spec":{"maxReplicas":10,"metrics":[{"resource":{"name":"memory","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"},{"resource":{"name":"cpu","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"}],"minReplicas":3,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"novachat-deploy"}}}
+    creationTimestamp: "2025-05-27T07:47:35Z"
+    labels:
+      app: novachat
+      environment: prod
+      project: zee-project
+    name: novachat-hpa
+    namespace: prod
+    resourceVersion: "122983373"
+    uid: 000f07f6-365f-4c9a-bde7-f7920fe244d2
+  spec:
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: memory
+        target:
+          averageUtilization: 70
+          type: Utilization
+      type: Resource
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 70
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: novachat-deploy
+  status:
+    conditions:
+    - lastTransitionTime: "2025-05-27T07:47:50Z"
+      message: recommended size matches current size
+      reason: ReadyForNewScale
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2025-09-20T07:55:00Z"
+      message: the HPA was able to successfully calculate a replica count from memory
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2025-09-20T08:05:00Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 36
+          averageValue: "389779456"
+        name: memory
+      type: Resource
+    - resource:
+        current:
+          averageUtilization: 1
+          averageValue: 2m
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+    lastScaleTime: "2025-09-20T08:00:00Z"
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"labels":{"app":"pentemind-2023","environment":"prod","project":"zee-project"},"name":"pentemind-23-hpa","namespace":"prod"},"spec":{"maxReplicas":10,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"}],"minReplicas":3,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"pentemind-23-deploy"}}}
+    creationTimestamp: "2025-04-25T11:44:42Z"
+    labels:
+      app: pentemind-2023
+      environment: prod
+      project: zee-project
+    name: pentemind-23-hpa
+    namespace: prod
+    resourceVersion: "116658319"
+    uid: 71c9aa0a-a52b-4591-8c67-db0e14802d95
+  spec:
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 70
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: pentemind-23-deploy
+  status:
+    conditions:
+    - lastTransitionTime: "2025-05-13T00:42:14Z"
+      message: recommended size matches current size
+      reason: ReadyForNewScale
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2025-09-20T07:53:30Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2025-08-11T09:49:39Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: "0"
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"name":"pentemind-24-hpa","namespace":"prod"},"spec":{"maxReplicas":5,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"}],"minReplicas":2,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"pentemind-24-deploy"}}}
+    creationTimestamp: "2025-04-16T07:52:02Z"
+    name: pentemind-24-hpa
+    namespace: prod
+    resourceVersion: "122983368"
+    uid: 9ac4a4e8-bc50-4e9d-9798-4ec15f2b8cb6
+  spec:
+    maxReplicas: 5
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 70
+          type: Utilization
+      type: Resource
+    minReplicas: 2
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: pentemind-24-deploy
+  status:
+    conditions:
+    - lastTransitionTime: "2025-04-16T07:52:17Z"
+      message: recent recommendations were higher than current one, applying the highest
+        recent recommendation
+      reason: ScaleDownStabilized
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2025-09-20T07:55:30Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2025-09-27T09:25:21Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: 1m
+        name: cpu
+      type: Resource
+    currentReplicas: 2
+    desiredReplicas: 2
+    lastScaleTime: "2025-06-20T21:09:27Z"
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"labels":{"app":"pentemind-app","environment":"prod","project":"zee-project"},"name":"pentemind-25-hpa","namespace":"prod"},"spec":{"maxReplicas":10,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"}],"minReplicas":3,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"pentemind-25-deploy"}}}
+    creationTimestamp: "2025-04-25T11:45:37Z"
+    labels:
+      app: pentemind-app
+      environment: prod
+      project: zee-project
+    name: pentemind-25-hpa
+    namespace: prod
+    resourceVersion: "122983369"
+    uid: 71527636-fa01-4b06-b2db-0f3111fe6cee
+  spec:
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 70
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: pentemind-25-deploy
+  status:
+    conditions:
+    - lastTransitionTime: "2025-05-08T03:01:39Z"
+      message: recommended size matches current size
+      reason: ReadyForNewScale
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2025-07-31T09:40:41Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2025-09-25T06:46:31Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 7
+          averageValue: 35m
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+    lastScaleTime: "2025-09-02T04:19:37Z"
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling/v2","kind":"HorizontalPodAutoscaler","metadata":{"annotations":{},"labels":{"app":"zllsaathiapi-app","environment":"prod","project":"zee-project"},"name":"zllsaathiapi-hpa","namespace":"prod"},"spec":{"maxReplicas":10,"metrics":[{"resource":{"name":"cpu","target":{"averageUtilization":70,"type":"Utilization"}},"type":"Resource"}],"minReplicas":3,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"zllsaathiapi-deploy"}}}
+    creationTimestamp: "2025-07-31T13:37:55Z"
+    labels:
+      app: zllsaathiapi-app
+      environment: prod
+      project: zee-project
+    name: zllsaathiapi-hpa
+    namespace: prod
+    resourceVersion: "122981492"
+    uid: 81baa93e-bc99-4118-96a4-bda7f386b38f
+  spec:
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 70
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: zllsaathiapi-deploy
+  status:
+    conditions:
+    - lastTransitionTime: "2025-07-31T13:38:10Z"
+      message: recommended size matches current size
+      reason: ReadyForNewScale
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2025-09-08T13:09:07Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2025-09-25T06:23:30Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: "0"
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+    lastScaleTime: "2025-07-31T13:38:10Z"
+kind: List
+metadata:
+  resourceVersion: ""

@@ -1,0 +1,7 @@
+NAME                 STATUS   ROLES           AGE    VERSION   INTERNAL-IP     EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION       CONTAINER-RUNTIME
+zee8608masterapi01   Ready    control-plane   238d   v1.30.9   10.48.219.135   <none>        Ubuntu 22.04.5 LTS   5.15.0-141-generic   containerd://1.7.25
+zee8608masterapi02   Ready    control-plane   238d   v1.30.9   10.48.219.136   <none>        Ubuntu 22.04.5 LTS   5.15.0-141-generic   containerd://1.7.25
+zee8608masterapi03   Ready    control-plane   238d   v1.30.9   10.48.219.137   <none>        Ubuntu 22.04.5 LTS   5.15.0-141-generic   containerd://1.7.25
+zee8608workerapi01   Ready    worker          237d   v1.30.9   10.48.219.138   <none>        Ubuntu 22.04.5 LTS   5.15.0-141-generic   containerd://1.7.25
+zee8608workerapi02   Ready    worker          238d   v1.30.9   10.48.219.139   <none>        Ubuntu 22.04.5 LTS   5.15.0-141-generic   containerd://1.7.25
+zee8608workerapi03   Ready    worker          237d   v1.30.9   10.48.219.140   <none>        Ubuntu 22.04.5 LTS   5.15.0-141-generic   containerd://1.7.25

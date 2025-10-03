@@ -1,0 +1,107 @@
+apiVersion: v1
+items:
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.223
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: ingress-nginx-controller-57fb89d679-t8hfl
+      namespace: ingress-nginx
+      uid: b4c0a828-32db-4e96-99cc-9dc5e076ec84
+  kind: EndpointSlice
+  metadata:
+    creationTimestamp: "2025-02-13T08:12:54Z"
+    generateName: ingress-nginx-controller-admission-
+    generation: 117
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.12.0
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      helm.sh/chart: ingress-nginx-4.12.0
+      kubernetes.io/service-name: ingress-nginx-controller-admission
+    name: ingress-nginx-controller-admission-znmts
+    namespace: ingress-nginx
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: ingress-nginx-controller-admission
+      uid: 7d9d0522-eecf-4a46-8c21-f4fc7b242d90
+    resourceVersion: "70961522"
+    uid: 3cc6d7c4-4947-4a98-bfe8-1ec887862516
+  ports:
+  - appProtocol: https
+    name: https-webhook
+    port: 8443
+    protocol: TCP
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 192.168.3.223
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: zee8608workerapi02
+    targetRef:
+      kind: Pod
+      name: ingress-nginx-controller-57fb89d679-t8hfl
+      namespace: ingress-nginx
+      uid: b4c0a828-32db-4e96-99cc-9dc5e076ec84
+  kind: EndpointSlice
+  metadata:
+    creationTimestamp: "2025-02-13T08:12:54Z"
+    generateName: ingress-nginx-controller-
+    generation: 120
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.12.0
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      helm.sh/chart: ingress-nginx-4.12.0
+      kubernetes.io/service-name: ingress-nginx-controller
+    name: ingress-nginx-controller-mhrvk
+    namespace: ingress-nginx
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: ingress-nginx-controller
+      uid: 1b7c51b3-ac47-4293-8477-ceab2419f67c
+    resourceVersion: "70961521"
+    uid: ce96262b-885a-4816-bdee-768323450c13
+  ports:
+  - appProtocol: https
+    name: https
+    port: 443
+    protocol: TCP
+  - appProtocol: http
+    name: http
+    port: 80
+    protocol: TCP
+  - name: mongo-proxied-tcp
+    port: 27017
+    protocol: TCP
+  - name: redis-proxied-tcp
+    port: 6379
+    protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""

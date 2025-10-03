@@ -1,0 +1,304 @@
+apiVersion: v1
+kind: Node
+metadata:
+  annotations:
+    csi.volume.kubernetes.io/nodeid: '{"driver.longhorn.io":"zee8608workerapi03"}'
+    flannel.alpha.coreos.com/backend-data: '{"VNI":1,"VtepMAC":"6a:39:41:a2:76:ac"}'
+    flannel.alpha.coreos.com/backend-type: vxlan
+    flannel.alpha.coreos.com/kube-subnet-manager: "true"
+    flannel.alpha.coreos.com/public-ip: 10.48.219.140
+    kubeadm.alpha.kubernetes.io/cri-socket: unix:///var/run/containerd/containerd.sock
+    node.alpha.kubernetes.io/ttl: "0"
+    volumes.kubernetes.io/controller-managed-attach-detach: "true"
+  creationTimestamp: "2025-02-07T08:07:51Z"
+  labels:
+    beta.kubernetes.io/arch: amd64
+    beta.kubernetes.io/os: linux
+    kubernetes.io/arch: amd64
+    kubernetes.io/hostname: zee8608workerapi03
+    kubernetes.io/os: linux
+    node-role.kubernetes.io/worker: worker
+  name: zee8608workerapi03
+  resourceVersion: "122982018"
+  uid: 1e4d30ae-fd34-490e-96ff-03345e1eb644
+spec:
+  podCIDR: 192.168.4.0/24
+  podCIDRs:
+  - 192.168.4.0/24
+status:
+  addresses:
+  - address: 10.48.219.140
+    type: InternalIP
+  - address: zee8608workerapi03
+    type: Hostname
+  allocatable:
+    cpu: "12"
+    ephemeral-storage: "130964542862"
+    hugepages-1Gi: "0"
+    hugepages-2Mi: "0"
+    memory: 32724872Ki
+    pods: "110"
+  capacity:
+    cpu: "12"
+    ephemeral-storage: 142105624Ki
+    hugepages-1Gi: "0"
+    hugepages-2Mi: "0"
+    memory: 32827272Ki
+    pods: "110"
+  conditions:
+  - lastHeartbeatTime: "2025-06-20T20:35:31Z"
+    lastTransitionTime: "2025-06-20T20:35:31Z"
+    message: Flannel is running on this node
+    reason: FlannelIsUp
+    status: "False"
+    type: NetworkUnavailable
+  - lastHeartbeatTime: "2025-10-03T08:03:42Z"
+    lastTransitionTime: "2025-06-20T20:43:07Z"
+    message: kubelet has sufficient memory available
+    reason: KubeletHasSufficientMemory
+    status: "False"
+    type: MemoryPressure
+  - lastHeartbeatTime: "2025-10-03T08:03:42Z"
+    lastTransitionTime: "2025-06-20T20:43:07Z"
+    message: kubelet has no disk pressure
+    reason: KubeletHasNoDiskPressure
+    status: "False"
+    type: DiskPressure
+  - lastHeartbeatTime: "2025-10-03T08:03:42Z"
+    lastTransitionTime: "2025-06-20T20:43:07Z"
+    message: kubelet has sufficient PID available
+    reason: KubeletHasSufficientPID
+    status: "False"
+    type: PIDPressure
+  - lastHeartbeatTime: "2025-10-03T08:03:42Z"
+    lastTransitionTime: "2025-06-20T20:43:07Z"
+    message: kubelet is posting ready status
+    reason: KubeletReady
+    status: "True"
+    type: Ready
+  daemonEndpoints:
+    kubeletEndpoint:
+      Port: 10250
+  images:
+  - names:
+    - docker.io/opensearchproject/opensearch@sha256:40f5bb40a543f7ea6458bc0ecffc7679c9df6f8836a9e3781a78829d587ef552
+    - docker.io/opensearchproject/opensearch:2.6.0
+    sizeBytes: 817657834
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:3dd288af9c25a5301025c93efa308d1887b51dc0f2c1b26b2be4c3af4fd2d626
+    - docker.io/devzeelearn/lmsapi-prod:50
+    sizeBytes: 569996532
+  - names:
+    - docker.io/devzeelearn/cmsapi-prod@sha256:bc4cf5e024c848264519cb970a0842aef124da1fc9960a0085687f9db5b75c7c
+    - docker.io/devzeelearn/cmsapi-prod:186
+    sizeBytes: 569995323
+  - names:
+    - docker.io/devzeelearn/lmsapi-poc@sha256:4191156b9d90a558dd0f16979de27c7cc929352da3642004f2d7fb17636e61b6
+    - docker.io/devzeelearn/lmsapi-poc:16
+    sizeBytes: 569995294
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:6d144333f7fabb601373c2df65566758b5793e6fb8188107b9f5a2929e031550
+    - docker.io/devzeelearn/lmsapi-prod:52
+    sizeBytes: 569994530
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:b1d8afe1d17a7a055f3c939cd39fdc8cb3efc9853af4d23d88fdaa6cb0a15622
+    - docker.io/devzeelearn/lmsapi-prod:51
+    sizeBytes: 569989720
+  - names:
+    - docker.io/devzeelearn/lmsapi-poc@sha256:db66e5ce071f620d1608c157fe6bca117ef51c372975cf6cd13adbdfc3be7279
+    - docker.io/devzeelearn/lmsapi-poc:165
+    sizeBytes: 569988432
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:77cb851dd0e9337d8c0db612d103e9d66f0dc52d867009e715111e7182f14664
+    - docker.io/devzeelearn/lmsapi-prod:221
+    sizeBytes: 569984839
+  - names:
+    - docker.io/devzeelearn/cmsapi-poc@sha256:2363799ace42c22668fdf8ccbf5b78c0a0ed73a97d68f7940ea3ff28e896af5b
+    - docker.io/devzeelearn/cmsapi-poc:181
+    sizeBytes: 569981804
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:7c5560d424ee0c7f4bd0ee3ad3b87c4abffc180a037c7cf469f831e8bef09bcc
+    - docker.io/devzeelearn/lmsapi-prod:53
+    sizeBytes: 569977930
+  - names:
+    - docker.io/devzeelearn/k12-prod@sha256:da449a129eba9e5afdd9bbabd72942ed909e585733f99629c8157bada6b0bfb4
+    - docker.io/devzeelearn/k12-prod:7
+    sizeBytes: 566074525
+  - names:
+    - docker.io/devzeelearn/juapi-poc@sha256:d3e7ea0bd43bc66018df777f3f0a9965f80bf69f87522558635fa8b232599aea
+    - docker.io/devzeelearn/juapi-poc:15
+    sizeBytes: 566072467
+  - names:
+    - docker.io/devzeelearn/juapi-prod@sha256:8d4ba806f929dfb7e385adcc0670e29b403d158598bc31083901a1d239239d2f
+    - docker.io/devzeelearn/juapi-prod:15
+    sizeBytes: 566070609
+  - names:
+    - docker.io/devzeelearn/juapi-prod@sha256:e400daf61fe621be1da0f56ce433d639900ba42132a0e4fea1b49b95f2e142c9
+    - docker.io/devzeelearn/juapi-prod:164
+    sizeBytes: 566065993
+  - names:
+    - docker.io/devzeelearn/juapi-prod@sha256:6f687031c4149557f26fd469f132a59ed0c1553712501d94507c31e0e75e1d83
+    - docker.io/devzeelearn/juapi-prod:165
+    sizeBytes: 566059211
+  - names:
+    - docker.io/devzeelearn/k12-prod@sha256:3bce15e2e2750e17051e5357efe6132a7b16d09a7b70d7d8e9e94f9800564fa2
+    - docker.io/devzeelearn/k12-prod:169
+    sizeBytes: 566058340
+  - names:
+    - docker.io/devzeelearn/juapi-poc@sha256:15d41e8ba9c27c59dd829fc11a0f7d53de096958ab89efee8fa6715384e6fc0e
+    - docker.io/devzeelearn/juapi-poc:166
+    sizeBytes: 566057423
+  - names:
+    - docker.io/devzeelearn/k12-prod@sha256:eb0ed498d3ee21c6eb10fa9b2e0c4acb33940fc3b43236cb42af61765a2df0a6
+    - docker.io/devzeelearn/k12-prod:4
+    sizeBytes: 566055512
+  - names:
+    - docker.io/devzeelearn/k12-prod@sha256:a76017d803a1305f5b4612d6466e26b3021ba5f4ceafc90937f9d018e086cf8b
+    - docker.io/devzeelearn/k12-prod:8
+    sizeBytes: 566050060
+  - names:
+    - docker.io/devzeelearn/k12-prod@sha256:4a7487d2e0849e4c205d599667addd0f37edb5dc46e26b5f5abe0eed9fd88a4d
+    - docker.io/devzeelearn/k12-prod:5
+    sizeBytes: 566043804
+  - names:
+    - docker.io/devzeelearn/k12-prod@sha256:4a703a37ed09ca6ec31c6b214ebe1cbb22d04ebe38b42a699a81a4d5385d34fd
+    - docker.io/devzeelearn/k12-prod:6
+    sizeBytes: 566040936
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:2416200d021660b24ee2815cd6fda12dd163cc8f99c29ee8b03a478f7539de74
+    - docker.io/devzeelearn/lmsapi-prod:16
+    sizeBytes: 564439320
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:eea562d55427d75004859c74db198b5228e34dcb353277527b102924266ce930
+    - docker.io/devzeelearn/lmsapi-prod:17
+    sizeBytes: 564435451
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:5e0aad425f4dc64aecda3a3df6bc0bcedc9f8e2e35c114b6d3351bb8a5910233
+    - docker.io/devzeelearn/lmsapi-prod:26
+    sizeBytes: 564410065
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:bdd3bf0ac973e044b2532aa4777bf7f2b4916bd672b33ab393e690914125fac9
+    - docker.io/devzeelearn/lmsapi-prod:45
+    sizeBytes: 564407802
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:386b7a32cb7389e03ba22cece2f196b0c1176b11f12a99f3cb0c8c430c731291
+    - docker.io/devzeelearn/lmsapi-prod:25
+    sizeBytes: 564406534
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:782bed5b732450e88c212b16c837fe282bd2585411e405c3da71309309f28bce
+    - docker.io/devzeelearn/lmsapi-prod:23
+    sizeBytes: 564405810
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:1b4c75010711c0ffb8eb06c35ac8d9bd95e2d9b1df579cda68f7ba329dfb89c5
+    - docker.io/devzeelearn/lmsapi-prod:24
+    sizeBytes: 564405118
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:db173805ed22ae379d46dfd5ef1c2accf85e3a65d0d8447cbf6015e599b99a73
+    - docker.io/devzeelearn/lmsapi-prod:39
+    sizeBytes: 564403879
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:cd98fd8d7d81ace21d19ee4b0dffbb6ad9ab67fec04b8631a116363a818b7e3b
+    - docker.io/devzeelearn/lmsapi-prod:21
+    sizeBytes: 564398818
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:f87180086b095ef37bbfb8ff70c3a0d6f3a14c8683adf949c7b5ffaad3bd634d
+    - docker.io/devzeelearn/lmsapi-prod:19
+    sizeBytes: 564392600
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:9653cb95bb0543cae5f488059eed887b9c526836fd119319f9443511eeee1667
+    - docker.io/devzeelearn/lmsapi-prod:20
+    sizeBytes: 564391180
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:02a073544fe56d5d171f06591199d29d47badd501f6494d2d3b9f533320385e0
+    - docker.io/devzeelearn/lmsapi-prod:18
+    sizeBytes: 564390872
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:16331a556dfa3428b04e3895b57a830604e5e4c9fb63944ad52da4ea16b2a6ba
+    - docker.io/devzeelearn/lmsapi-prod:28
+    sizeBytes: 564384177
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:262a1796a5fa65c2c0579e7747547dc38459807cac7cda9db87f2c13becb1b78
+    - docker.io/devzeelearn/lmsapi-prod:40
+    sizeBytes: 564380426
+  - names:
+    - docker.io/devzeelearn/lmsapi-poc@sha256:ee8bff809ed08794b05ad9dac9a3c98101ad16a120e026a38b47837e25ed3c89
+    - docker.io/devzeelearn/lmsapi-poc:8
+    sizeBytes: 564380181
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:30cc0ec99a041ca5a7a038784afc912552fe6b5708c34c0521532feeb6be802d
+    - docker.io/devzeelearn/lmsapi-prod:10
+    sizeBytes: 564379678
+  - names:
+    - docker.io/devzeelearn/lmsapi-poc@sha256:b497dc2d0b4564c20763ccbe4c81a50870eefce58cabda8088c566c3af626bd5
+    - docker.io/devzeelearn/lmsapi-poc:13
+    sizeBytes: 564379189
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:916e4fbe352159c77fdbe08f6b7068e5ff1e5cc779cce23cf16625f952c4984d
+    - docker.io/devzeelearn/lmsapi-prod:12
+    sizeBytes: 564378729
+  - names:
+    - docker.io/devzeelearn/lmsapi-poc@sha256:1788f9ada091c56a4e7c4516c742b49e8f2431b0fe586c85fb422fdcce9b9e99
+    - docker.io/devzeelearn/lmsapi-poc:9
+    sizeBytes: 564377268
+  - names:
+    - docker.io/devzeelearn/cmsapi-poc@sha256:d52e2667846254f2f71bf1d7fb6daac30530c73af353a1e221cc699df89396ff
+    - docker.io/devzeelearn/cmsapi-poc:25
+    sizeBytes: 564375579
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:090443d9e57fa91300fcbc8fc9f457e7d5eab9eed6cba2b31038764542e8b52d
+    - docker.io/devzeelearn/lmsapi-prod:29
+    sizeBytes: 564374341
+  - names:
+    - docker.io/devzeelearn/cmsapi-poc@sha256:7b0623ddb6cee8da69b11c256044292959d8d6352f411e1b11fee7a39562ac89
+    - docker.io/devzeelearn/cmsapi-poc:30
+    sizeBytes: 564370125
+  - names:
+    - docker.io/devzeelearn/cmsapi-poc@sha256:61e90c2af7724f0eb4bfce17d2e1f4888881e7d0a3e7dfce5096d430f05bbf4c
+    - docker.io/devzeelearn/cmsapi-poc:28
+    sizeBytes: 564370100
+  - names:
+    - docker.io/devzeelearn/lmsapi-poc@sha256:c639db5bd04159270191d93f78dac64ef7cc04e48f93eaf78292ad95d8605a52
+    - docker.io/devzeelearn/lmsapi-poc:14
+    sizeBytes: 564370003
+  - names:
+    - docker.io/devzeelearn/cmsapi-poc@sha256:723498f16c99c7107c7e1c7dfd59bebafa8f4dc014be4b505e3cf9307721e0af
+    - docker.io/devzeelearn/cmsapi-poc:31
+    sizeBytes: 564368808
+  - names:
+    - docker.io/devzeelearn/lmsapi-poc@sha256:1fa7e63ae25d9498faae430ced56fd0ea591aa57fda2332c28e9fb08d6a593b8
+    - docker.io/devzeelearn/lmsapi-poc:11
+    sizeBytes: 564367233
+  - names:
+    - docker.io/devzeelearn/cmsapi-poc@sha256:d2d0dbcf34f6fc6f05342c0ee08a2ec5e1c94e760308cec5d8418ff6f99e186e
+    - docker.io/devzeelearn/cmsapi-poc:24
+    sizeBytes: 564365793
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:1470209a464610d0eadd688d024ef5650f92e252dc7d749e0af6ad8337356ae5
+    - docker.io/devzeelearn/lmsapi-prod:34
+    sizeBytes: 564365340
+  - names:
+    - docker.io/devzeelearn/lmsapi-prod@sha256:6a3f7617a7c32bc347f06158422bd9f528596860717773c3622a527bfeb67013
+    - docker.io/devzeelearn/lmsapi-prod:14
+    sizeBytes: 564363524
+  nodeInfo:
+    architecture: amd64
+    bootID: f1e2bb60-cf43-4cdb-b1ef-6ea781de44ba
+    containerRuntimeVersion: containerd://1.7.25
+    kernelVersion: 5.15.0-141-generic
+    kubeProxyVersion: v1.30.9
+    kubeletVersion: v1.30.9
+    machineID: 07cadc63d5b8497594d4104ccf027864
+    operatingSystem: linux
+    osImage: Ubuntu 22.04.5 LTS
+    systemUUID: 306e2442-786b-0bf3-dfe8-63d3960f3976
+  volumesAttached:
+  - devicePath: ""
+    name: kubernetes.io/csi/driver.longhorn.io^pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426
+  - devicePath: ""
+    name: kubernetes.io/csi/driver.longhorn.io^pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3
+  - devicePath: ""
+    name: kubernetes.io/csi/driver.longhorn.io^pvc-aa466509-d3b3-4559-9be5-28da4630a9ce
+  volumesInUse:
+  - kubernetes.io/csi/driver.longhorn.io^pvc-aa466509-d3b3-4559-9be5-28da4630a9ce
+  - kubernetes.io/csi/driver.longhorn.io^pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426
+  - kubernetes.io/csi/driver.longhorn.io^pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3

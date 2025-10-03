@@ -1,0 +1,12 @@
+Namespace: default
+==========================
+pods: 2
+deployments: 1
+services: 2
+configmaps: 1
+secrets: 10
+horizontalpodautoscalers: 0
+ingresses: 1
+statefulsets: 2
+daemonsets: 0
+replicasets: 1

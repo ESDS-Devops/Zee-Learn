@@ -1,0 +1,79 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: driver.longhorn.io
+      volume.kubernetes.io/storage-provisioner: driver.longhorn.io
+    creationTimestamp: "2025-02-10T07:02:15Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    labels:
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/managed-by: prometheus-operator
+      app.kubernetes.io/name: prometheus
+      operator.prometheus.io/name: k8s
+      operator.prometheus.io/shard: "0"
+      prometheus: k8s
+    name: prometheus-k8s-db-prometheus-k8s-0
+    namespace: kubesphere-monitoring-system
+    resourceVersion: "1023482"
+    uid: b151ae9d-5fec-4ba6-ac72-5fd690d015c5
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 20Gi
+    storageClassName: longhorn
+    volumeMode: Filesystem
+    volumeName: pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 20Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      pv.kubernetes.io/bind-completed: "yes"
+      pv.kubernetes.io/bound-by-controller: "yes"
+      volume.beta.kubernetes.io/storage-provisioner: driver.longhorn.io
+      volume.kubernetes.io/storage-provisioner: driver.longhorn.io
+    creationTimestamp: "2025-02-10T07:02:15Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    labels:
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/managed-by: prometheus-operator
+      app.kubernetes.io/name: prometheus
+      operator.prometheus.io/name: k8s
+      operator.prometheus.io/shard: "0"
+      prometheus: k8s
+    name: prometheus-k8s-db-prometheus-k8s-1
+    namespace: kubesphere-monitoring-system
+    resourceVersion: "1023478"
+    uid: a6b05366-d771-4c1e-854c-66b57739227d
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 20Gi
+    storageClassName: longhorn
+    volumeMode: Filesystem
+    volumeName: pvc-a6b05366-d771-4c1e-854c-66b57739227d
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 20Gi
+    phase: Bound
+kind: List
+metadata:
+  resourceVersion: ""

@@ -1,0 +1,355 @@
+apiVersion: v1
+items:
+- apiVersion: longhorn.io/v1beta2
+  kind: Node
+  metadata:
+    creationTimestamp: "2025-02-07T11:54:16Z"
+    finalizers:
+    - longhorn.io
+    generation: 1
+    name: zee8608workerapi01
+    namespace: longhorn-system
+    resourceVersion: "122972146"
+    uid: 84f2c3c1-db92-407f-8633-7ce1a9a6cb94
+  spec:
+    allowScheduling: true
+    disks:
+      default-disk-fd0300000000:
+        allowScheduling: true
+        diskDriver: ""
+        diskType: filesystem
+        evictionRequested: false
+        path: /zee_data/
+        storageReserved: 64393052160
+        tags: []
+    evictionRequested: false
+    instanceManagerCPURequest: 0
+    name: zee8608workerapi01
+    tags: []
+  status:
+    autoEvicting: false
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:34:47Z"
+      message: Node zee8608workerapi01 is ready
+      reason: ""
+      status: "True"
+      type: Ready
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-23T16:39:19Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: Schedulable
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:18Z"
+      message: All required packages [nfs-common open-iscsi cryptsetup dmsetup] are
+        installed
+      reason: ""
+      status: "True"
+      type: RequiredPackages
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:18Z"
+      message: multipathd is running with a known issue that affects Longhorn. See
+        description and solution at https://longhorn.io/kb/troubleshooting-volume-with-multipath
+      reason: MultipathdIsRunning
+      status: "False"
+      type: Multipathd
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:18Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: NFSClientInstalled
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:18Z"
+      message: Kernel modules [dm_crypt] are not loaded
+      reason: KernelModulesNotLoaded
+      status: "False"
+      type: KernelModulesLoaded
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:48Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: MountPropagation
+    diskStatus:
+      default-disk-fd0300000000:
+        conditions:
+        - lastProbeTime: ""
+          lastTransitionTime: "2025-04-16T12:20:06Z"
+          message: Disk default-disk-fd0300000000(/zee_data/) on node zee8608workerapi01
+            is ready
+          reason: ""
+          status: "True"
+          type: Ready
+        - lastProbeTime: ""
+          lastTransitionTime: "2025-06-02T08:03:18Z"
+          message: Disk default-disk-fd0300000000(/zee_data/) on node zee8608workerapi01
+            is schedulable
+          reason: ""
+          status: "True"
+          type: Schedulable
+        diskDriver: ""
+        diskName: default-disk-fd0300000000
+        diskPath: /zee_data/
+        diskType: filesystem
+        diskUUID: 93f06d94-c542-41d4-ad3b-ae543cc29b34
+        filesystemType: xfs
+        instanceManagerName: instance-manager-0d91d974e534c34183045b1d57ce4ece
+        scheduledBackingImage: {}
+        scheduledReplica:
+          pvc-2eb88f72-28f1-4e08-9fe1-267bcafb6d0f-r-d49c2fae: 10001317888
+          pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5-r-87791d47: 21474836480
+          pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047-r-413b6ab3: 4294967296
+          pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426-r-a73c6d8f: 4294967296
+          pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87-r-4db87c96: 10737418240
+          pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc-r-3777e217: 4294967296
+          pvc-eff7f51d-6933-4463-be30-349048ebf08a-r-8756d79f: 2000683008
+          pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3-r-18f47483: 21474836480
+          pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15-r-f43a11b0: 2000683008
+        storageAvailable: 166828441600
+        storageMaximum: 214643507200
+        storageScheduled: 80574676992
+    region: ""
+    snapshotCheckStatus:
+      lastPeriodicCheckedAt: "2025-10-01T00:00:00Z"
+    zone: ""
+- apiVersion: longhorn.io/v1beta2
+  kind: Node
+  metadata:
+    creationTimestamp: "2025-02-07T11:54:07Z"
+    finalizers:
+    - longhorn.io
+    generation: 1
+    name: zee8608workerapi02
+    namespace: longhorn-system
+    resourceVersion: "122972566"
+    uid: d2e352c3-3745-4f1d-b82a-b043d075fc39
+  spec:
+    allowScheduling: true
+    disks:
+      default-disk-fd0300000000:
+        allowScheduling: true
+        diskDriver: ""
+        diskType: filesystem
+        evictionRequested: false
+        path: /zee_data/
+        storageReserved: 64393052160
+        tags: []
+    evictionRequested: false
+    instanceManagerCPURequest: 0
+    name: zee8608workerapi02
+    tags: []
+  status:
+    autoEvicting: false
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-20T20:43:17Z"
+      message: Node zee8608workerapi02 is ready
+      reason: ""
+      status: "True"
+      type: Ready
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-05T20:53:24Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: Schedulable
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:07Z"
+      message: All required packages [dmsetup nfs-common open-iscsi cryptsetup] are
+        installed
+      reason: ""
+      status: "True"
+      type: RequiredPackages
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:07Z"
+      message: multipathd is running with a known issue that affects Longhorn. See
+        description and solution at https://longhorn.io/kb/troubleshooting-volume-with-multipath
+      reason: MultipathdIsRunning
+      status: "False"
+      type: Multipathd
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:07Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: NFSClientInstalled
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:07Z"
+      message: Kernel modules [dm_crypt] are not loaded
+      reason: KernelModulesNotLoaded
+      status: "False"
+      type: KernelModulesLoaded
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:37Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: MountPropagation
+    diskStatus:
+      default-disk-fd0300000000:
+        conditions:
+        - lastProbeTime: ""
+          lastTransitionTime: "2025-02-07T11:54:37Z"
+          message: Disk default-disk-fd0300000000(/zee_data/) on node zee8608workerapi02
+            is ready
+          reason: ""
+          status: "True"
+          type: Ready
+        - lastProbeTime: ""
+          lastTransitionTime: "2025-06-02T07:58:27Z"
+          message: Disk default-disk-fd0300000000(/zee_data/) on node zee8608workerapi02
+            is schedulable
+          reason: ""
+          status: "True"
+          type: Schedulable
+        diskDriver: ""
+        diskName: default-disk-fd0300000000
+        diskPath: /zee_data/
+        diskType: filesystem
+        diskUUID: 0a287aa5-14fa-4a06-83f3-51a7f5d2c59e
+        filesystemType: xfs
+        instanceManagerName: instance-manager-cebb946b3b3be3279c2f59f7e76f53b9
+        scheduledBackingImage: {}
+        scheduledReplica:
+          pvc-177db961-f6fc-43de-8481-f2190187729b-r-2576d1a0: 10737418240
+          pvc-347aa9e7-ffe7-4a8b-bbc0-0614d6cd7cb1-r-eb3d1c06: 2000683008
+          pvc-66201b3b-4d52-4d62-a73e-6f897fe8f535-r-66c2d3a4: 21474836480
+          pvc-6d693a13-925b-43e0-83e7-d017975c2b3a-r-7d27027c: 10001317888
+          pvc-aa466509-d3b3-4559-9be5-28da4630a9ce-r-3dc1c216: 10737418240
+          pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5-r-5b3a5e54: 21474836480
+          pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047-r-4aa59f7a: 4294967296
+          pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426-r-28db97ac: 4294967296
+          pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87-r-a3043530: 10737418240
+          pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc-r-1010f431: 4294967296
+          pvc-eff7f51d-6933-4463-be30-349048ebf08a-r-1a180a0d: 2000683008
+          pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3-r-c0825e84: 21474836480
+          pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15-r-223d9cd9: 2000683008
+        storageAvailable: 164102144000
+        storageMaximum: 214643507200
+        storageScheduled: 125525032960
+    region: ""
+    snapshotCheckStatus:
+      lastPeriodicCheckedAt: "2025-10-01T00:00:00Z"
+    zone: ""
+- apiVersion: longhorn.io/v1beta2
+  kind: Node
+  metadata:
+    creationTimestamp: "2025-02-07T11:54:11Z"
+    finalizers:
+    - longhorn.io
+    generation: 1
+    name: zee8608workerapi03
+    namespace: longhorn-system
+    resourceVersion: "122972703"
+    uid: 13873063-a2a4-4332-b458-b414cf7c2af1
+  spec:
+    allowScheduling: true
+    disks:
+      default-disk-fd0300000000:
+        allowScheduling: true
+        diskDriver: ""
+        diskType: filesystem
+        evictionRequested: false
+        path: /zee_data/
+        storageReserved: 64393052160
+        tags: []
+    evictionRequested: false
+    instanceManagerCPURequest: 0
+    name: zee8608workerapi03
+    tags: []
+  status:
+    autoEvicting: false
+    conditions:
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-20T20:43:22Z"
+      message: Node zee8608workerapi03 is ready
+      reason: ""
+      status: "True"
+      type: Ready
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-06-05T20:53:13Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: Schedulable
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:10Z"
+      message: All required packages [nfs-common open-iscsi cryptsetup dmsetup] are
+        installed
+      reason: ""
+      status: "True"
+      type: RequiredPackages
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:10Z"
+      message: multipathd is running with a known issue that affects Longhorn. See
+        description and solution at https://longhorn.io/kb/troubleshooting-volume-with-multipath
+      reason: MultipathdIsRunning
+      status: "False"
+      type: Multipathd
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:10Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: NFSClientInstalled
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:10Z"
+      message: Kernel modules [dm_crypt] are not loaded
+      reason: KernelModulesNotLoaded
+      status: "False"
+      type: KernelModulesLoaded
+    - lastProbeTime: ""
+      lastTransitionTime: "2025-02-07T11:54:40Z"
+      message: ""
+      reason: ""
+      status: "True"
+      type: MountPropagation
+    diskStatus:
+      default-disk-fd0300000000:
+        conditions:
+        - lastProbeTime: ""
+          lastTransitionTime: "2025-02-07T11:54:40Z"
+          message: Disk default-disk-fd0300000000(/zee_data/) on node zee8608workerapi03
+            is ready
+          reason: ""
+          status: "True"
+          type: Ready
+        - lastProbeTime: ""
+          lastTransitionTime: "2025-06-02T08:10:51Z"
+          message: Disk default-disk-fd0300000000(/zee_data/) on node zee8608workerapi03
+            is schedulable
+          reason: ""
+          status: "True"
+          type: Schedulable
+        diskDriver: ""
+        diskName: default-disk-fd0300000000
+        diskPath: /zee_data/
+        diskType: filesystem
+        diskUUID: 225ae7b6-4b9b-4905-9319-1ce8ad06d776
+        filesystemType: xfs
+        instanceManagerName: instance-manager-07ccad272ad0241589616ab358b3c6c2
+        scheduledBackingImage: {}
+        scheduledReplica:
+          pvc-57a929d7-f703-4cb8-9b39-05c4e967ab3a-r-0e6ebe60: 10001317888
+          pvc-a6b05366-d771-4c1e-854c-66b57739227d-r-e3c9a738: 21474836480
+          pvc-b151ae9d-5fec-4ba6-ac72-5fd690d015c5-r-cc3a4a1f: 21474836480
+          pvc-c6e202f4-9551-4c05-8ad3-3ee8dc826047-r-e6c605b0: 4294967296
+          pvc-ddf0212a-e7b7-45bd-a102-b622efdf4426-r-65e9d182: 4294967296
+          pvc-dfc58698-47a9-4fd7-8034-f89a90a6ff87-r-08fc9bb3: 10737418240
+          pvc-eb2492d6-178a-44a8-b0f8-d36a79b2eccc-r-91464976: 4294967296
+          pvc-eff7f51d-6933-4463-be30-349048ebf08a-r-ff963040: 2000683008
+          pvc-f1ac7e98-d990-4fef-b3eb-bb9143f1a0d3-r-3cc59985: 21474836480
+          pvc-fec4ddb2-8d2c-4a6a-b9d9-1c9d19d39d15-r-0e28498f: 2000683008
+        storageAvailable: 124151398400
+        storageMaximum: 214643507200
+        storageScheduled: 102049513472
+    region: ""
+    snapshotCheckStatus:
+      lastPeriodicCheckedAt: "2025-10-01T00:00:00Z"
+    zone: ""
+kind: List
+metadata:
+  resourceVersion: ""

@@ -1,0 +1,12 @@
+Namespace: ingress-nginx
+==========================
+pods: 1
+deployments: 1
+services: 2
+configmaps: 4
+secrets: 2
+horizontalpodautoscalers: 0
+ingresses: 0
+statefulsets: 0
+daemonsets: 0
+replicasets: 8

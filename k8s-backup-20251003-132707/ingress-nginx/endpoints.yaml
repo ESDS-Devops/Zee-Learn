@@ -1,0 +1,75 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    creationTimestamp: "2025-02-13T08:12:54Z"
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.12.0
+      helm.sh/chart: ingress-nginx-4.12.0
+    name: ingress-nginx-controller
+    namespace: ingress-nginx
+    resourceVersion: "70961524"
+    uid: a1ad7f4c-2210-4197-ab15-bbb7457111e9
+  subsets:
+  - addresses:
+    - ip: 192.168.3.223
+      nodeName: zee8608workerapi02
+      targetRef:
+        kind: Pod
+        name: ingress-nginx-controller-57fb89d679-t8hfl
+        namespace: ingress-nginx
+        uid: b4c0a828-32db-4e96-99cc-9dc5e076ec84
+    ports:
+    - name: mongo-proxied-tcp
+      port: 27017
+      protocol: TCP
+    - appProtocol: https
+      name: https
+      port: 443
+      protocol: TCP
+    - name: redis-proxied-tcp
+      port: 6379
+      protocol: TCP
+    - appProtocol: http
+      name: http
+      port: 80
+      protocol: TCP
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    creationTimestamp: "2025-02-13T08:12:54Z"
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.12.0
+      helm.sh/chart: ingress-nginx-4.12.0
+    name: ingress-nginx-controller-admission
+    namespace: ingress-nginx
+    resourceVersion: "70961523"
+    uid: 0ead6ecb-f5f6-49d3-9ff9-70649c1e5835
+  subsets:
+  - addresses:
+    - ip: 192.168.3.223
+      nodeName: zee8608workerapi02
+      targetRef:
+        kind: Pod
+        name: ingress-nginx-controller-57fb89d679-t8hfl
+        namespace: ingress-nginx
+        uid: b4c0a828-32db-4e96-99cc-9dc5e076ec84
+    ports:
+    - appProtocol: https
+      name: https-webhook
+      port: 8443
+      protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""

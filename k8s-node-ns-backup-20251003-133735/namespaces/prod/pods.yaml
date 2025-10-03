@@ -1,0 +1,5500 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:53:58Z"
+    generateName: cmsapi-deploy-f545f8c6d-
+    labels:
+      app: cmsapi-app
+      environment: prod
+      pod-template-hash: f545f8c6d
+      project: zee-project
+    name: cmsapi-deploy-f545f8c6d-4h6l6
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: cmsapi-deploy-f545f8c6d
+      uid: eb011958-9b3e-4597-a48b-6f761332a858
+    resourceVersion: "122451831"
+    uid: 333b1b9d-319e-4a6f-96b1-d0fa07fb7242
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: cmsapi-config
+      - secretRef:
+          name: cmsapi-secrets
+      image: devzeelearn/cmsapi-prod:186
+      imagePullPolicy: Always
+      name: cmsapi
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 500Mi
+        requests:
+          cpu: 500m
+          memory: 256Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-hpq8t
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-hpq8t
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:55:20Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:55:17Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-10-02T05:43:01Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-10-02T05:43:01Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:56:15Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://0dd0e8c586a8a62b095b22ddccb45194e31c822f9c891bac5aac6eb12366f7bc
+      image: docker.io/devzeelearn/cmsapi-prod:186
+      imageID: docker.io/devzeelearn/cmsapi-prod@sha256:bc4cf5e024c848264519cb970a0842aef124da1fc9960a0085687f9db5b75c7c
+      lastState:
+        terminated:
+          containerID: containerd://7664873f1455e10226de3f68e2de653aab0c3ccc5e506f44ca0df654fd18d20f
+          exitCode: 1
+          finishedAt: "2025-10-02T05:42:59Z"
+          reason: Error
+          startedAt: "2025-10-01T11:16:41Z"
+      name: cmsapi
+      ready: true
+      restartCount: 68
+      started: true
+      state:
+        running:
+          startedAt: "2025-10-02T05:43:01Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    phase: Running
+    podIP: 192.168.4.48
+    podIPs:
+    - ip: 192.168.4.48
+    qosClass: Burstable
+    startTime: "2025-09-20T07:55:17Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:11Z"
+    generateName: cmsapi-deploy-f545f8c6d-
+    labels:
+      app: cmsapi-app
+      environment: prod
+      pod-template-hash: f545f8c6d
+      project: zee-project
+    name: cmsapi-deploy-f545f8c6d-vgx6b
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: cmsapi-deploy-f545f8c6d
+      uid: eb011958-9b3e-4597-a48b-6f761332a858
+    resourceVersion: "122573904"
+    uid: 53591bd3-0db0-41bb-968d-5cb7f70ae4a3
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: cmsapi-config
+      - secretRef:
+          name: cmsapi-secrets
+      image: devzeelearn/cmsapi-prod:186
+      imagePullPolicy: Always
+      name: cmsapi
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 500Mi
+        requests:
+          cpu: 500m
+          memory: 256Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-crhz6
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-crhz6
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:47Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:33Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-10-02T11:45:45Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-10-02T11:45:45Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:11Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://e3e11474aba78039a3ec5b08f05c371d6d389a7583516597c8685139d76b1d8f
+      image: docker.io/devzeelearn/cmsapi-prod:186
+      imageID: docker.io/devzeelearn/cmsapi-prod@sha256:bc4cf5e024c848264519cb970a0842aef124da1fc9960a0085687f9db5b75c7c
+      lastState:
+        terminated:
+          containerID: containerd://2c992d1cbd269c7a288f500fa4469b4d73e09da9ac36f8fe4a56d85c0a8ac006
+          exitCode: 1
+          finishedAt: "2025-10-02T11:45:43Z"
+          reason: Error
+          startedAt: "2025-10-01T11:16:55Z"
+      name: cmsapi
+      ready: true
+      restartCount: 65
+      started: true
+      state:
+        running:
+          startedAt: "2025-10-02T11:45:45Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.192
+    podIPs:
+    - ip: 192.168.3.192
+    qosClass: Burstable
+    startTime: "2025-09-20T07:51:33Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:53:25Z"
+    generateName: cmsapi-deploy-f545f8c6d-
+    labels:
+      app: cmsapi-app
+      environment: prod
+      pod-template-hash: f545f8c6d
+      project: zee-project
+    name: cmsapi-deploy-f545f8c6d-zdzqk
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: cmsapi-deploy-f545f8c6d
+      uid: eb011958-9b3e-4597-a48b-6f761332a858
+    resourceVersion: "122084102"
+    uid: 4277e42b-94c7-46e1-be0b-517a0eb9581e
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: cmsapi-config
+      - secretRef:
+          name: cmsapi-secrets
+      image: devzeelearn/cmsapi-prod:186
+      imagePullPolicy: Always
+      name: cmsapi
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 500Mi
+        requests:
+          cpu: 500m
+          memory: 256Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8fhcp
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi01
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-8fhcp
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:00Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:57Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-10-01T11:16:48Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-10-01T11:16:48Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:55Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://4b998212617cb9641bdc4eb278d9de6c64f751b96fb7854937c2608d94cba10c
+      image: docker.io/devzeelearn/cmsapi-prod:186
+      imageID: docker.io/devzeelearn/cmsapi-prod@sha256:bc4cf5e024c848264519cb970a0842aef124da1fc9960a0085687f9db5b75c7c
+      lastState:
+        terminated:
+          containerID: containerd://d2505530fc37615734427d16df3dacffca90f8455e86cb951451c98f5cdbcdaf
+          exitCode: 1
+          finishedAt: "2025-10-01T11:16:35Z"
+          reason: Error
+          startedAt: "2025-10-01T11:16:32Z"
+      name: cmsapi
+      ready: true
+      restartCount: 62
+      started: true
+      state:
+        running:
+          startedAt: "2025-10-01T11:16:48Z"
+    hostIP: 10.48.219.138
+    hostIPs:
+    - ip: 10.48.219.138
+    phase: Running
+    podIP: 192.168.5.168
+    podIPs:
+    - ip: 192.168.5.168
+    qosClass: Burstable
+    startTime: "2025-09-20T07:52:57Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:53:29Z"
+    generateName: graphql-deploy-98cc44b8b-
+    labels:
+      app: graphql-app
+      environment: prod
+      pod-template-hash: 98cc44b8b
+      project: zee-project
+    name: graphql-deploy-98cc44b8b-vndxg
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: graphql-deploy-98cc44b8b
+      uid: 2c11f592-470c-4f4b-a86c-9e0cebabbc43
+    resourceVersion: "121979727"
+    uid: e91ea836-bd45-48de-9f2e-2f8327cddd10
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: graphql-config
+      - secretRef:
+          name: graphql-secrets
+      image: devzeelearn/graphql-prod:17
+      imagePullPolicy: Always
+      name: graphql-prod
+      ports:
+      - containerPort: 5015
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-99cnp
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-99cnp
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:50Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:27Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-10-01T06:07:21Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-10-01T06:07:21Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:05Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://7a93a4b0e59e0e0b8707e10f9a51407dd118c2bf09598c17e3e628c9b64e4d62
+      image: docker.io/devzeelearn/graphql-prod:17
+      imageID: docker.io/devzeelearn/graphql-prod@sha256:fe29bef2726d6170eeffc8d76e87a0627a8811fe00b87be4965add5ff36b9431
+      lastState:
+        terminated:
+          containerID: containerd://444a26a1fb818c04d68acace04a5501ef0e81d085ac9133202d62f0970c6716d
+          exitCode: 137
+          finishedAt: "2025-10-01T06:07:17Z"
+          reason: OOMKilled
+          startedAt: "2025-09-26T04:52:10Z"
+      name: graphql-prod
+      ready: true
+      restartCount: 3
+      started: true
+      state:
+        running:
+          startedAt: "2025-10-01T06:07:20Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.194
+    podIPs:
+    - ip: 192.168.3.194
+    qosClass: Burstable
+    startTime: "2025-09-20T07:53:27Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:54:28Z"
+    generateName: graphql-deploy-98cc44b8b-
+    labels:
+      app: graphql-app
+      environment: prod
+      pod-template-hash: 98cc44b8b
+      project: zee-project
+    name: graphql-deploy-98cc44b8b-w4jgb
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: graphql-deploy-98cc44b8b
+      uid: 2c11f592-470c-4f4b-a86c-9e0cebabbc43
+    resourceVersion: "120992204"
+    uid: 29e68fda-d677-4ec2-a7ca-341893208ce7
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: graphql-config
+      - secretRef:
+          name: graphql-secrets
+      image: devzeelearn/graphql-prod:17
+      imagePullPolicy: Always
+      name: graphql-prod
+      ports:
+      - containerPort: 5015
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-4ln6j
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-4ln6j
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:58Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:53Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-29T04:50:42Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-29T04:50:42Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:31Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://2b7b216b5289014b5ce16c2249992dc589ed495100ee0f49ee736f235323d2c6
+      image: docker.io/devzeelearn/graphql-prod:17
+      imageID: docker.io/devzeelearn/graphql-prod@sha256:fe29bef2726d6170eeffc8d76e87a0627a8811fe00b87be4965add5ff36b9431
+      lastState:
+        terminated:
+          containerID: containerd://1acf029c511a2dba85e617963377c75f52c843efb884126d48d7abde88acb5d9
+          exitCode: 137
+          finishedAt: "2025-09-29T04:50:39Z"
+          reason: OOMKilled
+          startedAt: "2025-09-25T09:22:48Z"
+      name: graphql-prod
+      ready: true
+      restartCount: 3
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-29T04:50:41Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.196
+    podIPs:
+    - ip: 192.168.3.196
+    qosClass: Burstable
+    startTime: "2025-09-20T07:53:53Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:11Z"
+    generateName: graphql-deploy-98cc44b8b-
+    labels:
+      app: graphql-app
+      environment: prod
+      pod-template-hash: 98cc44b8b
+      project: zee-project
+    name: graphql-deploy-98cc44b8b-zsw9g
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: graphql-deploy-98cc44b8b
+      uid: 2c11f592-470c-4f4b-a86c-9e0cebabbc43
+    resourceVersion: "121075588"
+    uid: 2861d032-25c1-4b98-b9eb-901724012354
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: graphql-config
+      - secretRef:
+          name: graphql-secrets
+      image: devzeelearn/graphql-prod:17
+      imagePullPolicy: Always
+      name: graphql-prod
+      ports:
+      - containerPort: 5015
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-ss88n
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-ss88n
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:51Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:33Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-29T08:57:21Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-29T08:57:21Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:11Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://e90605bcfc9454f4cfea4a68ab9a7cff5e4732a297a2effee568c67c382f1df1
+      image: docker.io/devzeelearn/graphql-prod:17
+      imageID: docker.io/devzeelearn/graphql-prod@sha256:fe29bef2726d6170eeffc8d76e87a0627a8811fe00b87be4965add5ff36b9431
+      lastState:
+        terminated:
+          containerID: containerd://a04c09e06f242924d6df94cc1b8da7d453a2b2e25ce678238fbab4fc6da1937b
+          exitCode: 137
+          finishedAt: "2025-09-29T08:57:18Z"
+          reason: OOMKilled
+          startedAt: "2025-09-25T12:54:18Z"
+      name: graphql-prod
+      ready: true
+      restartCount: 3
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-29T08:57:21Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.191
+    podIPs:
+    - ip: 192.168.3.191
+    qosClass: Burstable
+    startTime: "2025-09-20T07:51:33Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-23T10:37:36Z"
+    generateName: juapi-deploy-559fc8cf7c-
+    labels:
+      app: juapi-app
+      environment: prod
+      pod-template-hash: 559fc8cf7c
+      project: zee-project
+    name: juapi-deploy-559fc8cf7c-b7pql
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: juapi-deploy-559fc8cf7c
+      uid: 57114159-ae4d-4210-a5aa-b881305455bf
+    resourceVersion: "121590620"
+    uid: 56cb80b4-9108-4c56-be6b-f1775fdd20e7
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: juapi-config
+      - secretRef:
+          name: juapi-secrets
+      image: devzeelearn/juapi-prod:165
+      imagePullPolicy: Always
+      name: juapi
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-g89n9
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-g89n9
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:37:56Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:36:55Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-30T10:38:59Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-30T10:38:59Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:37:36Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://b1b0e8db59e7b8d975b70ac2f6f17504269a88faeabd2345d969057398b01ea5
+      image: docker.io/devzeelearn/juapi-prod:165
+      imageID: docker.io/devzeelearn/juapi-prod@sha256:6f687031c4149557f26fd469f132a59ed0c1553712501d94507c31e0e75e1d83
+      lastState:
+        terminated:
+          containerID: containerd://842a831db4f97bf4f34f4997c39f9663070dbfe111be48c46fb1a5fd7516f763
+          exitCode: 1
+          finishedAt: "2025-09-30T10:38:56Z"
+          reason: Error
+          startedAt: "2025-09-23T10:37:56Z"
+      name: juapi
+      ready: true
+      restartCount: 1
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-30T10:38:59Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.211
+    podIPs:
+    - ip: 192.168.3.211
+    qosClass: Burstable
+    startTime: "2025-09-23T10:36:55Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-23T10:38:36Z"
+    generateName: juapi-deploy-559fc8cf7c-
+    labels:
+      app: juapi-app
+      environment: prod
+      pod-template-hash: 559fc8cf7c
+      project: zee-project
+    name: juapi-deploy-559fc8cf7c-l9lld
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: juapi-deploy-559fc8cf7c
+      uid: 57114159-ae4d-4210-a5aa-b881305455bf
+    resourceVersion: "118198811"
+    uid: a551960c-1efd-46ce-b252-8a9b49a5de1f
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: juapi-config
+      - secretRef:
+          name: juapi-secrets
+      image: devzeelearn/juapi-prod:165
+      imagePullPolicy: Always
+      name: juapi
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-2nbcr
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-2nbcr
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:07Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:37:38Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:07Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:07Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:36Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://1c4fcf81b3bed25e2e5d99ee123a2751487a847222da98956c8ce0d4bc215f05
+      image: docker.io/devzeelearn/juapi-prod:165
+      imageID: docker.io/devzeelearn/juapi-prod@sha256:6f687031c4149557f26fd469f132a59ed0c1553712501d94507c31e0e75e1d83
+      lastState: {}
+      name: juapi
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-23T10:38:06Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    phase: Running
+    podIP: 192.168.4.72
+    podIPs:
+    - ip: 192.168.4.72
+    qosClass: Burstable
+    startTime: "2025-09-23T10:37:38Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-23T10:39:06Z"
+    generateName: juapi-deploy-559fc8cf7c-
+    labels:
+      app: juapi-app
+      environment: prod
+      pod-template-hash: 559fc8cf7c
+      project: zee-project
+    name: juapi-deploy-559fc8cf7c-t8d2g
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: juapi-deploy-559fc8cf7c
+      uid: 57114159-ae4d-4210-a5aa-b881305455bf
+    resourceVersion: "118199048"
+    uid: ed24a85d-4f9e-4de0-ac7e-d47cf4f8d80d
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: juapi-config
+      - secretRef:
+          name: juapi-secrets
+      image: devzeelearn/juapi-prod:165
+      imagePullPolicy: Always
+      name: juapi
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-gxxp9
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi01
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-gxxp9
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:48Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:16Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:48Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:48Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:39:06Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://216e0c9f2124c5e626cfb5924383e418c30ffb545038dcbdffdece0016bcd3ca
+      image: docker.io/devzeelearn/juapi-prod:165
+      imageID: docker.io/devzeelearn/juapi-prod@sha256:6f687031c4149557f26fd469f132a59ed0c1553712501d94507c31e0e75e1d83
+      lastState: {}
+      name: juapi
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-23T10:38:47Z"
+    hostIP: 10.48.219.138
+    hostIPs:
+    - ip: 10.48.219.138
+    phase: Running
+    podIP: 192.168.5.181
+    podIPs:
+    - ip: 192.168.5.181
+    qosClass: Burstable
+    startTime: "2025-09-23T10:38:16Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-23T10:30:47Z"
+    generateName: k12-deploy-84bb6c589d-
+    labels:
+      app: k12-app
+      environment: prod
+      pod-template-hash: 84bb6c589d
+      project: zee-project
+    name: k12-deploy-84bb6c589d-2g5tk
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: k12-deploy-84bb6c589d
+      uid: b114b8b8-6f71-41e1-95fb-27bf727fda7f
+    resourceVersion: "118195632"
+    uid: 97d0e5be-e8f0-47eb-bfe6-54628c18431d
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: k12-config
+      - secretRef:
+          name: k12-secrets
+      image: devzeelearn/k12-prod:169
+      imagePullPolicy: Always
+      name: k12
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 500Mi
+        requests:
+          cpu: 500m
+          memory: 256Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-mwjz6
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-mwjz6
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:29:51Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:29:48Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:29:51Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:29:51Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:30:47Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://51fd9d138c5a8f7e499830febc7841f9b266ede6c8ef3842d1c86256c9d88197
+      image: docker.io/devzeelearn/k12-prod:169
+      imageID: docker.io/devzeelearn/k12-prod@sha256:3bce15e2e2750e17051e5357efe6132a7b16d09a7b70d7d8e9e94f9800564fa2
+      lastState: {}
+      name: k12
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-23T10:29:50Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    phase: Running
+    podIP: 192.168.4.69
+    podIPs:
+    - ip: 192.168.4.69
+    qosClass: Burstable
+    startTime: "2025-09-23T10:29:48Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-23T10:29:41Z"
+    generateName: k12-deploy-84bb6c589d-
+    labels:
+      app: k12-app
+      environment: prod
+      pod-template-hash: 84bb6c589d
+      project: zee-project
+    name: k12-deploy-84bb6c589d-c757s
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: k12-deploy-84bb6c589d
+      uid: b114b8b8-6f71-41e1-95fb-27bf727fda7f
+    resourceVersion: "118195432"
+    uid: af4ab815-6312-43fc-b770-55398f8cf61a
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: k12-config
+      - secretRef:
+          name: k12-secrets
+      image: devzeelearn/k12-prod:169
+      imagePullPolicy: Always
+      name: k12
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 500Mi
+        requests:
+          cpu: 500m
+          memory: 256Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-cbfcj
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-cbfcj
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:29:27Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:28:42Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:29:27Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:29:27Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:29:41Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://fc809194804ac8d2e89d98962444709b88be5c1828f2a7b7ff551a034475322b
+      image: docker.io/devzeelearn/k12-prod:169
+      imageID: docker.io/devzeelearn/k12-prod@sha256:3bce15e2e2750e17051e5357efe6132a7b16d09a7b70d7d8e9e94f9800564fa2
+      lastState: {}
+      name: k12
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-23T10:29:26Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    phase: Running
+    podIP: 192.168.4.68
+    podIPs:
+    - ip: 192.168.4.68
+    qosClass: Burstable
+    startTime: "2025-09-23T10:28:42Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-23T10:30:25Z"
+    generateName: k12-deploy-84bb6c589d-
+    labels:
+      app: k12-app
+      environment: prod
+      pod-template-hash: 84bb6c589d
+      project: zee-project
+    name: k12-deploy-84bb6c589d-dkh2n
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: k12-deploy-84bb6c589d
+      uid: b114b8b8-6f71-41e1-95fb-27bf727fda7f
+    resourceVersion: "118195588"
+    uid: a55c3b3a-1156-4211-abdd-bd05a5f31813
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: k12-config
+      - secretRef:
+          name: k12-secrets
+      image: devzeelearn/k12-prod:169
+      imagePullPolicy: Always
+      name: k12
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 500Mi
+        requests:
+          cpu: 500m
+          memory: 256Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-w2p62
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi01
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-w2p62
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:29:57Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:29:36Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:29:57Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:29:57Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:30:26Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://f31d1ef93b7c6bf98e1b2df63b1d253a428efa9a7953d08391bd42c88f9a1f2f
+      image: docker.io/devzeelearn/k12-prod:169
+      imageID: docker.io/devzeelearn/k12-prod@sha256:3bce15e2e2750e17051e5357efe6132a7b16d09a7b70d7d8e9e94f9800564fa2
+      lastState: {}
+      name: k12
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-23T10:29:57Z"
+    hostIP: 10.48.219.138
+    hostIPs:
+    - ip: 10.48.219.138
+    phase: Running
+    podIP: 192.168.5.178
+    podIPs:
+    - ip: 192.168.5.178
+    qosClass: Burstable
+    startTime: "2025-09-23T10:29:36Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T08:01:16Z"
+    generateName: literanovacms-deploy-7cb9c56bc9-
+    labels:
+      app: literanovacms-app
+      environment: prod
+      pod-template-hash: 7cb9c56bc9
+      project: zee-project
+    name: literanovacms-deploy-7cb9c56bc9-4n8dg
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: literanovacms-deploy-7cb9c56bc9
+      uid: 3c93fd9f-4809-4802-925a-eaa92f917939
+    resourceVersion: "116660102"
+    uid: ea2335a7-048b-4b1d-9aa2-fe4b75ae959f
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: literanovacms-config
+      - secretRef:
+          name: literanovacms-secrets
+      image: devzeelearn/literanovacms-prod:8
+      imagePullPolicy: Always
+      name: literanovacms
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 256Mi
+        requests:
+          cpu: 500m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-sfjtj
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-sfjtj
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:02:20Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:02:18Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:02:20Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:02:20Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:02:56Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://de57b2cc91a76b535e1b5bef262a6593508dbb28599831c7a3cd08042ac8a715
+      image: docker.io/devzeelearn/literanovacms-prod:8
+      imageID: docker.io/devzeelearn/literanovacms-prod@sha256:51f324457951bb27369c7f020bf4540bacbe8a6ec3d6534d3806d4df3b17f57f
+      lastState: {}
+      name: literanovacms
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T08:02:20Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.203
+    podIPs:
+    - ip: 192.168.3.203
+    qosClass: Burstable
+    startTime: "2025-09-20T08:02:18Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T08:02:58Z"
+    generateName: literanovacms-deploy-7cb9c56bc9-
+    labels:
+      app: literanovacms-app
+      environment: prod
+      pod-template-hash: 7cb9c56bc9
+      project: zee-project
+    name: literanovacms-deploy-7cb9c56bc9-f5s2g
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: literanovacms-deploy-7cb9c56bc9
+      uid: 3c93fd9f-4809-4802-925a-eaa92f917939
+    resourceVersion: "116660829"
+    uid: 9497849c-6d5b-4e8e-8dfe-d7584cbbdc5b
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: literanovacms-config
+      - secretRef:
+          name: literanovacms-secrets
+      image: devzeelearn/literanovacms-prod:8
+      imagePullPolicy: Always
+      name: literanovacms
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 256Mi
+        requests:
+          cpu: 500m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-t4825
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-t4825
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:04:00Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:03:57Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:04:00Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:04:00Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:04:35Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://2286ae22baba604ad7997efd67ea75c50a79ee267dd1e1eef042c83975ae15f0
+      image: docker.io/devzeelearn/literanovacms-prod:8
+      imageID: docker.io/devzeelearn/literanovacms-prod@sha256:51f324457951bb27369c7f020bf4540bacbe8a6ec3d6534d3806d4df3b17f57f
+      lastState: {}
+      name: literanovacms
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T08:03:59Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.206
+    podIPs:
+    - ip: 192.168.3.206
+    qosClass: Burstable
+    startTime: "2025-09-20T08:03:57Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:58:38Z"
+    generateName: literanovacms-deploy-7cb9c56bc9-
+    labels:
+      app: literanovacms-app
+      environment: prod
+      pod-template-hash: 7cb9c56bc9
+      project: zee-project
+    name: literanovacms-deploy-7cb9c56bc9-xzgvn
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: literanovacms-deploy-7cb9c56bc9
+      uid: 3c93fd9f-4809-4802-925a-eaa92f917939
+    resourceVersion: "116659380"
+    uid: 4caa879f-7032-4a8e-bde7-bef7687ebefa
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: literanovacms-config
+      - secretRef:
+          name: literanovacms-secrets
+      image: devzeelearn/literanovacms-prod:8
+      imagePullPolicy: Always
+      name: literanovacms
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 256Mi
+        requests:
+          cpu: 500m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-7q2lv
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-7q2lv
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:00:38Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:00:36Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:00:38Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:00:38Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:01:13Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://bef135b7ea9d792f58f1c2ae9c1bf6fea3b963a3bd810d69935015d3ed2959e3
+      image: docker.io/devzeelearn/literanovacms-prod:8
+      imageID: docker.io/devzeelearn/literanovacms-prod@sha256:51f324457951bb27369c7f020bf4540bacbe8a6ec3d6534d3806d4df3b17f57f
+      lastState: {}
+      name: literanovacms
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T08:00:38Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.202
+    podIPs:
+    - ip: 192.168.3.202
+    qosClass: Burstable
+    startTime: "2025-09-20T08:00:36Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:14Z"
+    generateName: literanovajr-deploy-99f4955f9-
+    labels:
+      app: literanovajr
+      environment: prod
+      pod-template-hash: 99f4955f9
+      project: zee-project
+    name: literanovajr-deploy-99f4955f9-2znwk
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: literanovajr-deploy-99f4955f9
+      uid: 17314b4e-6fc2-4047-9b7b-3fc2d2323553
+    resourceVersion: "116654941"
+    uid: 01a88621-afed-47e6-b5a3-a4507a265ab9
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: literanovajr-config
+      - secretRef:
+          name: literanovajr-secrets
+      image: devzeelearn/literanovajr-prod:7
+      imagePullPolicy: Always
+      name: literanovajr
+      ports:
+      - containerPort: 5005
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 200m
+          memory: 256Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-jqx45
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi01
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-jqx45
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:58Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:52Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:58Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:58Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:50Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://7c070099c195bc368d2b134a5f76b25250c7df10f80882057d0004e133549dc1
+      image: docker.io/devzeelearn/literanovajr-prod:7
+      imageID: docker.io/devzeelearn/literanovajr-prod@sha256:43d57b35e86ff3e8032ec909def7afc26f5af5096af722a83e69c6388c6489a7
+      lastState: {}
+      name: literanovajr
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:51:57Z"
+    hostIP: 10.48.219.138
+    hostIPs:
+    - ip: 10.48.219.138
+    phase: Running
+    podIP: 192.168.5.165
+    podIPs:
+    - ip: 192.168.5.165
+    qosClass: Burstable
+    startTime: "2025-09-20T07:51:52Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:56Z"
+    generateName: literanovajr-deploy-99f4955f9-
+    labels:
+      app: literanovajr
+      environment: prod
+      pod-template-hash: 99f4955f9
+      project: zee-project
+    name: literanovajr-deploy-99f4955f9-sd77w
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: literanovajr-deploy-99f4955f9
+      uid: 17314b4e-6fc2-4047-9b7b-3fc2d2323553
+    resourceVersion: "116655198"
+    uid: 08794013-570f-450c-a66f-b4a29be9ebc0
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: literanovajr-config
+      - secretRef:
+          name: literanovajr-secrets
+      image: devzeelearn/literanovajr-prod:7
+      imagePullPolicy: Always
+      name: literanovajr
+      ports:
+      - containerPort: 5005
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 200m
+          memory: 256Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5mdhz
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-5mdhz
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:23Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:20Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:23Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:23Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:18Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://6522c1268da7b3136a9243e648def89f0ca24ae7788f46dd68f481cfbcf3f70a
+      image: docker.io/devzeelearn/literanovajr-prod:7
+      imageID: docker.io/devzeelearn/literanovajr-prod@sha256:43d57b35e86ff3e8032ec909def7afc26f5af5096af722a83e69c6388c6489a7
+      lastState: {}
+      name: literanovajr
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:52:22Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    phase: Running
+    podIP: 192.168.4.43
+    podIPs:
+    - ip: 192.168.4.43
+    qosClass: Burstable
+    startTime: "2025-09-20T07:52:20Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:11Z"
+    generateName: literanovajr-deploy-99f4955f9-
+    labels:
+      app: literanovajr
+      environment: prod
+      pod-template-hash: 99f4955f9
+      project: zee-project
+    name: literanovajr-deploy-99f4955f9-ttm46
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: literanovajr-deploy-99f4955f9
+      uid: 17314b4e-6fc2-4047-9b7b-3fc2d2323553
+    resourceVersion: "116654417"
+    uid: 930c1bfb-d63d-4705-8514-4551b51adb3a
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: literanovajr-config
+      - secretRef:
+          name: literanovajr-secrets
+      image: devzeelearn/literanovajr-prod:7
+      imagePullPolicy: Always
+      name: literanovajr
+      ports:
+      - containerPort: 5005
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 200m
+          memory: 256Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-4p9t2
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-4p9t2
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:16Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:13Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:16Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:16Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:11Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://6986cfc2a68f9bad07ee2da0aa604f9ccd053a5e762981d2af0faf99c1bbe89c
+      image: docker.io/devzeelearn/literanovajr-prod:7
+      imageID: docker.io/devzeelearn/literanovajr-prod@sha256:43d57b35e86ff3e8032ec909def7afc26f5af5096af722a83e69c6388c6489a7
+      lastState: {}
+      name: literanovajr
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:51:15Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    phase: Running
+    podIP: 192.168.4.41
+    podIPs:
+    - ip: 192.168.4.41
+    qosClass: Burstable
+    startTime: "2025-09-20T07:51:13Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:11Z"
+    generateName: literaoctave-deploy-c5f77fcf5-
+    labels:
+      app: literaoctave-app
+      environment: prod
+      pod-template-hash: c5f77fcf5
+      project: zee-project
+    name: literaoctave-deploy-c5f77fcf5-mjf5h
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: literaoctave-deploy-c5f77fcf5
+      uid: 2f924955-e6fa-4602-b36f-a58009dd6d71
+    resourceVersion: "116654496"
+    uid: 433b2783-a4a1-4bdf-b451-9f36ba38cc69
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: literaoctave-config
+      - secretRef:
+          name: literaoctave-secrets
+      image: devzeelearn/literaoctave-prod:9
+      imagePullPolicy: Always
+      name: literaoctave-prod
+      ports:
+      - containerPort: 5015
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-dvpzc
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi01
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-dvpzc
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:17Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:13Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:17Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:17Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:11Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://6fa4a2ed45816c04186bf673277baa75859e638f1ac5e9eca3e9f38a5008526b
+      image: docker.io/devzeelearn/literaoctave-prod:9
+      imageID: docker.io/devzeelearn/literaoctave-prod@sha256:f526260eee720d5eee4b5a35037c58c81c23cb888643a4cba98f7e1710580746
+      lastState: {}
+      name: literaoctave-prod
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:51:17Z"
+    hostIP: 10.48.219.138
+    hostIPs:
+    - ip: 10.48.219.138
+    phase: Running
+    podIP: 192.168.5.161
+    podIPs:
+    - ip: 192.168.5.161
+    qosClass: Burstable
+    startTime: "2025-09-20T07:51:13Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:15Z"
+    generateName: literaoctave-deploy-c5f77fcf5-
+    labels:
+      app: literaoctave-app
+      environment: prod
+      pod-template-hash: c5f77fcf5
+      project: zee-project
+    name: literaoctave-deploy-c5f77fcf5-ns8zb
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: literaoctave-deploy-c5f77fcf5
+      uid: 2f924955-e6fa-4602-b36f-a58009dd6d71
+    resourceVersion: "116655357"
+    uid: 08ffc38b-1106-4a1c-8f66-2f12b265c1c0
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: literaoctave-config
+      - secretRef:
+          name: literaoctave-secrets
+      image: devzeelearn/literaoctave-prod:9
+      imagePullPolicy: Always
+      name: literaoctave-prod
+      ports:
+      - containerPort: 5015
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-jh4zt
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi01
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-jh4zt
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:33Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:30Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:33Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:33Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:28Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://91f9381b3952a6782c2a3b3f91832580e1af8bb030ac8c39aff5250d873b3801
+      image: docker.io/devzeelearn/literaoctave-prod:9
+      imageID: docker.io/devzeelearn/literaoctave-prod@sha256:f526260eee720d5eee4b5a35037c58c81c23cb888643a4cba98f7e1710580746
+      lastState: {}
+      name: literaoctave-prod
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:52:33Z"
+    hostIP: 10.48.219.138
+    hostIPs:
+    - ip: 10.48.219.138
+    phase: Running
+    podIP: 192.168.5.167
+    podIPs:
+    - ip: 192.168.5.167
+    qosClass: Burstable
+    startTime: "2025-09-20T07:52:30Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:53:31Z"
+    generateName: literaoctave-deploy-c5f77fcf5-
+    labels:
+      app: literaoctave-app
+      environment: prod
+      pod-template-hash: c5f77fcf5
+      project: zee-project
+    name: literaoctave-deploy-c5f77fcf5-qhx87
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: literaoctave-deploy-c5f77fcf5
+      uid: 2f924955-e6fa-4602-b36f-a58009dd6d71
+    resourceVersion: "116656491"
+    uid: bbf4b080-142d-4e08-812a-78c3df371b30
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: literaoctave-config
+      - secretRef:
+          name: literaoctave-secrets
+      image: devzeelearn/literaoctave-prod:9
+      imagePullPolicy: Always
+      name: literaoctave-prod
+      ports:
+      - containerPort: 5015
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-mv2k9
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-mv2k9
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:02Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:00Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:02Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:02Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:58Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://c65248924e7081051bc6661daa788faa0a8aafb36543a14a664027e300f6da77
+      image: docker.io/devzeelearn/literaoctave-prod:9
+      imageID: docker.io/devzeelearn/literaoctave-prod@sha256:f526260eee720d5eee4b5a35037c58c81c23cb888643a4cba98f7e1710580746
+      lastState: {}
+      name: literaoctave-prod
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:54:02Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    phase: Running
+    podIP: 192.168.4.46
+    podIPs:
+    - ip: 192.168.4.46
+    qosClass: Burstable
+    startTime: "2025-09-20T07:54:00Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:11Z"
+    generateName: literaoctavecms-deploy-85c87cbb88-
+    labels:
+      app: literaoctavecms-app
+      environment: prod
+      pod-template-hash: 85c87cbb88
+      project: zee-project
+    name: literaoctavecms-deploy-85c87cbb88-7cmcl
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: literaoctavecms-deploy-85c87cbb88
+      uid: c50cb490-7064-489a-8241-8485ad2be84b
+    resourceVersion: "116654538"
+    uid: 058d838a-e200-4590-a67b-abe3e896c1aa
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: literaoctavecms-config
+      - secretRef:
+          name: literaoctavecms-secrets
+      image: devzeelearn/literaoctavecms-prod:6
+      imagePullPolicy: Always
+      name: literaoctavecms
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 4Gi
+        requests:
+          cpu: 500m
+          memory: 2Gi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-6qqfl
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi01
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-6qqfl
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:19Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:13Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:19Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:19Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:11Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://b47051070d6bea847e551af71342e25e13f2fac4a9ad9d12edae81699f6f3f15
+      image: docker.io/devzeelearn/literaoctavecms-prod:6
+      imageID: docker.io/devzeelearn/literaoctavecms-prod@sha256:cd499f946dac847422f711c7e86fe9546fdf8de8b33abb2910fe10c4be555644
+      lastState: {}
+      name: literaoctavecms
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:51:19Z"
+    hostIP: 10.48.219.138
+    hostIPs:
+    - ip: 10.48.219.138
+    phase: Running
+    podIP: 192.168.5.162
+    podIPs:
+    - ip: 192.168.5.162
+    qosClass: Burstable
+    startTime: "2025-09-20T07:51:13Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:17Z"
+    generateName: literaoctavecms-deploy-85c87cbb88-
+    labels:
+      app: literaoctavecms-app
+      environment: prod
+      pod-template-hash: 85c87cbb88
+      project: zee-project
+    name: literaoctavecms-deploy-85c87cbb88-8rmbj
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: literaoctavecms-deploy-85c87cbb88
+      uid: c50cb490-7064-489a-8241-8485ad2be84b
+    resourceVersion: "116655975"
+    uid: 71370f31-f80b-421e-9d56-9f809dbd5dfe
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: literaoctavecms-config
+      - secretRef:
+          name: literaoctavecms-secrets
+      image: devzeelearn/literaoctavecms-prod:6
+      imagePullPolicy: Always
+      name: literaoctavecms
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 4Gi
+        requests:
+          cpu: 500m
+          memory: 2Gi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-kpddh
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-kpddh
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:51Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:28Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:51Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:51Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:06Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://07fa5e837274473c2b27fd2bf6ccac0e07443e37fb1314e26916147b194149b4
+      image: docker.io/devzeelearn/literaoctavecms-prod:6
+      imageID: docker.io/devzeelearn/literaoctavecms-prod@sha256:cd499f946dac847422f711c7e86fe9546fdf8de8b33abb2910fe10c4be555644
+      lastState: {}
+      name: literaoctavecms
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:53:51Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.195
+    podIPs:
+    - ip: 192.168.3.195
+    qosClass: Burstable
+    startTime: "2025-09-20T07:53:28Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:54:29Z"
+    generateName: literaoctavecms-deploy-85c87cbb88-
+    labels:
+      app: literaoctavecms-app
+      environment: prod
+      pod-template-hash: 85c87cbb88
+      project: zee-project
+    name: literaoctavecms-deploy-85c87cbb88-pgxzh
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: literaoctavecms-deploy-85c87cbb88
+      uid: c50cb490-7064-489a-8241-8485ad2be84b
+    resourceVersion: "116656895"
+    uid: ff345a37-3ec6-4280-bb91-818fe8578320
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: literaoctavecms-config
+      - secretRef:
+          name: literaoctavecms-secrets
+      image: devzeelearn/literaoctavecms-prod:6
+      imagePullPolicy: Always
+      name: literaoctavecms
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 4Gi
+        requests:
+          cpu: 500m
+          memory: 2Gi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-9kvnl
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-9kvnl
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:46Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:44Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:46Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:46Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:55:41Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://0fb7e5cb57f6f06011b0b02c0f3103e8f61e52fd28186421d1a1eefa3f52547e
+      image: docker.io/devzeelearn/literaoctavecms-prod:6
+      imageID: docker.io/devzeelearn/literaoctavecms-prod@sha256:cd499f946dac847422f711c7e86fe9546fdf8de8b33abb2910fe10c4be555644
+      lastState: {}
+      name: literaoctavecms
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:54:46Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    phase: Running
+    podIP: 192.168.4.47
+    podIPs:
+    - ip: 192.168.4.47
+    qosClass: Burstable
+    startTime: "2025-09-20T07:54:44Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-23T10:38:53Z"
+    generateName: lmsapi-deploy-7bdbb68dd9-
+    labels:
+      app: lmsapi-app
+      environment: prod
+      pod-template-hash: 7bdbb68dd9
+      project: zee-project
+    name: lmsapi-deploy-7bdbb68dd9-45krh
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: lmsapi-deploy-7bdbb68dd9
+      uid: 9e2c1c0e-58cf-4bb7-8bae-822d1d314edd
+    resourceVersion: "118198901"
+    uid: 9bc068e3-34b4-4bde-b3b7-5a38c785d683
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: lmsapi-config
+      - secretRef:
+          name: lmsapi-secrets
+      image: devzeelearn/lmsapi-prod:221
+      imagePullPolicy: IfNotPresent
+      name: lmsapi
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-lvv7k
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi01
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-lvv7k
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:27Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:04Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:27Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:27Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:53Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://9323d1ddb1a5d51d271d4682fc2bc75ede293b771943a94df05bdd6c16e5a6a8
+      image: docker.io/devzeelearn/lmsapi-prod:221
+      imageID: docker.io/devzeelearn/lmsapi-prod@sha256:77cb851dd0e9337d8c0db612d103e9d66f0dc52d867009e715111e7182f14664
+      lastState: {}
+      name: lmsapi
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-23T10:38:26Z"
+    hostIP: 10.48.219.138
+    hostIPs:
+    - ip: 10.48.219.138
+    phase: Running
+    podIP: 192.168.5.180
+    podIPs:
+    - ip: 192.168.5.180
+    qosClass: Burstable
+    startTime: "2025-09-23T10:38:04Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-23T10:37:33Z"
+    generateName: lmsapi-deploy-7bdbb68dd9-
+    labels:
+      app: lmsapi-app
+      environment: prod
+      pod-template-hash: 7bdbb68dd9
+      project: zee-project
+    name: lmsapi-deploy-7bdbb68dd9-swzmt
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: lmsapi-deploy-7bdbb68dd9
+      uid: 9e2c1c0e-58cf-4bb7-8bae-822d1d314edd
+    resourceVersion: "118198345"
+    uid: cc87c829-4974-4287-9d3f-fe1ddc7a575e
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: lmsapi-config
+      - secretRef:
+          name: lmsapi-secrets
+      image: devzeelearn/lmsapi-prod:221
+      imagePullPolicy: IfNotPresent
+      name: lmsapi
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-hnqr5
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-hnqr5
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:37:04Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:36:34Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:37:04Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:37:04Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:37:33Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://6c0ce70731e52624e6643d6d5ace45e021bc8091098fb4e7829259901cc7f2bf
+      image: docker.io/devzeelearn/lmsapi-prod:221
+      imageID: docker.io/devzeelearn/lmsapi-prod@sha256:77cb851dd0e9337d8c0db612d103e9d66f0dc52d867009e715111e7182f14664
+      lastState: {}
+      name: lmsapi
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-23T10:37:04Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    phase: Running
+    podIP: 192.168.4.71
+    podIPs:
+    - ip: 192.168.4.71
+    qosClass: Burstable
+    startTime: "2025-09-23T10:36:34Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-23T10:38:03Z"
+    generateName: lmsapi-deploy-7bdbb68dd9-
+    labels:
+      app: lmsapi-app
+      environment: prod
+      pod-template-hash: 7bdbb68dd9
+      project: zee-project
+    name: lmsapi-deploy-7bdbb68dd9-tr2x9
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: lmsapi-deploy-7bdbb68dd9
+      uid: 9e2c1c0e-58cf-4bb7-8bae-822d1d314edd
+    resourceVersion: "118198706"
+    uid: 4e72073c-e5d9-4c4a-b0b8-a00b7d876763
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: lmsapi-config
+      - secretRef:
+          name: lmsapi-secrets
+      image: devzeelearn/lmsapi-prod:221
+      imagePullPolicy: IfNotPresent
+      name: lmsapi
+      ports:
+      - containerPort: 5011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8d7sc
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-8d7sc
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:13Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:37:23Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:13Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:13Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-23T10:38:03Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://51b1d484a4dbde1b01069a9b20031ac590505a7afbb2934efaaade41fa3c67a5
+      image: docker.io/devzeelearn/lmsapi-prod:221
+      imageID: docker.io/devzeelearn/lmsapi-prod@sha256:77cb851dd0e9337d8c0db612d103e9d66f0dc52d867009e715111e7182f14664
+      lastState: {}
+      name: lmsapi
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-23T10:38:13Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.212
+    podIPs:
+    - ip: 192.168.3.212
+    qosClass: Burstable
+    startTime: "2025-09-23T10:37:23Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:54:31Z"
+    generateName: novachat-deploy-6c57d7bf4b-
+    labels:
+      app: novachat-app
+      environment: prod
+      pod-template-hash: 6c57d7bf4b
+      project: zee-project
+    name: novachat-deploy-6c57d7bf4b-6gtb9
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: novachat-deploy-6c57d7bf4b
+      uid: 3cc92b9d-a42a-4ada-8d86-5cd652dc7988
+    resourceVersion: "116656157"
+    uid: f08f38c7-fe92-43df-8cff-f7991221aab8
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: novachat-config
+      - secretRef:
+          name: novachat-secrets
+      image: devzeelearn/novachat-prod:8
+      imagePullPolicy: Always
+      name: novachat
+      ports:
+      - containerPort: 4011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 2Gi
+        requests:
+          cpu: 250m
+          memory: 1Gi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-27tbf
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi01
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-27tbf
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:36Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:33Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:36Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:36Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:31Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://630cc257a204fc8a757322d59af4a1c2a6d15aa01d97e27949baf4695e19d484
+      image: docker.io/devzeelearn/novachat-prod:8
+      imageID: docker.io/devzeelearn/novachat-prod@sha256:b8fa7b83c7dfb9580d22ec04dcd2d064276fa16122d366f752b413a2d8660450
+      lastState: {}
+      name: novachat
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:53:36Z"
+    hostIP: 10.48.219.138
+    hostIPs:
+    - ip: 10.48.219.138
+    phase: Running
+    podIP: 192.168.5.171
+    podIPs:
+    - ip: 192.168.5.171
+    qosClass: Burstable
+    startTime: "2025-09-20T07:53:33Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:55:00Z"
+    generateName: novachat-deploy-6c57d7bf4b-
+    labels:
+      app: novachat-app
+      environment: prod
+      pod-template-hash: 6c57d7bf4b
+      project: zee-project
+    name: novachat-deploy-6c57d7bf4b-cfqgm
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: novachat-deploy-6c57d7bf4b
+      uid: 3cc92b9d-a42a-4ada-8d86-5cd652dc7988
+    resourceVersion: "116656526"
+    uid: c53d85b1-3d86-48b7-b3b9-dcceddc17060
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: novachat-config
+      - secretRef:
+          name: novachat-secrets
+      image: devzeelearn/novachat-prod:8
+      imagePullPolicy: Always
+      name: novachat
+      ports:
+      - containerPort: 4011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 2Gi
+        requests:
+          cpu: 250m
+          memory: 1Gi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-brkz5
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-brkz5
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:25Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:22Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:25Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:25Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:55:00Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://8d69772b3d6a2a303d865c930e0c2bab1d0da2082ef4ea6b50b624d39d351d4c
+      image: docker.io/devzeelearn/novachat-prod:8
+      imageID: docker.io/devzeelearn/novachat-prod@sha256:b8fa7b83c7dfb9580d22ec04dcd2d064276fa16122d366f752b413a2d8660450
+      lastState: {}
+      name: novachat
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:54:24Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.198
+    podIPs:
+    - ip: 192.168.3.198
+    qosClass: Burstable
+    startTime: "2025-09-20T07:54:22Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:12Z"
+    generateName: novachat-deploy-6c57d7bf4b-
+    labels:
+      app: novachat-app
+      environment: prod
+      pod-template-hash: 6c57d7bf4b
+      project: zee-project
+    name: novachat-deploy-6c57d7bf4b-jv95w
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: novachat-deploy-6c57d7bf4b
+      uid: 3cc92b9d-a42a-4ada-8d86-5cd652dc7988
+    resourceVersion: "116655905"
+    uid: 89e4fe45-2e8c-4e33-9d1a-8c568e25c0f2
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: novachat-config
+      - secretRef:
+          name: novachat-secrets
+      image: devzeelearn/novachat-prod:8
+      imagePullPolicy: Always
+      name: novachat
+      ports:
+      - containerPort: 4011
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 2Gi
+        requests:
+          cpu: 250m
+          memory: 1Gi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-2mdwc
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-2mdwc
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:29Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:27Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:29Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:53:29Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:24Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://f1e69118d87abc8c135bf7527cafb53f6d793dc66c1c37d651af0bbd2a5b2145
+      image: docker.io/devzeelearn/novachat-prod:8
+      imageID: docker.io/devzeelearn/novachat-prod@sha256:b8fa7b83c7dfb9580d22ec04dcd2d064276fa16122d366f752b413a2d8660450
+      lastState: {}
+      name: novachat
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:53:29Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    phase: Running
+    podIP: 192.168.4.44
+    podIPs:
+    - ip: 192.168.4.44
+    qosClass: Burstable
+    startTime: "2025-09-20T07:53:27Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:54Z"
+    generateName: pentemind-23-deploy-945d9bfbf-
+    labels:
+      app: pentemind-2023
+      environment: prod
+      pod-template-hash: 945d9bfbf
+      project: zee-project
+    name: pentemind-23-deploy-945d9bfbf-c75bc
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: pentemind-23-deploy-945d9bfbf
+      uid: 6c76260f-303c-42bb-9302-ca627e301b6b
+    resourceVersion: "116654985"
+    uid: c0d45712-502e-438f-9eeb-b65d98c7f21f
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: pentemind-config-23
+      - secretRef:
+          name: pentemind-secrets-23
+      image: devzeelearn/pentemind-apiv1-2023:19
+      imagePullPolicy: Always
+      name: pentemind
+      ports:
+      - containerPort: 5005
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 200m
+          memory: 256Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-gd2h2
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi01
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-gd2h2
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:00Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:56Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:00Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:00Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:54Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://e0481bb8205219478d812f07baa67f578020e74a2758f93e350a8fbecbc483e6
+      image: docker.io/devzeelearn/pentemind-apiv1-2023:19
+      imageID: docker.io/devzeelearn/pentemind-apiv1-2023@sha256:c393bc9c85f2b89fc4751dbbf3d57445729bd5181dd943a4b782f40e89116b72
+      lastState: {}
+      name: pentemind
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:51:59Z"
+    hostIP: 10.48.219.138
+    hostIPs:
+    - ip: 10.48.219.138
+    phase: Running
+    podIP: 192.168.5.166
+    podIPs:
+    - ip: 192.168.5.166
+    qosClass: Burstable
+    startTime: "2025-09-20T07:51:56Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:48Z"
+    generateName: pentemind-23-deploy-945d9bfbf-
+    labels:
+      app: pentemind-2023
+      environment: prod
+      pod-template-hash: 945d9bfbf
+      project: zee-project
+    name: pentemind-23-deploy-945d9bfbf-ng992
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: pentemind-23-deploy-945d9bfbf
+      uid: 6c76260f-303c-42bb-9302-ca627e301b6b
+    resourceVersion: "116654902"
+    uid: 5eaa729e-f4cb-4d24-8927-3cadd2d0d93c
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: pentemind-config-23
+      - secretRef:
+          name: pentemind-secrets-23
+      image: devzeelearn/pentemind-apiv1-2023:19
+      imagePullPolicy: Always
+      name: pentemind
+      ports:
+      - containerPort: 5005
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 200m
+          memory: 256Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-q8zrb
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi01
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-q8zrb
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:56Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:51Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:56Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:56Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:49Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://11823f4ab8ec166f2f637926f4be9afd70e0e83f100e3dd729589d49748c265a
+      image: docker.io/devzeelearn/pentemind-apiv1-2023:19
+      imageID: docker.io/devzeelearn/pentemind-apiv1-2023@sha256:c393bc9c85f2b89fc4751dbbf3d57445729bd5181dd943a4b782f40e89116b72
+      lastState: {}
+      name: pentemind
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:51:55Z"
+    hostIP: 10.48.219.138
+    hostIPs:
+    - ip: 10.48.219.138
+    phase: Running
+    podIP: 192.168.5.164
+    podIPs:
+    - ip: 192.168.5.164
+    qosClass: Burstable
+    startTime: "2025-09-20T07:51:51Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:12Z"
+    generateName: pentemind-23-deploy-945d9bfbf-
+    labels:
+      app: pentemind-2023
+      environment: prod
+      pod-template-hash: 945d9bfbf
+      project: zee-project
+    name: pentemind-23-deploy-945d9bfbf-sjxnf
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: pentemind-23-deploy-945d9bfbf
+      uid: 6c76260f-303c-42bb-9302-ca627e301b6b
+    resourceVersion: "116654797"
+    uid: 829e2a94-1c9d-4cac-a8ef-5c4e5714ac29
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: pentemind-config-23
+      - secretRef:
+          name: pentemind-secrets-23
+      image: devzeelearn/pentemind-apiv1-2023:19
+      imagePullPolicy: Always
+      name: pentemind
+      ports:
+      - containerPort: 5005
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 200m
+          memory: 256Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-b6tq8
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-b6tq8
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:50Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:46Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:50Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:51:50Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:52:44Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://fbb5ba54bfa88fa3d702de3f956a138a3414a6355c3375d73bf63a02d90f0749
+      image: docker.io/devzeelearn/pentemind-apiv1-2023:19
+      imageID: docker.io/devzeelearn/pentemind-apiv1-2023@sha256:c393bc9c85f2b89fc4751dbbf3d57445729bd5181dd943a4b782f40e89116b72
+      lastState: {}
+      name: pentemind
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:51:49Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    phase: Running
+    podIP: 192.168.4.42
+    podIPs:
+    - ip: 192.168.4.42
+    qosClass: Burstable
+    startTime: "2025-09-20T07:51:46Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:54:49Z"
+    generateName: pentemind-24-deploy-6f7d54db84-
+    labels:
+      app: pentemind-apps
+      environment: prod
+      pod-template-hash: 6f7d54db84
+      project: zee-project
+    name: pentemind-24-deploy-6f7d54db84-sfd8b
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: pentemind-24-deploy-6f7d54db84
+      uid: d42c0e18-806c-4bfb-aae2-6e04afa5abd1
+    resourceVersion: "116656547"
+    uid: d9bba070-8bb0-4de4-a4bd-88faafdee474
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: pentemind-config-24
+      - secretRef:
+          name: pentemind-secrets-24
+      image: devzeelearn/pentemind-apiv1-2024-prod:35
+      imagePullPolicy: Always
+      name: pentemind
+      ports:
+      - containerPort: 5005
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 250m
+          memory: 256Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-bxtth
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-bxtth
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:27Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:22Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:27Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:27Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:55:00Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://67b40580f48e06a9ff3e43815f6c34600ee2e482f2b05fc925199ff96e4536a1
+      image: docker.io/devzeelearn/pentemind-apiv1-2024-prod:35
+      imageID: docker.io/devzeelearn/pentemind-apiv1-2024-prod@sha256:383f2277564074f70786a5c853b0fa0366c39e03e000f1addee163e68c403d46
+      lastState: {}
+      name: pentemind
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:54:26Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.199
+    podIPs:
+    - ip: 192.168.3.199
+    qosClass: Burstable
+    startTime: "2025-09-20T07:54:22Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:12Z"
+    generateName: pentemind-24-deploy-6f7d54db84-
+    labels:
+      app: pentemind-apps
+      environment: prod
+      pod-template-hash: 6f7d54db84
+      project: zee-project
+    name: pentemind-24-deploy-6f7d54db84-vwkwx
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: pentemind-24-deploy-6f7d54db84
+      uid: d42c0e18-806c-4bfb-aae2-6e04afa5abd1
+    resourceVersion: "116656348"
+    uid: b4eaec1a-e5b9-46ab-9eec-2284df1a87ec
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: pentemind-config-24
+      - secretRef:
+          name: pentemind-secrets-24
+      image: devzeelearn/pentemind-apiv1-2024-prod:35
+      imagePullPolicy: Always
+      name: pentemind
+      ports:
+      - containerPort: 5005
+        protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 250m
+          memory: 256Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-p72wk
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-p72wk
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:11Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:07Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:11Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:11Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:54:45Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://8dcfd4f7b218aac33552f38e92e8588cd6dda2a0674c99fd9bc066bcd94aef1d
+      image: docker.io/devzeelearn/pentemind-apiv1-2024-prod:35
+      imageID: docker.io/devzeelearn/pentemind-apiv1-2024-prod@sha256:383f2277564074f70786a5c853b0fa0366c39e03e000f1addee163e68c403d46
+      lastState: {}
+      name: pentemind
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:54:10Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.197
+    podIPs:
+    - ip: 192.168.3.197
+    qosClass: Burstable
+    startTime: "2025-09-20T07:54:07Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T07:52:12Z"
+    generateName: pentemind-25-deploy-66ffd97754-
+    labels:
+      app: pentemind-app
+      environment: prod
+      pod-template-hash: 66ffd97754
+      project: zee-project
+    name: pentemind-25-deploy-66ffd97754-4qkqm
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: pentemind-25-deploy-66ffd97754
+      uid: 6ae05a0f-7d00-43b5-8e7a-907cb16e49e4
+    resourceVersion: "116658875"
+    uid: e0ad1379-9efd-42cb-b515-47eca4102735
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: pentemind-config-25
+      - secretRef:
+          name: pentemind-secrets-25
+      image: devzeelearn/pentemind-apiv1-2025-prod:18
+      imagePullPolicy: Always
+      name: pentemind
+      ports:
+      - containerPort: 5005
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 1Gi
+        requests:
+          cpu: 500m
+          memory: 512Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-kr6nf
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi01
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-kr6nf
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:59:07Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:59:05Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:59:07Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T07:59:07Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:00:03Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://7c96485e287e2eb382603521c30fe5f04139a6ea10f37ea0b0f62c98d7d15106
+      image: docker.io/devzeelearn/pentemind-apiv1-2025-prod:18
+      imageID: docker.io/devzeelearn/pentemind-apiv1-2025-prod@sha256:8d4aeb4ac277e4a98ad15193d076e768c2edfceb698e8eaf197a5cf73f90c458
+      lastState: {}
+      name: pentemind
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T07:59:07Z"
+    hostIP: 10.48.219.138
+    hostIPs:
+    - ip: 10.48.219.138
+    phase: Running
+    podIP: 192.168.5.172
+    podIPs:
+    - ip: 192.168.5.172
+    qosClass: Burstable
+    startTime: "2025-09-20T07:59:05Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T08:01:48Z"
+    generateName: pentemind-25-deploy-66ffd97754-
+    labels:
+      app: pentemind-app
+      environment: prod
+      pod-template-hash: 66ffd97754
+      project: zee-project
+    name: pentemind-25-deploy-66ffd97754-dxbjb
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: pentemind-25-deploy-66ffd97754
+      uid: 6ae05a0f-7d00-43b5-8e7a-907cb16e49e4
+    resourceVersion: "116660343"
+    uid: 9bdccbf9-73f4-498b-851b-10d6a080fb23
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: pentemind-config-25
+      - secretRef:
+          name: pentemind-secrets-25
+      image: devzeelearn/pentemind-apiv1-2025-prod:18
+      imagePullPolicy: Always
+      name: pentemind
+      ports:
+      - containerPort: 5005
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 1Gi
+        requests:
+          cpu: 500m
+          memory: 512Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-pp4b9
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-pp4b9
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:02:53Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:02:51Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:02:53Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:02:53Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:03:28Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://3b0ea65b3b43ad6afa3a6de401f7c251e750172af648325661a0ec972f19b5c5
+      image: docker.io/devzeelearn/pentemind-apiv1-2025-prod:18
+      imageID: docker.io/devzeelearn/pentemind-apiv1-2025-prod@sha256:8d4aeb4ac277e4a98ad15193d076e768c2edfceb698e8eaf197a5cf73f90c458
+      lastState: {}
+      name: pentemind
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T08:02:53Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.204
+    podIPs:
+    - ip: 192.168.3.204
+    qosClass: Burstable
+    startTime: "2025-09-20T08:02:51Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-20T08:00:05Z"
+    generateName: pentemind-25-deploy-66ffd97754-
+    labels:
+      app: pentemind-app
+      environment: prod
+      pod-template-hash: 66ffd97754
+      project: zee-project
+    name: pentemind-25-deploy-66ffd97754-hh7hj
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: pentemind-25-deploy-66ffd97754
+      uid: 6ae05a0f-7d00-43b5-8e7a-907cb16e49e4
+    resourceVersion: "116659628"
+    uid: a59e1448-51e6-4711-ab58-37c0a1e5e0c8
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: pentemind-config-25
+      - secretRef:
+          name: pentemind-secrets-25
+      image: devzeelearn/pentemind-apiv1-2025-prod:18
+      imagePullPolicy: Always
+      name: pentemind
+      ports:
+      - containerPort: 5005
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 1Gi
+        requests:
+          cpu: 500m
+          memory: 512Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-mm8tk
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi01
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-mm8tk
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:00:50Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:00:48Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:00:50Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:00:50Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-20T08:01:46Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://8b89f079383d24d1ad97d12e5a1ae3ebd3632e33778622d2482d0b012799e590
+      image: docker.io/devzeelearn/pentemind-apiv1-2025-prod:18
+      imageID: docker.io/devzeelearn/pentemind-apiv1-2025-prod@sha256:8d4aeb4ac277e4a98ad15193d076e768c2edfceb698e8eaf197a5cf73f90c458
+      lastState: {}
+      name: pentemind
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-20T08:00:50Z"
+    hostIP: 10.48.219.138
+    hostIPs:
+    - ip: 10.48.219.138
+    phase: Running
+    podIP: 192.168.5.174
+    podIPs:
+    - ip: 192.168.5.174
+    qosClass: Burstable
+    startTime: "2025-09-20T08:00:48Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-25T06:18:01Z"
+    generateName: zllsaathiapi-deploy-7fb44565c9-
+    labels:
+      app: zllsaathiapi-app
+      environment: prod
+      pod-template-hash: 7fb44565c9
+      project: zee-project
+    name: zllsaathiapi-deploy-7fb44565c9-76rhh
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: zllsaathiapi-deploy-7fb44565c9
+      uid: 0a5cef09-749c-4517-bc06-2549a1313c09
+    resourceVersion: "119091904"
+    uid: 4db8f6ae-8a5b-433c-961b-e9f93a6ea320
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: zllsaathiapi-config
+      - secretRef:
+          name: zllsaathiapi-secrets
+      image: devzeelearn/zllsaathiapi-prod:8
+      imagePullPolicy: Always
+      name: zllsaathiapi
+      ports:
+      - containerPort: 3000
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 256Mi
+        requests:
+          cpu: 500m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-kbssm
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi03
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-kbssm
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:17:15Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:17:01Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:17:15Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:17:15Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:18:01Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://e49c95f185084751c18c24e5b432150df2aca07fe0dc908020a6635f20a8f6b0
+      image: docker.io/devzeelearn/zllsaathiapi-prod:8
+      imageID: docker.io/devzeelearn/zllsaathiapi-prod@sha256:828a3341c2c090683a0568af3961644b5dadcacbac4980546ecc62162f472e8a
+      lastState: {}
+      name: zllsaathiapi
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-25T06:17:14Z"
+    hostIP: 10.48.219.140
+    hostIPs:
+    - ip: 10.48.219.140
+    phase: Running
+    podIP: 192.168.4.75
+    podIPs:
+    - ip: 192.168.4.75
+    qosClass: Burstable
+    startTime: "2025-09-25T06:17:01Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-25T06:18:25Z"
+    generateName: zllsaathiapi-deploy-7fb44565c9-
+    labels:
+      app: zllsaathiapi-app
+      environment: prod
+      pod-template-hash: 7fb44565c9
+      project: zee-project
+    name: zllsaathiapi-deploy-7fb44565c9-k2tcc
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: zllsaathiapi-deploy-7fb44565c9
+      uid: 0a5cef09-749c-4517-bc06-2549a1313c09
+    resourceVersion: "119092071"
+    uid: 10a33087-e1f7-41cc-9e66-bc81161fb9d7
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: zllsaathiapi-config
+      - secretRef:
+          name: zllsaathiapi-secrets
+      image: devzeelearn/zllsaathiapi-prod:8
+      imagePullPolicy: Always
+      name: zllsaathiapi
+      ports:
+      - containerPort: 3000
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 256Mi
+        requests:
+          cpu: 500m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5ps95
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi01
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-5ps95
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:17:43Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:17:35Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:17:43Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:17:43Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:18:25Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://4d5dd2658c82410a9b602520657b1fe57b0526644472589875d58ef52442fc30
+      image: docker.io/devzeelearn/zllsaathiapi-prod:8
+      imageID: docker.io/devzeelearn/zllsaathiapi-prod@sha256:828a3341c2c090683a0568af3961644b5dadcacbac4980546ecc62162f472e8a
+      lastState: {}
+      name: zllsaathiapi
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-25T06:17:42Z"
+    hostIP: 10.48.219.138
+    hostIPs:
+    - ip: 10.48.219.138
+    phase: Running
+    podIP: 192.168.5.182
+    podIPs:
+    - ip: 192.168.5.182
+    qosClass: Burstable
+    startTime: "2025-09-25T06:17:35Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/restartedAt: "2025-09-20T13:21:22+05:30"
+    creationTimestamp: "2025-09-25T06:18:14Z"
+    generateName: zllsaathiapi-deploy-7fb44565c9-
+    labels:
+      app: zllsaathiapi-app
+      environment: prod
+      pod-template-hash: 7fb44565c9
+      project: zee-project
+    name: zllsaathiapi-deploy-7fb44565c9-pfh7j
+    namespace: prod
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: zllsaathiapi-deploy-7fb44565c9
+      uid: 0a5cef09-749c-4517-bc06-2549a1313c09
+    resourceVersion: "119091998"
+    uid: 183a8905-b14d-49bf-945d-3849b15d3b3b
+  spec:
+    containers:
+    - envFrom:
+      - configMapRef:
+          name: zllsaathiapi-config
+      - secretRef:
+          name: zllsaathiapi-secrets
+      image: devzeelearn/zllsaathiapi-prod:8
+      imagePullPolicy: Always
+      name: zllsaathiapi
+      ports:
+      - containerPort: 3000
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: 256Mi
+        requests:
+          cpu: 500m
+          memory: 128Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-nfrnx
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    imagePullSecrets:
+    - name: zee-docker-secret
+    nodeName: zee8608workerapi02
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-nfrnx
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:17:43Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:17:32Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:17:43Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:17:43Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-09-25T06:18:14Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://b5a642490a0f4ae23519e90b3e73fd63d43408e5f534882722cb1833b1c95859
+      image: docker.io/devzeelearn/zllsaathiapi-prod:8
+      imageID: docker.io/devzeelearn/zllsaathiapi-prod@sha256:828a3341c2c090683a0568af3961644b5dadcacbac4980546ecc62162f472e8a
+      lastState: {}
+      name: zllsaathiapi
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-09-25T06:17:42Z"
+    hostIP: 10.48.219.139
+    hostIPs:
+    - ip: 10.48.219.139
+    phase: Running
+    podIP: 192.168.3.213
+    podIPs:
+    - ip: 192.168.3.213
+    qosClass: Burstable
+    startTime: "2025-09-25T06:17:32Z"
+kind: List
+metadata:
+  resourceVersion: ""

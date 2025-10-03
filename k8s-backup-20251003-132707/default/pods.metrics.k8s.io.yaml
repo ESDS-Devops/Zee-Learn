@@ -1,0 +1,43 @@
+apiVersion: v1
+items:
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: mongodb-kubernetes-operator
+    usage:
+      cpu: 319136n
+      memory: 13324Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:57:35Z"
+    labels:
+      name: mongodb-kubernetes-operator
+      pod-template-hash: 7b7b59cc5c
+    name: mongodb-kubernetes-operator-7b7b59cc5c-7mmfb
+    namespace: default
+  timestamp: "2025-10-03T07:57:17Z"
+  window: 11.998s
+- apiVersion: metrics.k8s.io/v1beta1
+  containers:
+  - name: mongodb-agent
+    usage:
+      cpu: 16156282n
+      memory: 102608Ki
+  - name: mongod
+    usage:
+      cpu: 12147625n
+      memory: 172792Ki
+  kind: PodMetrics
+  metadata:
+    creationTimestamp: "2025-10-03T07:57:35Z"
+    labels:
+      app: productmaster-mongodb-svc
+      apps.kubernetes.io/pod-index: "0"
+      controller-revision-hash: productmaster-mongodb-55d6fcd77f
+      statefulset.kubernetes.io/pod-name: productmaster-mongodb-0
+    name: productmaster-mongodb-0
+    namespace: default
+  timestamp: "2025-10-03T07:57:10Z"
+  window: 19.356s
+kind: List
+metadata:
+  resourceVersion: ""
