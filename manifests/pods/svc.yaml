@@ -1,0 +1,499 @@
+kubectl get svc -n prod
+NAME                  TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+cmsapi-svc            ClusterIP   10.103.3.26      <none>        5011/TCP   148d
+graphql-svc           ClusterIP   10.98.137.117    <none>        5015/TCP   169d
+juapi-svc             ClusterIP   10.103.193.143   <none>        5011/TCP   140d
+k12-svc               ClusterIP   10.105.12.8      <none>        5011/TCP   28d
+literanovacms-svc     ClusterIP   10.107.111.80    <none>        5017/TCP   83d
+literanovajr-svc      ClusterIP   10.97.9.25       <none>        5005/TCP   133d
+literaoctave-svc      ClusterIP   10.102.191.20    <none>        5015/TCP   106d
+literaoctavecms-svc   ClusterIP   10.103.168.231   <none>        5022/TCP   83d
+lmsapi-svc            ClusterIP   10.103.127.2     <none>        5011/TCP   140d
+novachat-svc          ClusterIP   10.111.98.140    <none>        4011/TCP   133d
+pentemind-23-svc      ClusterIP   10.101.117.122   <none>        5005/TCP   160d
+pentemind-24-svc      ClusterIP   10.101.62.248    <none>        5005/TCP   169d
+pentemind-25-svc      ClusterIP   10.100.78.47     <none>        5005/TCP   169d
+zllsaathiapi-svc      ClusterIP   10.102.128.245   <none>        5022/TCP   63d
+root@zee8608cicdjen:~# kubectl get svc -n prod -o yaml
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"cmsapi-app","environment":"prod","project":"zee-project"},"name":"cmsapi-svc","namespace":"prod"},"spec":{"ports":[{"port":5015,"targetPort":5015}],"selector":{"app":"cmsapi-app","project":"zee-project"},"type":"ClusterIP"}}
+    creationTimestamp: "2025-05-07T12:44:10Z"
+    labels:
+      app: cmsapi-app
+      environment: prod
+      project: zee-project
+    name: cmsapi-svc
+    namespace: prod
+    resourceVersion: "50729526"
+    uid: b91d3fad-64bf-4439-a934-60a4b26946c7
+  spec:
+    clusterIP: 10.103.3.26
+    clusterIPs:
+    - 10.103.3.26
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5011
+      protocol: TCP
+      targetPort: 5011
+    selector:
+      app: cmsapi-app
+      project: zee-project
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"graphql-app","environment":"prod","project":"zee-project"},"name":"graphql-svc","namespace":"prod"},"spec":{"ports":[{"nodePort":30116,"port":5015,"targetPort":5015}],"selector":{"app":"graphql-app","project":"zee-project"},"type":"ClusterIP"}}
+    creationTimestamp: "2025-04-16T08:46:09Z"
+    labels:
+      app: graphql-app
+      environment: prod
+      project: zee-project
+    name: graphql-svc
+    namespace: prod
+    resourceVersion: "40797159"
+    uid: 0cb386e3-4bf9-4ac7-be57-cec630dcbfef
+  spec:
+    clusterIP: 10.98.137.117
+    clusterIPs:
+    - 10.98.137.117
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5015
+      protocol: TCP
+      targetPort: 5015
+    selector:
+      app: graphql-app
+      project: zee-project
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"juapi-app","environment":"prod","project":"zee-project"},"name":"juapi-svc","namespace":"prod"},"spec":{"ports":[{"port":5011,"targetPort":5011}],"selector":{"app":"juapi-app","project":"zee-project"},"type":"ClusterIP"}}
+    creationTimestamp: "2025-05-15T15:14:07Z"
+    labels:
+      app: juapi-app
+      environment: prod
+      project: zee-project
+    name: juapi-svc
+    namespace: prod
+    resourceVersion: "51917612"
+    uid: 57ce697f-2e9b-4e69-93bb-ca5eb53e38b3
+  spec:
+    clusterIP: 10.103.193.143
+    clusterIPs:
+    - 10.103.193.143
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5011
+      protocol: TCP
+      targetPort: 5011
+    selector:
+      app: juapi-app
+      project: zee-project
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"k12-app","environment":"prod","project":"zee-project"},"name":"k12-svc","namespace":"prod"},"spec":{"ports":[{"port":5011,"targetPort":5011}],"selector":{"app":"k12-app","project":"zee-project"},"type":"ClusterIP"}}
+    creationTimestamp: "2025-09-04T11:49:54Z"
+    labels:
+      app: k12-app
+      environment: prod
+      project: zee-project
+    name: k12-svc
+    namespace: prod
+    resourceVersion: "108978407"
+    uid: 926746e3-e9c3-46e7-9a9f-4726468fb069
+  spec:
+    clusterIP: 10.105.12.8
+    clusterIPs:
+    - 10.105.12.8
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5011
+      protocol: TCP
+      targetPort: 5011
+    selector:
+      app: k12-app
+      project: zee-project
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"literanovacms-app","environment":"prod","project":"zee-project"},"name":"literanovacms-svc","namespace":"prod"},"spec":{"ports":[{"port":5017,"targetPort":5017}],"selector":{"app":"literanovacms-app","project":"zee-project"},"type":"ClusterIP"}}
+    creationTimestamp: "2025-07-11T12:01:46Z"
+    labels:
+      app: literanovacms-app
+      environment: prod
+      project: zee-project
+    name: literanovacms-svc
+    namespace: prod
+    resourceVersion: "84166566"
+    uid: b0267766-798b-4d39-b9f1-58ce22fd7d1d
+  spec:
+    clusterIP: 10.107.111.80
+    clusterIPs:
+    - 10.107.111.80
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5017
+      protocol: TCP
+      targetPort: 5017
+    selector:
+      app: literanovacms-app
+      project: zee-project
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"literanovajr","environment":"prod","project":"zee-project"},"name":"literanovajr-svc","namespace":"prod"},"spec":{"ports":[{"port":5005,"targetPort":8080}],"selector":{"app":"literanovajr","project":"zee-project"},"type":"ClusterIP"}}
+    creationTimestamp: "2025-05-22T08:50:37Z"
+    labels:
+      app: literanovajr
+      environment: prod
+      project: zee-project
+    name: literanovajr-svc
+    namespace: prod
+    resourceVersion: "55479872"
+    uid: d2fbb89d-4e52-48a0-9836-1502db57fe9d
+  spec:
+    clusterIP: 10.97.9.25
+    clusterIPs:
+    - 10.97.9.25
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5005
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: literanovajr
+      project: zee-project
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"literaoctave-app","environment":"prod","project":"zee-project"},"name":"literaoctave-svc","namespace":"prod"},"spec":{"ports":[{"port":5015,"targetPort":5015}],"selector":{"app":"literaoctave-app","project":"zee-project"}}}
+    creationTimestamp: "2025-06-18T11:32:14Z"
+    labels:
+      app: literaoctave-app
+      environment: prod
+      project: zee-project
+    name: literaoctave-svc
+    namespace: prod
+    resourceVersion: "69714752"
+    uid: 527daf7e-a734-4f85-9bb2-f10674e7d4f5
+  spec:
+    clusterIP: 10.102.191.20
+    clusterIPs:
+    - 10.102.191.20
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5015
+      protocol: TCP
+      targetPort: 5015
+    selector:
+      app: literaoctave-app
+      project: zee-project
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"literaoctavecms-app","environment":"prod","project":"zee-project"},"name":"literaoctavecms-svc","namespace":"prod"},"spec":{"ports":[{"port":5022,"targetPort":5022}],"selector":{"app":"literaoctavecms-app","project":"zee-project"},"type":"ClusterIP"}}
+    creationTimestamp: "2025-07-11T12:22:31Z"
+    labels:
+      app: literaoctavecms-app
+      environment: prod
+      project: zee-project
+    name: literaoctavecms-svc
+    namespace: prod
+    resourceVersion: "84184673"
+    uid: 8a2e6c08-abb3-4ca6-abab-aff837f555fa
+  spec:
+    clusterIP: 10.103.168.231
+    clusterIPs:
+    - 10.103.168.231
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5022
+      protocol: TCP
+      targetPort: 5022
+    selector:
+      app: literaoctavecms-app
+      project: zee-project
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"lmsapi-app","environment":"prod","project":"zee-project"},"name":"lmsapi-svc","namespace":"prod"},"spec":{"ports":[{"port":5011,"targetPort":5011}],"selector":{"app":"lmsapi-app","project":"zee-project"},"type":"ClusterIP"}}
+    creationTimestamp: "2025-05-15T14:49:06Z"
+    labels:
+      app: lmsapi-app
+      environment: prod
+      project: zee-project
+    name: lmsapi-svc
+    namespace: prod
+    resourceVersion: "51907797"
+    uid: 13cac113-5395-41b0-b57b-b215c7fc3832
+  spec:
+    clusterIP: 10.103.127.2
+    clusterIPs:
+    - 10.103.127.2
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5011
+      protocol: TCP
+      targetPort: 5011
+    selector:
+      app: lmsapi-app
+      project: zee-project
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"novachat-app","environment":"prod","project":"zee-project"},"name":"novachat-svc","namespace":"prod"},"spec":{"ports":[{"port":4011,"targetPort":4011}],"selector":{"app":"novachat-app","project":"zee-project"},"type":"ClusterIP"}}
+    creationTimestamp: "2025-05-22T13:37:04Z"
+    labels:
+      app: novachat-app
+      environment: prod
+      project: zee-project
+    name: novachat-svc
+    namespace: prod
+    resourceVersion: "55557797"
+    uid: 279dad5e-f8d5-419f-b434-4d6a18e89b6f
+  spec:
+    clusterIP: 10.111.98.140
+    clusterIPs:
+    - 10.111.98.140
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 4011
+      protocol: TCP
+      targetPort: 4011
+    selector:
+      app: novachat-app
+      project: zee-project
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"pentemind-2023","environment":"prod","project":"zee-project"},"name":"pentemind-23-svc","namespace":"prod"},"spec":{"ports":[{"port":5005,"targetPort":5005}],"selector":{"app":"pentemind-2023","project":"zee-project"},"type":"ClusterIP"}}
+    creationTimestamp: "2025-04-25T10:58:47Z"
+    labels:
+      app: pentemind-2023
+      environment: prod
+      project: zee-project
+    name: pentemind-23-svc
+    namespace: prod
+    resourceVersion: "40796811"
+    uid: d95d7cdc-1a53-4e31-abe1-388e42471f22
+  spec:
+    clusterIP: 10.101.117.122
+    clusterIPs:
+    - 10.101.117.122
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5005
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: pentemind-2023
+      project: zee-project
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"pentemind-apps","environment":"prod","project":"zee-project"},"name":"pentemind-24-svc","namespace":"prod"},"spec":{"ports":[{"nodePort":30008,"port":5005,"targetPort":8080}],"selector":{"app":"pentemind-apps","project":"zee-project"},"type":"ClusterIP"}}
+    creationTimestamp: "2025-04-16T10:27:23Z"
+    labels:
+      app: pentemind-apps
+      environment: prod
+      project: zee-project
+    name: pentemind-24-svc
+    namespace: prod
+    resourceVersion: "40797161"
+    uid: 311ca992-5917-4abf-a4e4-b74e6e449381
+  spec:
+    clusterIP: 10.101.62.248
+    clusterIPs:
+    - 10.101.62.248
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5005
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: pentemind-apps
+      project: zee-project
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"pentemind-app","environment":"prod","project":"zee-project"},"name":"pentemind-25-svc","namespace":"prod"},"spec":{"ports":[{"nodePort":30007,"port":5005,"targetPort":8080}],"selector":{"app":"pentemind-app","project":"zee-project"},"type":"ClusterIP"}}
+    creationTimestamp: "2025-04-16T08:22:49Z"
+    labels:
+      app: pentemind-app
+      environment: prod
+      project: zee-project
+    name: pentemind-25-svc
+    namespace: prod
+    resourceVersion: "40797163"
+    uid: 2857d461-46e0-4c97-96fb-86a6cf468c07
+  spec:
+    clusterIP: 10.100.78.47
+    clusterIPs:
+    - 10.100.78.47
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5005
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: pentemind-app
+      project: zee-project
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"zllsaathiapi-app","environment":"prod","project":"zee-project"},"name":"zllsaathiapi-svc","namespace":"prod"},"spec":{"ports":[{"port":5022,"targetPort":5022}],"selector":{"app":"zllsaathiapi-app","project":"zee-project"},"type":"ClusterIP"}}
+    creationTimestamp: "2025-07-31T13:37:55Z"
+    labels:
+      app: zllsaathiapi-app
+      environment: prod
+      project: zee-project
+    name: zllsaathiapi-svc
+    namespace: prod
+    resourceVersion: "108484911"
+    uid: 2d20c900-48b4-4e72-8075-27c479e98e5b
+  spec:
+    clusterIP: 10.102.128.245
+    clusterIPs:
+    - 10.102.128.245
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 5022
+      protocol: TCP
+      targetPort: 5022
+    selector:
+      app: zllsaathiapi-app
+      project: zee-project
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""
+

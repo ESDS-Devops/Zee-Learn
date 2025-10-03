@@ -1,0 +1,572 @@
+kubectl get ing -n prod
+NAME                      CLASS   HOSTS                 ADDRESS         PORTS     AGE
+cmsapi-ingress            nginx   kubapi.zeelearn.com   10.48.219.171   80, 443   148d
+graphql-ingress           nginx   kubapi.zeelearn.com   10.48.219.171   80, 443   169d
+juapi-ingress             nginx   kubapi.zeelearn.com   10.48.219.171   80, 443   140d
+k12-ingress               nginx   kubapi.zeelearn.com   10.48.219.171   80, 443   28d
+literanovacms-ingress     nginx   kubapi.zeelearn.com   10.48.219.171   80, 443   83d
+literanovajr-ing          nginx   kubapi.zeelearn.com   10.48.219.171   80, 443   133d
+literaoctave-ingress      nginx   kubapi.zeelearn.com   10.48.219.171   80, 443   106d
+literaoctavecms-ingress   nginx   kubapi.zeelearn.com   10.48.219.171   80, 443   83d
+lmsapi-ingress            nginx   kubapi.zeelearn.com   10.48.219.171   80, 443   140d
+novachat-ingress          nginx   kubapi.zeelearn.com   10.48.219.171   80, 443   133d
+pentemind-ing-23          nginx   kubapi.zeelearn.com   10.48.219.171   80, 443   160d
+pentemind-ing-24          nginx   kubapi.zeelearn.com   10.48.219.171   80, 443   169d
+pentemind-ing-25          nginx   kubapi.zeelearn.com   10.48.219.171   80, 443   169d
+zllsaathiapi-ingress      nginx   kubapi.zeelearn.com   10.48.219.171   80, 443   63d
+root@zee8608cicdjen:~# kubectl get ing -n prod -o yaml
+apiVersion: v1
+items:
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"cmsapi-app","environment":"prod","project":"zee-project"},"name":"cmsapi-ingress","namespace":"prod"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kubapi.zeelearn.com","http":{"paths":[{"backend":{"service":{"name":"cmsapi-svc","port":{"number":5015}}},"path":"/V1/cmsapi","pathType":"Prefix"}]}}],"tls":[{"hosts":["kubapi.zeelearn.com"],"secretName":"zeelearn-tls-secret-v2"}]}}
+      nginx.ingress.kubernetes.io/client-max-body-size: 200m
+      nginx.ingress.kubernetes.io/proxy-body-size: 200m
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    creationTimestamp: "2025-05-07T12:45:10Z"
+    generation: 8
+    labels:
+      app: cmsapi-app
+      environment: prod
+      project: zee-project
+    name: cmsapi-ingress
+    namespace: prod
+    resourceVersion: "61359211"
+    uid: d948ca57-73b7-4ca6-b1a2-5925aa7cd696
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kubapi.zeelearn.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: cmsapi-svc
+              port:
+                number: 5011
+          path: /v1/cmsapi(/|$)(.*)
+          pathType: ImplementationSpecific
+    tls:
+    - hosts:
+      - kubapi.zeelearn.com
+      secretName: zeelearn-tls-secret-v2
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.171
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"graphql-app","environment":"prod","project":"zee-project"},"name":"graphql-ingress","namespace":"prod"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kubapi.zeelearn.com","http":{"paths":[{"backend":{"service":{"name":"graphql-svc","port":{"number":5015}}},"path":"/graphql","pathType":"Prefix"}]}}],"tls":[{"hosts":["kebapi.zeelearn.com"],"secretName":"zeelearn-tls-secret-v2"}]}}
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    creationTimestamp: "2025-04-16T09:59:31Z"
+    generation: 2
+    labels:
+      app: graphql-app
+      environment: prod
+      project: zee-project
+    name: graphql-ingress
+    namespace: prod
+    resourceVersion: "50193944"
+    uid: 5625cb07-8902-487b-bb30-0e45601cb39e
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kubapi.zeelearn.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: graphql-svc
+              port:
+                number: 5015
+          path: /graphql
+          pathType: Prefix
+    tls:
+    - hosts:
+      - kebapi.zeelearn.com
+      secretName: zeelearn-tls-secret-v2
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.171
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/rewrite-target":"/$2","nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"juapi-app","environment":"prod","project":"zee-project"},"name":"juapi-ingress","namespace":"prod"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kubapi.zeelearn.com","http":{"paths":[{"backend":{"service":{"name":"juapi-svc","port":{"number":5011}}},"path":"/v1/juapi(/|$)(.*)","pathType":"ImplementationSpecific"}]}}],"tls":[{"hosts":["kubapi.zeelearn.com"],"secretName":"zeelearn-tls-secret-v2"}]}}
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    creationTimestamp: "2025-05-15T15:12:50Z"
+    generation: 2
+    labels:
+      app: juapi-app
+      environment: prod
+      project: zee-project
+    name: juapi-ingress
+    namespace: prod
+    resourceVersion: "54360291"
+    uid: 58deaac8-bebd-4eab-aef1-8e4cf4c8f801
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kubapi.zeelearn.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: juapi-svc
+              port:
+                number: 5011
+          path: /V1/juapi(/|$)(.*)
+          pathType: ImplementationSpecific
+    tls:
+    - hosts:
+      - kubapi.zeelearn.com
+      secretName: zeelearn-tls-secret-v2
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.171
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/rewrite-target":"/$2","nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"k12-app","environment":"prod","project":"zee-project"},"name":"k12-ingress","namespace":"prod"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kubapi.zeelearn.com","http":{"paths":[{"backend":{"service":{"name":"k12-svc","port":{"number":5011}}},"path":"/V1/k12(/|$)(.*)","pathType":"ImplementationSpecific"}]}}],"tls":[{"hosts":["kubapi.zeelearn.com"],"secretName":"zeelearn-tls-secret-v2"}]}}
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/use-regex: "true"
+    creationTimestamp: "2025-09-04T11:49:54Z"
+    generation: 1
+    labels:
+      app: k12-app
+      environment: prod
+      project: zee-project
+    name: k12-ingress
+    namespace: prod
+    resourceVersion: "108999210"
+    uid: 457e0f44-31b4-42d5-aaa1-f34ab719d805
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kubapi.zeelearn.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: k12-svc
+              port:
+                number: 5011
+          path: /V1/k12(/|$)(.*)
+          pathType: ImplementationSpecific
+    tls:
+    - hosts:
+      - kubapi.zeelearn.com
+      secretName: zeelearn-tls-secret-v2
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.171
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/rewrite-target":"/$2","nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"literanovacms-app","environment":"prod","project":"zee-project"},"name":"literanovacms-ingress","namespace":"prod"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kubapi.zeelearn.com","http":{"paths":[{"backend":{"service":{"name":"literanovacms-svc","port":{"number":5017}}},"path":"/V1/literanovacmsapi(/|$)(.*)","pathType":"ImplementationSpecific"}]}}],"tls":[{"hosts":["kubapi.zeelearn.com"],"secretName":"zeelearn-tls-secret-v2"}]}}
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    creationTimestamp: "2025-07-11T12:01:46Z"
+    generation: 4
+    labels:
+      app: literanovacms-app
+      environment: prod
+      project: zee-project
+    name: literanovacms-ingress
+    namespace: prod
+    resourceVersion: "84264999"
+    uid: a7c10349-a649-4670-a06f-9daf3ca043b9
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kubapi.zeelearn.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: literanovacms-svc
+              port:
+                number: 5017
+          path: /V1/literanovacmsapi(/|$)(.*)
+          pathType: ImplementationSpecific
+    tls:
+    - hosts:
+      - kubapi.zeelearn.com
+      secretName: zeelearn-tls-secret-v2
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.171
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/rewrite-target":"/$2","nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"literanovajr","environment":"prod","project":"zee-project"},"name":"literanovajr-ing","namespace":"prod"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kubapi.zeelearn.com","http":{"paths":[{"backend":{"service":{"name":"literanovajr-svc","port":{"number":5005}}},"path":"/V1/literanovajr(/|$)(.*)","pathType":"ImplementationSpecific"}]}}],"tls":[{"hosts":["kebapi.zeelearn.com"],"secretName":"zeelearn-ingress-cert"}]}}
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    creationTimestamp: "2025-05-22T08:50:37Z"
+    generation: 1
+    labels:
+      app: literanovajr
+      environment: prod
+      project: zee-project
+    name: literanovajr-ing
+    namespace: prod
+    resourceVersion: "55449876"
+    uid: 9ac83164-2fa0-44dd-b070-c8b6e60e66ed
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kubapi.zeelearn.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: literanovajr-svc
+              port:
+                number: 5005
+          path: /V1/literanovajr(/|$)(.*)
+          pathType: ImplementationSpecific
+    tls:
+    - hosts:
+      - kebapi.zeelearn.com
+      secretName: zeelearn-ingress-cert
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.171
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"literaoctave-app","environment":"prod","project":"zee-project"},"name":"literaoctave-ingress","namespace":"prod"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kubapi.zeelearn.com","http":{"paths":[{"backend":{"service":{"name":"literaoctave-svc","port":{"number":5015}}},"path":"/V1/literaoctave","pathType":"Prefix"}]}}],"tls":[{"hosts":["kebapi.zeelearn.com"],"secretName":"zeelearn-ingress-cert"}]}}
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    creationTimestamp: "2025-06-18T11:32:14Z"
+    generation: 2
+    labels:
+      app: literaoctave-app
+      environment: prod
+      project: zee-project
+    name: literaoctave-ingress
+    namespace: prod
+    resourceVersion: "70147350"
+    uid: dc2900c1-6e3b-486b-bb3a-fcb4a9c8d654
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kubapi.zeelearn.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: literaoctave-svc
+              port:
+                number: 5015
+          path: /literaoctave
+          pathType: Prefix
+    tls:
+    - hosts:
+      - kebapi.zeelearn.com
+      secretName: zeelearn-ingress-cert
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.171
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/rewrite-target":"/$2","nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"literaoctavecms-app","environment":"prod","project":"zee-project"},"name":"literaoctavecms-ingress","namespace":"prod"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kubapi.zeelearn.com","http":{"paths":[{"backend":{"service":{"name":"literaoctavecms-svc","port":{"number":5022}}},"path":"/V1/literaoctavecmsapi(/|$)(.*)","pathType":"ImplementationSpecific"}]}}],"tls":[{"hosts":["kubapi.zeelearn.com"],"secretName":"zeelearn-tls-secret-v2"}]}}
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    creationTimestamp: "2025-07-11T12:22:31Z"
+    generation: 4
+    labels:
+      app: literaoctavecms-app
+      environment: prod
+      project: zee-project
+    name: literaoctavecms-ingress
+    namespace: prod
+    resourceVersion: "84265699"
+    uid: 7275982d-d50e-4b8a-9ee2-494ce0725699
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kubapi.zeelearn.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: literaoctavecms-svc
+              port:
+                number: 5022
+          path: /V1/literaoctavecmsapi(/|$)(.*)
+          pathType: ImplementationSpecific
+    tls:
+    - hosts:
+      - kubapi.zeelearn.com
+      secretName: zeelearn-tls-secret-v2
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.171
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/rewrite-target":"/$2","nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"lmsapi-app","environment":"prod","project":"zee-project"},"name":"lmsapi-ingress","namespace":"prod"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kubapi.zeelearn.com","http":{"paths":[{"backend":{"service":{"name":"lmsapi-svc","port":{"number":5011}}},"path":"/V1/lmsapi(/|$)(.*)","pathType":"ImplementationSpecific"}]}}],"tls":[{"hosts":["kubapi.zeelearn.com"],"secretName":"zeelearn-tls-secret-v2"}]}}
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    creationTimestamp: "2025-05-15T14:49:06Z"
+    generation: 2
+    labels:
+      app: lmsapi-app
+      environment: prod
+      project: zee-project
+    name: lmsapi-ingress
+    namespace: prod
+    resourceVersion: "54349226"
+    uid: a4ebd571-2406-4b70-b29d-a37f709445a2
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kubapi.zeelearn.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: lmsapi-svc
+              port:
+                number: 5011
+          path: /V1/lms(/|$)(.*)
+          pathType: ImplementationSpecific
+    tls:
+    - hosts:
+      - kubapi.zeelearn.com
+      secretName: zeelearn-tls-secret-v2
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.171
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/rewrite-target":"/$2","nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"novachat-app","environment":"prod","project":"zee-project"},"name":"novachat-ingress","namespace":"prod"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kubapi.zeelearn.com","http":{"paths":[{"backend":{"service":{"name":"novachat-svc","port":{"number":4011}}},"path":"/V1/novaai(/|$)(.*)","pathType":"ImplementationSpecific"}]}}],"tls":[{"hosts":["kubapi.zeelearn.com"],"secretName":"zeelearn-tls-secret-v2"}]}}
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    creationTimestamp: "2025-05-22T13:41:20Z"
+    generation: 1
+    labels:
+      app: novachat-app
+      environment: prod
+      project: zee-project
+    name: novachat-ingress
+    namespace: prod
+    resourceVersion: "55559921"
+    uid: 65a8c36e-3160-40c4-8f42-fb08a5da6495
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kubapi.zeelearn.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: novachat-svc
+              port:
+                number: 4011
+          path: /V1/novaai(/|$)(.*)
+          pathType: ImplementationSpecific
+    tls:
+    - hosts:
+      - kubapi.zeelearn.com
+      secretName: zeelearn-tls-secret-v2
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.171
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/rewrite-target":"/$2","nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"pentemind-2023","environment":"prod","project":"zee-project"},"name":"pentemind-ing-23","namespace":"prod"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kubapi.zeelearn.com","http":{"paths":[{"backend":{"service":{"name":"pentemind-23-svc","port":{"number":5005}}},"path":"/v1/pentemind/2023(/|$)(.*)","pathType":"ImplementationSpecific"}]}}],"tls":[{"hosts":["kebapi.zeelearn.com"],"secretName":"zeelearn-tls-secret-v2"}]}}
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    creationTimestamp: "2025-04-25T11:25:05Z"
+    generation: 2
+    labels:
+      app: pentemind-2023
+      environment: prod
+      project: zee-project
+    name: pentemind-ing-23
+    namespace: prod
+    resourceVersion: "50193946"
+    uid: 227431d1-c602-40dd-b6fb-bc53ee68d0c8
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kubapi.zeelearn.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: pentemind-23-svc
+              port:
+                number: 5005
+          path: /v1/pentemind/2023(/|$)(.*)
+          pathType: ImplementationSpecific
+    tls:
+    - hosts:
+      - kebapi.zeelearn.com
+      secretName: zeelearn-tls-secret-v2
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.171
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/rewrite-target":"/$2","nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"pentemind-apps","environment":"prod","project":"zee-project"},"name":"pentemind-ing-24","namespace":"prod"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kubapi.zeelearn.com","http":{"paths":[{"backend":{"service":{"name":"pentemind-24-svc","port":{"number":5005}}},"path":"/v1/pentemind/2024(/|$)(.*)","pathType":"ImplementationSpecific"}]}}],"tls":[{"hosts":["kebapi.zeelearn.com"],"secretName":"zeelearn-tls-secret-v2"}]}}
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    creationTimestamp: "2025-04-16T09:59:04Z"
+    generation: 2
+    labels:
+      app: pentemind-apps
+      environment: prod
+      project: zee-project
+    name: pentemind-ing-24
+    namespace: prod
+    resourceVersion: "70951183"
+    uid: 7f9f50ea-8d7c-419e-99d0-a704ce60e253
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kubapi.zeelearn.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: pentemind-24-svc
+              port:
+                number: 5005
+          path: /v1/pentemind/2024(/|$)(.*)
+          pathType: ImplementationSpecific
+    tls:
+    - hosts:
+      - kebapi.zeelearn.com
+      secretName: zeelearn-tls-secret-v2
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.171
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/rewrite-target":"/$2","nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"pentemind-app","environment":"prod","project":"zee-project"},"name":"pentemind-ing-25","namespace":"prod"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kubapi.zeelearn.com","http":{"paths":[{"backend":{"service":{"name":"pentemind-25-svc","port":{"number":5005}}},"path":"/v1/pentemind/2025(/|$)(.*)","pathType":"ImplementationSpecific"}]}}],"tls":[{"hosts":["kebapi.zeelearn.com"],"secretName":"zeelearn-tls-secret-v2"}]}}
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    creationTimestamp: "2025-04-16T09:58:25Z"
+    generation: 2
+    labels:
+      app: pentemind-app
+      environment: prod
+      project: zee-project
+    name: pentemind-ing-25
+    namespace: prod
+    resourceVersion: "50193950"
+    uid: 3abfbe08-7668-4a13-9f11-54f7fa6aacb1
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kubapi.zeelearn.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: pentemind-25-svc
+              port:
+                number: 5005
+          path: /v1/pentemind/2025(/|$)(.*)
+          pathType: ImplementationSpecific
+    tls:
+    - hosts:
+      - kebapi.zeelearn.com
+      secretName: zeelearn-tls-secret-v2
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.171
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/rewrite-target":"/$2","nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"zllsaathiapi-app","environment":"prod","project":"zee-project"},"name":"zllsaathiapi-ingress","namespace":"prod"},"spec":{"ingressClassName":"nginx","rules":[{"host":"kubapi.zeelearn.com","http":{"paths":[{"backend":{"service":{"name":"zllsaathiapi-svc","port":{"number":5022}}},"path":"/V1/saathi(/|$)(.*)","pathType":"ImplementationSpecific"}]}}],"tls":[{"hosts":["kubapi.zeelearn.com"],"secretName":"zeelearn-tls-secret-v2"}]}}
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    creationTimestamp: "2025-07-31T13:37:55Z"
+    generation: 1
+    labels:
+      app: zllsaathiapi-app
+      environment: prod
+      project: zee-project
+    name: zllsaathiapi-ingress
+    namespace: prod
+    resourceVersion: "92050172"
+    uid: 1c4c527e-f690-4d6d-a453-05e4a417a645
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: kubapi.zeelearn.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: zllsaathiapi-svc
+              port:
+                number: 5022
+          path: /V1/saathi(/|$)(.*)
+          pathType: ImplementationSpecific
+    tls:
+    - hosts:
+      - kubapi.zeelearn.com
+      secretName: zeelearn-tls-secret-v2
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 10.48.219.171
+kind: List
+metadata:
+  resourceVersion: ""
+

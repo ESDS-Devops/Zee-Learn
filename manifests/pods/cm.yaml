@@ -1,0 +1,446 @@
+kubectl get cm -n prod
+NAME                     DATA   AGE
+cmsapi-config            13     148d
+graphql-config           10     170d
+juapi-config             12     140d
+k12-config               11     28d
+kube-root-ca.crt         1      170d
+literanovacms-config     12     83d
+literanovajr-config      12     133d
+literaoctave-config      10     106d
+literaoctavecms-config   12     83d
+lmsapi-config            12     140d
+novachat-config          19     133d
+pentemind-config-23      12     160d
+pentemind-config-24      12     169d
+pentemind-config-25      12     169d
+zllsaathiapi-config      8      63d
+root@zee8608cicdjen:~/PROD-MANIFESTS/k12# kubectl get cm -n prod -o yaml
+apiVersion: v1
+items:
+- apiVersion: v1
+  data:
+    ALLOWED_ORIGINS: '*'
+    AWS_DEFAULT_REGION: ""
+    AWS_S3_BUCKET: zeecms
+    NODE_ENV: production
+    SQL_DATABASE: db_CMS
+    SQL_DRIVER: SQL Server
+    SQL_NAME: master
+    SQL_SERVER: 10.48.219.146
+    SQL_UID: zll_production
+    expiresIn: 2h
+    port: "5011"
+    reddisport: "6379"
+    sqlport: "14343"
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"ALLOWED_ORIGINS":"*","NODE_ENV":"production","PORT":"5015","REDIS_URL":"10.48.219.165","S3_BUCKET":"zeecms","db_name":"db_CMS","db_port":"14343","db_server":"10.48.219.146","dbusername":"zll_production","reddisport":"6379"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"cmsapi-app","environment":"prod","project":"zee-project"},"name":"cmsapi-config","namespace":"prod"}}
+    creationTimestamp: "2025-05-07T12:41:44Z"
+    labels:
+      app: cmsapi-app
+      environment: prod
+      project: zee-project
+    name: cmsapi-config
+    namespace: prod
+    resourceVersion: "50730493"
+    uid: d8506640-e046-4900-8306-356101863348
+- apiVersion: v1
+  data:
+    ALLOWED_ORIGINS: '*'
+    NODE_ENV: production
+    PORT: "5015"
+    REDIS_URL: 10.48.219.165
+    S3_BUCKET: prdzllbiz-learning-bucket
+    database: DB_Learning
+    db_port: "14343"
+    db_server: 10.48.219.146
+    db_user: zll_production
+    reddisport: "6379"
+  kind: ConfigMap
+  metadata:
+    creationTimestamp: "2025-04-16T06:25:22Z"
+    labels:
+      app: graphql-app
+      environment: prod
+      project: zee-project
+    name: graphql-config
+    namespace: prod
+    resourceVersion: "50156600"
+    uid: fb0061e7-b986-45ca-85a2-bdd8d8ca59c0
+- apiVersion: v1
+  data:
+    ALLOWED_ORIGINS: '*'
+    AWS_DEFAULT_REGION: ""
+    AWS_S3_BUCKET: zeecms
+    NODE_ENV: production
+    SQL_DATABASE: db_CMS_University
+    SQL_DRIVER: SQL Server
+    SQL_NAME: master
+    SQL_SERVER: 10.48.219.146
+    SQL_UID: zll_production
+    expiresIn: 2h
+    port: "5011"
+    sqlport: "14343"
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"ALLOWED_ORIGINS":"*","AWS_DEFAULT_REGION":"","AWS_S3_BUCKET":"zeecms","NODE_ENV":"production","SQL_DATABASE":"db_CMS_University","SQL_DRIVER":"SQL Server","SQL_NAME":"master","SQL_SERVER":"10.48.219.146","SQL_UID":"zll_production","expiresIn":"2h","port":"5011","sqlport":"14343"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"juapi-app","environment":"prod","project":"zee-project"},"name":"juapi-config","namespace":"prod"}}
+    creationTimestamp: "2025-05-15T15:12:50Z"
+    labels:
+      app: juapi-app
+      environment: prod
+      project: zee-project
+    name: juapi-config
+    namespace: prod
+    resourceVersion: "51917240"
+    uid: a7d274c8-3108-4794-9ed6-9a0e854c6a91
+- apiVersion: v1
+  data:
+    ALLOWED_ORIGINS: '*'
+    AWS_DEFAULT_REGION: ""
+    AWS_S3_BUCKET: zeecms
+    NODE_ENV: Production
+    SQL_DATABASE: db_lms_UAT
+    SQL_DRIVER: SQL Server
+    SQL_SERVER: 10.48.219.146
+    SQL_UID: zll_production
+    expiresIn: 2h
+    port: "5011"
+    sqlport: "14343"
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"ALLOWED_ORIGINS":"*","AWS_DEFAULT_REGION":"","AWS_S3_BUCKET":"zeecms","NODE_ENV":"Production","PORT":"5011","SQL_DATABASE":"db_lms_UAT","SQL_DRIVER":"SQL Server","SQL_SERVER":"10.48.219.146","SQL_UID":"zll_production","expiresIn":"2h","sqlport":"14343"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"k12-app","environment":"prod","project":"zee-project"},"name":"k12-config","namespace":"prod"}}
+    creationTimestamp: "2025-09-04T11:49:54Z"
+    labels:
+      app: k12-app
+      environment: prod
+      project: zee-project
+    name: k12-config
+    namespace: prod
+    resourceVersion: "110926604"
+    uid: cb26d308-f965-4f60-8df3-54c7ca36ce0c
+- apiVersion: v1
+  data:
+    ca.crt: |
+      -----BEGIN CERTIFICATE-----
+      MIIDBTCCAe2gAwIBAgIIBGpEgb8zVRswDQYJKoZIhvcNAQELBQAwFTETMBEGA1UE
+      AxMKa3ViZXJuZXRlczAeFw0yNTAyMDcwNzU0MDZaFw0zNTAyMDUwNzU5MDZaMBUx
+      EzARBgNVBAMTCmt1YmVybmV0ZXMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+      AoIBAQDcKXkUtHMKM7qeci7OlLNez2FlydMAt9l6KKkywvtuLyaMIrJKbFPh8hml
+      H2dnMm7PRXcy/xoZFucFHfjaUY+euYJ6cf3MAoQfG/SfgpA5TRqEPbdxwc+GHDy7
+      6ZoH9gIYHLkdeRUw0QTKKZTNYmRhRZ7oLjRmssL0kSpWOrg3EdN/K95ZT4eczUrl
+      ts/rLLJPILP6LuWGllkIqnKBpm95RbpeGfTCoCAYbYIpbm0XzbybHeJuar+mA2kG
+      Vhv8LJH9HIUCPTPLY4eUNFM5yAOlqR4p2tKpIHcaQC8WZhJqQBd3/OLx1fDnEsu5
+      KCg99V39QHNmXONGKNdVZdnvCa8DAgMBAAGjWTBXMA4GA1UdDwEB/wQEAwICpDAP
+      BgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBRSbsFhjuaavB3D2AJAgY6/Kg93NDAV
+      BgNVHREEDjAMggprdWJlcm5ldGVzMA0GCSqGSIb3DQEBCwUAA4IBAQBtFumnVigF
+      ZqgHe3ok8jdx/o48sBfKM+N+eiqEKsuVuWhiYcMGhlXqqvgX5qHDcM+QPC2x4QxE
+      NiZ0beIXwVs/xeOx9KeoPfnem58Ke51qlCBiTZrPTFhCIGUfqpD9SAxFRXX/4Re+
+      ff8hORHxXHM+mo9fRUIsDkEON3IoFbImuq0bfklHbPfFJ1z+f/Fg+3bG4bUcMRDG
+      /N3BorYqcnQxsvXlZpw3yDQrm3VukCTZSKm3FAuakJlBntmxHM4UewnN0VaF8ZAR
+      dfz/NBVYyrEu/zPNPOYYHVLLfcMPbtlxnCnQuBB5C6Bv0hH1YNcwvEObxZH4+8G0
+      O6YN95NGdZMw
+      -----END CERTIFICATE-----
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubernetes.io/description: Contains a CA bundle that can be used to verify the
+        kube-apiserver when using internal endpoints such as the internal service
+        IP or kubernetes.default.svc. No other usage is guaranteed across distributions
+        of Kubernetes clusters.
+    creationTimestamp: "2025-04-16T05:59:41Z"
+    name: kube-root-ca.crt
+    namespace: prod
+    resourceVersion: "35402507"
+    uid: b606821b-4120-4030-b0d3-eb63bb7816fc
+- apiVersion: v1
+  data:
+    ALLOWED_ORIGINS: '*'
+    AWS_DEFAULT_REGION: ""
+    AWS_S3_BUCKET: literanovalms
+    DB_DATABASE_Learning: DB_Learning
+    DB_HOST_Learning: 10.48.219.146
+    DB_PORT_Learning: "14343"
+    DB_USER_Learning: zll_production
+    NODE_ENV: Production
+    PORT: "5017"
+    Qrbaseurl: http://10.112.3.49:3002/Qrdata/asset/
+    Qrfilebaseurl: http://10.112.3.49:3002/qrfiles/
+    sqlport: "14343"
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"ALLOWED_ORIGINS":"*","AWS_DEFAULT_REGION":"","AWS_S3_BUCKET":"literanovalms","DB_DATABASE_Learning":"DB_Learning","DB_HOST_Learning":"10.48.219.146","DB_PORT_Learning":"14343","DB_USER_Learning":"zll_production","NODE_ENV":"Production","PORT":"5017","Qrbaseurl":"http://10.112.3.49:3002/Qrdata/asset/","Qrfilebaseurl":"http://10.112.3.49:3002/qrfiles/","sqlport":"14343"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"literanovacms-app","environment":"prod","project":"zee-project"},"name":"literanovacms-config","namespace":"prod"}}
+    creationTimestamp: "2025-07-11T12:01:46Z"
+    labels:
+      app: literanovacms-app
+      environment: prod
+      project: zee-project
+    name: literanovacms-config
+    namespace: prod
+    resourceVersion: "84170405"
+    uid: 2a93a59d-1d99-4e0e-8663-9b4d0f197fd8
+- apiVersion: v1
+  data:
+    AWS_REDIS_HOST: redis.redis.svc.cluster.local
+    AWS_REDIS_PORT: "6379"
+    AWS_S3_BUCKET: pentemindimg
+    NODE_ENV: production
+    PORT: "5005"
+    PinnacleAWS_S3_BUCKET: pinnacle.com
+    SQL_master_DATABASE: DB_PenteMind_PREKG
+    SQL_master_DRIVER: SQL Server
+    SQL_master_NAME: master
+    SQL_master_SERVER: 10.48.219.146
+    SQL_master_UID: zll_production
+    expiresIn: 8h
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"AWS_REDIS_HOST":"redis.redis.svc.cluster.local","AWS_REDIS_PORT":"6379","AWS_S3_BUCKET":"pentemindimg","NODE_ENV":"production","PORT":"5005","PinnacleAWS_S3_BUCKET":"pinnacle.com","SQL_master_DATABASE":"DB_PenteMind_PREKG","SQL_master_DRIVER":"SQL Server","SQL_master_NAME":"master","SQL_master_SERVER":"10.48.219.146","SQL_master_UID":"zll_production","expiresIn":"8h"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"pentemind-2023","environment":"prod","project":"zee-project"},"name":"literanovajr-config","namespace":"prod"}}
+    creationTimestamp: "2025-05-22T08:50:37Z"
+    labels:
+      app: pentemind-2023
+      environment: prod
+      project: zee-project
+    name: literanovajr-config
+    namespace: prod
+    resourceVersion: "55449683"
+    uid: 8f4763d7-dfb2-4cf4-9a44-d0b641661a95
+- apiVersion: v1
+  data:
+    ALLOWED_ORIGINS: '*'
+    NODE_ENV: production
+    PORT: "5015"
+    REDIS_URL: 10.48.219.165
+    S3_BUCKET: prdzllbiz-learning-bucket
+    database: DB_LearningOctave
+    db_port: "14343"
+    db_server: 10.48.219.146
+    db_user: zll_production
+    reddisport: "6379"
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"ALLOWED_ORIGINS":"*","NODE_ENV":"production","PORT":"5015","REDIS_URL":"10.48.219.165","S3_BUCKET":"prdzllbiz-learning-bucket","database":"DB_LearningOctave","db_port":"14343","db_server":"10.48.219.146","db_user":"zll_production","reddisport":"6379"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"literaoctave-app","environment":"prod","project":"zee-project"},"name":"literaoctave-config","namespace":"prod"}}
+    creationTimestamp: "2025-06-18T11:32:14Z"
+    labels:
+      app: literaoctave-app
+      environment: prod
+      project: zee-project
+    name: literaoctave-config
+    namespace: prod
+    resourceVersion: "69714749"
+    uid: 8cd770de-c3ba-4285-8549-2fdd77f917d1
+- apiVersion: v1
+  data:
+    ALLOWED_ORIGINS: '*'
+    AWS_DEFAULT_REGION: ""
+    AWS_S3_BUCKET: literanova-octave
+    DB_DATABASE_Learning: DB_LearningOctave
+    DB_HOST_Learning: 10.48.219.146
+    DB_PORT_Learning: "14343"
+    DB_USER_Learning: zll_production
+    NODE_ENV: Production
+    PORT: "5022"
+    Qrbaseurl: http://10.112.3.49:3002/Qrdata/asset/
+    Qrfilebaseurl: http://10.112.3.49:3002/qrfiles/
+    sqlport: "14343"
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"ALLOWED_ORIGINS":"*","AWS_DEFAULT_REGION":"","AWS_S3_BUCKET":"literanova-octave","DB_DATABASE_Learning":"DB_LearningOctave","DB_HOST_Learning":"10.48.219.146","DB_PORT_Learning":"14343","DB_USER_Learning":"zll_production","NODE_ENV":"Production","PORT":"5022","Qrbaseurl":"http://10.112.3.49:3002/Qrdata/asset/","Qrfilebaseurl":"http://10.112.3.49:3002/qrfiles/","sqlport":"14343"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"literaoctavecms-app","environment":"prod","project":"zee-project"},"name":"literaoctavecms-config","namespace":"prod"}}
+    creationTimestamp: "2025-07-11T12:22:31Z"
+    labels:
+      app: literaoctavecms-app
+      environment: prod
+      project: zee-project
+    name: literaoctavecms-config
+    namespace: prod
+    resourceVersion: "84184676"
+    uid: 3abbc044-db3e-49b2-a0c1-d6bf0b4ae3e2
+- apiVersion: v1
+  data:
+    ALLOWED_ORIGINS: '*'
+    AWS_DEFAULT_REGION: ""
+    AWS_S3_BUCKET: zeecms
+    NODE_ENV: production
+    SQL_DATABASE: db_lms
+    SQL_DRIVER: SQL Server
+    SQL_NAME: master
+    SQL_SERVER: 10.48.219.146
+    SQL_UID: zll_production
+    expiresIn: 2h
+    port: "5011"
+    sqlport: "14343"
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"ALLOWED_ORIGINS":"*","AWS_DEFAULT_REGION":"","AWS_S3_BUCKET":"zeecms","NODE_ENV":"production","SQL_DATABASE":"db_lms","SQL_DRIVER":"SQL Server","SQL_NAME":"master","SQL_SERVER":"10.48.219.146","SQL_UID":"zll_production","expiresIn":"2h","port":"5011","sqlport":"14343"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"lmsapi-app","environment":"prod","project":"zee-project"},"name":"lmsapi-config","namespace":"prod"}}
+    creationTimestamp: "2025-05-15T14:49:06Z"
+    labels:
+      app: lmsapi-app
+      environment: prod
+      project: zee-project
+    name: lmsapi-config
+    namespace: prod
+    resourceVersion: "51907778"
+    uid: 571630d4-de0f-488d-b665-7f7ceb71a4d0
+- apiVersion: v1
+  data:
+    ALLOWED_FILE_TYPES: pdf,jpg,jpeg,png
+    AWS_REGION: ap-south-1
+    CACHE_EXPIRATION: "86400"
+    DB_DATABASE: DB_ML
+    DB_SERVER: 10.48.219.146
+    DB_USER: zll_production
+    FLASK_ENV: production
+    FLASK_PORT: "4012"
+    MAX_CONVERSATIONS: "7"
+    MAX_FILE_SIZE: "15728640"
+    MONGO_COLLECTION: chats
+    MONGO_DB: ai_edu_chat_db
+    NODE_ENV: production
+    REDIS_DB: "0"
+    REDIS_HOST: 10.48.219.165
+    REDIS_PORT: "6379"
+    TESSERACT_CMD: /usr/bin/tesseract
+    UPLOAD_FOLDER: uploads
+    port: "4011"
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"ALLOWED_FILE_TYPES":"pdf,jpg,jpeg,png","AWS_REGION":"ap-south-1","CACHE_EXPIRATION":"86400","DB_DATABASE":"DB_ML","DB_SERVER":"10.48.219.146","DB_USER":"zll_production","FLASK_ENV":"production","FLASK_PORT":"4012","MAX_CONVERSATIONS":"7","MAX_FILE_SIZE":"15728640","MONGO_COLLECTION":"chats","MONGO_DB":"ai_edu_chat_db","NODE_ENV":"production","REDIS_DB":"0","REDIS_HOST":"10.48.219.165","REDIS_PORT":"6379","TESSERACT_CMD":"/usr/bin/tesseract","UPLOAD_FOLDER":"uploads","port":"4011"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"novachat-app","environment":"prod","project":"zee-project"},"name":"novachat-config","namespace":"prod"}}
+    creationTimestamp: "2025-05-22T13:37:04Z"
+    labels:
+      app: novachat-app
+      environment: prod
+      project: zee-project
+    name: novachat-config
+    namespace: prod
+    resourceVersion: "55945699"
+    uid: 5bdca048-21c6-462a-b344-aee9b71b5bf2
+- apiVersion: v1
+  data:
+    AWS_REDIS_HOST: redis.redis.svc.cluster.local
+    AWS_REDIS_PORT: "6379"
+    AWS_S3_BUCKET: pentemindimg
+    NODE_ENV: production
+    PORT: "5005"
+    PinnacleAWS_S3_BUCKET: pinnacle.com
+    SQL_master_DATABASE: DB_PenteMind_24
+    SQL_master_DRIVER: SQL Server
+    SQL_master_NAME: master
+    SQL_master_SERVER: 10.48.219.146
+    SQL_master_UID: zll_production
+    expiresIn: 2162h
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"AWS_REDIS_HOST":"redis.redis.svc.cluster.local","AWS_REDIS_PORT":"6379","AWS_S3_BUCKET":"pentemindimg","NODE_ENV":"production","PORT":"5005","PinnacleAWS_S3_BUCKET":"pinnacle.com","SQL_master_DATABASE":"DB_PenteMind_24","SQL_master_DRIVER":"SQL Server","SQL_master_NAME":"master","SQL_master_SERVER":"10.48.219.146","SQL_master_UID":"zll_production","expiresIn":"8h"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"pentemind-2023","environment":"prod","project":"zee-project"},"name":"pentemind-config-23","namespace":"prod"}}
+    creationTimestamp: "2025-04-25T10:58:47Z"
+    labels:
+      app: pentemind-2023
+      environment: prod
+      project: zee-project
+    name: pentemind-config-23
+    namespace: prod
+    resourceVersion: "94854150"
+    uid: 482c5e6a-0455-4293-a169-ec533cd7c661
+- apiVersion: v1
+  data:
+    AWS_REDIS_HOST: redis.redis.svc.cluster.local
+    AWS_REDIS_PORT: "6379"
+    AWS_S3_BUCKET: pentemindimg
+    NODE_ENV: production
+    PORT: "5005"
+    PinnacleAWS_S3_BUCKET: pinnacle.com
+    SQL_master_DATABASE: DB_PenteMind_24
+    SQL_master_DRIVER: SQL Server
+    SQL_master_NAME: master
+    SQL_master_SERVER: 10.48.219.146
+    SQL_master_UID: zll_production
+    expiresIn: 2162h
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"AWS_REDIS_HOST":"redis.redis.svc.cluster.local","AWS_REDIS_PORT":"6379","AWS_S3_BUCKET":"pentemindimg","NODE_ENV":"production","PORT":"5005","PinnacleAWS_S3_BUCKET":"pinnacle.com","SQL_master_DATABASE":"DB_PenteMind_24","SQL_master_DRIVER":"SQL Server","SQL_master_NAME":"master","SQL_master_SERVER":"10.48.219.146","SQL_master_UID":"zll_production","expiresIn":"8h"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"pentemind-apps","environment":"prod","project":"zee-project"},"name":"pentemind-config-24","namespace":"prod"}}
+    creationTimestamp: "2025-04-16T07:52:13Z"
+    labels:
+      app: pentemind-apps
+      environment: prod
+      project: zee-project
+    name: pentemind-config-24
+    namespace: prod
+    resourceVersion: "94854151"
+    uid: c3747d8e-311d-46fa-9168-cc2ab82cd3f0
+- apiVersion: v1
+  data:
+    AWS_REDIS_HOST: redis.redis.svc.cluster.local
+    AWS_REDIS_PORT: "6379"
+    AWS_S3_BUCKET: pentemindimg
+    NODE_ENV: production
+    PORT: "5005"
+    PinnacleAWS_S3_BUCKET: pinnacle.com
+    SQL_master_DATABASE: DB_PenteMind_25
+    SQL_master_DRIVER: SQL Server
+    SQL_master_NAME: master
+    SQL_master_SERVER: 10.48.219.146
+    SQL_master_UID: zll_production
+    expiresIn: 2162h
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"AWS_REDIS_HOST":"redis.redis.svc.cluster.local","AWS_REDIS_PORT":"6379","AWS_S3_BUCKET":"pentemindimg","NODE_ENV":"production","PORT":"5005","PinnacleAWS_S3_BUCKET":"pinnacle.com","SQL_master_DATABASE":"DB_PenteMind_25","SQL_master_DRIVER":"SQL Server","SQL_master_NAME":"master","SQL_master_SERVER":"10.48.219.146","SQL_master_UID":"zll_production","expiresIn":"8h"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"pentemind-app","environment":"prod","project":"zee-project"},"name":"pentemind-config-25","namespace":"prod"}}
+    creationTimestamp: "2025-04-16T08:22:34Z"
+    labels:
+      app: pentemind-app
+      environment: prod
+      project: zee-project
+    name: pentemind-config-25
+    namespace: prod
+    resourceVersion: "94854152"
+    uid: 6e963763-cf4b-4067-b5db-899e37ae0ca7
+- apiVersion: v1
+  data:
+    NODE_ENV: Production
+    PORT: "5022"
+    SQL_DATABASE: DB_Saarthi
+    SQL_DRIVER: SQL Server
+    SQL_SERVER: 10.48.219.146
+    SQL_SERVER_PORT: "14343"
+    SQL_UID: zll_production
+    jwt_expiresIn: 24h
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"NODE_ENV":"Production","PORT":"5022","SQL_DATABASE":"DB_Saarthi","SQL_DRIVER":"SQL Server","SQL_SERVER":"10.48.219.146","SQL_SERVER_PORT":"14343","SQL_UID":"zll_production"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"zllsaathiapi-app","environment":"prod","project":"zee-project"},"name":"zllsaathiapi-config","namespace":"prod"}}
+    creationTimestamp: "2025-07-31T13:42:24Z"
+    labels:
+      app: zllsaathiapi-app
+      environment: prod
+      project: zee-project
+    name: zllsaathiapi-config
+    namespace: prod
+    resourceVersion: "110928799"
+    uid: 22b4bf62-2931-4a79-af14-473f6410f30e
+kind: List
+metadata:
+  resourceVersion: ""
+

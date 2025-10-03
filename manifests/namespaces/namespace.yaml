@@ -1,0 +1,21 @@
+kubectl get ns
+NAME                              STATUS   AGE
+cert-manager                      Active   236d
+default                           Active   237d
+ingress-nginx                     Active   231d
+kube-flannel                      Active   237d
+kube-node-lease                   Active   237d
+kube-public                       Active   237d
+kube-system                       Active   237d
+kubesphere-controls-system        Active   235d
+kubesphere-logging-system         Active   212d
+kubesphere-monitoring-federated   Active   235d
+kubesphere-monitoring-system      Active   235d
+kubesphere-system                 Active   235d
+longhorn-system                   Active   237d
+metallb-system                    Active   237d
+poc                               Active   220d
+prod                              Active   170d
+rbmq                              Active   234d
+redis                             Active   225d
+
