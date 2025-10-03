@@ -1,0 +1,9 @@
+kubectl get no
+NAME                 STATUS   ROLES           AGE    VERSION
+zee8608masterapi01   Ready    control-plane   237d   v1.30.9
+zee8608masterapi02   Ready    control-plane   237d   v1.30.9
+zee8608masterapi03   Ready    control-plane   237d   v1.30.9
+zee8608workerapi01   Ready    worker          237d   v1.30.9
+zee8608workerapi02   Ready    worker          237d   v1.30.9
+zee8608workerapi03   Ready    worker          237d   v1.30.9
+
